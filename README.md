@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>FaithForge Gaming</title>
   <style>
+    /* Background Animation */
     body {
       background-color: #0d0d0d;
       color: #f5c518;
@@ -12,7 +13,26 @@
       margin: 0;
       padding: 0;
       text-align: center;
+      overflow-x: hidden;
     }
+
+    /* Floating particles */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: url('https://cdn.pixabay.com/photo/2020/01/07/14/55/bokeh-4741745_1280.png') repeat;
+      opacity: 0.05;
+      animation: float 60s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes float {
+      from { background-position: 0 0; }
+      to { background-position: 10000px 5000px; }
+    }
+
     header {
       padding: 20px;
     }
@@ -41,10 +61,16 @@
       text-decoration: none;
       font-weight: bold;
       border-radius: 8px;
-      transition: background-color 0.3s;
+      transition: background-color 0.3s, transform 0.3s;
     }
     .links a:hover {
       background-color: #c9a416;
+      transform: scale(1.05);
+    }
+    .bible-verse {
+      margin: 30px 20px;
+      font-style: italic;
+      font-size: 1em;
     }
     footer {
       margin-top: 50px;
@@ -52,10 +78,10 @@
       color: #888;
       padding-bottom: 20px;
     }
-    .bible-verse {
-      margin: 30px 20px;
-      font-style: italic;
-      font-size: 1em;
+
+    /* Smooth scroll */
+    html {
+      scroll-behavior: smooth;
     }
   </style>
 </head>

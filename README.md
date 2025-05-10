@@ -88,7 +88,7 @@
 <body>
 
   <header>
-    <img src="67DF65C9-7EBB-4FCD-9722-7886206FD175.png" alt="FaithForge Gaming Logo">
+    <img src="95998504-25E9-46FD-8CA4-FF4784EEF961.png" alt="FaithForge Gaming Logo">
     <h1>FaithForge Gaming</h1>
     <p>Our mission is to bring like-minded gamers together.</p>
     <p>Our vision is to create a community where gamers can connect, grow, and share.</p>

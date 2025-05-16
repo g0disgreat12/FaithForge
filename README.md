@@ -96,7 +96,7 @@
 
   <div class="links">
     <a href="https://www.facebook.com/groups/1401655227543697/" target="_blank">Join us on Facebook</a>
-    <a href="(https://discord.gg/jnWSgXb66B)" target="_blank">Join our Discord</a>
+    <a href="https://discord.gg/jnWSgXb66B" target="_blank">Join our Discord</a>
   </div>
 
   <div class="bible-verse">

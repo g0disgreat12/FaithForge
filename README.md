@@ -1,4 +1,3 @@
-
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -14,23 +13,25 @@
       padding: 0;
       text-align: center;
       overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
     }
 
-    /* Floating particles */
+    /* Floating particles background */
     body::before {
       content: '';
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
       background: url('https://cdn.pixabay.com/photo/2020/01/07/14/55/bokeh-4741745_1280.png') repeat;
-      opacity: 0.05;
+      opacity: 0.12;   /* make it more visible */
       animation: float 60s linear infinite;
       z-index: -1;
     }
 
     @keyframes float {
       from { background-position: 0 0; }
-      to { background-position: 10000px 5000px; }
+      to { background-position: 5000px 2500px; }
     }
 
     header {
@@ -49,15 +50,21 @@
       font-size: 1.2em;
       margin: 10px 20px;
     }
+
+    /* Grid Links */
     .links {
-      margin-top: 30px;
+      margin: 40px auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 15px;
+      max-width: 700px;
+      padding: 0 20px;
     }
     .links a {
-      display: inline-block;
+      display: block;
       background-color: #f5c518;
       color: #0d0d0d;
-      padding: 15px 25px;
-      margin: 10px;
+      padding: 15px 10px;
       text-decoration: none;
       font-weight: bold;
       border-radius: 8px;
@@ -67,6 +74,7 @@
       background-color: #c9a416;
       transform: scale(1.05);
     }
+
     .bible-verse {
       margin: 30px 20px;
       font-style: italic;
@@ -95,8 +103,12 @@
   </header>
 
   <div class="links">
-    <a href="https://www.facebook.com/groups/1401655227543697/" target="_blank">Join us on Facebook</a>
-    <a href="https://discord.gg/jnWSgXb66B" target="_blank">Join our Discord</a>
+    <a href="https://www.facebook.com/groups/1401655227543697/" target="_blank">Facebook Group</a>
+    <a href="https://discord.gg/jnWSgXb66B" target="_blank">Discord</a>
+    <a href="https://www.reddit.com/r/FaithForgeGaming/" target="_blank">Reddit</a>
+    <a href="https://www.youtube.com/@FaithForgeGaming" target="_blank">YouTube</a>
+    <a href="https://www.twitch.tv/g0disgreat12" target="_blank">Twitch</a>
+    <a href="https://www.facebook.com/groups/757477150226235/" target="_blank">Minecraft FB Page</a>
   </div>
 
   <div class="bible-verse">

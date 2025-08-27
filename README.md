@@ -108,7 +108,8 @@
     <a href="https://www.reddit.com/r/FaithForgeGaming/" target="_blank">Reddit</a>
     <a href="https://www.youtube.com/@FaithForgeGaming" target="_blank">YouTube</a>
     <a href="https://www.twitch.tv/g0disgreat12" target="_blank">Twitch</a>
-    <a href="https://www.facebook.com/groups/757477150226235/" target="_blank">Minecraft FB Page</a>
+    <a 
+href="https://ko-fi.com/faithforgegaming" target="_blank">Support on Ko-fi</a>
   </div>
 
   <div class="bible-verse">

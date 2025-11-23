@@ -8,7 +8,7 @@
   <link rel="icon" type="image/png" href="../favicon.png">
   <link rel="stylesheet" href="../style.css">
   <style>
-    /* Contact layout adjustments */
+    /* Contact layout */
     .contact-wrap {
       display: flex;
       justify-content: center;
@@ -28,7 +28,7 @@
     .form {
       flex: 1;
       min-width: 300px;
-      background: rgba(255,255,255,0.05);
+      background: rgba(0,0,0,0.6);
       padding: 25px 30px;
       border-radius: 16px;
       box-shadow: 0 0 25px rgba(245,197,24,0.2);
@@ -38,13 +38,14 @@
       font-weight: 700;
       margin-top: 12px;
       display: block;
+      color: #f5c518;
     }
     input, textarea {
       width: 100%;
       padding: 12px 14px;
       border-radius: 10px;
       border: 1px solid rgba(245,197,24,.35);
-      background: rgba(0,0,0,.5);
+      background: rgba(15,15,15,.9);
       color: #f5c518;
       outline: none;
       font-size: 1em;
@@ -54,18 +55,27 @@
     .btn {
       display: inline-block;
       margin-top: 14px;
-      padding: 14px 22px;
+      padding: 14px 26px;
       font-weight: 800;
       border-radius: 10px;
-      border: 0;
+      border: none;
       cursor: pointer;
-      background: linear-gradient(90deg,#f5c518,#cfa214);
-      color: #000;
-      box-shadow: 0 0 18px rgba(245,197,24,.4);
+      background: radial-gradient(circle at center, #f5c518 20%, #cfa214 100%);
+      color: #0d0d0d;
+      box-shadow: 0 0 25px rgba(245,197,24,.6);
+      text-transform: uppercase;
       transition: transform .2s, box-shadow .2s;
     }
-    .btn:hover { transform: translateY(-1px); box-shadow: 0 0 28px rgba(245,197,24,.7); }
-    .muted { color: #bbb; display: block; margin-top: 8px; }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 35px rgba(245,197,24,1);
+    }
+    .muted {
+      color: #aaa;
+      display: block;
+      margin-top: 8px;
+      font-size: 0.85em;
+    }
     @media (max-width: 900px) {
       .contact-wrap { flex-direction: column; text-align: center; }
       .contact-img { width: 80%; max-width: 400px; }
@@ -89,8 +99,8 @@
 
   <div class="content">
     <div class="contact-wrap">
-      <img class="contact-img" src="9d800b44-ae02-419b-8213-6bf190900013.png" alt="FaithForge Contact">
-      <form id="contactForm" class="form" method="POST" action="https://formspree.io/f/YOUR_FORM_ID">
+      <img class="contact-img" src="ContactUS.png" alt="FaithForge Contact">
+      <form id="contactForm" class="form" method="POST" action="https://formspree.io/f/mrbdwynw">
         <label for="first">First Name</label>
         <input id="first" name="first_name" required placeholder="First name">
         <label for="last">Last Name</label>
@@ -103,7 +113,7 @@
         <textarea id="message" name="message" required placeholder="Type your message here..."></textarea>
         <input type="hidden" name="_subject" value="New message from FaithForgeGaming.com">
         <button class="btn" type="submit">Send Message</button>
-        <small class="muted">Replace <code>YOUR_FORM_ID</code> with your Formspree ID to route messages to FaithForgeGaming@gmail.com.</small>
+        <small class="muted">Messages are securely routed to FaithForgeGaming@gmail.com via Formspree.</small>
       </form>
     </div>
   </div>

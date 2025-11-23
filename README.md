@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -95,6 +96,26 @@
       margin: 10px 20px;
     }
 
+    /* === NAVIGATION BAR === */
+    .navbar {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 10px 0;
+      box-shadow: 0 0 20px rgba(245,197,24,0.3);
+      margin-top: 10px;
+    }
+    .navbar a {
+      color: #f5c518;
+      text-decoration: none;
+      margin: 0 20px;
+      font-weight: bold;
+      font-size: 1.1em;
+      transition: color 0.3s, text-shadow 0.3s;
+    }
+    .navbar a:hover {
+      color: #fff;
+      text-shadow: 0 0 10px #f5c518;
+    }
+
     /* Discord Hero Button */
     .hero-discord {
       display: inline-block;
@@ -184,6 +205,14 @@
     <h1>FaithForge Gaming</h1>
     <p>Our mission is to bring like-minded gamers together.</p>
     <p>Our vision is to create a community where gamers can connect, grow, and share.</p>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="team.html">Our Team</a>
+      <a href="streamers.html">Streamers</a>
+    </nav>
 
     <!-- Hero Discord Button -->
     <a class="hero-discord" href="https://discord.gg/bAQrudk5a9" target="_blank">Join Our Discord</a>

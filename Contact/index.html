@@ -12,7 +12,7 @@
     .contact-wrap {
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: stretch; /* Ensures same height */
       gap: 40px;
       margin: 40px auto;
       flex-wrap: wrap;
@@ -21,13 +21,16 @@
     .contact-img {
       width: 45%;
       max-width: 450px;
+      height: auto;
       border-radius: 16px;
       box-shadow: 0 0 30px rgba(245,197,24,.25);
       object-fit: cover;
     }
     .form {
       flex: 1;
-      min-width: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       background: rgba(0,0,0,0.6);
       padding: 25px 30px;
       border-radius: 16px;
@@ -78,7 +81,7 @@
     }
     @media (max-width: 900px) {
       .contact-wrap { flex-direction: column; text-align: center; }
-      .contact-img { width: 80%; max-width: 400px; }
+      .contact-img { width: 80%; max-width: 400px; margin-bottom: 20px; }
       .form { text-align: left; width: 90%; }
     }
   </style>

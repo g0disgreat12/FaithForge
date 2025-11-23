@@ -1,0 +1,100 @@
+/* === FaithForge Shared Styling === */
+body {
+  background: radial-gradient(circle at center, #0d0d0d 40%, #000 100%);
+  color: #f5c518;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  min-height: 100vh;
+  position: relative;
+}
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: radial-gradient(circle at 50% 50%, rgba(245,197,24,0.08) 0%, rgba(0,0,0,0) 70%);
+  animation: pulse 6s ease-in-out infinite alternate;
+  z-index: -3;
+}
+@keyframes pulse {
+  0% { opacity: 0.08; transform: scale(1); }
+  100% { opacity: 0.2; transform: scale(1.2); }
+}
+.emblem {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  max-width: 90vw;
+  opacity: 0.05;
+  transform: translate(-50%, -50%) scale(1);
+  filter: drop-shadow(0 0 40px rgba(245,197,24,0.5));
+  animation: emblemGlow 8s ease-in-out infinite alternate;
+  z-index: -2;
+  pointer-events: none;
+}
+@keyframes emblemGlow {
+  from { opacity: 0.04; transform: translate(-50%, -50%) scale(1); }
+  to { opacity: 0.1; transform: translate(-50%, -50%) scale(1.05); }
+}
+#embers {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+header { padding: 20px; }
+h1 {
+  font-size: 3em;
+  margin: 20px 0 10px;
+  background: linear-gradient(90deg, #f5c518, #cfa214);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 20px rgba(245,197,24,0.3);
+}
+p { font-size: 1.2em; margin: 10px 20px; }
+.navbar {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10px 0;
+  box-shadow: 0 0 20px rgba(245,197,24,0.3);
+}
+.navbar a {
+  color: #f5c518;
+  text-decoration: none;
+  margin: 0 20px;
+  font-weight: bold;
+  font-size: 1.1em;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+.navbar a:hover {
+  color: #fff;
+  text-shadow: 0 0 10px #f5c518;
+}
+footer {
+  margin-top: 50px;
+  font-size: 0.9em;
+  color: #888;
+  padding-bottom: 20px;
+}
+.content {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  color: #f5c518;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 0 20px rgba(245,197,24,0.2);
+}

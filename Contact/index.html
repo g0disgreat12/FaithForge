@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact - FaithForge Gaming</title>
+  <meta name="description" content="FaithForge Gaming — Christian gaming community.">
+  <link rel="icon" type="image/png" href="../favicon.png">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <img class="emblem" src="../95998504-25E9-46FD-8CA4-FF4784EEF961.png" alt="FaithForge Emblem">
+  <canvas id="embers"></canvas>
+  <header>
+    <h1>Contact Us</h1>
+    <nav class="navbar">
+      <a href="../index.html">Home</a>
+      <a href="../Aboutus/">About Us</a>
+      <a href="../Staff/">Our Team</a>
+      <a href="../Streamers/">Streamers</a>
+      <a href="../Contact/">Contact</a>
+    </nav>
+  </header>
+  <div class="content">
+    
+<div class="contact-wrap">
+  <img class="contact-img" src="contact-image.png" alt="Contact image">
+  <form id="contactForm" class="form" method="POST" action="https://formspree.io/f/YOUR_FORM_ID">
+    <label for="first">First Name</label>
+    <input id="first" name="first_name" required placeholder="First name">
+    <label for="last">Last Name</label>
+    <input id="last" name="last_name" required placeholder="Last name">
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" required placeholder="you@example.com">
+    <label for="subject">Subject</label>
+    <input id="subject" name="subject" required placeholder="How can we help?">
+    <label for="message">Message</label>
+    <textarea id="message" name="message" required placeholder="Type your message here..."></textarea>
+    <input type="hidden" name="_subject" value="New message from FaithForgeGaming.com">
+    <button class="btn" type="submit">Send Message</button>
+    <small class="muted">Replace <code>YOUR_FORM_ID</code> with your Formspree ID to route messages to FaithForgeGaming@gmail.com.</small>
+  </form>
+</div>
+
+  </div>
+  <footer>&copy; 2025 FaithForge Gaming. All rights reserved.</footer>
+  <script src="../embers.js"></script>
+</body>
+</html>

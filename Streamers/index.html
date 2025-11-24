@@ -3,29 +3,207 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Streamers - FaithForge Gaming</title>
+  <title>FaithForge Streamers</title>
   <link rel="stylesheet" href="../style.css">
   <link rel="icon" type="image/png" href="../favicon.png">
+
+  <style>
+    .streamer-section {
+      width: 90%;
+      max-width: 1100px;
+      margin: auto;
+      margin-top: 40px;
+    }
+
+    .streamer {
+      background: rgba(0, 0, 0, 0.45);
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 40px;
+      display: flex;
+      gap: 25px;
+      border: 1px solid rgba(245,197,24,0.15);
+      box-shadow: 0 0 25px rgba(245,197,24,0.15);
+    }
+
+    .streamer img {
+      width: 220px;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 2px solid #f5c518;
+      box-shadow: 0 0 20px rgba(245,197,24,0.4);
+    }
+
+    .streamer-info h2 {
+      margin: 0;
+      font-size: 1.8em;
+      color: #f5c518;
+    }
+
+    .streamer-bio {
+      margin-top: 10px;
+      line-height: 1.45em;
+    }
+
+    /* Hero-style buttons */
+    .link-buttons {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .link-buttons a {
+      padding: 10px 18px;
+      border-radius: 8px;
+      color: black;
+      background: #f5c518;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 0 15px rgba(245,197,24,0.5);
+      transition: 0.25s;
+    }
+
+    .link-buttons a:hover {
+      background: #ffe27a;
+      box-shadow: 0 0 25px rgba(245,197,24,0.8);
+    }
+
+    @media (max-width: 768px) {
+      .streamer {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .streamer img {
+        margin: auto;
+      }
+
+      .link-buttons {
+        justify-content: center;
+      }
+    }
+  </style>
 </head>
+
 <body>
   <img class="emblem" src="../watermark.png" alt="FaithForge Emblem">
   <canvas id="embers"></canvas>
+
   <header>
     <h1>FaithForge Streamers</h1>
+
     <nav class="navbar">
       <a href="../index.html">Home</a>
       <a href="../Aboutus/index.html">About Us</a>
       <a href="../Staff/index.html">Our Team</a>
       <a href="../Streamers/index.html">Streamers</a>
+      <a href="../Servers/">Servers</a>
+      <a href="../Contact/index.html">Contact Us</a>
     </nav>
   </header>
-  <div class="content">
-<p>Meet our content creators who forge faith through gaming, live on Twitch, YouTube, and beyond.</p>
-<div class='grid'>
-  <div class='card'><h2>G0disGreat12</h2><a href='https://www.twitch.tv/g0disgreat12' target='_blank'>Watch on Twitch</a></div>
-</div>
-</div>
+
+  <div class="streamer-section">
+
+    <!-- 1. G0dsblessing -->
+    <div class="streamer">
+      <img src="G0dsblessing.webp" alt="G0dsblessing">
+      <div class="streamer-info">
+        <h2>FaithForgeGaming — G0dsblessing</h2>
+        <p class="streamer-bio">
+          My mission is to bring like minded gamers together, for the Lord.
+          My vision is to create a community where gamers can connect, share, and grow in faith.
+          Join me on my many adventures across the digital world.
+        </p>
+
+        <div class="link-buttons">
+          <a href="https://www.youtube.com/@FaithForgeGaming" target="_blank">YouTube</a>
+          <a href="https://www.twitch.tv/g0disgreat12" target="_blank">Twitch</a>
+          <a href="https://www.tiktok.com/@faithforge.gaming?is_from_webapp=1&sender_device=pc" target="_blank">TikTok</a>
+          <a href="https://www.facebook.com/profile.php?id=100070219355952" target="_blank">Facebook</a>
+          <a href="https://www.instagram.com/faithforgegaming" target="_blank">Instagram</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. DoctorJSWAYS -->
+    <div class="streamer">
+      <img src="DoctorJSWAYS.webp" alt="DoctorJSWAYS">
+      <div class="streamer-info">
+        <h2>DoctorJSWAYS</h2>
+        <p class="streamer-bio">
+          My mission is to bring like minded gamers together, for the Lord.
+          My vision is to create a community where gamers can connect, share, and grow in faith.
+        </p>
+
+        <div class="link-buttons">
+          <a href="https://www.youtube.com/@DoctorJSWAYS" target="_blank">YouTube</a>
+          <a href="https://www.twitch.tv/doctorjsways" target="_blank">Twitch</a>
+          <a href="https://www.tiktok.com/@doctorjsways?_t=ZP-90qlk47XjQt&_r=1" target="_blank">TikTok</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Seawolf_30 -->
+    <div class="streamer">
+      <img src="Seawolf.webp" alt="Seawolf_30">
+      <div class="streamer-info">
+        <h2>Seawolf_30</h2>
+        <p class="streamer-bio">
+          In a realm where pixels forge kingdoms and quests abound, Seawolf_30 invites travelers
+          to embark on heartfelt adventures. With a hearth of warmth, they weave tales of togetherness,
+          laughter, and creativity with every stream. Their realm thrives on camaraderie and the bond
+          of shared stories.
+        </p>
+
+        <div class="link-buttons">
+          <a href="https://www.twitch.tv/seawolf_30?sr=a" target="_blank">Twitch</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. NINJASAUCEX -->
+    <div class="streamer">
+      <img src="NINJASAUCEX.webp" alt="NINJASAUCEX">
+      <div class="streamer-info">
+        <h2>NINJASAUCEX</h2>
+        <p class="streamer-bio">
+          Your destination for outdoor adventure, nature exploration, and active lifestyle content.
+          Join TQ as he dives into the wild — sharing experiences in ebiking, fishing, and kayaking
+          across Missouri, Arkansas, and beyond.
+        </p>
+
+        <div class="link-buttons">
+          <a href="https://www.youtube.com/@ninjasaucexgaming/featured" target="_blank">YouTube Gaming</a>
+          <a href="https://www.twitch.tv/ninjasaucex" target="_blank">Twitch</a>
+          <a href="https://www.youtube.com/@TQOutside" target="_blank">TQ Outside</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. mooncalfmage -->
+    <div class="streamer">
+      <img src="mooncalfmage.webp" alt="mooncalfmage">
+      <div class="streamer-info">
+        <h2>mooncalfmage</h2>
+        <p class="streamer-bio">
+          Hello! Cozy gamer here who loves gaming and reading! I stream Animal Crossing,
+          Coral Island, Minecraft, Fortnite, and many more. I hope you enjoy them — God bless! 🩵
+        </p>
+
+        <div class="link-buttons">
+          <a href="https://www.youtube.com/@mooncalfmage" target="_blank">YouTube</a>
+          <a href="https://www.twitch.tv/mooncalfmage" target="_blank">Twitch</a>
+          <a href="https://www.instagram.com/mooncalfmage/reel/DQcJURbEb_U" target="_blank">Instagram</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
   <footer>&copy; 2025 FaithForge Gaming. All rights reserved.</footer>
   <script src="../embers.js"></script>
+
 </body>
 </html>

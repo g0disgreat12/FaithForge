@@ -28,7 +28,9 @@
     .navbar a {
       white-space: nowrap;
     }
+  </style> <!-- ✅ FIXED: This closing tag was missing -->
 
+  <style>
     /* Contact layout */
     .contact-wrap {
       display: flex;
@@ -57,14 +59,13 @@
       flex-direction: column;
       justify-content: space-between;
       background: rgba(0,0,0,0.6);
-      padding: 30px; /* Equal padding on all sides */
+      padding: 30px;
       border-radius: 16px;
       box-shadow: 0 0 25px rgba(245,197,24,0.2);
       text-align: left;
       max-width: 450px;
     }
 
-    /* Consistent internal spacing */
     .form * {
       box-sizing: border-box;
     }
@@ -78,7 +79,7 @@
 
     input, textarea {
       width: 100%;
-      padding: 14px 16px; /* More spacing for right side */
+      padding: 14px 16px;
       border-radius: 10px;
       border: 1px solid rgba(245,197,24,.35);
       background: rgba(15,15,15,.9);

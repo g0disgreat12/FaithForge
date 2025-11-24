@@ -6,7 +6,30 @@
   <title>Servers - FaithForge Gaming</title>
   <meta name="description" content="FaithForge Gaming Servers — Minecraft Multiverse, ATM9, and Ark ASA.">
   <link rel="icon" type="image/png" href="../favicon.png">
+
+  <!-- Original stylesheet -->
   <link rel="stylesheet" href="../style.css">
+
+  <!-- SAFARI FIX + NOWRAP FIX -->
+  <style>
+    /* Force black background on Safari */
+    body {
+      background: radial-gradient(circle at center, #0d0d0d 40%, #000000 100%) !important;
+      color: #f5c518;
+    }
+
+    /* Prevent navbar wrapping */
+    .navbar {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 25px;
+      justify-content: center;
+    }
+
+    .navbar a {
+      white-space: nowrap !important;
+    }
+  </style>
 
   <style>
     .server-container {
@@ -143,7 +166,6 @@
         </p>
       </div>
 
-
       <!-- ======================= -->
       <!-- ATM9 SERVER -->
       <!-- ======================= -->
@@ -154,53 +176,4 @@
         <p>
           FaithForge also hosts an <span class="highlight">All The Mods 9</span> modded Minecraft server, giving
           players a rich technology, magic, and exploration-focused experience.
-        </p>
-
-        <p>
-          ATM9 includes:<br>
-          • Hundreds of mods<br>
-          • Tech progression (Create, Mekanism, AE2, etc.)<br>
-          • Magic mods<br>
-          • Bosses, dimensions, and exploration<br>
-          • Automated storage, machines, automation systems  
-        </p>
-
-        <p>
-          This server is perfect for players who want a deeper, more complex modded experience alongside the
-          FaithForge community.
-        </p>
-      </div>
-
-
-      <!-- ======================= -->
-      <!-- ARK SERVER -->
-      <!-- ======================= -->
-      <div class="server">
-        <h2>Ark Survival Ascended — PVE Server</h2>
-        <img src="ark.webp" alt="Ark ASA Server">
-
-        <p>
-          We run a <span class="highlight">vanilla Ark Survival Ascended PVE server</span> with multiple maps.
-          No mods — just pure cooperative Ark enjoyment.
-        </p>
-
-        <ul>
-          <li>Multiple connected maps</li>
-          <li>Community events</li>
-          <li>Friendly, cooperative environment</li>
-          <li>Family-friendly Christian server</li>
-        </ul>
-
-        <p>
-          Perfect for players who love taming dinos, exploring maps, and working together as a community.
-        </p>
-      </div>
-
-    </div>
-  </div>
-
-  <footer>&copy; 2025 FaithForge Gaming. All rights reserved.</footer>
-  <script src="../embers.js"></script>
-
-</body>
-</html>
+        </

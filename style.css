@@ -1,84 +1,74 @@
-/* === FaithForge Global Styling === */
-
-/* RESET */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* GLOBAL BODY THEME */
+/* === FaithForge Shared Styling === */
 body {
   background: radial-gradient(circle at center, #0d0d0d 40%, #000 100%);
   color: #f5c518;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   text-align: center;
+  margin: 0;
+  padding: 0;
   overflow-x: hidden;
   min-height: 100vh;
   position: relative;
 }
 
-/* Pulsing forge glow */
+/* Subtle pulsing background glow */
 body::before {
-  content: "";
+  content: '';
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at 50% 50%, rgba(245,197,24,0.08) 0%, rgba(0,0,0,0) 70%);
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: radial-gradient(circle at 50% 50%, rgba(245,197,24,0.12) 0%, rgba(0,0,0,0) 70%);
   animation: pulse 6s ease-in-out infinite alternate;
   z-index: -3;
 }
 
 @keyframes pulse {
-  0% { opacity: 0.08; transform: scale(1); }
-  100% { opacity: 0.2; transform: scale(1.2); }
+  0% { opacity: 0.10; transform: scale(1); }
+  100% { opacity: 0.22; transform: scale(1.15); }
 }
 
-/* WATERMARK EMBLEM */
+/* Centered glowing emblem watermark */
 .emblem {
   position: fixed;
   top: 50%;
   left: 50%;
   width: 600px;
   max-width: 90vw;
-  opacity: 0.05;
+  opacity: 0.06;
   transform: translate(-50%, -50%) scale(1);
-  filter: drop-shadow(0 0 40px rgba(245,197,24,0.5));
-  animation: emblemGlow 8s ease-in-out infinite alternate;
+  filter: drop-shadow(0 0 40px rgba(245,197,24,0.4));
+  animation: emblemGlow 10s ease-in-out infinite alternate;
   z-index: -2;
   pointer-events: none;
 }
 
 @keyframes emblemGlow {
-  from { opacity: 0.04; transform: translate(-50%, -50%) scale(1); }
-  to { opacity: 0.1; transform: translate(-50%, -50%) scale(1.05); }
+  from { opacity: 0.05; transform: translate(-50%, -50%) scale(1); }
+  to { opacity: 0.12; transform: translate(-50%, -50%) scale(1.06); }
 }
 
-/* EMBERS CANVAS */
+/* Ember layer */
 #embers {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   pointer-events: none;
   z-index: -1;
 }
 
-/* HEADER */
+/* Header */
 header {
   padding: 20px;
 }
 
+/* Page Titles */
 h1 {
   font-size: 3em;
   margin: 20px 0 10px;
   background: linear-gradient(90deg, #f5c518, #cfa214);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 20px rgba(245,197,24,0.3);
+  text-shadow: 0 0 25px rgba(245,197,24,0.4);
 }
 
 p {
@@ -86,7 +76,7 @@ p {
   margin: 10px 20px;
 }
 
-/* NAVIGATION BAR */
+/* Navigation Bar */
 .navbar {
   background: rgba(0, 0, 0, 0.6);
   padding: 10px 0;
@@ -104,19 +94,43 @@ p {
 
 .navbar a:hover {
   color: #fff;
-  text-shadow: 0 0 10px #f5c518;
+  text-shadow: 0 0 12px #f5c518;
 }
 
-/* CONTENT */
+/* Content Area Standard */
 .content {
-  max-width: 900px;
+  max-width: 800px;
   margin: 40px auto;
   padding: 20px;
   color: #f5c518;
-  line-height: 1.7;
 }
 
-/* FOOTER */
+/* Shared Grid Layout */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  margin-top: 25px;
+  padding: 0 10px;
+}
+
+/* Card / Panel Styling */
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 0 25px rgba(245,197,24,0.25);
+  backdrop-filter: blur(3px);
+  color: #f5c518;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 35px rgba(245,197,24,0.45);
+}
+
+/* Footer */
 footer {
   margin-top: 50px;
   font-size: 0.9em;

@@ -1,4 +1,4 @@
-/* === FaithForge Global Styling (Safari-Safe) === */
+/* === FaithForge Global Styling (Safari-Safe + Navbar Fix) === */
 
 /* RESET */
 * {
@@ -91,14 +91,24 @@ p {
   background: rgba(0, 0, 0, 0.6);
   padding: 12px 0;
   box-shadow: 0 0 22px rgba(245,197,24,0.3);
+
+  /* Prevent wrapping */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  flex-wrap: nowrap;
 }
 
 .navbar a {
   color: #f5c518;
-  margin: 0 20px;
   text-decoration: none;
   font-size: 1.15em;
   font-weight: bold;
+
+  /* Prevent Contact Us from wrapping */
+  white-space: nowrap;
+
   transition: color 0.3s, text-shadow 0.3s;
 }
 

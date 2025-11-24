@@ -98,7 +98,7 @@
 
     /* === NAVIGATION BAR === */
     .navbar {
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(0,0,0,0.6);
       padding: 10px 0;
       box-shadow: 0 0 20px rgba(245,197,24,0.3);
       margin-top: 10px;
@@ -126,11 +126,10 @@
       text-transform: uppercase;
       background: linear-gradient(90deg, #5865F2, #4752C4);
       color: #fff;
-      border: none;
       border-radius: 12px;
       text-decoration: none;
       box-shadow: 0 0 25px rgba(88,101,242,0.6);
-      transition: transform 0.3s, box-shadow 0.3s;
+      transition: 0.3s;
     }
     .hero-discord:hover {
       transform: scale(1.05);
@@ -154,22 +153,13 @@
       text-decoration: none;
       font-weight: bold;
       border-radius: 8px;
-      transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+      transition: 0.3s;
       box-shadow: 0 0 15px rgba(245,197,24,0.2);
     }
     .links a:hover {
       background-color: #cfa214;
       transform: translateY(-3px);
       box-shadow: 0 0 30px rgba(245,197,24,0.6);
-    }
-
-    .contact {
-      margin: 20px auto;
-      font-size: 1em;
-    }
-    .contact a {
-      color: #f5c518;
-      text-decoration: underline;
     }
 
     .bible-verse {
@@ -192,6 +182,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <!-- Emblem Watermark -->
@@ -213,27 +204,45 @@
       <a href="Staff/">Our Team</a>
       <a href="Streamers/">Streamers</a>
       <a href="../Servers/">Servers</a>
-      <a href="Contact/">Contact Us</a> <!-- Added Contact link -->
+      <a href="Contact/">Contact Us</a>
     </nav>
 
     <!-- Hero Discord Button -->
     <a class="hero-discord" href="https://discord.gg/bAQrudk5a9" target="_blank">Join Our Discord</a>
   </header>
 
-  <!-- Links -->
+  <!-- Links Grid -->
   <div class="links">
     <a href="https://www.facebook.com/profile.php?id=100070219355952" target="_blank">Facebook</a>
     <a href="https://www.instagram.com/faithforgegaming?igsh=dTBjZzUyaXZ6N2Nx&utm_source=qr" target="_blank">Instagram</a>
     <a href="https://www.reddit.com/r/FaithForgeGaming/" target="_blank">Reddit</a>
     <a href="https://www.youtube.com/@FaithForgeGaming" target="_blank">YouTube</a>
     <a href="https://www.twitch.tv/g0disgreat12" target="_blank">Twitch</a>
-    <a href="https://ko-fi.com/faithforgegaming" target="_blank">Support on Ko-fi</a>
+    <a href="https://www.tiktok.com/@faithforge.gaming?is_from_webapp=1&sender_device=pc" target="_blank">TikTok</a>
   </div>
 
-  <div class="contact">
-    <p>📧 <a href="mailto:FaithForgeGaming@gmail.com">FaithForgeGaming@gmail.com</a></p>
+  <!-- Ko-fi Button Moved Below -->
+  <div style="margin-top: 10px;">
+    <a href="https://ko-fi.com/faithforgegaming"
+       target="_blank"
+       style="
+         display: inline-block;
+         background-color: #f5c518;
+         padding: 12px 20px;
+         color: #0d0d0d;
+         font-weight: bold;
+         border-radius: 8px;
+         text-decoration: none;
+         box-shadow: 0 0 15px rgba(245,197,24,0.3);
+         transition: 0.3s;
+       "
+       onmouseover="this.style.backgroundColor='#cfa214'; this.style.boxShadow='0 0 25px rgba(245,197,24,0.6)'"
+       onmouseout="this.style.backgroundColor='#f5c518'; this.style.boxShadow='0 0 15px rgba(245,197,24,0.3)'">
+      Support on Ko-fi
+    </a>
   </div>
 
+  <!-- Bible Verse -->
   <div class="bible-verse">
     <p>"As iron sharpens iron, so one person sharpens another." — Proverbs 27:17 (NIV)</p>
   </div>

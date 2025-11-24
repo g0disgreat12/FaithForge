@@ -15,11 +15,12 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="favicon.png">
 
-    <!-- Original shared stylesheet -->
+  <!-- Original shared stylesheet -->
   <link rel="stylesheet" href="https://faithforgegaming.com/style.css">
 
+  <!-- Page-specific styling -->
   <style>
-    /* Force black background on this page (Option B) */
+    /* Background + Text Base */
     body {
       background: radial-gradient(circle at center, #0d0d0d 40%, #000 100%);
       color: #f5c518;
@@ -32,27 +33,16 @@
       position: relative;
     }
 
-    /* Prevent Contact Us (and other links) from wrapping */
+    /* Stop navbar items from wrapping */
     .navbar a {
       white-space: nowrap;
     }
-  </style>   <!-- ✅ FIXED: this closing tag was missing -->
+  </style>
 
   <style>
-    /* === FAITHFORGE EPIC STYLING === */
-    body {
-      background: radial-gradient(circle at center, #0d0d0d 40%, #000 100%);
-      color: #f5c518;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-      overflow-x: hidden;
-      min-height: 100vh;
-      position: relative;
-    }
+    /* === EPIC FAITHFORGE FX === */
 
-    /* Pulsing forge glow */
+    /* Pulsing forge glow behind everything */
     body::before {
       content: '';
       position: fixed;
@@ -64,10 +54,10 @@
     }
     @keyframes pulse {
       0% { opacity: 0.08; transform: scale(1); }
-      100% { opacity: 0.2; transform: scale(1.2); }
+      100% { opacity: 0.20; transform: scale(1.2); }
     }
 
-    /* Centered glowing emblem watermark */
+    /* Giant glowing emblem watermark */
     .emblem {
       position: fixed;
       top: 50%;
@@ -75,19 +65,18 @@
       width: 600px;
       max-width: 90vw;
       opacity: 0.05;
-      transform: translate(-50%, -50%) scale(1);
+      transform: translate(-50%, -50%);
       filter: drop-shadow(0 0 40px rgba(245,197,24,0.5));
       animation: emblemGlow 8s ease-in-out infinite alternate;
       z-index: -2;
       pointer-events: none;
     }
-
     @keyframes emblemGlow {
       from { opacity: 0.04; transform: translate(-50%, -50%) scale(1); }
-      to { opacity: 0.1; transform: translate(-50%, -50%) scale(1.05); }
+      to   { opacity: 0.10; transform: translate(-50%, -50%) scale(1.05); }
     }
 
-    /* Ember layer */
+    /* Ember animation canvas */
     #embers {
       position: fixed;
       top: 0; left: 0;
@@ -139,7 +128,7 @@
       text-shadow: 0 0 10px #f5c518;
     }
 
-    /* Discord Hero Button */
+    /* Discord Button */
     .hero-discord {
       display: inline-block;
       margin-top: 20px;
@@ -201,7 +190,7 @@
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+      to   { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
@@ -244,7 +233,7 @@
     <a href="https://www.tiktok.com/@faithforge.gaming?is_from_webapp=1&sender_device=pc" target="_blank">TikTok</a>
   </div>
 
-  <!-- Ko-fi Button Moved Below -->
+  <!-- Ko-fi Button -->
   <div style="margin-top: 10px;">
     <a href="https://ko-fi.com/faithforgegaming"
        target="_blank"

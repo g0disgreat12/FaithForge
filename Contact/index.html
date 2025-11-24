@@ -7,11 +7,11 @@
   <meta name="description" content="FaithForge Gaming — Christian gaming community.">
   <link rel="icon" type="image/png" href="../favicon.png">
 
-  <!-- Original shared stylesheet -->
+  <!-- Shared stylesheet -->
   <link rel="stylesheet" href="https://faithforgegaming.com/style.css">
 
   <style>
-    /* Force black background on this page (Option B) */
+    /* Force black background */
     body {
       background: radial-gradient(circle at center, #0d0d0d 40%, #000 100%);
       color: #f5c518;
@@ -24,13 +24,11 @@
       position: relative;
     }
 
-    /* Prevent Contact Us (and other links) from wrapping */
+    /* Prevent link wrapping */
     .navbar a {
       white-space: nowrap;
     }
-  </style>
 
-  <style>
     /* Contact layout */
     .contact-wrap {
       display: flex;
@@ -52,17 +50,23 @@
       padding: 10px;
     }
 
+    /* Updated form spacing FIXED */
     .form {
       flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       background: rgba(0,0,0,0.6);
-      padding: 25px 30px;
+      padding: 30px; /* Equal padding on all sides */
       border-radius: 16px;
       box-shadow: 0 0 25px rgba(245,197,24,0.2);
       text-align: left;
       max-width: 450px;
+    }
+
+    /* Consistent internal spacing */
+    .form * {
+      box-sizing: border-box;
     }
 
     label {
@@ -74,14 +78,14 @@
 
     input, textarea {
       width: 100%;
-      padding: 12px 14px;
+      padding: 14px 16px; /* More spacing for right side */
       border-radius: 10px;
       border: 1px solid rgba(245,197,24,.35);
       background: rgba(15,15,15,.9);
       color: #f5c518;
       outline: none;
       font-size: 1em;
-      margin-bottom: 10px;
+      margin-bottom: 16px;
     }
 
     textarea {
@@ -129,7 +133,6 @@
       }
 
       .form {
-        text-align: left;
         width: 90%;
         max-width: none;
       }
@@ -155,9 +158,11 @@
 
   <div class="content">
     <div class="contact-wrap">
+
       <img class="contact-img" src="ContactUS.webp" alt="FaithForge Contact">
 
       <form id="contactForm" class="form" method="POST" action="https://formspree.io/f/mrbdwynw">
+
         <label for="first">First Name</label>
         <input id="first" name="first_name" required placeholder="First name">
 
@@ -180,6 +185,7 @@
         <small class="muted">
           Messages are securely routed to FaithForgeGaming@gmail.com via Formspree.
         </small>
+
       </form>
     </div>
   </div>

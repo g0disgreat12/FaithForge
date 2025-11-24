@@ -6,10 +6,70 @@
   <title>Our Team - FaithForge Gaming</title>
   <link rel="stylesheet" href="../style.css">
   <link rel="icon" type="image/png" href="../favicon.png">
+  <style>
+    .team-section {
+      width: 90%;
+      max-width: 1100px;
+      margin: auto;
+      margin-top: 40px;
+    }
+
+    .member {
+      display: flex;
+      gap: 25px;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 25px;
+      border-radius: 12px;
+      margin-bottom: 40px;
+      border: 1px solid rgba(245,197,24,0.15);
+      box-shadow: 0 0 25px rgba(245,197,24,0.15);
+    }
+
+    .member img {
+      width: 220px;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 2px solid #f5c518;
+      box-shadow: 0 0 20px rgba(245,197,24,0.4);
+    }
+
+    .member-info h2 {
+      margin: 0;
+      font-size: 1.8em;
+      color: #f5c518;
+    }
+
+    .role {
+      font-size: 1.1em;
+      font-weight: bold;
+      margin-top: 4px;
+      margin-bottom: 12px;
+      color: #e6b31c;
+    }
+
+    .bio {
+      line-height: 1.45em;
+      font-size: 1em;
+    }
+
+    @media (max-width: 768px) {
+      .member {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .member img {
+        margin: auto;
+      }
+    }
+  </style>
 </head>
+
 <body>
   <img class="emblem" src="../95998504-25E9-46FD-8CA4-FF4784EEF961.png" alt="FaithForge Emblem">
   <canvas id="embers"></canvas>
+
   <header>
     <h1>Meet Our Team</h1>
     <nav class="navbar">
@@ -19,13 +79,75 @@
       <a href="../Streamers/index.html">Streamers</a>
     </nav>
   </header>
-  <div class="content">
-<div class='grid'>
-  <div class='card'><h2>Matthew Jakab</h2><p>Founder & Vision Leader</p></div>
-  <div class='card'><h2>Lucy Jakab</h2><p>Creative Director</p></div>
-  <div class='card'><h2>FaithForge Staff</h2><p>Moderators, Streamers, and Community Leaders who keep the forge burning bright.</p></div>
-</div>
-</div>
+
+  <div class="team-section">
+
+    <!-- Matthew -->
+    <div class="member">
+      <img src="matthew.jpg" alt="Matthew Jakab">
+      <div class="member-info">
+        <h2>Matthew Jakab</h2>
+        <div class="role">Founder — G0dblessing</div>
+        <p class="bio">
+          I’m the founder of FaithForge Gaming, and my heart is to build a Christ-centered gaming community where people uplift, sharpen, and encourage one another. I’m passionate about construction, remodeling, and creating things—whether that’s a piece of furniture, a renovation project, or a new server experience for our community.
+          <br><br>
+          I play a variety of games but mostly FPS in the late evenings once the house is quiet. My story isn’t perfect—I strayed from the Lord during my college years. But when I wanted out of the pit I was in, I turned back to God. In His grace, He led me to my amazing wife, and now we serve in our church weekly while raising our two beautiful daughters.
+          <br><br>
+          At FaithForge I run servers, organize community events, and lead our Discord Bible study. I love helping people and genuinely enjoy walking alongside others in gaming and in faith. Welcome to FaithForge Gaming—let’s grow together and sharpen one another.
+        </p>
+      </div>
+    </div>
+
+    <!-- Lucy -->
+    <div class="member">
+      <img src="lucy.jpg" alt="Lucy Jakab">
+      <div class="member-info">
+        <h2>Lucy Jakab</h2>
+        <div class="role">First Lady — LJwhiskerpickles</div>
+        <p class="bio">
+          Hi, I'm LJwhiskerpickles! I’m a COD gamer and enjoy the occasional party-style game. I co-host the weekly Bible study with G0dsblessing—and I’m also his wife. I love connecting with others, encouraging women in faith, and being part of what God is building here at FaithForge Gaming.
+        </p>
+      </div>
+    </div>
+
+    <!-- Soundmanck -->
+    <div class="member">
+      <img src="soundmanck.jpg" alt="Soundmanck">
+      <div class="member-info">
+        <h2>Soundmanck</h2>
+        <div class="role">Leader – Minecraft Admin</div>
+        <p class="bio">
+          I am the Minecraft Admin for FaithForge Gaming! I help manage the community’s Minecraft servers, keep things running smoothly, and assist players whenever they need support. I love our community and enjoy building creative, fun gameplay experiences for everyone.
+        </p>
+      </div>
+    </div>
+
+    <!-- DoctorJSWAYS -->
+    <div class="member">
+      <img src="doctorjsways.jpg" alt="DoctorJSWAYS">
+      <div class="member-info">
+        <h2>DoctorJSWAYS</h2>
+        <div class="role">Leader — Fortnite Lead & Streamer</div>
+        <p class="bio">
+          I'm the head of the Fortnite channel! I help lead events, build community for Fortnite players, and stream regularly. I love competitive gameplay, encouraging others, and helping gamers grow both in skill and in their walk with God.
+        </p>
+      </div>
+    </div>
+
+    <!-- Seawolf-30 -->
+    <div class="member">
+      <img src="seawolf.jpg" alt="Seawolf-30">
+      <div class="member-info">
+        <h2>Seawolf-30</h2>
+        <div class="role">Leader</div>
+        <p class="bio">
+          Wife, mother, streamer, and praise music enthusiast. Most importantly, I’ve been a Child of God since 2004. I love connecting with others, building fellowship, and contributing to a community grounded in Scripture and encouragement.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
   <footer>&copy; 2025 FaithForge Gaming. All rights reserved.</footer>
   <script src="../embers.js"></script>
 </body>

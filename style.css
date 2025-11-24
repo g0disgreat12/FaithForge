@@ -1,100 +1,150 @@
-/* === FaithForge Shared Styling === */
+/* === FaithForge Global Styling (Safari-Safe) === */
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* GLOBAL BODY THEME */
 body {
-  background: radial-gradient(circle at center, #0d0d0d 40%, #000 100%);
+  background: radial-gradient(circle at center, #0d0d0d 40%, #000000 100%) !important;
   color: #f5c518;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   text-align: center;
-  margin: 0;
-  padding: 0;
   overflow-x: hidden;
   min-height: 100vh;
   position: relative;
 }
+
+/* GLOW LAYER */
 body::before {
-  content: '';
+  content: "";
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: radial-gradient(circle at 50% 50%, rgba(245,197,24,0.08) 0%, rgba(0,0,0,0) 70%);
-  animation: pulse 6s ease-in-out infinite alternate;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 50%, rgba(245,197,24,0.12) 0%, rgba(0,0,0,0) 70%);
+  animation: pulseGlow 7s ease-in-out infinite alternate;
   z-index: -3;
 }
-@keyframes pulse {
-  0% { opacity: 0.08; transform: scale(1); }
-  100% { opacity: 0.2; transform: scale(1.2); }
+
+@keyframes pulseGlow {
+  0% { opacity: 0.10; transform: scale(1); }
+  100% { opacity: 0.22; transform: scale(1.12); }
 }
+
+/* WATERMARK EMBLEM */
 .emblem {
   position: fixed;
   top: 50%;
   left: 50%;
   width: 600px;
   max-width: 90vw;
-  opacity: 0.05;
+  opacity: 0.06;
   transform: translate(-50%, -50%) scale(1);
-  filter: drop-shadow(0 0 40px rgba(245,197,24,0.5));
-  animation: emblemGlow 8s ease-in-out infinite alternate;
+  filter: drop-shadow(0 0 40px rgba(245,197,24,0.35));
+  animation: emblemPulse 9s ease-in-out infinite alternate;
   z-index: -2;
   pointer-events: none;
 }
-@keyframes emblemGlow {
-  from { opacity: 0.04; transform: translate(-50%, -50%) scale(1); }
-  to { opacity: 0.1; transform: translate(-50%, -50%) scale(1.05); }
+
+@keyframes emblemPulse {
+  from { opacity: 0.05; transform: translate(-50%, -50%) scale(1); }
+  to { opacity: 0.11; transform: translate(-50%, -50%) scale(1.05); }
 }
+
+/* EMBERS CANVAS */
 #embers {
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  pointer-events: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   z-index: -1;
+  pointer-events: none;
 }
-header { padding: 20px; }
+
+/* HEADER */
+header {
+  padding: 20px;
+}
+
 h1 {
   font-size: 3em;
   margin: 20px 0 10px;
   background: linear-gradient(90deg, #f5c518, #cfa214);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 20px rgba(245,197,24,0.3);
+  text-shadow: 0 0 25px rgba(245,197,24,0.4);
 }
-p { font-size: 1.2em; margin: 10px 20px; }
+
+p {
+  font-size: 1.2em;
+  margin: 10px 20px;
+}
+
+/* NAVIGATION BAR */
 .navbar {
   background: rgba(0, 0, 0, 0.6);
-  padding: 10px 0;
-  box-shadow: 0 0 20px rgba(245,197,24,0.3);
+  padding: 12px 0;
+  box-shadow: 0 0 22px rgba(245,197,24,0.3);
 }
+
 .navbar a {
   color: #f5c518;
-  text-decoration: none;
   margin: 0 20px;
+  text-decoration: none;
+  font-size: 1.15em;
   font-weight: bold;
-  font-size: 1.1em;
   transition: color 0.3s, text-shadow 0.3s;
 }
+
 .navbar a:hover {
-  color: #fff;
-  text-shadow: 0 0 10px #f5c518;
+  color: white;
+  text-shadow: 0 0 12px #f5c518;
 }
-footer {
-  margin-top: 50px;
-  font-size: 0.9em;
-  color: #888;
-  padding-bottom: 20px;
-}
+
+/* CONTENT WRAPPER */
 .content {
-  max-width: 800px;
+  max-width: 900px;
   margin: 40px auto;
   padding: 20px;
   color: #f5c518;
+  line-height: 1.7;
 }
+
+/* UNIVERSAL GRID (AUTO-FIT) */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  margin-top: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 28px;
+  margin: 30px auto;
+  width: 90%;
 }
+
+/* CARD COMPONENT */
 .card {
   background: rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
-  padding: 15px;
-  box-shadow: 0 0 20px rgba(245,197,24,0.2);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 0 25px rgba(245,197,24,0.25);
+  backdrop-filter: blur(3px);
+  color: #f5c518;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 35px rgba(245,197,24,0.45);
+}
+
+/* FOOTER */
+footer {
+  margin-top: 50px;
+  font-size: 0.9em;
+  color: #999;
+  padding-bottom: 20px;
 }

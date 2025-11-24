@@ -7,27 +7,26 @@
   <meta name="description" content="FaithForge Gaming — Christian gaming community.">
   <link rel="icon" type="image/png" href="../favicon.png">
 
-  <!-- Original stylesheet -->
-  <link rel="stylesheet" href="../style.css">
+  <!-- Original shared stylesheet -->
+  <link rel="stylesheet" href="https://faithforgegaming.com/style.css">
 
-  <!-- SAFARI FIX + NOWRAP FIX -->
   <style>
-    /* Force black background on Safari */
+    /* Force black background on this page (Option B) */
     body {
-      background: radial-gradient(circle at center, #0d0d0d 40%, #000 100%) !important;
+      background: radial-gradient(circle at center, #0d0d0d 40%, #000 100%);
       color: #f5c518;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
     }
 
-    /* Prevent navbar wrapping */
-    .navbar {
-      display: flex;
-      flex-wrap: nowrap;
-      gap: 25px;
-      justify-content: center;
-    }
-
+    /* Prevent Contact Us (and other links) from wrapping */
     .navbar a {
-      white-space: nowrap !important;
+      white-space: nowrap;
     }
   </style>
 

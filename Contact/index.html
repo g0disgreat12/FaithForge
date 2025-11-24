@@ -6,7 +6,31 @@
   <title>Contact - FaithForge Gaming</title>
   <meta name="description" content="FaithForge Gaming — Christian gaming community.">
   <link rel="icon" type="image/png" href="../favicon.png">
+
+  <!-- Original stylesheet -->
   <link rel="stylesheet" href="../style.css">
+
+  <!-- SAFARI FIX + NOWRAP FIX -->
+  <style>
+    /* Force black background on Safari */
+    body {
+      background: radial-gradient(circle at center, #0d0d0d 40%, #000 100%) !important;
+      color: #f5c518;
+    }
+
+    /* Prevent navbar wrapping */
+    .navbar {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 25px;
+      justify-content: center;
+    }
+
+    .navbar a {
+      white-space: nowrap !important;
+    }
+  </style>
+
   <style>
     /* Contact layout */
     .contact-wrap {
@@ -19,7 +43,6 @@
       max-width: 1100px;
     }
 
-    /* Keep full square image */
     .contact-img {
       width: 400px;
       height: 400px;
@@ -49,6 +72,7 @@
       display: block;
       color: #f5c518;
     }
+
     input, textarea {
       width: 100%;
       padding: 12px 14px;
@@ -60,7 +84,11 @@
       font-size: 1em;
       margin-bottom: 10px;
     }
-    textarea { min-height: 140px; resize: vertical; }
+
+    textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
 
     .btn {
       display: inline-block;
@@ -76,6 +104,7 @@
       text-transform: uppercase;
       transition: transform .2s, box-shadow .2s;
     }
+
     .btn:hover {
       transform: translateY(-2px);
       box-shadow: 0 0 35px rgba(245,197,24,1);
@@ -89,15 +118,30 @@
     }
 
     @media (max-width: 900px) {
-      .contact-wrap { flex-direction: column; text-align: center; }
-      .contact-img { width: 300px; height: 300px; margin-bottom: 20px; }
-      .form { text-align: left; width: 90%; max-width: none; }
+      .contact-wrap {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .contact-img {
+        width: 300px;
+        height: 300px;
+        margin-bottom: 20px;
+      }
+
+      .form {
+        text-align: left;
+        width: 90%;
+        max-width: none;
+      }
     }
   </style>
 </head>
+
 <body>
   <img class="emblem" src="../watermark.png" alt="FaithForge Emblem">
   <canvas id="embers"></canvas>
+
   <header>
     <h1>Contact Us</h1>
     <nav class="navbar">
@@ -113,25 +157,36 @@
   <div class="content">
     <div class="contact-wrap">
       <img class="contact-img" src="ContactUS.webp" alt="FaithForge Contact">
+
       <form id="contactForm" class="form" method="POST" action="https://formspree.io/f/mrbdwynw">
         <label for="first">First Name</label>
         <input id="first" name="first_name" required placeholder="First name">
+
         <label for="last">Last Name</label>
         <input id="last" name="last_name" required placeholder="Last name">
+
         <label for="email">Email</label>
         <input id="email" name="email" type="email" required placeholder="you@example.com">
+
         <label for="subject">Subject</label>
         <input id="subject" name="subject" required placeholder="How can we help?">
+
         <label for="message">Message</label>
         <textarea id="message" name="message" required placeholder="Type your message here..."></textarea>
+
         <input type="hidden" name="_subject" value="New message from FaithForgeGaming.com">
+
         <button class="btn" type="submit">Send Message</button>
-        <small class="muted">Messages are securely routed to FaithForgeGaming@gmail.com via Formspree.</small>
+
+        <small class="muted">
+          Messages are securely routed to FaithForgeGaming@gmail.com via Formspree.
+        </small>
       </form>
     </div>
   </div>
 
   <footer>&copy; 2025 FaithForge Gaming. All rights reserved.</footer>
   <script src="../embers.js"></script>
+
 </body>
 </html>

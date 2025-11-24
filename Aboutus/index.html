@@ -4,14 +4,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>About FaithForge Gaming</title>
-
   <meta name="description" content="FaithForge Gaming — a Christ-centered gaming community dedicated to fellowship, growth, and faith.">
   <link rel="icon" type="image/png" href="/favicon.png">
 
-  <!-- NEW GLOBAL SAFARI-SAFE CSS -->
-  <link rel="stylesheet" href="/global.css?v=1">
+  <!-- Original shared stylesheet -->
+  <link rel="stylesheet" href="https://faithforgegaming.com/style.css">
 
   <style>
+    /* Force black background on this page (Option B) */
+    body {
+      background: radial-gradient(circle at center, #0d0d0d 40%, #000 100%);
+      color: #f5c518;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* Prevent Contact Us (and other links) from wrapping */
+    .navbar a {
+      white-space: nowrap;
+    }
+
     .about-container {
       max-width: 900px;
       margin: 50px auto;
@@ -62,18 +79,12 @@
     }
   </style>
 </head>
-
 <body>
-
-  <!-- Emblem Background -->
   <img class="emblem" src="/watermark.png" alt="FaithForge Emblem">
-
-  <!-- Ember FX -->
   <canvas id="embers"></canvas>
-
+  
   <header>
     <h1>About FaithForge Gaming</h1>
-
     <nav class="navbar">
       <a href="/index.html">Home</a>
       <a href="/Aboutus/">About Us</a>
@@ -84,11 +95,9 @@
     </nav>
   </header>
 
-  <!-- Main Image -->
   <img class="about-hero" src="aboutus.webp" alt="FaithForge About Image">
 
   <div class="about-container">
-
     <p><strong>FaithForge Gaming</strong> is a biblically-based Christian gaming community where players come together to share faith, fellowship, and fun. We believe gaming can be more than just entertainment—it can be a forge that strengthens faith, builds character, and unites believers around the world.</p>
 
     <p>We stand firmly on the Word of God and the teachings of Jesus Christ. Our community commits itself to the values and lessons of the New Testament, living out our faith not just in life, but also in our time online together. Our motto comes from Proverbs 27:17 — <em>“As iron sharpens iron, so one person sharpens another.”</em></p>
@@ -100,7 +109,6 @@
     <p>FaithForge offers weekly Bible studies, separate Men’s and Women’s chat groups, and faith-based discussions for all members. We encourage spiritual growth while building meaningful friendships rooted in love, truth, and accountability.</p>
 
     <p>Our gaming community spans across many titles and genres—from creative building to competitive play. We host monthly community events in our most popular games and maintain active servers such as:</p>
-
     <ul style="text-align:left; max-width:600px; margin:0 auto; color:#f5c518; line-height:1.7;">
       <li>Minecraft Multiverse Server (Java & Bedrock)</li>
       <li>All the Mods 9 (ATM9) Minecraft Server</li>
@@ -113,13 +121,9 @@
 
     <h2>Our Vision</h2>
     <p>We desire FaithForge to be a place of <strong>growth, safety, fellowship, hope, and unity</strong>—where Christian gamers from all walks of life can find belonging and purpose. Whether you’re exploring faith, deepening your walk with God, or simply seeking uplifting fellowship while gaming, there’s a place for you here.</p>
-
   </div>
 
   <footer>&copy; 2025 FaithForge Gaming. All rights reserved.</footer>
-
-  <!-- Ember Script -->
-  <script src="/embers.js"></script>
-
+  <script src="https://faithforgegaming.com/embers.js"></script>
 </body>
 </html>

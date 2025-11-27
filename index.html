@@ -5,343 +5,210 @@
 <title>FaithForge Gaming</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="favicon.png">
+
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    background: radial-gradient(circle at center, #0d0d0d 35%, #000);
-    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
-    color: #f5c518;
-    overflow-x: hidden;
-  }
-  canvas { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
+*{box-sizing:border-box;margin:0;padding:0}
 
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 14px 4%;
-    background: rgba(0,0,0,0.75);
-    border-bottom: 1px solid rgba(245,197,24,0.3);
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  .logo-wrap { display: flex; align-items: center; gap: 10px; }
-  .logo-wrap img { height: 40px; }
-  .logo-text { font-weight: 700; letter-spacing: 1px; }
-  .header-emblem img { height: 46px; opacity: 0.9; }
-
-  nav {
-    display: flex;
-    gap: 18px;
-    align-items: center;
-  }
-  nav a {
-    color: #f5c518;
-    text-decoration: none;
-    font-weight: 600;
-    padding: 6px 10px;
-  }
-  nav a:hover { color: #fff; }
-
-  .join-btn {
-    background: linear-gradient(45deg,#f5c518,#cfa214);
-    padding: 9px 18px;
-    border-radius: 6px;
-    color: #000;
-    font-weight: 700;
-    text-decoration: none;
-    box-shadow: 0 0 15px rgba(245,197,24,0.6);
-  }
-
-  .hero {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    gap: 40px;
-    padding: 60px 4%;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  .hero-text h1 {
-    font-size: 3.6rem;
-    background: linear-gradient(90deg,#f5c518,#cfa214);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  .hero-text p {
-    margin-top: 12px;
-    font-size: 1.2rem;
-    color: #ddd;
-  }
-  .hero-buttons {
-    margin-top: 26px;
-    display: flex;
-    gap: 16px;
-  }
-  .hero-buttons a {
-    padding: 14px 32px;
-    border-radius: 12px;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  .hero-buttons .discord {
-    background: linear-gradient(45deg,#f5c518,#cfa214);
-    color: #000;
-    box-shadow: 0 0 20px rgba(245,197,24,0.7);
-  }
-  .hero-buttons .watch {
-    color: #f5c518;
-    border: 2px solid #f5c518;
-  }
-  .hero-buttons .watch:hover {
-    background: #f5c518;
-    color: #000;
-  }
-
-  .hero-image img {
-    max-width: 100%;
-    width: 100%;
-    background: transparent !important;
-    filter: drop-shadow(0 0 38px rgba(245,197,24,0.65));
-  }
-
-  .hero-social {
-    display: flex;
-    justify-content: center;
-    gap: 22px;
-    padding: 14px 0;
-    background: rgba(0,0,0,0.55);
-    border-top:1px solid rgba(245,197,24,0.3);
-    border-bottom:1px solid rgba(245,197,24,0.3);
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  .hero-social a {
-    color: #f5c518;
-    text-decoration: none;
-    font-weight: 600;
-  }
-  .hero-social a:hover { color: #fff; }
-
-  .categories {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-    gap: 20px;
-    padding: 45px 4%;
-    background: rgba(0,0,0,0.8);
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  .cat {
-    text-align: center;
-    padding: 26px 12px;
-    border: 1px solid rgba(245,197,24,0.25);
-    border-radius: 14px;
-  }
-  .cat img { height: 44px; margin-bottom: 12px; }
-
-  .split {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-    padding: 55px 4%;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .box {
-    background: rgba(0,0,0,0.85);
-    border: 1px solid rgba(245,197,24,0.25);
-    border-radius: 16px;
-    padding: 28px;
-  }
-  .box h2 { margin-bottom: 12px; }
-
-  /* SERVERS same as before... */
-
-  /* DEVOTION scroll style */
-  .devotion {
-    background: url("paper.png") center / cover no-repeat;
-    padding: 40px 34px;
-    border-radius: 10px;
-    border:2px solid #caa24b;
-    font-family: Georgia, serif;
-    color:#2b1a08;
-    text-align: center;
-    box-shadow:
-      inset 0 0 35px rgba(0,0,0,0.35),
-      0 0 25px rgba(245,197,24,0.25);
-  }
-  .devotion small {
-    display: block;
-    margin-bottom: 8px;
-    font-size: .95rem;
-    color: #3a230e;
-  }
-  .devotion h3 {
-    font-size: 1.45rem;
-    margin-bottom: 8px;
-    color: #1a0f05;
-  }
-  .devotion p {
-    font-size: 1rem;
-    line-height: 1.45;
-    color: #3b1f0a;
-  }
-  .devotion a {
-    margin-top: 14px;
-    display: inline-block;
-    padding: 8px 18px;
-    border: 2px solid #a9862d;
-    border-radius: 4px;
-    background: rgba(255,215,120,0.55);
-    color: #1e1005;
-    font-weight: bold;
-    text-decoration: none;
-  }
-  .devotion a:hover {
-    background: rgba(255,215,120,0.85);
-  }
-
-  .testimony {
-    margin-top: 12px;
-    font-style: italic;
-    color: #ddd;
-  }
-
-  .video-box iframe {
-    width: 100%;
-    height: 100%;
-    aspect-ratio: 16/9;
-    border: none;
-    border-radius: 12px;
-  }
-
-  .streamer-btn {
-    margin-top: 15px;
-    display: inline-block;
-    padding: 12px 24px;
-    background: #f5c518;
-    color: #000;
-    border-radius: 8px;
-    font-weight: bold;
-    text-decoration: none;
-  }
-
-  footer {
-    padding: 32px 4%;
-    text-align: center;
-    border-top:1px solid rgba(245,197,24,0.25);
-  }
-  footer a {
-    color: #f5c518;
-    margin: 0 10px;
-    text-decoration: none;
-  }
-
-  @media(max-width: 900px) {
-    .hero, .split { grid-template-columns: 1fr; text-align: center; }
-    .hero-buttons { justify-content: center; }
-  }
-</style>
-</head>
-<body>
-<canvas id="particles"></canvas>
-
-<header> ... </header>
-
-<section class="hero"> ... </section>
-
-<div class="hero-social"> ... </div>
-
-<section class="categories"> ... </section>
-
-<section class="split">
-  <div class="box"> <!-- Servers ... --> </div>
-  <div class="box">
-    <h2>Featured Devotion</h2>
-    <div class="devotion">
-      <small>April 8, 2025</small>
-      <h3>Bearing One Another’s Burdens</h3>
-      <p>Walk in love. Carry each other. Build faith in every battle.</p>
-      <a href="/Devotions">Read More</a>
-    </div>
-
-    <h3 style="margin-top: 20px; color: #f5c518;">Testimonials</h3>
-    <div class="testimony">“FaithForge is the most welcoming community I’ve found.”</div>
-    <div class="testimony">“I’ve grown closer to Christ while gaming here.”</div>
-    <div class="testimony">“Great servers. Strong faith. Amazing people.”</div>
-  </div>
-</section>
-
-<section class="split">
-  <div class="box video-box"> <!-- Video embed ... --> </div>
-  <div class="box"> <!-- Streamers section ... --> </div>
-</section>
-
-<footer> ... </footer>
-
-<script> /* particles script same as yours */ </script>
-</body>
-</html>
-
-  text-align:center;
+body{
+  background:radial-gradient(circle at center,#0d0d0d 35%,#000);
+  font-family:Segoe UI,Tahoma,Verdana,sans-serif;
+  color:#f5c518;
+  overflow-x:hidden;
 }
-.cat img{height:48px}
 
-/* SPLIT */
+canvas{position:fixed;inset:0;z-index:-1;pointer-events:none}
+
+/* HEADER */
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 4%;
+  background:rgba(0,0,0,.75);
+  border-bottom:1px solid rgba(245,197,24,.3);
+  max-width:1200px;
+  margin:auto;
+}
+.logo-wrap{display:flex;align-items:center;gap:10px}
+.logo-wrap img{height:40px}
+.logo-text{font-weight:700;letter-spacing:1px}
+.header-emblem img{height:46px;opacity:.9}
+nav{display:flex;gap:18px;align-items:center}
+nav a{color:#f5c518;text-decoration:none;font-weight:600}
+nav a:hover{color:#fff}
+.join-btn{
+  background:linear-gradient(45deg,#f5c518,#cfa214);
+  padding:9px 18px;
+  border-radius:6px;
+  color:#000;
+  font-weight:700;
+  box-shadow:0 0 15px rgba(245,197,24,.6)
+}
+
+/* HERO */
+.hero{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  align-items:center;
+  padding:60px 4%;
+  max-width:1200px;
+  margin:auto;
+}
+.hero-text h1{
+  font-size:3.6rem;
+  background:linear-gradient(90deg,#f5c518,#cfa214);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.hero-text p{margin-top:12px;font-size:1.2rem;color:#ddd}
+.hero-buttons{margin-top:26px;display:flex;gap:15px}
+.hero-buttons a{
+  padding:14px 32px;
+  border-radius:12px;
+  text-decoration:none;
+  font-weight:bold
+}
+.discord{background:linear-gradient(45deg,#f5c518,#cfa214);color:#000}
+.watch{border:2px solid #f5c518;color:#f5c518}
+.watch:hover{background:#f5c518;color:#000}
+
+.hero-description{
+  margin-top:28px;
+  max-width:560px;
+  font-size:1.05rem;
+  line-height:1.65;
+  color:#e0e0e0;
+  border-left:3px solid rgba(245,197,24,.4);
+  padding-left:18px;
+  text-shadow:0 0 6px rgba(0,0,0,.6)
+}
+.hero-description strong{color:#f5c518}
+
+.hero-image img{
+  width:100%;
+  filter:drop-shadow(0 0 38px rgba(245,197,24,.65));
+}
+
+/* SOCIAL BAR */
+.hero-social{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  padding:14px 0;
+  background:rgba(0,0,0,.55);
+  border-top:1px solid rgba(245,197,24,.3);
+  border-bottom:1px solid rgba(245,197,24,.3);
+  max-width:1200px;
+  margin:auto;
+}
+.hero-social a{color:#f5c518;text-decoration:none;font-weight:600}
+.hero-social a:hover{color:#fff}
+
+/* CATEGORIES */
+.categories{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;
+  padding:45px 4%;
+  background:rgba(0,0,0,.8);
+  max-width:1200px;
+  margin:auto;
+}
+.cat{
+  text-align:center;
+  padding:26px;
+  border:1px solid rgba(245,197,24,.25);
+  border-radius:14px;
+}
+.cat img{height:44px;margin-bottom:12px}
+
+/* LAYOUT */
 .split{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:30px;
-  padding:60px;
+  gap:32px;
+  padding:55px 4%;
+  max-width:1200px;
+  margin:auto;
 }
-
 .box{
-  background:#000;
-  padding:25px;
-  border-radius:14px;
-  border:1px solid rgba(245,197,24,.2);
+  background:rgba(0,0,0,.85);
+  border:1px solid rgba(245,197,24,.25);
+  border-radius:16px;
+  padding:28px
 }
+.box h2{margin-bottom:12px}
 
-/* DEVOTION */
+/* Devotion Scroll */
 .devotion{
-  background:url("paper.webp") center/cover no-repeat;
-  padding:30px;
-  color:#3b220c;
+  background:url("paper.png") center/cover no-repeat;
+  padding:38px 34px;
+  border-radius:10px;
+  border:2px solid #caa24b;
+  font-family:Georgia,serif;
+  color:#2b1a08;
   text-align:center;
+  box-shadow:inset 0 0 35px rgba(0,0,0,.35),0 0 25px rgba(245,197,24,.3)
 }
+.devotion small{display:block;margin-bottom:8px;color:#3a230e}
+.devotion h3{margin:8px 0;font-size:1.45rem;color:#1a0f05}
+.devotion p{font-size:1rem;line-height:1.45;color:#3b1f0a}
+.devotion a{
+  margin-top:14px;
+  display:inline-block;
+  padding:8px 18px;
+  border:2px solid #a9862d;
+  background:rgba(255,215,120,.6);
+  color:#1e1005;
+  text-decoration:none;
+  font-weight:bold
+}
+.devotion a:hover{background:rgba(255,215,120,.85)}
 
-/* TESTIMONY */
 .testimony{
-  font-style:italic;
   margin-top:12px;
-  color:#e6b950;
+  font-style:italic;
+  color:#ddd
 }
 
 /* VIDEO */
-iframe{
+.video-box iframe{
   width:100%;
-  height:320px;
+  aspect-ratio:16/9;
   border:none;
-  border-radius:12px;
+  border-radius:12px
+}
+
+.streamer-btn{
+  margin-top:15px;
+  display:inline-block;
+  padding:12px 24px;
+  background:#f5c518;
+  color:#000;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:bold
 }
 
 /* FOOTER */
 footer{
-  padding:30px;
+  padding:32px 4%;
   text-align:center;
-  border-top:1px solid rgba(245,197,24,.3);
+  border-top:1px solid rgba(245,197,24,.25)
 }
+footer a{color:#f5c518;margin:0 10px;text-decoration:none}
 
+/* MOBILE */
 @media(max-width:900px){
-  .hero{padding:40px}
-  .split{grid-template-columns:1fr}
+  .hero,.split{grid-template-columns:1fr;text-align:center}
+  .hero-buttons{justify-content:center}
 }
 </style>
 </head>
 
 <body>
+
 <canvas id="particles"></canvas>
 
 <header>
@@ -355,107 +222,117 @@ footer{
   <nav>
     <a href="/Devotions">Devotions</a>
     <a href="/Streamers">Streamers</a>
-    <a href="https://discord.gg/bAQrudk5a9">Join the Discord</a>
+    <a class="join-btn" href="https://discord.gg/bAQrudk5a9">Join the Discord</a>
   </nav>
 </header>
 
 <section class="hero">
-<div class="hero-overlay"></div>
+  <div class="hero-text">
+    <h1>FaithForge Gaming</h1>
+    <p>A Christian Community for Gamers</p>
 
-<div class="hero-content">
-<h1>FaithForge Gaming</h1>
-<p>A Christian Community for Gamers</p>
+    <div class="hero-buttons">
+      <a class="discord" href="https://discord.gg/bAQrudk5a9">Join the Discord</a>
+      <a class="watch" href="https://www.youtube.com/@FaithForgeGaming/streams">Watch</a>
+    </div>
 
-<div class="hero-buttons">
-<a class="discord" href="https://discord.gg/bAQrudk5a9">Join the Discord</a>
-<a class="watch" href="https://youtube.com/@FaithForgeGaming">Watch</a>
-</div>
+    <div class="hero-description">
+      FaithForge Gaming is a biblically-based Christian gaming community where players come together 
+      to share faith, fellowship, and fun. Gaming isn't just entertainment — it's a forge that builds 
+      faith, character, and unity.<br><br>
+      Our motto is from Proverbs 27:17 —<br>
+      <strong>“As iron sharpens iron, so one person sharpens another.”</strong>
+    </div>
 
-<div class="hero-description">
-FaithForge Gaming is a biblically-based Christian gaming community where players come together to share faith, fellowship, and fun.
-<br><br>
-We believe gaming can forge character, strengthen faith, and unite believers across the world.
-<br><br>
-<span>“As iron sharpens iron, so one person sharpens another.”</span>
-</div>
-</div>
+  </div>
+
+  <div class="hero-image">
+    <img src="Knightlong.webp">
+  </div>
 </section>
 
 <div class="hero-social">
-<a href="#">Facebook</a>
-<a href="#">Instagram</a>
-<a href="#">YouTube</a>
-<a href="#">Twitch</a>
-<a href="#">TikTok</a>
+  <a href="#">Facebook</a>
+  <a href="#">Instagram</a>
+  <a href="#">Reddit</a>
+  <a href="#">YouTube</a>
+  <a href="#">Twitch</a>
+  <a href="#">TikTok</a>
 </div>
 
 <section class="categories">
-  <div class="cat"><img src="cross2.webp"><h3>Christian Fellowship</h3></div>
-  <div class="cat"><img src="controller.webp"><h3>Diverse Gaming</h3></div>
-  <div class="cat"><img src="flame.webp"><h3>Faith-Based Content</h3></div>
+  <div class="cat"><img src="cross.png"><h3>Christian Fellowship</h3></div>
+  <div class="cat"><img src="controller.png"><h3>Diverse Gaming</h3></div>
+  <div class="cat"><img src="flame.png"><h3>Faith-Based Content</h3></div>
 </section>
 
 <section class="split">
+
 <div class="box">
 <h2>Our Servers</h2>
-<ul>
-<li>Minecraft Multiverse</li>
-<li>ATM9 Modded</li>
-<li>ARK ASA</li>
-</ul>
+<p>Minecraft Multiverse<br>ATM9 Modded<br>ARK ASA</p>
 </div>
 
 <div class="box">
 <h2>Featured Devotion</h2>
 <div class="devotion">
-<h3>Bearing One Another's Burdens</h3>
-<p>Walk in love. Carry each other.</p>
+<small>April 8, 2025</small>
+<h3>Bearing One Another’s Burdens</h3>
+<p>Walk in love. Carry each other. Build faith in every battle.</p>
 <a href="/Devotions">Read More</a>
 </div>
 
 <h3 style="margin-top:18px">Testimonials</h3>
-<div class="testimony">“Most welcoming gaming community I’ve found.”</div>
-<div class="testimony">“Strong faith. Great people.”</div>
+<div class="testimony">“FaithForge is the most welcoming place I’ve found.”</div>
+<div class="testimony">“I’ve grown closer to Christ while gaming here.”</div>
+<div class="testimony">“Great servers. Strong faith. Amazing people.”</div>
 </div>
+
 </section>
 
 <section class="split">
-<div class="box">
-<h2>Latest Stream</h2>
-<iframe src="https://www.youtube.com/embed/SynBFOKJ57w"></iframe>
+
+<div class="box video-box">
+<h2>FaithForge Highlight</h2>
+<iframe src="https://www.youtube.com/embed/SynBFOKJ57w" allowfullscreen></iframe>
 </div>
 
 <div class="box">
 <h2>FaithForge Streamers</h2>
-<p>Faith-first creators building community.</p>
+<p>Faith-first creators building community through gaming.</p>
 <a class="streamer-btn" href="/Streamers">Meet Our Streamers</a>
 </div>
+
 </section>
 
 <footer>
-© 2025 FaithForge Gaming
+  <a href="/Aboutus">About Us</a>
+  <a href="/Staff">Our Team</a>
+  <a href="/Streamers">Streamers</a>
+  <a href="/Servers">Servers</a>
+  <a href="/Contact">Contact Us</a>
+  <br><br>© 2025 FaithForge Gaming
 </footer>
 
 <script>
-const c=document.getElementById("particles"),ctx=c.getContext("2d");
+const c=document.getElementById("particles"),x=c.getContext("2d");
 function resize(){c.width=innerWidth;c.height=innerHeight}
-window.onresize=resize;resize();
+window.addEventListener("resize",resize);resize();
 let parts=[];
-function add(){parts.push({x:Math.random()*c.width,y:c.height,r:Math.random()*2,o:1})}
+function spawn(){parts.push({x:Math.random()*c.width,y:c.height,s:Math.random()*2+1,o:.7})}
 function draw(){
-  ctx.clearRect(0,0,c.width,c.height);
-  parts.forEach((p,i)=>{
-    ctx.fillStyle=`rgba(245,197,24,${p.o})`;
-    ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,6.3);ctx.fill();
-    p.y-=1;p.o-=.01;
-    if(p.o<=0)parts.splice(i,1)
-  })
-  if(Math.random()<.4)add();
-  requestAnimationFrame(draw)
+x.clearRect(0,0,c.width,c.height);
+parts.forEach((p,i)=>{
+x.fillStyle=`rgba(245,197,24,${p.o})`;
+x.beginPath();x.arc(p.x,p.y,p.s,0,6.3);x.fill();
+p.y-=1;p.o-=.01;
+if(p.o<=0)parts.splice(i,1)
+});
+if(Math.random()<.3)spawn();
+requestAnimationFrame(draw);
 }
 draw();
 </script>
 
 </body>
 </html>
-

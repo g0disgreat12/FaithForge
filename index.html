@@ -5,7 +5,6 @@
 <title>FaithForge Gaming</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="FaithForge Gaming is a Christian community where gamers connect, grow, and share faith. Join our servers, watch streams, and grow together.">
-
 <link rel="icon" href="watermarklogo.webp">
 
 <style>
@@ -21,8 +20,7 @@ body{
 
 canvas{
   position:fixed;
-  top:0;left:0;
-  width:100%;height:100%;
+  inset:0;
   z-index:-1;
   pointer-events:none;
 }
@@ -36,11 +34,7 @@ header{
   background:rgba(0,0,0,.75);
   border-bottom:1px solid rgba(245,197,24,.3)
 }
-.logo-wrap{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
+.logo-wrap{display:flex;align-items:center;gap:12px}
 .logo-wrap img{height:42px}
 .logo-text{font-weight:700;letter-spacing:1px}
 .header-emblem img{height:48px;opacity:.9}
@@ -60,7 +54,7 @@ nav a:hover{color:white}
 
 /* HERO */
 .hero{
-  position: relative;
+  position:relative;
   display:flex;
   align-items:center;
   min-height:80vh;
@@ -80,7 +74,6 @@ nav a:hover{color:white}
     rgba(0,0,0,.10) 75%,
     rgba(0,0,0,0) 100%
   );
-  z-index:0;
 }
 
 .hero-text{
@@ -127,6 +120,20 @@ nav a:hover{color:white}
 .watch:hover{
   background:#f5c518;
   color:#000;
+}
+
+/* DESCRIPTION */
+.hero-description{
+  margin-top:28px;
+  max-width:560px;
+  font-size:1.05rem;
+  line-height:1.6;
+  color:#d8d8d8;
+  text-shadow:0 0 6px rgba(0,0,0,.85);
+}
+
+.hero-description strong{
+  color:#f5c518;
 }
 
 /* SOCIAL BAR */
@@ -182,53 +189,6 @@ nav a:hover{color:white}
 
 .box h2{margin-bottom:15px}
 
-/* SERVER GRID */
-.server-images{
-  display:grid;
-  grid-template-columns:repeat(2, 1fr);
-  gap:18px;
-}
-
-.server-img{
-  background:#000;
-  border:1px solid rgba(245,197,24,.25);
-  border-radius:14px;
-  overflow:hidden;
-  display:flex;
-  flex-direction:column;
-}
-
-.server-img img{
-  width:100%;
-  aspect-ratio:1 / 1;     /* ✅ square */
-  object-fit:contain;     /* ✅ no cropping */
-  background:black;
-}
-
-.server-title{
-  padding:12px;
-  text-align:center;
-  font-weight:700;
-  color:#f5c518;
-  background:rgba(0,0,0,.85);
-  border-top:1px solid rgba(245,197,24,.2);
-}
-
-/* SERVERS LIST */
-.server-list ul{list-style:none}
-.server-list li{margin-bottom:8px}
-
-.servers-btn{
-  display:inline-block;
-  margin-top:15px;
-  padding:10px 22px;
-  background:#f5c518;
-  color:#000;
-  border-radius:8px;
-  font-weight:bold;
-  text-decoration:none;
-}
-
 /* DEVOTION */
 .devotion{
   background:url("paper.webp") center/cover no-repeat;
@@ -240,66 +200,11 @@ nav a:hover{color:white}
   text-align:center;
 }
 
-.devotion-header{
-  font-size:1.5rem;
-  font-weight:700;
-  letter-spacing:2px;
-  margin-bottom:6px;
-  color:#5b3a00;
-}
-
-.devotion-sub{
-  font-size:.95rem;
-  font-style:italic;
-  margin-bottom:8px;
-  color:#6a4a1a;
-}
-
-.devotion-ref{
-  display:block;
-  font-size:.8rem;
-  margin-bottom:10px;
-  color:#7d601f;
-}
-
-.devotion-main{
-  font-size:1.25rem;
-  margin-bottom:8px;
-}
-
-.devotion-verse{
-  font-size:1rem;
-}
-
-.devotion-footer{
-  margin-top:12px;
-  font-style:italic;
-  font-size:.9rem;
-}
-
-.devotion-note{
-  margin-top:10px;
-  font-size:.8rem;
-  opacity:.85;
-}
-
-.devotion-btn{
-  display:inline-block;
-  margin-top:12px;
-  padding:8px 20px;
-  background:#f5c518;
-  color:#000;
-  font-weight:bold;
-  border-radius:8px;
-  text-decoration:none;
-}
-
 /* TESTIMONIALS */
 .testimony{
-  font-size:2.05rem;
+  font-size:1.05rem;
   margin:14px 0;
   font-style:italic;
-  line-height:1.45;
   color:#e0b84f;
 }
 
@@ -372,127 +277,31 @@ footer a{
   <div class="hero-text">
     <h1>FaithForge Gaming</h1>
     <p>A Christian Community for Gamers</p>
+
     <div class="hero-buttons">
       <a class="discord" href="https://discord.gg/bAQrudk5a9">Join the Discord</a>
       <a class="watch" href="https://www.youtube.com/@FaithForgeGaming/streams" target="_blank">Watch</a>
     </div>
+
+    <div class="hero-description">
+      FaithForge Gaming is a biblically-based Christian gaming community where players come together
+      to share faith, fellowship, and fun. We believe gaming can be more than just entertainment —
+      it can be a forge that strengthens faith, builds character, and unites believers around the world.
+      <br><br>
+      We stand firmly on the Word of God and the teachings of Jesus Christ. Our community commits itself
+      to the values and lessons of the New Testament, living out our faith not just in life, but also in our
+      time online together.
+      <br><br>
+      <strong>
+      Our motto comes from Proverbs 27:17 —
+      "As iron sharpens iron, so one person sharpens another."
+      </strong>
+    </div>
+
   </div>
 </section>
 
-<div class="hero-social">
-  <a href="https://www.facebook.com/profile.php?id=100070219355952">Facebook</a>
-  <a href="https://www.instagram.com/faithforgegaming">Instagram</a>
-  <a href="https://www.reddit.com/r/FaithForgeGaming/">Reddit</a>
-  <a href="https://www.youtube.com/@FaithForgeGaming">YouTube</a>
-  <a href="https://www.twitch.tv/faithforgegaming">Twitch</a>
-  <a href="https://www.tiktok.com/@faithforge.gaming">TikTok</a>
-</div>
-
-<section class="categories">
-  <div class="cat"><img src="cross2.webp"><h3>Christian Fellowship</h3></div>
-  <div class="cat"><img src="controller.webp"><h3>Diverse Gaming</h3></div>
-  <div class="cat"><img src="flame.webp"><h3>Faith-Based Content</h3></div>
-</section>
-
-<section class="split">
-
-<div class="box">
-<h2>Our Servers</h2>
-
-<div class="server-list">
-<ul>
-<li>• Minecraft Multiverse</li>
-<li>• ATM9 Modded</li>
-<li>• ARK ASA</li>
-</ul>
-<a class="servers-btn" href="/Servers">View All Servers</a>
-</div>
-
-<div class="server-images">
-
-<div class="server-img">
-<img src="minecraftknight.webp">
-<h3 class="server-title">Minecraft Multiverse</h3>
-</div>
-
-<div class="server-img">
-<img src="Redeamer.webp">
-<h3 class="server-title">Multiverse World</h3>
-</div>
-
-<div class="server-img">
-<img src="ATM9.webp">
-<h3 class="server-title">ATM9 Server</h3>
-</div>
-
-<div class="server-img">
-<img src="ark.webp">
-<h3 class="server-title">ARK ASA</h3>
-</div>
-
-</div>
-</div>
-
-<div class="box">
-<h2>Featured Devotion</h2>
-
-<div class="devotion">
-
-<div class="devotion-header">FAITHFORGE DEVOTION</div>
-<div class="devotion-sub">Weekly Scripture Focus</div>
-<small class="devotion-ref">Proverbs 27:17</small>
-
-<h3 class="devotion-main">
-True iron sharpening iron happens when we encourage one another toward Christ and bold faith.
-</h3>
-
-<p class="devotion-verse">
-As iron sharpens iron, so one person sharpens another.
-</p>
-
-<div class="devotion-footer">
-Strength is grown in unity — not isolation.
-</div>
-
-<a href="/Devotions" class="devotion-btn">Read More</a>
-
-<div class="devotion-note">
-Updated weekly • Join the community to stay sharp in faith
-</div>
-
-</div>
-
-<h3 style="margin-top:18px">Testimonials</h3>
-
-<div class="testimony">“FaithForge is the most welcoming community I’ve found.”</div>
-<div class="testimony">“I’ve grown closer to Christ here while gaming.”</div>
-<div class="testimony">“Great people, great servers, real faith.”</div>
-
-</div>
-</section>
-
-<section class="split">
-
-<div class="box video-box">
-<h2>FaithForge Highlight Stream</h2>
-<iframe src="https://www.youtube.com/embed/SynBFOKJ57w"></iframe>
-</div>
-
-<div class="box">
-<h2>FaithForge Streamers</h2>
-<p>Faith-first creators building community through gaming.</p>
-<a class="streamer-btn" href="/Streamers">Meet Our Streamers</a>
-</div>
-
-</section>
-
 <footer>
-<a href="/Aboutus">About Us</a>
-<a href="/Staff">Our Team</a>
-<a href="/Streamers">Streamers</a>
-<a href="/Servers">Servers</a>
-<a href="/Contact">Contact Us</a>
-<br><br>
 © 2025 FaithForge Gaming
 </footer>
 

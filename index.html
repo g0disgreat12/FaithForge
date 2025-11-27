@@ -11,6 +11,7 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 
+/* BASE */
 body{
   background:radial-gradient(circle at center,#0d0d0d 35%,#000 100%);
   font-family:Segoe UI,Tahoma,Verdana,sans-serif;
@@ -57,41 +58,62 @@ nav a:hover{color:white}
   box-shadow:0 0 15px rgba(245,197,24,.6)
 }
 
-/* HERO */
+/* HERO BACKGROUND SECTION */
 .hero{
-  display:grid;
-  grid-template-columns:1fr 1fr;
+  position: relative;
+  display:flex;
   align-items:center;
-  min-height:78vh;
-  padding:50px;
+  min-height:80vh;
+  padding:70px;
+  background:url("Knightlong.webp") center right / cover no-repeat;
+  overflow:hidden;
 }
+
+/* DARK OVERLAY */
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to right, rgba(0,0,0,.85) 35%, rgba(0,0,0,.45) 65%, rgba(0,0,0,.15) 100%);
+  z-index:0;
+}
+
+.hero-text{
+  position:relative;
+  max-width:580px;
+  z-index:2;
+}
+
 .hero-text h1{
-  font-size:3.6rem;
+  font-size:3.8rem;
   background:linear-gradient(90deg,#f5c518,#cfa214);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
+
 .hero-text p{
-  margin-top:10px;
+  margin-top:12px;
   font-size:1.2rem;
   color:#ddd;
 }
+
 .hero-buttons{
   margin-top:25px;
   display:flex;
-  gap:15px
+  gap:15px;
 }
+
 .hero-buttons a{
   padding:14px 34px;
   border-radius:10px;
   font-weight:bold;
-  text-decoration:none
+  text-decoration:none;
 }
 
 .discord{
   background:linear-gradient(45deg,#f5c518,#cfa214);
   color:#000;
-  box-shadow:0 0 20px rgba(245,197,24,.7)
+  box-shadow:0 0 20px rgba(245,197,24,.7);
 }
 .watch{
   color:#f5c518;
@@ -99,18 +121,10 @@ nav a:hover{color:white}
 }
 .watch:hover{
   background:#f5c518;
-  color:#000
+  color:#000;
 }
 
-/* FLOATING KNIGHT */
-.hero-image img{
-  background:none !important;
-  max-width:460px;
-  width:100%;
-  filter:drop-shadow(0 0 38px rgba(245,197,24,.65));
-}
-
-/* HERO SOCIAL BAR */
+/* SOCIAL BAR */
 .hero-social{
   display:flex;
   justify-content:center;
@@ -143,22 +157,22 @@ nav a:hover{color:white}
 }
 .cat img{
   height:42px;
-  margin-bottom:10px
+  margin-bottom:10px;
 }
 
-/* two-column sections */
+/* SECTIONS */
 .split{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:30px;
-  padding:50px
+  padding:50px;
 }
 
 .box{
   background:rgba(0,0,0,.8);
   border:1px solid rgba(245,197,24,.25);
   border-radius:15px;
-  padding:25px
+  padding:25px;
 }
 
 .box h2{margin-bottom:15px}
@@ -167,14 +181,11 @@ nav a:hover{color:white}
 .servers-layout{
   display:grid;
   grid-template-columns:.9fr 1.1fr;
-  gap:20px
+  gap:20px;
 }
-.server-list ul{
-  list-style:none
-}
-.server-list li{
-  margin-bottom:8px
-}
+.server-list ul{list-style:none}
+.server-list li{margin-bottom:8px}
+
 .servers-btn{
   display:inline-block;
   margin-top:15px;
@@ -189,35 +200,32 @@ nav a:hover{color:white}
 .server-images{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:12px
+  gap:12px;
 }
 .server-img{
   border:1px solid rgba(245,197,24,.2);
   border-radius:10px;
-  overflow:hidden
+  overflow:hidden;
 }
 .server-img img{
   width:100%;
-  display:block
+  display:block;
 }
 .server-img span{
   display:block;
   padding:6px 8px;
-  font-weight:600
+  font-weight:600;
 }
 
-/* DEVOTION - with paper.png background */
+/* DEVOTION */
 .devotion{
-  position:relative;
   background:url("paper.webp") center/cover no-repeat;
   padding:40px 34px;
   border-radius:10px;
   border:2px solid #caa24b;
-
   font-family:Georgia,serif;
   color:#2b1a08;
   text-align:center;
-
   box-shadow:
     inset 0 0 35px rgba(0,0,0,.35),
     0 0 25px rgba(245,197,24,.25);
@@ -257,18 +265,12 @@ nav a:hover{color:white}
   background:rgba(255,215,120,.85);
 }
 
-/* TESTIMONIALS */
-.testimony{
-  margin-top:12px;
-  font-style:italic
-}
-
 /* VIDEO */
 .video-box iframe{
   width:100%;
   height:320px;
   border:none;
-  border-radius:12px
+  border-radius:12px;
 }
 
 /* STREAMERS */
@@ -281,7 +283,7 @@ nav a:hover{color:white}
   color:#000;
   border-radius:8px;
   font-weight:bold;
-  text-decoration:none
+  text-decoration:none;
 }
 
 /* FOOTER */
@@ -289,19 +291,31 @@ footer{
   text-align:center;
   padding:30px;
   border-top:1px solid rgba(245,197,24,.25);
-  margin-top:40px
+  margin-top:40px;
 }
 footer a{
   color:#f5c518;
   text-decoration:none;
-  margin:0 12px
+  margin:0 12px;
 }
 
 /* MOBILE */
 @media(max-width:900px){
-  .hero,.split{grid-template-columns:1fr;text-align:center}
+  header{flex-direction:column;gap:10px}
+  .hero{
+    padding:40px;
+    text-align:center;
+    background-position:center;
+  }
+  .hero-text{
+    margin:auto;
+  }
+  .hero::before{
+    background:rgba(0,0,0,.75);
+  }
   .hero-buttons{justify-content:center}
-  .servers-layout{grid-template-columns:1fr}
+  .split{grid-template-columns:1fr}
+  nav{flex-wrap:wrap;justify-content:center}
 }
 </style>
 </head>
@@ -315,11 +329,9 @@ footer a{
     <img src="watermarklogo.webp">
     <span class="logo-text">FAITHFORGE GAMING</span>
   </div>
-
   <div class="header-emblem">
     <img src="Anvil.webp">
   </div>
-
   <nav>
     <a href="/Devotions">Devotions</a>
     <a href="/Streamers">Streamers</a>
@@ -337,13 +349,8 @@ footer a{
       <a class="watch" href="https://www.youtube.com/@FaithForgeGaming/streams" target="_blank">Watch</a>
     </div>
   </div>
-
-  <div class="hero-image">
-    <img src="Knight1.webp" alt="FaithForge Knight">
-  </div>
 </section>
 
-<!-- SOCIAL BAR -->
 <div class="hero-social">
   <a href="https://www.facebook.com/profile.php?id=100070219355952" target="_blank">Facebook</a>
   <a href="https://www.instagram.com/faithforgegaming" target="_blank">Instagram</a>
@@ -354,76 +361,77 @@ footer a{
 </div>
 
 <section class="categories">
-  <div class="cat"><img src="Cross2.webp" alt=""><h3>Christian Fellowship</h3></div>
-  <div class="cat"><img src="Controller.webp" alt=""><h3>Diverse Gaming</h3></div>
-  <div class="cat"><img src="flame.webp" alt=""><h3>Faith-Based Content</h3></div>
+  <div class="cat"><img src="Cross2.webp"><h3>Christian Fellowship</h3></div>
+  <div class="cat"><img src="Controller.webp"><h3>Diverse Gaming</h3></div>
+  <div class="cat"><img src="flame.webp"><h3>Faith-Based Content</h3></div>
 </section>
 
-<!-- SERVERS & DEVOTION -->
 <section class="split">
+
 <div class="box">
-  <h2>Our Servers</h2>
+<h2>Our Servers</h2>
 
-  <div class="servers-layout">
-    <div class="server-list">
-      <ul>
-        <li>• Minecraft Multiverse</li>
-        <li>• ATM9 Modded</li>
-        <li>• ARK ASA</li>
-      </ul>
-      <a class="servers-btn" href="/Servers">View All Servers</a>
-    </div>
+<div class="servers-layout">
+<div class="server-list">
+<ul>
+<li>• Minecraft Multiverse</li>
+<li>• ATM9 Modded</li>
+<li>• ARK ASA</li>
+</ul>
+<a class="servers-btn" href="/Servers">View All Servers</a>
+</div>
 
-    <div class="server-images">
-      <a class="server-img" href="/Servers"><img src="minecraftknight.webp" alt=""><span>Multiverse</span></a>
-      <a class="server-img" href="/Servers"><img src="Redeamer.webp" alt=""><span>Multiverse</span></a>
-      <a class="server-img" href="/Servers"><img src="ATM9.webp" alt=""><span>ATM9</span></a>
-      <a class="server-img" href="/Servers"><img src="ark.webp" alt=""><span>ARK ASA</span></a>
-    </div>
-  </div>
+<div class="server-images">
+<a class="server-img" href="/Servers"><img src="minecraftknight.webp"><span>Multiverse</span></a>
+<a class="server-img" href="/Servers"><img src="Redeamer.webp"><span>Multiverse</span></a>
+<a class="server-img" href="/Servers"><img src="ATM9.webp"><span>ATM9</span></a>
+<a class="server-img" href="/Servers"><img src="ark.webp"><span>ARK ASA</span></a>
+</div>
+</div>
 </div>
 
 <div class="box">
-  <h2>Featured Devotion</h2>
 
-  <div class="devotion">
-    <small>Proverbs 27:17</small>
-    <h3>True iron sharpening iron happens when we encourage each other to become stronger and smarter in spiritual matters and scripture. We are called to encourage eachother and hold one another accountable.</h3>
-    <p>As iron sharpens iron, so one person sharpens another.</p>
-    <a href="/Devotions">Read More</a>
-  </div>
+<h2>Featured Devotion</h2>
 
-  <h3 style="margin-top:15px">Testimonials</h3>
-  <div class="testimony">“FaithForge is the most welcoming community I’ve found.”</div>
-  <div class="testimony">“I’ve grown closer to Christ here while gaming.”</div>
-  <div class="testimony">“Great people, great servers, real faith.”</div>
+<div class="devotion">
+<small>Proverbs 27:17</small>
+<h3>True iron sharpening iron happens when we encourage one another toward Christ and bold faith.</h3>
+<p>As iron sharpens iron, so one person sharpens another.</p>
+<a href="/Devotions">Read More</a>
+</div>
+
+<h3 style="margin-top:15px">Testimonials</h3>
+<div class="testimony">“FaithForge is the most welcoming community I’ve found.”</div>
+<div class="testimony">“I’ve grown closer to Christ here while gaming.”</div>
+<div class="testimony">“Great people, great servers, real faith.”</div>
+
 </div>
 </section>
 
-<!-- VIDEO & STREAMERS -->
 <section class="split">
-  <div class="box video-box">
-    <h2>Watch FaithForge</h2>
-    <iframe src="https://www.youtube.com/embed/SynBFOKJ57w" allowfullscreen></iframe>
-  </div>
 
-  <div class="box">
-    <h2>FaithForge Streamers</h2>
-    <p class="streamer-note">
-      Watch content creators who share faith-first gaming experiences and build community.
-    </p>
-    <a class="streamer-btn" href="/Streamers">Meet Our Streamers</a>
-  </div>
+<div class="box video-box">
+<h2>Watch FaithForge</h2>
+<iframe src="https://www.youtube.com/embed/SynBFOKJ57w" allowfullscreen></iframe>
+</div>
+
+<div class="box">
+<h2>FaithForge Streamers</h2>
+<p class="streamer-note">Faith-first creators building community through gaming.</p>
+<a class="streamer-btn" href="/Streamers">Meet Our Streamers</a>
+</div>
+
 </section>
 
 <footer>
-  <a href="/Aboutus">About Us</a>
-  <a href="/Staff">Our Team</a>
-  <a href="/Streamers">Streamers</a>
-  <a href="/Servers">Servers</a>
-  <a href="/Contact">Contact Us</a>
-  <br><br>
-  © 2025 FaithForge Gaming
+<a href="/Aboutus">About Us</a>
+<a href="/Staff">Our Team</a>
+<a href="/Streamers">Streamers</a>
+<a href="/Servers">Servers</a>
+<a href="/Contact">Contact Us</a>
+<br><br>
+© 2025 FaithForge Gaming
 </footer>
 
 <script>

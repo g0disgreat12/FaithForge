@@ -1,312 +1,450 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>FaithForge Gaming</title>
+<meta charset="UTF-8">
+<title>FaithForge Gaming</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="FaithForge Gaming is a Christian community where gamers connect, grow, and share faith. Join our servers, watch streams, and grow together.">
 
-  <!-- SEO and Social -->
-  <meta name="title" content="FaithForge Gaming - Christian Gaming Community">
-  <meta name="description" content="A Christian gaming community where like-minded players connect, grow, and share faith and fun.">
-  <meta property="og:title" content="FaithForge Gaming">
-  <meta property="og:description" content="Join our Christian gaming community—connect, grow, and share faith and fun.">
-  <meta property="og:image" content="https://faithforgegaming.com/95998504-25E9-46FD-8CA4-FF4784EEF961.png">
-  <meta property="og:url" content="https://faithforgegaming.com">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" type="image/png" href="favicon.png">
+<link rel="icon" href="favicon.png">
 
-  <!-- Original shared stylesheet -->
-  <link rel="stylesheet" href="https://faithforgegaming.com/style.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
 
-  <!-- Page-specific styling -->
-  <style>
-    /* Background + Text Base */
-    body {
-      background: radial-gradient(circle at center, #0d0d0d 40%, #000 100%);
-      color: #f5c518;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-      overflow-x: hidden;
-      min-height: 100vh;
-      position: relative;
-    }
+body{
+  background:radial-gradient(circle at center,#0d0d0d 35%,#000 100%);
+  font-family:Segoe UI,Tahoma,Verdana,sans-serif;
+  color:#f5c518;
+  overflow-x:hidden;
+}
 
-    /* Stop navbar items from wrapping */
-    .navbar a {
-      white-space: nowrap;
-    }
-  </style>
+canvas{
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  z-index:-1;
+  pointer-events:none;
+}
 
-  <style>
-    /* === EPIC FAITHFORGE FX === */
+/* HEADER */
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 40px;
+  background:rgba(0,0,0,.75);
+  border-bottom:1px solid rgba(245,197,24,.3)
+}
+.logo-wrap{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.logo-wrap img{height:42px}
+.logo-text{font-weight:700;letter-spacing:1px}
+.header-emblem img{height:48px;opacity:.9}
+nav{display:flex;gap:18px;align-items:center}
+nav a{color:#f5c518;text-decoration:none;font-weight:600}
+nav a:hover{color:white}
 
-    /* Pulsing forge glow behind everything */
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: radial-gradient(circle at 50% 50%, rgba(245,197,24,0.08) 0%, rgba(0,0,0,0) 70%);
-      animation: pulse 6s ease-in-out infinite alternate;
-      z-index: -3;
-    }
-    @keyframes pulse {
-      0% { opacity: 0.08; transform: scale(1); }
-      100% { opacity: 0.20; transform: scale(1.2); }
-    }
+.join-btn{
+  background:linear-gradient(45deg,#f5c518,#cfa214);
+  padding:10px 20px;
+  border-radius:6px;
+  color:black;
+  font-weight:700;
+  text-decoration:none;
+  box-shadow:0 0 15px rgba(245,197,24,.6)
+}
 
-    /* Giant glowing emblem watermark */
-    .emblem {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      width: 600px;
-      max-width: 90vw;
-      opacity: 0.05;
-      transform: translate(-50%, -50%);
-      filter: drop-shadow(0 0 40px rgba(245,197,24,0.5));
-      animation: emblemGlow 8s ease-in-out infinite alternate;
-      z-index: -2;
-      pointer-events: none;
-    }
-    @keyframes emblemGlow {
-      from { opacity: 0.04; transform: translate(-50%, -50%) scale(1); }
-      to   { opacity: 0.10; transform: translate(-50%, -50%) scale(1.05); }
-    }
+/* HERO */
+.hero{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  min-height:78vh;
+  padding:50px;
+}
+.hero-text h1{
+  font-size:3.6rem;
+  background:linear-gradient(90deg,#f5c518,#cfa214);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.hero-text p{
+  margin-top:10px;
+  font-size:1.2rem;
+  color:#ddd;
+}
+.hero-buttons{
+  margin-top:25px;
+  display:flex;
+  gap:15px
+}
+.hero-buttons a{
+  padding:14px 34px;
+  border-radius:10px;
+  font-weight:bold;
+  text-decoration:none
+}
 
-    /* Ember animation canvas */
-    #embers {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      pointer-events: none;
-      z-index: -1;
-    }
+.discord{
+  background:linear-gradient(45deg,#f5c518,#cfa214);
+  color:#000;
+  box-shadow:0 0 20px rgba(245,197,24,.7)
+}
+.watch{
+  color:#f5c518;
+  border:2px solid #f5c518;
+}
+.watch:hover{
+  background:#f5c518;
+  color:#000
+}
 
-    header {
-      padding: 20px;
-    }
-    img {
-      width: 300px;
-      max-width: 90%;
-      margin-top: 10px;
-      filter: drop-shadow(0 0 20px rgba(245,197,24,0.3));
-      animation: fadeIn 1.5s ease;
-    }
-    h1 {
-      font-size: 3em;
-      margin: 20px 0 10px;
-      background: linear-gradient(90deg, #f5c518, #cfa214);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 20px rgba(245,197,24,0.3);
-    }
-    p {
-      font-size: 1.2em;
-      margin: 10px 20px;
-    }
+/* FLOATING KNIGHT */
+.hero-image img{
+  background:none !important;
+  max-width:460px;
+  width:100%;
+  filter:drop-shadow(0 0 38px rgba(245,197,24,.65));
+}
 
-    /* === NAVIGATION BAR === */
-    .navbar {
-      background: rgba(0,0,0,0.6);
-      padding: 10px 0;
-      box-shadow: 0 0 20px rgba(245,197,24,0.3);
-      margin-top: 10px;
-    }
-    .navbar a {
-      color: #f5c518;
-      text-decoration: none;
-      margin: 0 20px;
-      font-weight: bold;
-      font-size: 1.1em;
-      transition: color 0.3s, text-shadow 0.3s;
-    }
-    .navbar a:hover {
-      color: #fff;
-      text-shadow: 0 0 10px #f5c518;
-    }
+/* HERO SOCIAL BAR */
+.hero-social{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  padding:14px;
+  background:rgba(0,0,0,.45);
+  border-top:1px solid rgba(245,197,24,.3);
+  border-bottom:1px solid rgba(245,197,24,.3);
+}
+.hero-social a{
+  color:#f5c518;
+  text-decoration:none;
+  font-weight:600;
+}
+.hero-social a:hover{color:white}
 
-    /* Discord Button */
-    .hero-discord {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 18px 45px;
-      font-size: 1.4em;
-      font-weight: bold;
-      text-transform: uppercase;
-      background: linear-gradient(90deg, #5865F2, #4752C4);
-      color: #fff;
-      border-radius: 12px;
-      text-decoration: none;
-      box-shadow: 0 0 25px rgba(88,101,242,0.6);
-      transition: 0.3s;
-    }
-    .hero-discord:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 40px rgba(88,101,242,0.9);
-    }
+/* CATEGORIES */
+.categories{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  padding:40px;
+  background:rgba(0,0,0,.75);
+  gap:20px;
+}
+.cat{
+  border:1px solid rgba(245,197,24,.2);
+  padding:25px;
+  border-radius:12px;
+  text-align:center;
+}
+.cat img{
+  height:42px;
+  margin-bottom:10px
+}
 
-    /* Link Grid */
-    .links {
-      margin: 40px auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      grid-gap: 15px;
-      max-width: 700px;
-      padding: 0 20px;
-    }
-    .links a {
-      display: block;
-      background-color: #f5c518;
-      color: #0d0d0d;
-      padding: 15px 10px;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 8px;
-      transition: 0.3s;
-      box-shadow: 0 0 15px rgba(245,197,24,0.2);
-    }
-    .links a:hover {
-      background-color: #cfa214;
-      transform: translateY(-3px);
-      box-shadow: 0 0 30px rgba(245,197,24,0.6);
-    }
+/* two-column sections */
+.split{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+  padding:50px
+}
 
-    .bible-verse {
-      margin: 40px 20px;
-      font-style: italic;
-      font-size: 1em;
-      color: #f5c518;
-    }
+.box{
+  background:rgba(0,0,0,.8);
+  border:1px solid rgba(245,197,24,.25);
+  border-radius:15px;
+  padding:25px
+}
 
-    footer {
-      margin-top: 50px;
-      font-size: 0.9em;
-      color: #888;
-      padding-bottom: 20px;
-    }
+.box h2{margin-bottom:15px}
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+/* SERVERS */
+.servers-layout{
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:20px
+}
+.server-list ul{
+  list-style:none
+}
+.server-list li{
+  margin-bottom:8px
+}
+.servers-btn{
+  display:inline-block;
+  margin-top:15px;
+  padding:10px 20px;
+  background:#f5c518;
+  color:#000;
+  border-radius:8px;
+  font-weight:bold;
+  text-decoration:none;
+}
+
+.server-images{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px
+}
+.server-img{
+  border:1px solid rgba(245,197,24,.2);
+  border-radius:10px;
+  overflow:hidden
+}
+.server-img img{
+  width:100%;
+  display:block
+}
+.server-img span{
+  display:block;
+  padding:6px 8px;
+  font-weight:600
+}
+
+/* DEVOTION - with paper.png background */
+.devotion{
+  position:relative;
+  background:url("paper.png") center/cover no-repeat;
+  padding:40px 34px;
+  border-radius:10px;
+  border:2px solid #caa24b;
+
+  font-family:Georgia,serif;
+  color:#2b1a08;
+  text-align:center;
+
+  box-shadow:
+    inset 0 0 35px rgba(0,0,0,.35),
+    0 0 25px rgba(245,197,24,.25);
+}
+
+.devotion small{
+  display:block;
+  margin-bottom:8px;
+  font-size:.95rem;
+  color:#3a230e;
+}
+
+.devotion h3{
+  font-size:1.45rem;
+  margin-bottom:8px;
+  color:#1a0f05;
+}
+
+.devotion p{
+  font-size:1rem;
+  line-height:1.45;
+  color:#3b230a;
+}
+
+.devotion a{
+  display:inline-block;
+  margin-top:14px;
+  padding:8px 18px;
+  border-radius:4px;
+  border:2px solid #a9862d;
+  background:rgba(255,215,120,.55);
+  color:#1e1005;
+  font-weight:bold;
+  text-decoration:none;
+}
+.devotion a:hover{
+  background:rgba(255,215,120,.85);
+}
+
+/* TESTIMONIALS */
+.testimony{
+  margin-top:12px;
+  font-style:italic
+}
+
+/* VIDEO */
+.video-box iframe{
+  width:100%;
+  height:320px;
+  border:none;
+  border-radius:12px
+}
+
+/* STREAMERS */
+.streamer-note{color:#ddd}
+.streamer-btn{
+  display:inline-block;
+  margin-top:15px;
+  padding:12px 22px;
+  background:#f5c518;
+  color:#000;
+  border-radius:8px;
+  font-weight:bold;
+  text-decoration:none
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:30px;
+  border-top:1px solid rgba(245,197,24,.25);
+  margin-top:40px
+}
+footer a{
+  color:#f5c518;
+  text-decoration:none;
+  margin:0 12px
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  .hero,.split{grid-template-columns:1fr;text-align:center}
+  .hero-buttons{justify-content:center}
+  .servers-layout{grid-template-columns:1fr}
+}
+</style>
 </head>
 
 <body>
 
-  <!-- Emblem Watermark -->
-  <img class="emblem" src="watermark.png" alt="FaithForge Emblem Watermark">
+<canvas id="particles"></canvas>
 
-  <!-- Ember Canvas -->
-  <canvas id="embers"></canvas>
+<header>
+  <div class="logo-wrap">
+    <img src="anvil-logo.png">
+    <span class="logo-text">FAITHFORGE GAMING</span>
+  </div>
 
-  <header>
-    <img src="main.webp" alt="FaithForge Gaming Logo">
+  <div class="header-emblem">
+    <img src="emblem.png">
+  </div>
+
+  <nav>
+    <a href="/Devotions">Devotions</a>
+    <a href="/Streamers">Streamers</a>
+    <a class="join-btn" href="https://discord.gg/YOURDISCORD">Join the Discord</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-text">
     <h1>FaithForge Gaming</h1>
-    <p>Our mission is to bring like-minded Christian gamers together.</p>
-    <p>Our vision is to create a community where gamers can connect, share, and grow in faith.</p>
+    <p>A Christian Community for Gamers</p>
 
-    <!-- Navigation -->
-    <nav class="navbar">
-      <a href="index.html">Home</a>
-      <a href="../Aboutus/">About Us</a>
-      <a href="../Staff/">Our Team</a>
-      <a href="../Streamers/">Streamers</a>
-      <a href="../Servers/">Servers</a>
-      <a href="../Contact/">Contact Us</a>
-    </nav>
-
-    <!-- Hero Discord Button -->
-    <a class="hero-discord" href="https://discord.gg/bAQrudk5a9" target="_blank">Join Our Discord</a>
-  </header>
-
-  <!-- Links Grid -->
-  <div class="links">
-    <a href="https://www.facebook.com/profile.php?id=100070219355952" target="_blank">Facebook</a>
-    <a href="https://www.instagram.com/faithforgegaming?igsh=dTBjZzUyaXZ6N2Nx&utm_source=qr" target="_blank">Instagram</a>
-    <a href="https://www.reddit.com/r/FaithForgeGaming/" target="_blank">Reddit</a>
-    <a href="https://www.youtube.com/@FaithForgeGaming" target="_blank">YouTube</a>
-    <a href="https://www.twitch.tv/faithforgegaming" target="_blank">Twitch</a>
-    <a href="https://www.tiktok.com/@faithforge.gaming?is_from_webapp=1&sender_device=pc" target="_blank">TikTok</a>
+    <div class="hero-buttons">
+      <a class="discord" href="https://discord.gg/YOURDISCORD">Join the Discord</a>
+      <a class="watch" href="https://youtube.com/@FaithForgeGaming" target="_blank">Watch</a>
+    </div>
   </div>
 
-  <!-- Ko-fi Button -->
-  <div style="margin-top: 10px;">
-    <a href="https://ko-fi.com/faithforgegaming"
-       target="_blank"
-       style="
-         display: inline-block;
-         background-color: #f5c518;
-         padding: 12px 20px;
-         color: #0d0d0d;
-         font-weight: bold;
-         border-radius: 8px;
-         text-decoration: none;
-         box-shadow: 0 0 15px rgba(245,197,24,0.3);
-         transition: 0.3s;
-       "
-       onmouseover="this.style.backgroundColor='#cfa214'; this.style.boxShadow='0 0 25px rgba(245,197,24,0.6)'"
-       onmouseout="this.style.backgroundColor='#f5c518'; this.style.boxShadow='0 0 15px rgba(245,197,24,0.3)'">
-      Support on Ko-fi
-    </a>
+  <div class="hero-image">
+    <img src="knight.png" alt="FaithForge Knight">
+  </div>
+</section>
+
+<!-- SOCIAL BAR -->
+<div class="hero-social">
+  <a href="https://www.facebook.com/profile.php?id=100070219355952" target="_blank">Facebook</a>
+  <a href="https://www.instagram.com/faithforgegaming" target="_blank">Instagram</a>
+  <a href="https://www.reddit.com/r/FaithForgeGaming/" target="_blank">Reddit</a>
+  <a href="https://www.youtube.com/@FaithForgeGaming" target="_blank">YouTube</a>
+  <a href="https://www.twitch.tv/faithforgegaming" target="_blank">Twitch</a>
+  <a href="https://www.tiktok.com/@faithforge.gaming" target="_blank">TikTok</a>
+</div>
+
+<section class="categories">
+  <div class="cat"><img src="cross.png" alt=""><h3>Christian Fellowship</h3></div>
+  <div class="cat"><img src="controller.png" alt=""><h3>Diverse Gaming</h3></div>
+  <div class="cat"><img src="flame.png" alt=""><h3>Faith-Based Content</h3></div>
+</section>
+
+<!-- SERVERS & DEVOTION -->
+<section class="split">
+<div class="box">
+  <h2>Our Servers</h2>
+
+  <div class="servers-layout">
+    <div class="server-list">
+      <ul>
+        <li>• Minecraft Multiverse</li>
+        <li>• ATM9 Modded</li>
+        <li>• ARK ASA</li>
+      </ul>
+      <a class="servers-btn" href="/Servers">View All Servers</a>
+    </div>
+
+    <div class="server-images">
+      <a class="server-img" href="/Servers"><img src="multiverse1.jpg" alt=""><span>Multiverse</span></a>
+      <a class="server-img" href="/Servers"><img src="multiverse2.jpg" alt=""><span>Multiverse</span></a>
+      <a class="server-img" href="/Servers"><img src="atm9.jpg" alt=""><span>ATM9</span></a>
+      <a class="server-img" href="/Servers"><img src="ark.jpg" alt=""><span>ARK ASA</span></a>
+    </div>
+  </div>
+</div>
+
+<div class="box">
+  <h2>Featured Devotion</h2>
+
+  <div class="devotion">
+    <small>April 8, 2025</small>
+    <h3>Bearing One Another’s Burdens</h3>
+    <p>Walk in love. Carry each other. Build faith in every battle.</p>
+    <a href="/Devotions">Read More</a>
   </div>
 
-  <!-- Bible Verse -->
-  <div class="bible-verse">
-    <p>"As iron sharpens iron, so one person sharpens another." — Proverbs 27:17 (NIV)</p>
+  <h3 style="margin-top:15px">Testimonials</h3>
+  <div class="testimony">“FaithForge is the most welcoming community I’ve found.”</div>
+  <div class="testimony">“I’ve grown closer to Christ here while gaming.”</div>
+  <div class="testimony">“Great people, great servers, real faith.”</div>
+</div>
+</section>
+
+<!-- VIDEO & STREAMERS -->
+<section class="split">
+  <div class="box video-box">
+    <h2>Watch FaithForge</h2>
+    <iframe src="https://www.youtube.com/embed/YOURVIDEOID" allowfullscreen></iframe>
   </div>
 
-  <footer>
-    &copy; 2025 FaithForge Gaming. All rights reserved.
-  </footer>
+  <div class="box">
+    <h2>FaithForge Streamers</h2>
+    <p class="streamer-note">
+      Watch content creators who share faith-first gaming experiences and build community.
+    </p>
+    <a class="streamer-btn" href="/Streamers">Meet Our Streamers</a>
+  </div>
+</section>
 
-  <!-- Ember Animation Script -->
-  <script>
-    const canvas = document.getElementById('embers');
-    const ctx = canvas.getContext('2d');
-    let embers = [];
+<footer>
+  <a href="/Aboutus">About Us</a>
+  <a href="/Staff">Our Team</a>
+  <a href="/Streamers">Streamers</a>
+  <a href="/Servers">Servers</a>
+  <a href="/Contact">Contact Us</a>
+  <br><br>
+  © 2025 FaithForge Gaming
+</footer>
 
-    function resize() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resize);
-    resize();
-
-    function createEmber() {
-      const x = Math.random() * canvas.width;
-      const y = canvas.height + 10;
-      const size = Math.random() * 2 + 1;
-      const speed = Math.random() * 1.5 + 0.5;
-      const opacity = Math.random() * 0.5 + 0.2;
-      embers.push({ x, y, size, speed, opacity });
-    }
-
-    function drawEmbers() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (let i = 0; i < embers.length; i++) {
-        const e = embers[i];
-        ctx.beginPath();
-        ctx.arc(e.x, e.y, e.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(245,197,24,${e.opacity})`;
-        ctx.fill();
-        e.y -= e.speed;
-        e.x += Math.sin(e.y * 0.02) * 0.5;
-        e.opacity -= 0.002;
-        if (e.opacity <= 0) embers.splice(i, 1);
-      }
-    }
-
-    function animate() {
-      drawEmbers();
-      if (Math.random() < 0.3) createEmber();
-      requestAnimationFrame(animate);
-    }
-    animate();
-  </script>
+<script>
+const c=document.getElementById("particles"),x=c.getContext("2d");
+function resize(){c.width=innerWidth;c.height=innerHeight}
+window.addEventListener("resize",resize);resize();
+let parts=[];
+function spawn(){parts.push({x:Math.random()*c.width,y:c.height,s:Math.random()*2+1,o:.7})}
+function draw(){
+  x.clearRect(0,0,c.width,c.height);
+  parts.forEach((p,i)=>{
+    x.fillStyle=`rgba(245,197,24,${p.o})`;
+    x.beginPath();x.arc(p.x,p.y,p.s,0,6.3);x.fill();
+    p.y-=1;p.o-=.01;
+    if(p.o<=0)parts.splice(i,1)
+  });
+  if(Math.random()<.3)spawn();
+  requestAnimationFrame(draw);
+}
+draw();
+</script>
 
 </body>
 </html>

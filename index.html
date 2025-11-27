@@ -165,7 +165,7 @@ nav a:hover{color:white}
   margin-bottom:10px;
 }
 
-/* MAIN SPLITS */
+/* MAIN GRID */
 .split{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -177,7 +177,7 @@ nav a:hover{color:white}
   background:rgba(0,0,0,.8);
   border:1px solid rgba(245,197,24,.25);
   border-radius:15px;
-  padding:25px;
+  padding:30px;
 }
 
 .box h2{margin-bottom:15px}
@@ -186,7 +186,7 @@ nav a:hover{color:white}
 .server-images{
   display:grid;
   grid-template-columns:repeat(2, 1fr);
-  gap:16px;
+  gap:18px;
 }
 
 .server-img{
@@ -200,12 +200,13 @@ nav a:hover{color:white}
 
 .server-img img{
   width:100%;
-  height:220px;
-  object-fit:cover;
+  aspect-ratio:1 / 1;     /* ✅ square */
+  object-fit:contain;     /* ✅ no cropping */
+  background:black;
 }
 
 .server-title{
-  padding:10px;
+  padding:12px;
   text-align:center;
   font-weight:700;
   color:#f5c518;
@@ -220,7 +221,7 @@ nav a:hover{color:white}
 .servers-btn{
   display:inline-block;
   margin-top:15px;
-  padding:10px 20px;
+  padding:10px 22px;
   background:#f5c518;
   color:#000;
   border-radius:8px;
@@ -231,12 +232,75 @@ nav a:hover{color:white}
 /* DEVOTION */
 .devotion{
   background:url("paper.webp") center/cover no-repeat;
-  padding:40px 34px;
-  border-radius:10px;
+  padding:36px 34px;
+  border-radius:12px;
   border:2px solid #caa24b;
   font-family:Georgia,serif;
   color:#2b1a08;
   text-align:center;
+}
+
+.devotion-header{
+  font-size:1.5rem;
+  font-weight:700;
+  letter-spacing:2px;
+  margin-bottom:6px;
+  color:#5b3a00;
+}
+
+.devotion-sub{
+  font-size:.95rem;
+  font-style:italic;
+  margin-bottom:8px;
+  color:#6a4a1a;
+}
+
+.devotion-ref{
+  display:block;
+  font-size:.8rem;
+  margin-bottom:10px;
+  color:#7d601f;
+}
+
+.devotion-main{
+  font-size:1.25rem;
+  margin-bottom:8px;
+}
+
+.devotion-verse{
+  font-size:1rem;
+}
+
+.devotion-footer{
+  margin-top:12px;
+  font-style:italic;
+  font-size:.9rem;
+}
+
+.devotion-note{
+  margin-top:10px;
+  font-size:.8rem;
+  opacity:.85;
+}
+
+.devotion-btn{
+  display:inline-block;
+  margin-top:12px;
+  padding:8px 20px;
+  background:#f5c518;
+  color:#000;
+  font-weight:bold;
+  border-radius:8px;
+  text-decoration:none;
+}
+
+/* TESTIMONIALS */
+.testimony{
+  font-size:1.05rem;
+  margin:14px 0;
+  font-style:italic;
+  line-height:1.45;
+  color:#e0b84f;
 }
 
 /* VIDEO */
@@ -275,21 +339,11 @@ footer a{
 /* MOBILE */
 @media(max-width:900px){
   header{flex-direction:column;gap:10px}
-
-  .hero{
-    padding:40px;
-    text-align:center;
-    background-position:center;
-  }
-
+  .hero{padding:40px;text-align:center;background-position:center}
   .hero::before{background:rgba(0,0,0,.75)}
-
   .hero-text{margin:auto}
-
   .hero-buttons{justify-content:center}
-
   .split{grid-template-columns:1fr}
-
   nav{flex-wrap:wrap;justify-content:center}
 }
 </style>
@@ -318,7 +372,6 @@ footer a{
   <div class="hero-text">
     <h1>FaithForge Gaming</h1>
     <p>A Christian Community for Gamers</p>
-
     <div class="hero-buttons">
       <a class="discord" href="https://discord.gg/bAQrudk5a9">Join the Discord</a>
       <a class="watch" href="https://www.youtube.com/@FaithForgeGaming/streams" target="_blank">Watch</a>
@@ -384,16 +437,36 @@ footer a{
 <h2>Featured Devotion</h2>
 
 <div class="devotion">
-<small>Proverbs 27:17</small>
-<h3>True iron sharpening iron happens when we encourage one another toward Christ and bold faith.</h3>
-<p>As iron sharpens iron, so one person sharpens another.</p>
-<a href="/Devotions" class="streamer-btn">Read More</a>
+
+<div class="devotion-header">FAITHFORGE DEVOTION</div>
+<div class="devotion-sub">Weekly Scripture Focus</div>
+<small class="devotion-ref">Proverbs 27:17</small>
+
+<h3 class="devotion-main">
+True iron sharpening iron happens when we encourage one another toward Christ and bold faith.
+</h3>
+
+<p class="devotion-verse">
+As iron sharpens iron, so one person sharpens another.
+</p>
+
+<div class="devotion-footer">
+Strength is grown in unity — not isolation.
 </div>
 
-<h3 style="margin-top:15px">Testimonials</h3>
-<div>“FaithForge is the most welcoming community I’ve found.”</div>
-<div>“I’ve grown closer to Christ here while gaming.”</div>
-<div>“Great people, great servers, real faith.”</div>
+<a href="/Devotions" class="devotion-btn">Read More</a>
+
+<div class="devotion-note">
+Updated weekly • Join the community to stay sharp in faith
+</div>
+
+</div>
+
+<h3 style="margin-top:18px">Testimonials</h3>
+
+<div class="testimony">“FaithForge is the most welcoming community I’ve found.”</div>
+<div class="testimony">“I’ve grown closer to Christ here while gaming.”</div>
+<div class="testimony">“Great people, great servers, real faith.”</div>
 
 </div>
 </section>
@@ -401,7 +474,7 @@ footer a{
 <section class="split">
 
 <div class="box video-box">
-<h2>FaithForge Highlight Stream</h2>
+<h2>Watch FaithForge</h2>
 <iframe src="https://www.youtube.com/embed/SynBFOKJ57w"></iframe>
 </div>
 

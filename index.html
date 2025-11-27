@@ -4,126 +4,287 @@
 <meta charset="UTF-8">
 <title>FaithForge Gaming</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="FaithForge Gaming is a Christian community where gamers connect, grow, and share faith. Join our servers, watch streams, and grow together.">
-
-<link rel="icon" href="watermarklogo.webp">
-
+<link rel="icon" href="favicon.png">
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: radial-gradient(circle at center, #0d0d0d 35%, #000);
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    color: #f5c518;
+    overflow-x: hidden;
+  }
+  canvas { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
 
-body{
-  background:radial-gradient(circle at center,#0b0b0b 30%,#000 100%);
-  font-family:Segoe UI,Tahoma,Verdana,sans-serif;
-  color:#f5c518;
-}
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 4%;
+    background: rgba(0,0,0,0.75);
+    border-bottom: 1px solid rgba(245,197,24,0.3);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .logo-wrap { display: flex; align-items: center; gap: 10px; }
+  .logo-wrap img { height: 40px; }
+  .logo-text { font-weight: 700; letter-spacing: 1px; }
+  .header-emblem img { height: 46px; opacity: 0.9; }
 
-/* PARTICLES */
-canvas{
-  position:fixed;
-  inset:0;
-  z-index:-1;
-}
+  nav {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+  }
+  nav a {
+    color: #f5c518;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 6px 10px;
+  }
+  nav a:hover { color: #fff; }
 
-/* HEADER */
-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:14px 40px;
-  background:rgba(0,0,0,.7);
-  border-bottom:1px solid rgba(245,197,24,.3)
-}
-.logo-wrap{display:flex;align-items:center;gap:12px}
-.logo-wrap img{height:42px}
-.logo-text{font-weight:700}
-.header-emblem img{height:46px}
-nav{display:flex;gap:18px}
-nav a{color:#f5c518;text-decoration:none}
-nav a:hover{color:#fff}
+  .join-btn {
+    background: linear-gradient(45deg,#f5c518,#cfa214);
+    padding: 9px 18px;
+    border-radius: 6px;
+    color: #000;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 0 15px rgba(245,197,24,0.6);
+  }
 
-/* HERO */
-.hero{
-  position:relative;
-  background:url("Knightlong.webp") right center/cover no-repeat;
-  min-height:85vh;
-  display:flex;
-  align-items:center;
-  padding:70px;
-}
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 40px;
+    padding: 60px 4%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .hero-text h1 {
+    font-size: 3.6rem;
+    background: linear-gradient(90deg,#f5c518,#cfa214);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .hero-text p {
+    margin-top: 12px;
+    font-size: 1.2rem;
+    color: #ddd;
+  }
+  .hero-buttons {
+    margin-top: 26px;
+    display: flex;
+    gap: 16px;
+  }
+  .hero-buttons a {
+    padding: 14px 32px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  .hero-buttons .discord {
+    background: linear-gradient(45deg,#f5c518,#cfa214);
+    color: #000;
+    box-shadow: 0 0 20px rgba(245,197,24,0.7);
+  }
+  .hero-buttons .watch {
+    color: #f5c518;
+    border: 2px solid #f5c518;
+  }
+  .hero-buttons .watch:hover {
+    background: #f5c518;
+    color: #000;
+  }
 
-.hero-overlay{
-  position:absolute;
-  inset:0;
-  background:linear-gradient(
-    to right,
-    rgba(0,0,0,.96),
-    rgba(0,0,0,.8),
-    rgba(0,0,0,.4),
-    rgba(0,0,0,.1),
-    rgba(0,0,0,0)
-  );
-}
+  .hero-image img {
+    max-width: 100%;
+    width: 100%;
+    background: transparent !important;
+    filter: drop-shadow(0 0 38px rgba(245,197,24,0.65));
+  }
 
-.hero-content{
-  position:relative;
-  max-width:620px;
-}
+  .hero-social {
+    display: flex;
+    justify-content: center;
+    gap: 22px;
+    padding: 14px 0;
+    background: rgba(0,0,0,0.55);
+    border-top:1px solid rgba(245,197,24,0.3);
+    border-bottom:1px solid rgba(245,197,24,0.3);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .hero-social a {
+    color: #f5c518;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .hero-social a:hover { color: #fff; }
 
-.hero h1{
-  font-size:3.8rem;
-  background:linear-gradient(90deg,#f5c518,#cfa214);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
+  .categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+    gap: 20px;
+    padding: 45px 4%;
+    background: rgba(0,0,0,0.8);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .cat {
+    text-align: center;
+    padding: 26px 12px;
+    border: 1px solid rgba(245,197,24,0.25);
+    border-radius: 14px;
+  }
+  .cat img { height: 44px; margin-bottom: 12px; }
 
-.hero p{color:#ddd;margin:10px 0}
+  .split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    padding: 55px 4%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
 
-.hero-buttons{margin:20px 0}
-.hero-buttons a{
-  padding:12px 28px;
-  margin-right:12px;
-  border-radius:8px;
-  font-weight:bold;
-  text-decoration:none;
-}
-.discord{background:#f5c518;color:#000}
-.watch{border:2px solid #f5c518;color:#f5c518}
+  .box {
+    background: rgba(0,0,0,0.85);
+    border: 1px solid rgba(245,197,24,0.25);
+    border-radius: 16px;
+    padding: 28px;
+  }
+  .box h2 { margin-bottom: 12px; }
 
-.hero-description{
-  margin-top:22px;
-  font-size:1rem;
-  line-height:1.6;
-  color:#d0d0d0;
-}
+  /* SERVERS same as before... */
 
-.hero-description span{
-  color:#f5c518;
-  font-weight:600;
-}
+  /* DEVOTION scroll style */
+  .devotion {
+    background: url("paper.png") center / cover no-repeat;
+    padding: 40px 34px;
+    border-radius: 10px;
+    border:2px solid #caa24b;
+    font-family: Georgia, serif;
+    color:#2b1a08;
+    text-align: center;
+    box-shadow:
+      inset 0 0 35px rgba(0,0,0,0.35),
+      0 0 25px rgba(245,197,24,0.25);
+  }
+  .devotion small {
+    display: block;
+    margin-bottom: 8px;
+    font-size: .95rem;
+    color: #3a230e;
+  }
+  .devotion h3 {
+    font-size: 1.45rem;
+    margin-bottom: 8px;
+    color: #1a0f05;
+  }
+  .devotion p {
+    font-size: 1rem;
+    line-height: 1.45;
+    color: #3b1f0a;
+  }
+  .devotion a {
+    margin-top: 14px;
+    display: inline-block;
+    padding: 8px 18px;
+    border: 2px solid #a9862d;
+    border-radius: 4px;
+    background: rgba(255,215,120,0.55);
+    color: #1e1005;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  .devotion a:hover {
+    background: rgba(255,215,120,0.85);
+  }
 
-/* SOCIAL */
-.hero-social{
-  background:rgba(0,0,0,.6);
-  padding:12px;
-  text-align:center;
-}
-.hero-social a{
-  margin:0 12px;
-  color:#f5c518;
-  text-decoration:none;
-}
+  .testimony {
+    margin-top: 12px;
+    font-style: italic;
+    color: #ddd;
+  }
 
-/* CATEGORIES */
-.categories{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  padding:50px;
-  gap:20px;
-}
-.cat{
-  border:1px solid rgba(255,215,100,.25);
-  border-radius:12px;
-  padding:25px;
+  .video-box iframe {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 16/9;
+    border: none;
+    border-radius: 12px;
+  }
+
+  .streamer-btn {
+    margin-top: 15px;
+    display: inline-block;
+    padding: 12px 24px;
+    background: #f5c518;
+    color: #000;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  footer {
+    padding: 32px 4%;
+    text-align: center;
+    border-top:1px solid rgba(245,197,24,0.25);
+  }
+  footer a {
+    color: #f5c518;
+    margin: 0 10px;
+    text-decoration: none;
+  }
+
+  @media(max-width: 900px) {
+    .hero, .split { grid-template-columns: 1fr; text-align: center; }
+    .hero-buttons { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<header> ... </header>
+
+<section class="hero"> ... </section>
+
+<div class="hero-social"> ... </div>
+
+<section class="categories"> ... </section>
+
+<section class="split">
+  <div class="box"> <!-- Servers ... --> </div>
+  <div class="box">
+    <h2>Featured Devotion</h2>
+    <div class="devotion">
+      <small>April 8, 2025</small>
+      <h3>Bearing One Another’s Burdens</h3>
+      <p>Walk in love. Carry each other. Build faith in every battle.</p>
+      <a href="/Devotions">Read More</a>
+    </div>
+
+    <h3 style="margin-top: 20px; color: #f5c518;">Testimonials</h3>
+    <div class="testimony">“FaithForge is the most welcoming community I’ve found.”</div>
+    <div class="testimony">“I’ve grown closer to Christ while gaming here.”</div>
+    <div class="testimony">“Great servers. Strong faith. Amazing people.”</div>
+  </div>
+</section>
+
+<section class="split">
+  <div class="box video-box"> <!-- Video embed ... --> </div>
+  <div class="box"> <!-- Streamers section ... --> </div>
+</section>
+
+<footer> ... </footer>
+
+<script> /* particles script same as yours */ </script>
+</body>
+</html>
+
   text-align:center;
 }
 .cat img{height:48px}

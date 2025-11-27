@@ -21,8 +21,7 @@ body{
 
 canvas{
   position:fixed;
-  top:0;left:0;
-  width:100%;height:100%;
+  inset:0;
   z-index:-1;
   pointer-events:none;
 }
@@ -129,6 +128,18 @@ nav a:hover{color:white}
   color:#000;
 }
 
+.hero-description{
+  margin-top:28px;
+  max-width:560px;
+  font-size:1.05rem;
+  line-height:1.65;
+  color:#e0e0e0;
+  border-left:3px solid rgba(245,197,24,.4);
+  padding-left:18px;
+  text-shadow:0 0 6px rgba(0,0,0,.6);
+}
+.hero-description strong{color:#f5c518}
+
 /* SOCIAL BAR */
 .hero-social{
   display:flex;
@@ -160,12 +171,9 @@ nav a:hover{color:white}
   border-radius:12px;
   text-align:center;
 }
-.cat img{
-  height:42px;
-  margin-bottom:10px;
-}
+.cat img{height:42px;margin-bottom:10px}
 
-/* MAIN SPLITS */
+/* SPLITS */
 .split{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -177,16 +185,15 @@ nav a:hover{color:white}
   background:rgba(0,0,0,.8);
   border:1px solid rgba(245,197,24,.25);
   border-radius:15px;
-  padding:25px;
+  padding:30px;
 }
-
 .box h2{margin-bottom:15px}
 
 /* SERVER GRID */
 .server-images{
   display:grid;
-  grid-template-columns:repeat(2, 1fr);
-  gap:16px;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
 }
 
 .server-img{
@@ -197,46 +204,40 @@ nav a:hover{color:white}
   display:flex;
   flex-direction:column;
 }
-
 .server-img img{
   width:100%;
-  height:220px;
-  object-fit:cover;
+  aspect-ratio:1/1;
+  object-fit:contain;
+  background:black;
 }
-
 .server-title{
-  padding:10px;
+  padding:12px;
   text-align:center;
   font-weight:700;
-  color:#f5c518;
   background:rgba(0,0,0,.85);
-  border-top:1px solid rgba(245,197,24,.2);
-}
-
-/* SERVERS LIST */
-.server-list ul{list-style:none}
-.server-list li{margin-bottom:8px}
-
-.servers-btn{
-  display:inline-block;
-  margin-top:15px;
-  padding:10px 20px;
-  background:#f5c518;
-  color:#000;
-  border-radius:8px;
-  font-weight:bold;
-  text-decoration:none;
 }
 
 /* DEVOTION */
 .devotion{
   background:url("paper.webp") center/cover no-repeat;
-  padding:40px 34px;
-  border-radius:10px;
+  padding:36px 34px;
+  border-radius:12px;
   border:2px solid #caa24b;
   font-family:Georgia,serif;
   color:#2b1a08;
   text-align:center;
+}
+.devotion-header{font-size:1.5rem;font-weight:bold}
+.devotion-sub{font-style:italic}
+.devotion-ref{font-size:.8rem}
+.devotion-main{font-size:1.25rem}
+
+/* TESTIMONIAL */
+.testimony{
+  font-size:2rem;
+  margin:14px 0;
+  font-style:italic;
+  color:#e0b84f;
 }
 
 /* VIDEO */
@@ -247,7 +248,7 @@ nav a:hover{color:white}
   border-radius:12px;
 }
 
-/* STREAMERS */
+/* BUTTON */
 .streamer-btn{
   display:inline-block;
   margin-top:15px;
@@ -264,33 +265,16 @@ footer{
   text-align:center;
   padding:30px;
   border-top:1px solid rgba(245,197,24,.25);
-  margin-top:40px;
-}
-footer a{
-  color:#f5c518;
-  text-decoration:none;
-  margin:0 12px;
 }
 
 /* MOBILE */
 @media(max-width:900px){
   header{flex-direction:column;gap:10px}
-
-  .hero{
-    padding:40px;
-    text-align:center;
-    background-position:center;
-  }
-
+  .hero{padding:40px;text-align:center;background-position:center}
   .hero::before{background:rgba(0,0,0,.75)}
-
-  .hero-text{margin:auto}
-
+  .hero-description{border:none;padding:0}
   .hero-buttons{justify-content:center}
-
   .split{grid-template-columns:1fr}
-
-  nav{flex-wrap:wrap;justify-content:center}
 }
 </style>
 </head>
@@ -315,120 +299,103 @@ footer a{
 </header>
 
 <section class="hero">
-  <div class="hero-text">
-    <h1>FaithForge Gaming</h1>
-    <p>A Christian Community for Gamers</p>
+<div class="hero-text">
+<h1>FaithForge Gaming</h1>
+<p>A Christian Community for Gamers</p>
 
-    <div class="hero-buttons">
-      <a class="discord" href="https://discord.gg/bAQrudk5a9">Join the Discord</a>
-      <a class="watch" href="https://www.youtube.com/@FaithForgeGaming/streams" target="_blank">Watch</a>
-    </div>
-  </div>
+<div class="hero-buttons">
+<a class="discord" href="https://discord.gg/bAQrudk5a9">Join the Discord</a>
+<a class="watch" href="https://www.youtube.com/@FaithForgeGaming/streams" target="_blank">Watch</a>
+</div>
+
+<div class="hero-description">
+FaithForge Gaming is a biblically-based Christian gaming community built on faith, unity, and purpose.<br><br>
+We believe gaming can sharpen believers and shape disciples of Christ.<br><br>
+<strong>Proverbs 27:17 — As iron sharpens iron, so one person sharpens another.</strong>
+</div>
+</div>
 </section>
 
 <div class="hero-social">
-  <a href="https://www.facebook.com/profile.php?id=100070219355952">Facebook</a>
-  <a href="https://www.instagram.com/faithforgegaming">Instagram</a>
-  <a href="https://www.reddit.com/r/FaithForgeGaming/">Reddit</a>
-  <a href="https://www.youtube.com/@FaithForgeGaming">YouTube</a>
-  <a href="https://www.twitch.tv/faithforgegaming">Twitch</a>
-  <a href="https://www.tiktok.com/@faithforge.gaming">TikTok</a>
+<a href="https://www.facebook.com/profile.php?id=100070219355952">Facebook</a>
+<a href="https://www.instagram.com/faithforgegaming">Instagram</a>
+<a href="https://www.reddit.com/r/FaithForgeGaming/">Reddit</a>
+<a href="https://www.youtube.com/@FaithForgeGaming">YouTube</a>
+<a href="https://www.twitch.tv/faithforgegaming">Twitch</a>
+<a href="https://www.tiktok.com/@faithforge.gaming">TikTok</a>
 </div>
 
 <section class="categories">
-  <div class="cat"><img src="Cross2.webp"><h3>Christian Fellowship</h3></div>
-  <div class="cat"><img src="Controller.webp"><h3>Diverse Gaming</h3></div>
-  <div class="cat"><img src="flame.webp"><h3>Faith-Based Content</h3></div>
+<div class="cat"><img src="cross2.webp"><h3>Christian Fellowship</h3></div>
+<div class="cat"><img src="controller.webp"><h3>Diverse Gaming</h3></div>
+<div class="cat"><img src="flame.webp"><h3>Faith-Based Content</h3></div>
 </section>
 
 <section class="split">
-
 <div class="box">
 <h2>Our Servers</h2>
-
-<div class="server-list">
-<ul>
-<li>• Minecraft Multiverse</li>
-<li>• ATM9 Modded</li>
-<li>• ARK ASA</li>
-</ul>
-<a class="servers-btn" href="/Servers">View All Servers</a>
-</div>
-
 <div class="server-images">
-
-<div class="server-img">
-<img src="minecraftknight.webp">
-<h3 class="server-title">Minecraft Multiverse</h3>
+<div class="server-img"><img src="minecraftknight.webp"><span class="server-title">Multiverse</span></div>
+<div class="server-img"><img src="Redeamer.webp"><span class="server-title">Multiverse World</span></div>
+<div class="server-img"><img src="ATM9.webp"><span class="server-title">ATM9</span></div>
+<div class="server-img"><img src="ark.webp"><span class="server-title">ARK ASA</span></div>
 </div>
-
-<div class="server-img">
-<img src="Redeamer.webp">
-<h3 class="server-title">Multiverse World</h3>
-</div>
-
-<div class="server-img">
-<img src="ATM9.webp">
-<h3 class="server-title">ATM9 Server</h3>
-</div>
-
-<div class="server-img">
-<img src="ark.webp">
-<h3 class="server-title">ARK ASA</h3>
-</div>
-
-</div>
+<br>
+<a class="streamer-btn" href="/Servers">View All Servers</a>
 </div>
 
 <div class="box">
 <h2>Featured Devotion</h2>
-
 <div class="devotion">
-<small>Proverbs 27:17</small>
-<h3>True iron sharpening iron happens when we encourage one another toward Christ and bold faith.</h3>
+<div class="devotion-header">FAITHFORGE DEVOTION</div>
+<div class="devotion-sub">Weekly Scripture Focus</div>
+<div class="devotion-ref">Proverbs 27:17</div>
+<div class="devotion-main">True iron sharpening iron happens when believers encourage one another toward Christ.</div>
 <p>As iron sharpens iron, so one person sharpens another.</p>
 <a href="/Devotions" class="streamer-btn">Read More</a>
 </div>
 
-<h3 style="margin-top:15px">Testimonials</h3>
-<div>“FaithForge is the most welcoming community I’ve found.”</div>
-<div>“I’ve grown closer to Christ here while gaming.”</div>
-<div>“Great people, great servers, real faith.”</div>
-
+<h3 style="margin-top:18px;">Testimonials</h3>
+<div class="testimony">“FaithForge is the most welcoming community.”</div>
+<div class="testimony">“I’ve grown closer to Christ here.”</div>
+<div class="testimony">“Faith and gaming together done right.”</div>
 </div>
 </section>
 
 <section class="split">
-
 <div class="box video-box">
 <h2>FaithForge Highlight Stream</h2>
-<iframe src="https://www.youtube.com/embed/SynBFOKJ57w"></iframe>
+<iframe src="https://www.youtube.com/embed/SynBFOKJ57w" allowfullscreen></iframe>
 </div>
 
 <div class="box">
 <h2>FaithForge Streamers</h2>
-<p>Faith-first creators building community through gaming.</p>
-<a class="streamer-btn" href="/Streamers">Meet Our Streamers</a>
+<p>Faith-based creators building community through gaming.</p>
+<a href="/Streamers" class="streamer-btn">Meet Our Streamers</a>
 </div>
-
 </section>
 
 <footer>
-<a href="/Aboutus">About Us</a>
-<a href="/Staff">Our Team</a>
+<a href="/Aboutus">About</a>
+<a href="/Staff">Staff</a>
 <a href="/Streamers">Streamers</a>
 <a href="/Servers">Servers</a>
-<a href="/Contact">Contact Us</a>
+<a href="/Contact">Contact</a>
 <br><br>
 © 2025 FaithForge Gaming
 </footer>
 
 <script>
 const c=document.getElementById("particles"),x=c.getContext("2d");
-function resize(){c.width=innerWidth;c.height=innerHeight}
+function resize(){
+  c.width=innerWidth;
+  c.height=innerHeight;
+}
 window.addEventListener("resize",resize);resize();
 let parts=[];
-function spawn(){parts.push({x:Math.random()*c.width,y:c.height,s:Math.random()*2+1,o:.7})}
+function spawn(){
+  parts.push({x:Math.random()*c.width,y:c.height,s:Math.random()*2+1,o:.7});
+}
 function draw(){
   x.clearRect(0,0,c.width,c.height);
   parts.forEach((p,i)=>{

@@ -7,33 +7,44 @@
   </url>
 
   <url>
-    <loc>https://faithforgegaming.com/servers.html</loc>
+    <loc>https://faithforgegaming.com/Servers/</loc>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://faithforgegaming.com/devotions.html</loc>
+    <loc>https://faithforgegaming.com/Devotions/</loc>
     <priority>0.8</priority>
   </url>
-
-  <url>
-    <loc>https://faithforgegaming.com/streamers.html</loc>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://faithforgegaming.com/about.html</loc>
+  
+    <url>
+    <loc>https://faithforgegaming.com/Prayers/</loc>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://faithforgegaming.com/team.html</loc>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://faithforgegaming.com/contact.html</loc>
+    <loc>https://faithforgegaming.com/Streamers/</loc>
     <priority>0.6</priority>
   </url>
 
+  <url>
+    <loc>https://faithforgegaming.com/Aboutus/</loc>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://faithforgegaming.com/Staff/</loc>
+    <priority>0.4</priority>
+  </url>
+
+  <url>
+    <loc>https://faithforgegaming.com/Calendar/</loc>
+    <priority>0.3</priority>
+  </url>
+  
+    <url>
+    <loc>https://faithforgegaming.com/Contact/</loc>
+    <priority>0.2</priority>
+  </url>
+
 </urlset>
+

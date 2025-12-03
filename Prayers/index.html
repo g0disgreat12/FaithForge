@@ -364,29 +364,32 @@ footer{
 </footer>
 
 <script>
+let slides = document.getElementsByClassName("slide");
+let slideIndex = Math.floor(Math.random() * slides.length); // Start at random slide
 
-let slideIndex = 0;
 showSlides();
 
 function showSlides() {
-  let slides = document.getElementsByClassName("slide");
-  for(let i=0;i<slides.length;i++){
-    slides[i].style.display="none";
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
   }
 
   slideIndex++;
-  if(slideIndex>slides.length){slideIndex=1;}
-  slides[slideIndex-1].style.display="block";
+  if (slideIndex > slides.length) {
+    slideIndex = 1;
+  }
 
-  setTimeout(showSlides, 10000); // AUTO SLIDE EVERY 10s
+  slides[slideIndex - 1].style.display = "block";
+
+  setTimeout(showSlides, 10000); // Auto slide every 10 seconds
 }
 
-function plusSlides(n){
-  slideIndex += n-1;
+function plusSlides(n) {
+  slideIndex += n - 1;
   showSlides();
 }
-
 </script>
+
 
 </body>
 </html>

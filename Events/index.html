@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <title>FaithForge Gaming Events | Christian Gaming Community Calendar</title>
+  <meta name="description" content="View upcoming FaithForge Gaming events, server activities, community nights, tournaments, and Bible studies. Join us for Christ-centered gaming fellowship.">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="https://faithforgegaming.com/Events">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="FaithForge Gaming Events | Community Calendar">
+  <meta property="og:description" content="Join upcoming FaithForge Gaming events including Bible studies, game nights, tournaments, and community gatherings.">
+  <meta property="og:image" content="https://faithforgegaming.com/main.webp">
+  <meta property="og:url" content="https://faithforgegaming.com/Events">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="FaithForge Gaming">
+
+  <!-- Twitter Preview -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="FaithForge Gaming Events">
+  <meta name="twitter:description" content="See FaithForge Gaming’s upcoming events and calendar.">
+  <meta name="twitter:image" content="https://faithforgegaming.com/main.webp">
+
+  <!-- Icons / CSS -->
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="stylesheet" href="https://faithforgegaming.com/style.css">
+
+  <meta name="theme-color" content="#000000">
+
+  <style>
+    body {
+      background: radial-gradient(circle at center, #0d0d0d 40%, #000 100%);
+      color: #f5c518;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    .navbar a { white-space: nowrap; }
+
+    .events-container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 25px;
+      background: rgba(0,0,0,0.6);
+      border-radius: 14px;
+      box-shadow: 0 0 25px rgba(245,197,24,0.25);
+    }
+
+    h1 {
+      font-size: 2.8em;
+      background: linear-gradient(90deg, #f5c518, #cfa214);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 22px rgba(245,197,24,.4);
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 1.7em;
+      margin-top: 30px;
+      margin-bottom: 15px;
+      color: #f5c518;
+      text-shadow: 0 0 12px rgba(245,197,24,.3);
+    }
+
+    .calendar-box {
+      border: 1px solid rgba(245,197,24,.35);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 0 18px rgba(245,197,24,.25);
+      margin-top: 15px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 500px;
+      border: 0;
+    }
+
+    .events-text {
+      margin-top: 25px;
+      line-height: 1.8;
+      font-size: 1.1em;
+    }
+
+    ul {
+      text-align: left;
+      max-width: 640px;
+      margin: 20px auto;
+      line-height: 1.8;
+      color: #f5c518;
+    }
+
+    @media (max-width: 800px) {
+      iframe { height: 380px; }
+      h1 { font-size: 2.2em; }
+      h2 { font-size: 1.4em; }
+      .events-text { font-size: 1em }
+    }
+    .discord-button {
+      display: inline-block;
+      margin: 18px auto 10px;
+      padding: 16px 34px;
+      font-size: 1.4rem;
+      font-weight: bold;
+      border-radius: 14px;
+      text-decoration: none;
+      color: #f5c518;
+      background: rgba(0,0,0,.75);
+      border: 2px solid #f5c518;
+      box-shadow: 0 0 18px rgba(245,197,24,.55);
+      transition: all .2s ease-in-out;
+    }
+
+    .discord-button:hover {
+      background: linear-gradient(90deg,#f5c518,#cfa214);
+      color: #000;
+      box-shadow: 0 0 26px rgba(245,197,24,.9);
+      transform: scale(1.06);
+    }
+  </style>
+</head>
+
+<body>
+<img class="emblem" src="/watermark.png" alt="FaithForge Emblem">
+<canvas id="embers"></canvas>
+
+<header>
+  <h1>FaithForge Events</h1>
+  <nav class="navbar">
+    <a href="/index.html">Home</a>
+    <a href="/Aboutus/">About Us</a>
+    <a href="/Staff/">Our Team</a>
+    <a href="/Streamers/">Streamers</a>
+    <a href="/Devotions">Devotions</a>
+    <a href="/Prayers">Prayers</a>
+    <a href="/Servers/">Servers</a>
+    <a href="/Events">Events</a>
+    <a href="/Contact/">Contact Us</a>
+  </nav>
+</header>
+
+<a class="discord-button" href="https://discord.gg/bAQrudk5a9" target="_blank">
+  Join Our Discord
+</a>
+
+<div class="events-container">
+
+  <h2>Upcoming Community Events</h2>
+
+  <div class="calendar-box">
+    <iframe 
+      src="https://calendar.google.com/calendar/embed?src=3ca24c7d932a2bdb0aa72b09710f915c6e3ca12bd13d30235b35f41ded97c522%40group.calendar.google.com&ctz=America%2FNew_York"
+      scrolling="no">
+    </iframe>
+  </div>
+
+  <div class="events-text">
+    <p><strong>FaithForge Gaming events</strong> are designed to build fellowship, strengthen faith, and create meaningful moments through gaming and community.</p>
+
+    <p>Our calendar includes faith-based events and gaming experiences such as:</p>
+
+    <ul>
+      <li>Weekly Bible studies & devotions</li>
+      <li>Minecraft & ARK community nights</li>
+      <li>Special tournaments & custom events</li>
+      <li>Prayer gatherings</li>
+      <li>Special seasonal events</li>
+    </ul>
+
+    <p>All times listed are based on Eastern Time (ET). Join us through Discord to participate in live events and receive reminders.</p>
+  </div>
+
+</div>
+
+<footer>
+<div style="text-align:center; margin-bottom:15px;">
+  <a class="discord-button" href="https://discord.gg/bAQrudk5a9" target="_blank">
+    Join Our Discord
+  </a>
+</div>
+  <div class="footer-links">
+    <a href="/index.html">Home</a>
+    <a href="/Aboutus/">About Us</a>
+    <a href="/Staff/">Our Team</a>
+    <a href="/Streamers/">Streamers</a>
+    <a href="/Devotions">Devotions</a>
+    <a href="/Prayers">Prayers</a>
+    <a href="/Servers/">Servers</a>
+    <a href="/Events">Events</a>
+    <a href="/Contact/">Contact Us</a>
+  </div>
+
+  <div class="footer-copy">
+    © 2025 FaithForge Gaming
+  </div>
+</footer>
+
+<script src="https://faithforgegaming.com/embers.js"></script>
+</body>
+</html>

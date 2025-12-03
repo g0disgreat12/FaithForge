@@ -135,5 +135,38 @@ footer {
   margin-top: 50px;
   font-size: 0.9em;
   color: #888;
-  padding-bottom: 20px;
+  padding: 20px 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+}
+
+footer a {
+  display: inline-block;
+  text-decoration: none;
+  color: #f5c518;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 10px;
+  margin: 4px;
+  background: linear-gradient(145deg, #1a1a1a, #000);
+  border: 1px solid rgba(245,197,24,0.45);
+  box-shadow: 0 0 10px rgba(245,197,24,0.25);
+  transition: all 0.2s ease-in-out;
+  white-space: nowrap;
+}
+
+/* Hover Effect */
+footer a:hover {
+  background: linear-gradient(145deg, #2a2a2a, #000);
+  box-shadow: 0 0 18px rgba(245,197,24,0.6);
+  transform: translateY(-1px);
+}
+
+/* Button Press Effect */
+footer a:active {
+  transform: translateY(1px);
+  box-shadow: 0 0 6px rgba(245,197,24,0.4) inset;
 }

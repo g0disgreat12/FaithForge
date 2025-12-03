@@ -108,6 +108,27 @@
         max-width: 100%;
       }
     }
+      .discord-button {
+        display: inline-block;
+        margin: 18px auto 10px;
+        padding: 16px 34px;
+        font-size: 1.4rem;
+        font-weight: bold;
+        border-radius: 14px;
+        text-decoration: none;
+        color: #f5c518;
+        background: rgba(0,0,0,.75);
+        border: 2px solid #f5c518;
+        box-shadow: 0 0 18px rgba(245,197,24,.55);
+        transition: all .2s ease-in-out;
+      }
+
+      .discord-button:hover {
+        background: linear-gradient(90deg,#f5c518,#cfa214);
+        color: #000;
+        box-shadow: 0 0 26px rgba(245,197,24,.9);
+        transform: scale(1.06);
+      }
   </style>
 </head>
 
@@ -117,15 +138,21 @@
 
   <header>
     <h1>FaithForge Servers</h1>
+    
+  <a class="discord-button" href="https://discord.gg/bAQrudk5a9" target="_blank">
+    Join Our Discord
+  </a>
 
     <nav class="navbar">
-      <a href="../index.html">Home</a>
-      <a href="../Aboutus/">About Us</a>
-      <a href="../Staff/">Our Team</a>
-      <a href="../Streamers/">Streamers</a>
-      <a href="/Devotions">Devotions</a>
-      <a href="../Servers/">Servers</a>
-      <a href="../Contact/">Contact Us</a>
+    <a href="/index.html">Home</a>
+    <a href="/Aboutus">About Us</a>
+    <a href="/Staff">Our Team</a>
+    <a href="/Streamers">Streamers</a>
+    <a href="/Devotions">Devotions</a>
+    <a href="/Prayers">Prayers</a>
+    <a href="/Servers">Servers</a>
+    <a href="/Events">Events</a>
+    <a href="/Contact">Contact Us</a>
     </nav>
   </header>
 
@@ -226,13 +253,20 @@
   </div>
 
 <footer>
+    <div style="text-align:center; margin-bottom:15px;">
+    <a class="discord-button" href="https://discord.gg/bAQrudk5a9" target="_blank">
+      Join Our Discord
+    </a>
+  </div>
   <div class="footer-links">
     <a href="/index.html">Home</a>
     <a href="/Aboutus">About Us</a>
     <a href="/Staff">Our Team</a>
     <a href="/Streamers">Streamers</a>
     <a href="/Devotions">Devotions</a>
+    <a href="/Prayers">Prayers</a>
     <a href="/Servers">Servers</a>
+    <a href="/Events">Events</a>
     <a href="/Contact">Contact Us</a>
   </div>
 

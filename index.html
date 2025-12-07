@@ -759,17 +759,25 @@ function resize(){c.width=innerWidth;c.height=innerHeight}
 window.addEventListener("resize",resize);resize();
 let parts=[];
 function spawn(){parts.push({x:Math.random()*c.width,y:c.height,s:Math.random()*2+1,o:.7})}
-function draw(){
+function draw() {
   x.clearRect(0,0,c.width,c.height);
+  
   parts.forEach((p,i)=>{
-    x.fillStyle=`rgba(245,197,24,${p.o})`;
-    x.beginPath();x.arc(p.x,p.y,p.s,0,6.3);x.fill();
-    p.y-=1;p.o-=.01;
-    if(p.o<=0)parts.splice(i,1)
+    x.fillStyle = `rgba(245,197,24,${p.o})`;
+    x.beginPath();
+    x.arc(p.x, p.y, p.s, 0, Math.PI * 2);
+    x.fill();
+    
+    p.y -= 2.5;     // faster upward movement
+    p.o -= 0.004;   // slower fade
+    
+    if (p.o <= 0) parts.splice(i,1);
   });
-  if(Math.random()<.3)spawn();
+
+  if (Math.random() < 0.4) spawn();  // slightly more sparks
   requestAnimationFrame(draw);
 }
+
 draw();
 </script>
 

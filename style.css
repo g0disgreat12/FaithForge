@@ -15,16 +15,15 @@ body {
 body::before {
   content: '';
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  inset: 0;
   background: radial-gradient(circle at 50% 50%, rgba(245,197,24,0.12) 0%, rgba(0,0,0,0) 70%);
   animation: pulse 6s ease-in-out infinite alternate;
   z-index: -3;
 }
 
 @keyframes pulse {
-  0% { opacity: 0.10; transform: scale(1); }
-  100% { opacity: 0.22; transform: scale(1.15); }
+  from { opacity: 0.10; transform: scale(1); }
+  to { opacity: 0.22; transform: scale(1.15); }
 }
 
 /* Centered glowing emblem watermark */
@@ -35,7 +34,7 @@ body::before {
   width: 600px;
   max-width: 90vw;
   opacity: 0.06;
-  transform: translate(-50%, -50%) scale(1);
+  transform: translate(-50%, -50%);
   filter: drop-shadow(0 0 40px rgba(245,197,24,0.4));
   animation: emblemGlow 10s ease-in-out infinite alternate;
   z-index: -2;
@@ -50,8 +49,7 @@ body::before {
 /* Ember layer */
 #embers {
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  inset: 0;
   pointer-events: none;
   z-index: -1;
 }
@@ -61,7 +59,7 @@ header {
   padding: 20px;
 }
 
-/* Page Titles */
+/* Desktop Page Title */
 h1 {
   font-size: 3em;
   margin: 20px 0 10px;
@@ -71,12 +69,15 @@ h1 {
   text-shadow: 0 0 25px rgba(245,197,24,0.4);
 }
 
+/* Paragraphs */
 p {
   font-size: 1.2em;
   margin: 10px 20px;
 }
 
-/* NAV BASE */
+/* ========================= */
+/* NAVIGATION BASE */
+/* ========================= */
 .navbar {
   background: rgba(0, 0, 0, 0.6);
   padding: 10px 0;
@@ -86,7 +87,7 @@ p {
   align-items: center;
 }
 
-/* DESKTOP LINKS */
+/* Desktop Links */
 .menu-links {
   display: flex;
   gap: 20px;
@@ -105,114 +106,75 @@ p {
   text-shadow: 0 0 12px #f5c518;
 }
 
-/* Content Area Standard */
-.content {
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 20px;
-  color: #f5c518;
+/* ========================= */
+/* MOBILE HEADER BAR */
+/* ========================= */
+.mobile-header {
+  display: none;
 }
 
-/* Shared Grid Layout */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 25px;
-  margin-top: 25px;
-  padding: 0 10px;
-}
-
-/* Card / Panel Styling */
-.card {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
-  padding: 18px;
-  box-shadow: 0 0 25px rgba(245,197,24,0.25);
-  backdrop-filter: blur(3px);
-  color: #f5c518;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 35px rgba(245,197,24,0.45);
-}
-
-/* Footer Container */
-footer {
-  margin-top: 60px;
-  padding: 30px 10px 20px;
-  background: radial-gradient(circle at center, rgba(245,197,24,0.05), rgba(0,0,0,0.85));
-  box-shadow: inset 0 10px 40px rgba(0,0,0,0.8);
-  text-align: center;
-}
-
-/* Footer links row */
-.footer-links {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 14px;
-  margin-bottom: 15px;
-}
-
-/* Footer buttons */
-.footer-links a {
-  display: inline-block;
-  text-decoration: none;
-  color: #f5c518;
-  font-weight: 600;
-  padding: 8px 18px;
-  border-radius: 12px;
-  background: linear-gradient(145deg, #1a1a1a, #000);
-  border: 1px solid rgba(245,197,24,0.45);
-  box-shadow: 0 0 12px rgba(245,197,24,0.3);
-  transition: all 0.2s ease-in-out;
-  white-space: nowrap;
-}
-
-/* Hover polish */
-.footer-links a:hover {
-  background: linear-gradient(145deg, #2a2a2a, #000);
-  box-shadow: 0 0 18px rgba(245,197,24,0.6);
-  transform: translateY(-2px);
-}
-
-/* Pressed state */
-.footer-links a:active {
-  transform: translateY(1px);
-  box-shadow: inset 0 0 8px rgba(245,197,24,0.4);
-}
-
-/* Copyright text */
-.footer-copy {
-  margin-top: 12px;
-  font-size: 0.8rem;
-  color: #777;
-  letter-spacing: 0.4px;
-}
-
-/* MENU BUTTON */
+/* Menu Button */
 .menu-toggle {
   display: none;
   background: rgba(0,0,0,.75);
   border: 2px solid #f5c518;
   color: #f5c518;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: bold;
-  padding: 12px 26px;
-  border-radius: 14px;
+  padding: 10px 16px;
+  border-radius: 12px;
   box-shadow: 0 0 18px rgba(245,197,24,.5);
   cursor: pointer;
 }
 
-/* MOBILE DROPDOWN */
+/* Page title beside menu (mobile only) */
+.page-title {
+  display: none;
+}
+
+/* ========================= */
+/* MOBILE LAYOUT */
+/* ========================= */
 @media (max-width: 700px) {
 
+  /* Hide large glowing title */
+  header h1 {
+    display: none;
+  }
+
+  /* Show mobile header bar */
+  .mobile-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    background: rgba(0,0,0,.8);
+    box-shadow: 0 0 22px rgba(245,197,24,.45);
+  }
+
+  /* Menu button visible */
   .menu-toggle {
     display: block;
   }
 
+  /* Page title text */
+  .page-title {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #f5c518;
+    text-shadow: 0 0 10px rgba(245,197,24,.6);
+    white-space: nowrap;
+  }
+
+  /* Navbar becomes dropdown-only */
+  .navbar {
+    padding: 0;
+    background: none;
+    box-shadow: none;
+  }
+
+  /* Dropdown menu */
   .menu-links {
     flex-direction: column;
     gap: 14px;
@@ -237,9 +199,81 @@ footer {
   .menu-links a {
     padding: 12px;
     border-radius: 12px;
-    background: rgba(0,0,0,.8);
+    background: rgba(0,0,0,.85);
     border: 1px solid rgba(245,197,24,.35);
     box-shadow: 0 0 12px rgba(245,197,24,.25);
     text-align: center;
   }
+}
+
+/* ========================= */
+/* CONTENT */
+/* ========================= */
+.content {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  padding: 0 10px;
+}
+
+/* Cards */
+.card {
+  background: rgba(255,255,255,0.05);
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 0 25px rgba(245,197,24,0.25);
+  backdrop-filter: blur(3px);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 35px rgba(245,197,24,0.45);
+}
+
+/* ========================= */
+/* FOOTER */
+/* ========================= */
+footer {
+  margin-top: 60px;
+  padding: 30px 10px 20px;
+  background: radial-gradient(circle at center, rgba(245,197,24,0.05), rgba(0,0,0,0.85));
+  box-shadow: inset 0 10px 40px rgba(0,0,0,0.8);
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 15px;
+}
+
+.footer-links a {
+  color: #f5c518;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #1a1a1a, #000);
+  border: 1px solid rgba(245,197,24,0.45);
+  box-shadow: 0 0 12px rgba(245,197,24,0.3);
+  transition: all 0.2s;
+}
+
+.footer-links a:hover {
+  box-shadow: 0 0 18px rgba(245,197,24,0.6);
+  transform: translateY(-2px);
+}
+
+.footer-copy {
+  margin-top: 12px;
+  font-size: 0.8rem;
+  color: #777;
 }

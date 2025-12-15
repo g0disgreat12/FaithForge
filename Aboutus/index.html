@@ -123,6 +123,22 @@
       transform: scale(1.06);
     }
   </style>
+  <script>
+const toggle = document.querySelector('.menu-toggle');
+const menu = document.querySelector('.menu-links');
+
+toggle.addEventListener('click', () => {
+  const isOpen = menu.classList.toggle('show');
+  toggle.setAttribute('aria-expanded', isOpen);
+});
+
+menu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    menu.classList.remove('show');
+    toggle.setAttribute('aria-expanded', 'false');
+  });
+});
+</script>
 </head>
 <body>
   <img class="emblem" src="/watermark.png" alt="FaithForge Emblem">
@@ -130,7 +146,12 @@
   
   <header>
     <h1>About FaithForge Gaming</h1>
-    <nav class="navbar">
+<nav class="navbar">
+  <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+    ☰ Menu
+  </button>
+
+  <div class="menu-links">
     <a href="/index.html">Home</a>
     <a href="/Aboutus/">About Us</a>
     <a href="/Staff/">Our Team</a>
@@ -140,7 +161,8 @@
     <a href="/Servers/">Servers</a>
     <a href="/Events">Events</a>
     <a href="/Contact/">Contact Us</a>
-    </nav>
+  </div>
+</nav>
   </header>
   
 <a class="discord-button" href="https://discord.gg/bAQrudk5a9" target="_blank">

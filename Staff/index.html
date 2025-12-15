@@ -137,20 +137,33 @@
   <img class="emblem" src="../watermark.png" alt="FaithForge Emblem">
   <canvas id="embers"></canvas>
 
-  <header>
-    <h1>Meet Our Team</h1>
-    <nav class="navbar">
-    <a href="/index.html">Home</a>
-    <a href="/Aboutus">About Us</a>
-    <a href="/Staff">Our Team</a>
-    <a href="/Streamers">Streamers</a>
-    <a href="/Devotions">Devotions</a>
-    <a href="/Prayers">Prayers</a>
-    <a href="/Servers">Servers</a>
-    <a href="/Events">Events</a>
-    <a href="/Contact">Contact Us</a>
-    </nav>
-  </header>
+<header>
+  <!-- Desktop title -->
+  <h1>Meet Our Team</h1>
+
+  <!-- Mobile header bar -->
+  <div class="mobile-header">
+    <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+      ☰
+    </button>
+    <span class="page-title">Meet Our Team</span>
+  </div>
+
+  <!-- Navigation dropdown -->
+  <nav class="navbar">
+    <div class="menu-links">
+      <a href="/index.html">Home</a>
+      <a href="/Aboutus/">About Us</a>
+      <a href="/Staff/">Our Team</a>
+      <a href="/Streamers/">Streamers</a>
+      <a href="/Devotions">Devotions</a>
+      <a href="/Prayers">Prayers</a>
+      <a href="/Servers/">Servers</a>
+      <a href="/Events">Events</a>
+      <a href="/Contact/">Contact Us</a>
+    </div>
+  </nav>
+</header>
   
   <a class="discord-button" href="https://discord.gg/bAQrudk5a9" target="_blank">
     Join Our Discord
@@ -246,6 +259,29 @@
     © 2025 FaithForge Gaming
   </div>
 </footer>
-  <script src="../embers.js"></script>
+  
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const toggle = document.querySelector('.menu-toggle');
+  const menu = document.querySelector('.menu-links');
+
+  if (!toggle || !menu) return;
+
+  toggle.addEventListener('click', () => {
+    const isOpen = menu.classList.toggle('show');
+    toggle.setAttribute('aria-expanded', isOpen);
+  });
+
+  menu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      menu.classList.remove('show');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+});
+</script>
+
+<script src="https://faithforgegaming.com/embers.js"></script>
+
 </body>
 </html>

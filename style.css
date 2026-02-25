@@ -249,6 +249,22 @@ p {
 }
 
 /* ========================= */
+/* STREAMER NAME LINKS */
+/* ========================= */
+
+.streamer-info h2 a {
+  color: #f5c518;
+  text-decoration: none;
+  transition: 0.25s;
+  cursor: pointer;
+}
+
+.streamer-info h2 a:hover {
+  color: #ffffff;
+  text-shadow: 0 0 12px #f5c518;
+}
+
+/* ========================= */
 /* FOOTER */
 /* ========================= */
 footer {

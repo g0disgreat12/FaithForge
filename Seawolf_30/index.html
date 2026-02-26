@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <title>Seawolf_30 | FaithForge Gaming Christian Streamer</title>
+
+  <meta name="description" content="Watch Seawolf_30, a Christian gaming content creator at FaithForge Gaming. Family-friendly streams, Christ-centered content, and faith-based gaming community.">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="canonical" href="https://faithforgegaming.com/DoctorJSWAYS/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Seawolf_30 | FaithForge Gaming">
+  <meta property="og:description" content="Family-friendly, Christ-centered gaming content from Seawolf_30.">
+  <meta property="og:image" content="https://faithforgegaming.com/Seawolf_30/Seawolf.webp">
+  <meta property="og:url" content="https://faithforgegaming.com/Seawolf_30/">
+  <meta property="og:type" content="profile">
+
+  <link rel="stylesheet" href="https://faithforgegaming.com/style.css">
+  <meta name="theme-color" content="#000000">
+  <link rel="icon" href="https://faithforgegaming.com/Anvil.webp">
+
+  <style>
+    /* Page Layout */
+    .profile-container {
+      max-width: 1150px;
+      margin: 40px auto;
+      padding: 20px;
+      text-align: left;
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-bottom: 22px;
+      text-decoration: none;
+      color: #f5c518;
+      font-weight: 700;
+      transition: 0.2s;
+    }
+    .back-button:hover { text-shadow: 0 0 12px #f5c518; }
+
+    /* Top Profile Card */
+    .profile-card {
+      display: flex;
+      gap: 34px;
+      align-items: center;
+      background: rgba(0,0,0,0.55);
+      padding: 34px;
+      border-radius: 16px;
+      border: 1px solid rgba(245,197,24,0.2);
+      box-shadow: 0 0 30px rgba(245,197,24,0.25);
+    }
+
+    .profile-image {
+      width: 290px;
+      max-width: 90vw;
+      border-radius: 16px;
+      border: 3px solid #f5c518;
+      box-shadow: 0 0 25px rgba(245,197,24,0.5);
+      object-fit: cover;
+    }
+
+    .profile-content h1 {
+      margin: 0 0 10px;
+      font-size: 2.5em;
+      background: linear-gradient(90deg, #f5c518, #cfa214);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow:
+        0 0 18px rgba(245,197,24,0.35),
+        0 0 30px rgba(245,197,24,0.18);
+    }
+
+    .profile-bio {
+      margin-top: 12px;
+      line-height: 1.6em;
+      font-size: 1.1em;
+    }
+
+    /* Buttons */
+    .button-row {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .gold-btn {
+      display: inline-block;
+      padding: 12px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 800;
+      background: #f5c518;
+      color: #000;
+      box-shadow: 0 0 18px rgba(245,197,24,0.6);
+      transition: 0.2s;
+    }
+    .gold-btn:hover {
+      background: #ffe27a;
+      box-shadow: 0 0 28px rgba(245,197,24,0.9);
+      transform: translateY(-2px);
+    }
+
+    .outline-btn {
+      display: inline-block;
+      padding: 12px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 800;
+      background: rgba(0,0,0,.75);
+      color: #f5c518;
+      border: 2px solid #f5c518;
+      box-shadow: 0 0 18px rgba(245,197,24,.45);
+      transition: 0.2s;
+    }
+    .outline-btn:hover {
+      background: linear-gradient(90deg,#f5c518,#cfa214);
+      color: #000;
+      box-shadow: 0 0 26px rgba(245,197,24,.9);
+      transform: translateY(-2px);
+    }
+
+    /* Section Cards */
+    .section {
+      margin-top: 28px;
+      background: rgba(0,0,0,0.5);
+      border-radius: 16px;
+      padding: 26px;
+      border: 1px solid rgba(245,197,24,0.16);
+      box-shadow: 0 0 24px rgba(245,197,24,0.18);
+    }
+
+    .section h2 {
+      margin: 0 0 12px;
+      font-size: 1.7em;
+      color: #f5c518;
+      text-shadow: 0 0 10px rgba(245,197,24,0.25);
+    }
+
+    .section p {
+      margin: 8px 0 0;
+      line-height: 1.6em;
+      font-size: 1.05em;
+    }
+
+    /* Video + Calendar Embeds */
+    .embed-wrap {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 */
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(245,197,24,0.2);
+      box-shadow: 0 0 22px rgba(245,197,24,0.18);
+      background: rgba(0,0,0,0.6);
+    }
+
+    .embed-wrap iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* Calendar: give it a bit more height */
+    .calendar-wrap {
+      position: relative;
+      width: 100%;
+      height: 650px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(245,197,24,0.2);
+      box-shadow: 0 0 22px rgba(245,197,24,0.18);
+      background: rgba(0,0,0,0.6);
+    }
+
+    .calendar-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* Mobile */
+    @media (max-width: 900px) {
+      .profile-container { text-align: center; }
+      .profile-card { flex-direction: column; text-align: center; }
+      .button-row { justify-content: center; }
+      .section { text-align: left; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <img class="emblem" src="../watermark.png" alt="FaithForge Emblem">
+  <canvas id="embers"></canvas>
+
+  <header>
+    <h1>FaithForge Streamer Seawolf_30</h1>
+
+    <div class="mobile-header">
+      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+      <span class="page-title">Streamer Profile</span>
+    </div>
+
+    <nav class="navbar">
+      <div class="menu-links">
+        <a href="/index.html">Home</a>
+        <a href="/Aboutus/">About Us</a>
+        <a href="/Staff/">Our Team</a>
+        <a href="/Streamers/">Streamers</a>
+        <a href="/Devotions">Devotions</a>
+        <a href="/Prayers">Prayers</a>
+        <a href="/Servers/">Servers</a>
+        <a href="/Events">Events</a>
+        <a href="/Contact/">Contact Us</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="profile-container">
+
+    <a href="/Streamers/" class="back-button">← Back to Streamers</a>
+
+    <!-- TOP PROFILE CARD -->
+    <section class="profile-card">
+      <img src="/Streamers/Seawolf.webp" alt="Seawolf_30" class="profile-image">
+
+      <div class="profile-content">
+        <h1>Seawolf_30</h1>
+
+        <p class="profile-bio">
+          I didn’t really grow up playing video games. I discovered a love of playing games with other people
+          a bit later in life. Now, I am a wife, mom and streamer who loves Jesus and loves collaborating with
+          other people or making solo family friendly content. 
+        </p>
+
+        <!-- Social + Discord -->
+        <div class="button-row">
+          <a class="gold-btn" href="https://www.youtube.com/@TRCCozyCorner" target="_blank" rel="noopener">YouTube</a>
+          <a class="gold-btn" href="https://www.twitch.tv/seawolf_30" target="_blank" rel="noopener">Twitch</a>
+
+          <!-- Personal Discord Invite -->
+          <a class="outline-btn" href="https://discord.gg/97FGSmTqBm" target="_blank" rel="noopener">
+            Join Our Discord
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED VIDEO -->
+    <section class="section">
+      <h2>Featured Video</h2>
+      <div class="embed-wrap">
+        <!-- Using embed format for the example video you provided -->
+        <iframe
+          src="https://www.youtube.com/embed/watch?v=zL8nhJR34kA"
+          title="Seawolf_30 Featured Video"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <p style="margin-top:12px;">
+        Check out my other videos above!
+      </p>
+    </section>
+
+    <!-- STREAMING CALENDAR -->
+    <section class="section">
+      <h2>Streaming Schedule</h2>
+      <p>
+        This calendar reflects the FaithForge Gaming streaming and event schedule.
+        Times may shift — join Discord for live updates.
+      </p>
+
+      <div class="calendar-wrap" style="margin-top:14px; height:430px;">
+        <iframe
+          title="FaithForge Gaming Events Calendar"
+          src="https://calendar.google.com/calendar/embed?src=3ca24c7d932a2bdb0aa72b09710f915c6e3ca12bd13d30235b35f41ded97c522%40group.calendar.google.com&ctz=America%2FNew_York"
+          width="100%"
+          height="430"
+          frameborder="0"
+          scrolling="no">
+        </iframe>
+      </div>
+
+      <p style="margin-top:12px; opacity:.9;">
+        This Calander is set to Eastern Standard Time (EST) UTC-5
+      </p>
+    </section>
+
+    <!-- TESTIMONY -->
+    <section class="section">
+      <h2>Testimony</h2>
+      <p>
+        I grew up in a broken home like most. I spent many of my younger years feeling unlovable and alone.
+        But then God… When I was fifteen years old, God met me right where I was, speaking to me in an
+        undeniable way. In that moment, my whole life changed. I understood that, whether I deserved it or not,
+        there was a God who loved me and chose me as His own. I have done my best to serve Him and follow
+        His will for my life ever since. 
+      </p>
+    </section>
+
+    <!-- FAVORITE BIBLE VERSE -->
+    <section class="section">
+      <h2>Favorite Bible Verse</h2>
+      <p style="font-style: italic; font-size: 1.15em;">
+        “The Lord is my alight and my salvation; Whom shall I fear?
+        The Lord is the strength of my life; Of whom shall I be afraid?”
+      </p>
+      <p style="margin-top:6px; font-weight: 600;">
+        — Psalm 27:1
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-links">
+      <a href="/index.html">Home</a>
+      <a href="/Aboutus">About Us</a>
+      <a href="/Staff">Our Team</a>
+      <a href="/Streamers">Streamers</a>
+      <a href="/Devotions">Devotions</a>
+      <a href="/Prayers">Prayers</a>
+      <a href="/Servers">Servers</a>
+      <a href="/Events">Events</a>
+      <a href="/Contact">Contact Us</a>
+    </div>
+
+    <div class="footer-copy">
+      © 2026 FaithForge Gaming
+    </div>
+  </footer>
+
+  <!-- Mobile menu toggle (matches your site behavior) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggle = document.querySelector('.menu-toggle');
+      const menu = document.querySelector('.menu-links');
+      if (!toggle || !menu) return;
+
+      toggle.addEventListener('click', () => {
+        const isOpen = menu.classList.toggle('show');
+        toggle.setAttribute('aria-expanded', isOpen);
+      });
+
+      menu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          menu.classList.remove('show');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    });
+  </script>
+
+  <script src="https://faithforgegaming.com/embers.js"></script>
+
+</body>
+
+</html>

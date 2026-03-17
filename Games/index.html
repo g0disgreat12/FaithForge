@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FaithForge Gaming | Games</title>
+  <meta name="description" content="Browse all games featured in the FaithForge Gaming community and discover which streamers play each one." />
+  <link rel="canonical" href="https://faithforgegaming.com/Games" />
+
+  <meta property="og:title" content="FaithForge Gaming | Games" />
+  <meta property="og:description" content="Explore FaithForge Gaming titles and find the streamers who play them." />
+  <meta property="og:image" content="https://faithforgegaming.com/Homepage.webp" />
+  <meta property="og:url" content="https://faithforgegaming.com/Games" />
+  <meta property="og:type" content="website" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="FaithForge Gaming | Games" />
+  <meta name="twitter:description" content="Explore FaithForge Gaming titles and find the streamers who play them." />
+  <meta name="twitter:image" content="https://faithforgegaming.com/Homepage.webp" />
+
+  <meta name="theme-color" content="#000000" />
+  <link rel="icon" href="https://faithforgegaming.com/Anvil.webp" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: radial-gradient(circle at center, #0d0d0d 35%, #000 100%);
+      color: #f5c518;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(245, 197, 24, 0.12) 0%, rgba(0, 0, 0, 0) 72%);
+      animation: pulse 7s ease-in-out infinite alternate;
+      pointer-events: none;
+      z-index: -3;
+    }
+
+    @keyframes pulse {
+      from {
+        opacity: 0.10;
+        transform: scale(1);
+      }
+      to {
+        opacity: 0.22;
+        transform: scale(1.08);
+      }
+    }
+
+    canvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -2;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 16px 36px;
+      background: rgba(0, 0, 0, 0.82);
+      border-bottom: 1px solid rgba(245, 197, 24, 0.28);
+      box-shadow: 0 0 18px rgba(245, 197, 24, 0.16);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(6px);
+    }
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: fit-content;
+    }
+
+    .logo-wrap img {
+      height: 44px;
+      width: auto;
+    }
+
+    .logo-text {
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: #f5c518;
+      text-shadow: 0 0 12px rgba(245, 197, 24, 0.35);
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      align-items: center;
+    }
+
+    nav a {
+      color: #f5c518;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color .2s ease, text-shadow .2s ease;
+    }
+
+    nav a:hover {
+      color: #ffffff;
+      text-shadow: 0 0 12px rgba(245, 197, 24, 0.75);
+    }
+
+    .join-btn {
+      background: linear-gradient(45deg, #f5c518, #cfa214);
+      color: #000;
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-weight: 800;
+      box-shadow: 0 0 15px rgba(245, 197, 24, 0.45);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 62px 20px 30px;
+      max-width: 1050px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.35rem, 4vw, 4rem);
+      margin-bottom: 12px;
+      background: linear-gradient(90deg, #f5c518, #cfa214);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 18px rgba(245, 197, 24, 0.35);
+    }
+
+    .hero p {
+      max-width: 840px;
+      margin: 0 auto;
+      font-size: 1.06rem;
+      line-height: 1.7;
+      color: #dddddd;
+    }
+
+    .games-section {
+      max-width: 1480px;
+      margin: 0 auto 60px;
+      padding: 0 24px 24px;
+    }
+
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+      gap: 24px;
+    }
+
+    .game-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.025));
+      border: 1px solid rgba(245, 197, 24, 0.22);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 0 24px rgba(245, 197, 24, 0.14);
+      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+      backdrop-filter: blur(4px);
+    }
+
+    .game-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 30px rgba(245, 197, 24, 0.28);
+      border-color: rgba(245, 197, 24, 0.45);
+    }
+
+    .game-image-wrap {
+      background: #000;
+      aspect-ratio: 1 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      border-bottom: 1px solid rgba(245, 197, 24, 0.18);
+    }
+
+    .game-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 0 14px rgba(245, 197, 24, 0.12));
+    }
+
+    .game-content {
+      padding: 18px 18px 20px;
+    }
+
+    .game-title {
+      font-size: 1.18rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+      color: #f5c518;
+      text-shadow: 0 0 8px rgba(245, 197, 24, 0.2);
+    }
+
+    .streamers-label {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: rgba(245, 197, 24, 0.72);
+      margin-bottom: 10px;
+    }
+
+    .streamer-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .streamer-list a,
+    .streamer-list span {
+      text-decoration: none;
+      color: #f5c518;
+      border: 1px solid rgba(245, 197, 24, 0.28);
+      background: rgba(0, 0, 0, 0.55);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: all .2s ease;
+      box-shadow: 0 0 10px rgba(245, 197, 24, 0.08);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .streamer-list a:hover {
+      color: #fff;
+      border-color: rgba(245, 197, 24, 0.62);
+      box-shadow: 0 0 16px rgba(245, 197, 24, 0.25);
+      transform: translateY(-1px);
+    }
+
+    .coming-soon {
+      opacity: 0.78;
+      font-weight: 600;
+    }
+
+    header {
+      padding: 20px;
+    }
+
+    header h1 {
+      font-size: 3em;
+      margin: 20px 0 10px;
+      text-align: center;
+      background: linear-gradient(90deg, #f5c518, #cfa214);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow:
+        0 0 18px rgba(245,197,24,0.45),
+        0 0 30px rgba(245,197,24,0.25);
+    }
+
+    .navbar {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 10px 0;
+      box-shadow: 0 0 20px rgba(245,197,24,0.3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-radius: 14px;
+    }
+
+    .menu-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 0 12px;
+    }
+
+    .menu-links a {
+      color: #f5c518;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.02em;
+      transition: color 0.3s, text-shadow 0.3s;
+    }
+
+    .menu-links a:hover {
+      color: #fff;
+      text-shadow: 0 0 12px #f5c518;
+    }
+
+    .mobile-header {
+      display: none;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: rgba(0,0,0,.8);
+      border: 2px solid #f5c518;
+      color: #f5c518;
+      font-size: 1.35rem;
+      font-weight: bold;
+      padding: 10px 16px;
+      border-radius: 12px;
+      box-shadow: 0 0 18px rgba(245,197,24,.55);
+      cursor: pointer;
+    }
+
+    .page-title {
+      display: none;
+    }
+
+    footer {
+      margin-top: 60px;
+      padding: 30px 10px 20px;
+      text-align: center;
+      background: radial-gradient(circle at center, rgba(245,197,24,0.05), rgba(0,0,0,0.85));
+      box-shadow: inset 0 10px 40px rgba(0,0,0,0.8);
+      border-top: none;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 15px;
+    }
+
+    footer a {
+      color: #f5c518;
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: 12px;
+      background: linear-gradient(145deg, #1a1a1a, #000);
+      border: 1px solid rgba(245,197,24,0.45);
+      box-shadow: 0 0 12px rgba(245,197,24,0.3);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    footer a:hover {
+      box-shadow: 0 0 18px rgba(245,197,24,0.6);
+      transform: translateY(-2px);
+      color: #fff;
+      text-shadow: none;
+    }
+
+    .footer-copy {
+      margin-top: 12px;
+      font-size: 0.8rem;
+      color: #777;
+    }
+
+    @media (max-width: 900px) {
+      .games-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 700px) {
+      header h1 {
+        display: none;
+      }
+
+      .mobile-header {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 14px 18px;
+        min-height: 56px;
+        background: rgba(0,0,0,.85);
+        box-shadow:
+          0 0 22px rgba(245,197,24,.45),
+          inset 0 -1px 0 rgba(245,197,24,.25);
+        border-radius: 14px;
+        margin-bottom: 12px;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .page-title {
+        display: block;
+        font-size: 1.2rem;
+        font-weight: 700;
+        letter-spacing: 0.4px;
+        color: #f5c518;
+        text-shadow:
+          0 0 10px rgba(245,197,24,.6),
+          0 0 18px rgba(245,197,24,.35);
+        white-space: nowrap;
+      }
+
+      .navbar {
+        padding: 0;
+        background: none;
+        box-shadow: none;
+      }
+
+      .menu-links {
+        flex-direction: column;
+        gap: 14px;
+        width: 100%;
+        max-width: 280px;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transform: translateY(-8px);
+        transition:
+          max-height 0.35s ease,
+          opacity 0.25s ease,
+          transform 0.25s ease;
+        padding: 0;
+      }
+
+      .menu-links.show {
+        max-height: 700px;
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .menu-links a {
+        padding: 12px;
+        border-radius: 12px;
+        background: rgba(0,0,0,.85);
+        border: 1px solid rgba(245,197,24,.35);
+        box-shadow: 0 0 12px rgba(245,197,24,.25);
+        text-align: center;
+      }
+
+      .games-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+
+      .hero {
+        padding-top: 28px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .games-section {
+        padding: 0 14px 18px;
+      }
+
+      .game-content {
+        padding: 16px;
+      }
+    }
+
+      .hero {
+        padding-top: 46px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .games-section {
+        padding: 0 14px 18px;
+      }
+
+      .game-content {
+        padding: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="particles"></canvas>
+
+  <header>
+  <h1>FaithForge Games</h1>
+
+  <div class="mobile-header">
+    <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+    <span class="page-title">Games</span>
+  </div>
+
+  <nav class="navbar">
+    <div class="menu-links">
+      <a href="/index.html">Home</a>
+      <a href="/Aboutus/">About Us</a>
+      <a href="/Staff/">Our Team</a>
+      <a href="/Streamers/">Streamers</a>
+      <a href="https://shop.faithforgegaming.com/">Merch Store</a>
+      <a href="/Devotions">Devotions</a>
+      <a href="/Prayers">Prayers</a>
+      <a href="/Servers/">Servers</a>
+      <a href="/Events">Events</a>
+      <a href="/Contact/">Contact Us</a>
+    </div>
+  </nav>
+</header>
+
+  <main>
+    <section class="hero">
+      <h1>FaithForge Games</h1>
+      <p>
+        Explore the games that bring the FaithForge community together. Each game card shows which FaithForge streamers currently play or stream it. The list is arranged alphabetically so it stays easy to grow as more titles are added.
+      </p>
+    </section>
+
+    <section class="games-section">
+      <div class="games-grid">
+
+        <article class="game-card">
+          <div class="game-image-wrap">
+            <img src="7DAYSTODIE.webp" alt="7 Days to Die" loading="lazy" width="256" height="256" />
+          </div>
+          <div class="game-content">
+            <h2 class="game-title">7 Days to Die</h2>
+            <div class="streamers-label">Streamers who play this game</div>
+            <div class="streamer-list"><span class="coming-soon">Streamer links coming soon</span></div>
+          </div>
+        </article>
+
+        <article class="game-card">
+          <div class="game-image-wrap">
+            <img src="againstthestorm.webp" alt="Against the Storm" loading="lazy" width="256" height="256" />
+          </div>
+          <div class="game-content">
+            <h2 class="game-title">Against the Storm</h2>
+            <div class="streamers-label">Streamers who play this game</div>
+            <div class="streamer-list">
+              <a href="https://faithforgegaming.com/Seawolf_30/">Seawolf_30</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="game-card">
+          <div class="game-image-wrap">
+            <img src="AmongUS.webp" alt="Among Us" loading="lazy" width="256" height="256" />
+          </div>
+          <div class="game-content">
+            <h2 class="game-title">Among Us</h2>
+            <div class="streamers-label">Streamers who play this game</div>
+            <div class="streamer-list">
+              <a href="https://faithforgegaming.com/DoctorJSWAYS/">DoctorJSWAYS</a>
+              <a href="https://faithforgegaming.com/mooncalfmage/">mooncalfmage</a>
+              <a href="https://faithforgegaming.com/Seawolf_30/">Seawolf_30</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="game-card">
+          <div class="game-image-wrap">
+            <img src="animalcrossing.webp" alt="Animal Crossing" loading="lazy" width="256" height="256" />
+          </div>
+          <div class="game-content">
+            <h2 class="game-title">Animal Crossing</h2>
+            <div class="streamers-label">Streamers who play this game</div>
+            <div class="streamer-list">
+              <a href="https://faithforgegaming.com/mooncalfmage/">mooncalfmage</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="game-card">
+          <div class="game-image-wrap">
+            <img src="apex.webp" alt="Apex Legends" loading="lazy" width="256" height="256" />
+          </div>
+          <div class="game-content">
+            <h2 class="game-title">Apex Legends</h2>
+            <div class="streamers-label">Streamers who play this game</div>
+            <div class="streamer-list"><span class="coming-soon">Streamer links coming soon</span></div>
+          </div>
+        </article>
+
+        <article class="game-card">
+          <div class="game-image-wrap">
+            <img src="ARCRAIDERS.webp" alt="ARC Raiders" loading="lazy" width="256" height="256" />
+          </div>
+          <div class="game-content">
+            <h2 class="game-title">ARC Raiders</h2>
+            <div class="streamers-label">Streamers who play this game</div>
+            <div class="streamer-list">
+              <a href="https://faithforgegaming.com/DoctorJSWAYS/">DoctorJSWAYS</a>
+              <a href="https://faithforgegaming.com/blessttim/">blessttim</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="game-card">
+          <div class="game-image-wrap">
+            <img src="ARK.webp" alt="ARK Survival Ascended" loading="lazy" width="256" height="256" />
+          </div>
+          <div class="game-content">
+            <h2 class="game-title">ARK Survival Ascended</h2>
+            <div class="streamers-label">Streamers who play this game</div>
+            <div class="streamer-list"><span class="coming-soon">Streamer links coming soon</span></div>
+          </div>
+        </article>
+
+        <article class="game-card">
+          <div class="game-image-wrap">
+            <img src="BATTLEFIELD.webp" alt="Battlefield" loading="lazy" width="256" height="256" />
+          </div>
+          <div class="game-content">
+            <h2 class="game-title">Battlefield</h2>
+            <div class="streamers-label">Streamers who play this game</div>
+            <div class="streamer-list">
+              <a href="https://faithforgegaming.com/blessttim/">blessttim</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="game-card">
+          <div class="game-image-wrap">
+            <img src="BOARDMOBILE.webp" alt="Board and Mobile Games" loading="lazy" width="256" height="256" />
+          </div>
+          <div class="game-content">
+            <h2 class="game-title">Board / Mobile Games</h2>
+            <div class="streamers-label">Streamers who play this game</div>
+            <div class="streamer-list"><span class="coming-soon">Streamer links coming soon</span></div>
+          </div>
+        </article>
+
+        <article class="game-card">
+          <div class="game-image-wrap">
+            <img src="CALLOFDUTY.webp" alt="Call of Duty" loading="lazy" width="256" height="256" />
+          </div>
+          <div class="game-content">
+            <h2 class="game-title">Call of Duty</h2>
+            <div class="streamers-label">Streamers who play this game</div>
+            <div class="streamer-list"><span class="coming-soon">Streamer links coming soon</span></div>
+          </div>
+        </article>
+
+        <article class="game-card">
+          <div class="game-image-wrap">
+            <img src="deadbydaylight.webp" alt="Dead by Daylight" loading="lazy" width="256" height="256" />
+          </div>
+          <div class="game-content">
+            <h2 class="game-title">Dead by Daylight</h2>
+            <div class="streamers-label">Streamers who play this game</div>
+            <div class="streamer-list">
+              <a href="https://faithforgegaming.com/mooncalfmage/">mooncalfmage</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="game-card">
+          <div class="game-image-wrap">
+            <img src="enshrouded.webp" alt="Enshrouded" loading="lazy" width="256" height="256" />
+          </div>
+          <div class="game-content">
+            <h2 class="game-title">Enshrouded</h2>
+            <div class="streamers-label">Streamers who play this game</div>
+            <div class="streamer-list">
+              <a href="https://faithforgegaming.com/Seawolf_30/">Seawolf_30</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="game-card">
+          <div class="game-image-wrap">
+            <img src="FallGuys.webp" alt="Fall Guys" loading="lazy" width="256" height="256" />
+          </div>
+          <div class="game-content">
+            <h2 class="game-title">Fall Guys</h2>
+            <div class="streamers-label">Streamers who play this game</div>
+            <div class="streamer-list"><span class="coming-soon">Streamer links coming soon</span></div>
+          </div>
+        </article>
+
+        <article class="game-card">
+          <div class="game-image-wrap">
+            <img src="FORTNITE.webp" alt="Fortnite" loading="lazy" width="256" height="256" />
+          </div>
+          <div class="game-content">
+            <h2 class="game-title">Fortnite</h2>
+            <div class="streamers-label">Streamers who play this game</div>
+            <div class="streamer-list">
+              <a href="https://faithforgegaming.com/DoctorJSWAYS/">DoctorJSWAYS</a>
+              <a href="https://faithforgegaming.com/mooncalfmage/">mooncalfmage</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="game-card">
+          <div class="game-image-wrap">
+            <img src="HALO.webp" alt="Halo" loading="lazy" width="256" height="256" />
+          </div>
+          <div class="game-content">
+            <h2 class="game-title">Halo</h2>
+            <div class="streamers-label">Streamers who play this game</div>
+            <div class="streamer-list"><span class="coming-soon">Streamer links coming soon</span></div>
+          </div>
+        </article>
+
+        <article class="game-card">
+          <div class="game-image-wrap">
+            <img src="HELLDIVERS.webp" alt="Helldivers" loading="lazy" width="256" height="256" />
+          </div>
+          <div class="game-content">
+            <h2 class="game-title">Helldivers</h2>
+            <div class="streamers-label">Streamers who play this game</div>
+            <div class="streamer-list"><span class="coming-soon">Streamer links coming soon</span></div>
+          </div>
+        </article>
+
+        <article class="game-card">
+          <div class="game-image-wrap">
+            <img src="immortalsfenyxrising.webp" alt="Immortals Fenyx Rising" loading="lazy" width="256" height="256" />
+          </div>
+          <div class="game-content">
+            <h2 class="game-title">Immortals Fenyx Rising</h2>
+            <div class="streamers-label">Streamers who play this game</div>
+            <div class="streamer-list">
+              <a href="https://faithforgegaming.com/mooncalfmage/">mooncalfmage</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="game-card">
+          <div class="game-image-wrap">
+            <img src="MARVELRIVALS.webp" alt="Marvel Rivals" loading="lazy" width="256" height="256" />
+          </div>
+          <div class="game-content">
+            <h2 class="game-title">Marvel Rivals</h2>
+            <div class="streamers-label">Streamers who play this game</div>
+            <div class="streamer-list"><span class="coming-soon">Streamer links coming soon</span></div>
+          </div>
+        </article>
+
+        <article class="game-card">
+          <div class="game-image-wrap">
+            <img src="MINECRAFT.webp" alt="Minecraft" loading="lazy" width="256" height="256" />
+          </div>
+          <div class="game-content">
+            <h2 class="game-title">Minecraft</h2>
+            <div class="streamers-label">Streamers who play this game</div>
+            <div class="streamer-list">
+              <a href="https://faithforgegaming.com/DoctorJSWAYS/">DoctorJSWAYS</a>
+              <a href="https://faithforgegaming.com/mooncalfmage/">mooncalfmage</a>
+              <a href="https://faithforgegaming.com/Seawolf_30/">Seawolf_30</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="game-card">
+          <div class="game-image-wrap">
+            <img src="OVERWATCH.webp" alt="Overwatch" loading="lazy" width="256" height="256" />
+          </div>
+          <div class="game-content">
+            <h2 class="game-title">Overwatch</h2>
+            <div class="streamers-label">Streamers who play this game</div>
+            <div class="streamer-list">
+              <a href="https://faithforgegaming.com/blessttim/">blessttim</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="game-card">
+          <div class="game-image-wrap">
+            <img src="projectcastaway.webp" alt="Project Castaway" loading="lazy" width="256" height="256" />
+          </div>
+          <div class="game-content">
+            <h2 class="game-title">Project Castaway</h2>
+            <div class="streamers-label">Streamers who play this game</div>
+            <div class="streamer-list">
+              <a href="https://faithforgegaming.com/Seawolf_30/">Seawolf_30</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="game-card">
+          <div class="game-image-wrap">
+            <img src="READYORNOT.webp" alt="Ready or Not" loading="lazy" width="256" height="256" />
+          </div>
+          <div class="game-content">
+            <h2 class="game-title">Ready or Not</h2>
+            <div class="streamers-label">Streamers who play this game</div>
+            <div class="streamer-list"><span class="coming-soon">Streamer links coming soon</span></div>
+          </div>
+        </article>
+
+        <article class="game-card">
+          <div class="game-image-wrap">
+            <img src="REPO.webp" alt="R.E.P.O" loading="lazy" width="256" height="256" />
+          </div>
+          <div class="game-content">
+            <h2 class="game-title">R.E.P.O</h2>
+            <div class="streamers-label">Streamers who play this game</div>
+            <div class="streamer-list">
+              <a href="https://faithforgegaming.com/DoctorJSWAYS/">DoctorJSWAYS</a>
+              <a href="https://faithforgegaming.com/mooncalfmage/">mooncalfmage</a>
+              <a href="https://faithforgegaming.com/Seawolf_30/">Seawolf_30</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="game-card">
+          <div class="game-image-wrap">
+            <img src="SEAOFTHIEVES.webp" alt="Sea of Thieves" loading="lazy" width="256" height="256" />
+          </div>
+          <div class="game-content">
+            <h2 class="game-title">Sea of Thieves</h2>
+            <div class="streamers-label">Streamers who play this game</div>
+            <div class="streamer-list"><span class="coming-soon">Streamer links coming soon</span></div>
+          </div>
+        </article>
+
+        <article class="game-card">
+          <div class="game-image-wrap">
+            <img src="vintagestory.webp" alt="Vintage Story" loading="lazy" width="256" height="256" />
+          </div>
+          <div class="game-content">
+            <h2 class="game-title">Vintage Story</h2>
+            <div class="streamers-label">Streamers who play this game</div>
+            <div class="streamer-list">
+              <a href="https://faithforgegaming.com/Seawolf_30/">Seawolf_30</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="game-card">
+          <div class="game-image-wrap">
+            <img src="wow.webp" alt="World of Warcraft" loading="lazy" width="256" height="256" />
+          </div>
+          <div class="game-content">
+            <h2 class="game-title">World of Warcraft</h2>
+            <div class="streamers-label">Streamers who play this game</div>
+            <div class="streamer-list">
+              <a href="https://faithforgegaming.com/blessttim/">blessttim</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+  <div class="footer-links">
+    <a href="/index.html">Home</a>
+    <a href="/Aboutus">About Us</a>
+    <a href="/Staff">Our Team</a>
+    <a href="/Streamers">Streamers</a>
+    <a href="https://shop.faithforgegaming.com/">Merch Store</a>
+    <a href="/Devotions">Devotions</a>
+    <a href="/Prayers">Prayers</a>
+    <a href="/Servers">Servers</a>
+    <a href="/Events">Events</a>
+    <a href="/Contact">Contact Us</a>
+  </div>
+
+  <div class="footer-copy">
+    © 2026 FaithForge Gaming
+  </div>
+</footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggle = document.querySelector('.menu-toggle');
+      const menu = document.querySelector('.menu-links');
+      if (toggle && menu) {
+        toggle.addEventListener('click', () => {
+          const isOpen = menu.classList.toggle('show');
+          toggle.setAttribute('aria-expanded', isOpen);
+        });
+
+        menu.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            menu.classList.remove('show');
+            toggle.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+    });
+  </script>
+
+  <script>
+    const c = document.getElementById('particles');
+    const x = c.getContext('2d');
+
+    function resize() {
+      c.width = window.innerWidth;
+      c.height = window.innerHeight;
+    }
+
+    window.addEventListener('resize', resize);
+    resize();
+
+    const particles = [];
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function spawn() {
+      particles.push({
+        x: Math.random() * c.width,
+        y: c.height + 5,
+        s: Math.random() * 2 + 1,
+        o: Math.random() * 0.35 + 0.25,
+        v: Math.random() * 1.5 + 0.8
+      });
+    }
+
+    function draw() {
+      x.clearRect(0, 0, c.width, c.height);
+
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        x.fillStyle = `rgba(245, 197, 24, ${p.o})`;
+        x.beginPath();
+        x.arc(p.x, p.y, p.s, 0, Math.PI * 2);
+        x.fill();
+
+        p.y -= p.v;
+        p.o -= 0.0025;
+
+        if (p.o <= 0) {
+          particles.splice(i, 1);
+        }
+      }
+
+      if (Math.random() < (window.innerWidth < 768 ? 0.13 : 0.28)) {
+        spawn();
+      }
+
+      requestAnimationFrame(draw);
+    }
+
+    if (!prefersReducedMotion) {
+      draw();
+    }
+  </script>
+</body>
+</html>

@@ -569,6 +569,38 @@ footer a{
       text-align: center;
     }
   }
+  .homepage-featured-card {
+  margin-top: 28px;
+  background: rgba(0, 0, 0, 0.72);
+  border: 1px solid rgba(245,197,24,0.22);
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow:
+    0 0 22px rgba(245,197,24,0.14),
+    inset 0 0 0 1px rgba(245,197,24,0.06);
+}
+
+.homepage-featured-card .featured-streamer-grid {
+  margin: 0;
+}
+
+.homepage-featured-card .featured-streamer-copy h2 {
+  margin-bottom: 10px;
+}
+
+.homepage-featured-card .link-buttons {
+  margin-top: 16px;
+}
+
+.homepage-featured-card .featured-streamer-player {
+  min-height: 340px;
+}
+
+@media (max-width: 900px) {
+  .homepage-featured-card {
+    padding: 18px;
+  }
+}
 </style>
 </head>
 
@@ -829,11 +861,12 @@ Proverbs 27:17
 <div class="testimony">“I’ve grown closer to Christ here while gaming.”</div>
 <div class="testimony">“Great people, great servers, real faith.”</div>
   
+  <section class="featured-streamer-card homepage-featured-card">
   <div class="featured-streamer-grid">
     <div class="featured-streamer-copy">
       <h2>Featured Streamer Live Now</h2>
       <div class="featured-rank-note">
-        Featureing FaithForge content creators!
+        Featuring FaithForge content creators!
       </div>
 
       <span id="streamersFeaturedBadge" class="featured-status-badge offline">Checking status...</span>
@@ -861,6 +894,7 @@ Proverbs 27:17
       The featured Twitch stream will appear here when someone is live.
     </div>
   </div>
+</section>
 </section>
 
 <section class="split">

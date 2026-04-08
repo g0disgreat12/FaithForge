@@ -479,6 +479,96 @@ footer a{
   .split{grid-template-columns:1fr}
   nav{flex-wrap:wrap;justify-content:center}
 }
+
+  .featured-streamer-card {
+    margin: 28px 0 36px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 16px;
+    padding: 26px;
+    border: 1px solid rgba(245,197,24,0.16);
+    box-shadow: 0 0 24px rgba(245,197,24,0.18);
+  }
+
+  .featured-streamer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+    align-items: stretch;
+  }
+
+  .featured-streamer-copy {
+    text-align: left;
+  }
+
+  .featured-streamer-copy h2 {
+    margin: 0 0 12px;
+    font-size: 1.8em;
+    color: #f5c518;
+  }
+
+  .featured-rank-note {
+    color: #d8c786;
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+  }
+
+  .featured-status-badge {
+    display: inline-block;
+    margin: 0 0 14px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+  }
+
+  .featured-status-badge.online {
+    color: #8dffb9;
+    background: rgba(46, 204, 113, 0.14);
+    border: 1px solid rgba(46, 204, 113, 0.32);
+    box-shadow: 0 0 16px rgba(46, 204, 113, 0.18);
+  }
+
+  .featured-status-badge.offline {
+    color: #ddd;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+
+  .featured-streamer-meta,
+  .featured-streamer-title {
+    color: #f0df9b;
+    line-height: 1.55em;
+    margin: 10px 0;
+    text-align: left;
+  }
+
+  .featured-streamer-player {
+    min-height: 320px;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(245,197,24,0.2);
+    box-shadow: 0 0 22px rgba(245,197,24,0.18);
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 14px;
+    color: #f0df9b;
+  }
+
+  @media (max-width: 900px) {
+    .featured-streamer-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .featured-streamer-copy,
+    .featured-streamer-meta,
+    .featured-streamer-title {
+      text-align: center;
+    }
+  }
 </style>
 </head>
 
@@ -669,6 +759,39 @@ footer a{
 </div>
 
 </div>
+  <!-- EVENTS CALENDAR -->
+<div style="margin-top:30px;">
+
+  <h3 style="
+    font-size:1.7rem;
+    margin-bottom:14px;
+    color:#f5c518;
+    text-shadow:0 0 10px rgba(245,197,24,.5);
+  ">
+    Upcoming Events
+  </h3>
+
+  <div style="
+    border:1px solid rgba(245,197,24,.3);
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:0 0 18px rgba(245,197,24,.25);
+  ">
+
+    <iframe
+      title="FaithForge Gaming Events Calendar"
+      src="https://calendar.google.com/calendar/embed?src=3ca24c7d932a2bdb0aa72b09710f915c6e3ca12bd13d30235b35f41ded97c522%40group.calendar.google.com&ctz=America%2FNew_York"
+      width="100%"
+      height="430"
+      frameborder="0"
+      scrolling="no">
+    </iframe>
+
+  </div>
+
+</div>
+
+</div>
 </div>
 
 <div class="box">
@@ -705,40 +828,39 @@ Proverbs 27:17
 <div class="testimony">“When I first joined FaithForge I was pretty nervous. Never really was ever part of anything this big when it came to gaming (usually me and a few friends max). I was shy, but stepped out and spoke anyway. Through hanging out in Minecraft, in bible studies, getting to know the people who are part of this group and those who made it what it is, I feel so connected. I look forward to the community every day, which, for me, is super important." -n8roo</div>
 <div class="testimony">“I’ve grown closer to Christ here while gaming.”</div>
 <div class="testimony">“Great people, great servers, real faith.”</div>
+  
+  <div class="featured-streamer-grid">
+    <div class="featured-streamer-copy">
+      <h2>Featured Streamer Live Now</h2>
+      <div class="featured-rank-note">
+        Featureing FaithForge content creators!
+      </div>
 
-<!-- EVENTS CALENDAR -->
-<div style="margin-top:30px;">
+      <span id="streamersFeaturedBadge" class="featured-status-badge offline">Checking status...</span>
 
-  <h3 style="
-    font-size:1.7rem;
-    margin-bottom:14px;
-    color:#f5c518;
-    text-shadow:0 0 10px rgba(245,197,24,.5);
-  ">
-    Upcoming Events
-  </h3>
+      <p id="streamersFeaturedName" class="featured-streamer-meta">
+        Loading featured streamer.
+      </p>
 
-  <div style="
-    border:1px solid rgba(245,197,24,.3);
-    border-radius:14px;
-    overflow:hidden;
-    box-shadow:0 0 18px rgba(245,197,24,.25);
-  ">
+      <p id="streamersFeaturedMeta" class="featured-streamer-meta">
+        Checking current live status.
+      </p>
 
-    <iframe
-      title="FaithForge Gaming Events Calendar"
-      src="https://calendar.google.com/calendar/embed?src=3ca24c7d932a2bdb0aa72b09710f915c6e3ca12bd13d30235b35f41ded97c522%40group.calendar.google.com&ctz=America%2FNew_York"
-      width="100%"
-      height="430"
-      frameborder="0"
-      scrolling="no">
-    </iframe>
+      <p id="streamersFeaturedTitle" class="featured-streamer-title">
+        Please wait while we load the current featured stream.
+      </p>
 
+      <div class="link-buttons">
+        <a id="streamersFeaturedWatchBtn" href="https://www.twitch.tv/faithforgegaming" target="_blank" rel="noopener noreferrer">
+          Watch on Twitch
+        </a>
+      </div>
+    </div>
+
+    <div class="featured-streamer-player" id="streamersFeaturedPlayer">
+      The featured Twitch stream will appear here when someone is live.
+    </div>
   </div>
-
-</div>
-
-</div>
 </section>
 
 <section class="split">
@@ -828,6 +950,107 @@ if (!prefersReducedMotion) {
   draw();
 }
 </script>
+  
+<script src="https://embed.twitch.tv/embed/v1.js"></script>
 
+<script>
+  async function loadStreamersFeaturedLive() {
+    const badge = document.getElementById('streamersFeaturedBadge');
+    const name = document.getElementById('streamersFeaturedName');
+    const meta = document.getElementById('streamersFeaturedMeta');
+    const title = document.getElementById('streamersFeaturedTitle');
+    const watchBtn = document.getElementById('streamersFeaturedWatchBtn');
+    const player = document.getElementById('streamersFeaturedPlayer');
+
+    const rankedOrder = [
+      'faithforgegaming',
+      'mooncalfmage',
+      'doctorjsways',
+      'blessttim',
+      'brn2bew1ld',
+      'seawolf_30'
+    ];
+
+    const displayMap = {
+      faithforgegaming: 'FaithForgeGaming',
+      mooncalfmage: 'mooncalfmage',
+      doctorjsways: 'DoctorJSWAYS',
+      blessttim: 'blesstTim',
+      brn2bew1ld: 'Brn2bEw1Ld',
+      seawolf_30: 'Seawolf_30'
+    };
+
+    try {
+      const response = await fetch(
+        'https://faithforge-raidtrain-api.faithforgegaming.workers.dev/api/twitch-status',
+        { cache: 'no-store' }
+      );
+
+      const payload = await response.json();
+
+      if (!response.ok) {
+        throw new Error(payload.details || payload.error || 'Unable to load Twitch status.');
+      }
+
+      const channels = payload.channels || [];
+
+      let featured = null;
+
+      for (const login of rankedOrder) {
+        const match = channels.find(
+          channel => String(channel.login).toLowerCase() === login && channel.live
+        );
+        if (match) {
+          featured = match;
+          break;
+        }
+      }
+
+      if (!featured) {
+        badge.textContent = 'NO ONE LIVE';
+        badge.className = 'featured-status-badge offline';
+        name.textContent = 'No FaithForge streamer is live right now.';
+        meta.textContent = 'Check back soon for the next live creator.';
+        title.textContent = 'The featured player will appear automatically when someone in the ranked list goes live.';
+        watchBtn.href = 'https://www.twitch.tv/faithforgegaming';
+        player.innerHTML = 'The featured Twitch stream will appear here when someone is live.';
+        return;
+      }
+
+      const login = String(featured.login).toLowerCase();
+      const channelUrl = `https://www.twitch.tv/${featured.login}`;
+
+      badge.textContent = 'LIVE NOW';
+      badge.className = 'featured-status-badge online';
+      name.textContent = `${displayMap[login] || featured.display_name || featured.login} is the featured live streamer`;
+      meta.textContent = `${featured.game_name || 'Live on Twitch'}${featured.viewer_count ? ' • ' + featured.viewer_count + ' viewers' : ''}`;
+      title.textContent = featured.title || 'Currently streaming now.';
+      watchBtn.href = channelUrl;
+
+      player.innerHTML = '<div id="streamersFeaturedTwitchPlayer"></div>';
+
+      new Twitch.Embed('streamersFeaturedTwitchPlayer', {
+        width: '100%',
+        height: 320,
+        channel: featured.login,
+        parent: ['faithforgegaming.com', 'www.faithforgegaming.com'],
+        layout: 'video'
+      });
+    } catch (error) {
+      badge.textContent = 'STATUS ERROR';
+      badge.className = 'featured-status-badge offline';
+      name.textContent = 'Could not load featured streamer';
+      meta.textContent = 'There was a problem reaching the Twitch status feed.';
+      title.textContent = error.message;
+      player.innerHTML = 'We could not load the featured Twitch player right now.';
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    loadStreamersFeaturedLive();
+    setInterval(loadStreamersFeaturedLive, 90000);
+  });
+</script>
+  
 </body>
 </html>

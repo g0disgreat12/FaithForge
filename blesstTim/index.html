@@ -290,6 +290,86 @@
   @media (max-width: 640px) {
     .streamer-games-grid { grid-template-columns: repeat(2, 1fr); }
   }
+  .live-stream-card {
+    margin-top: 28px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 16px;
+    padding: 26px;
+    border: 1px solid rgba(245,197,24,0.16);
+    box-shadow: 0 0 24px rgba(245,197,24,0.18);
+  }
+
+  .live-stream-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+    align-items: stretch;
+  }
+
+  .live-stream-copy h2 {
+    margin: 0 0 12px;
+    font-size: 1.7em;
+    color: #f5c518;
+    text-shadow: 0 0 10px rgba(245,197,24,0.25);
+  }
+
+  .live-stream-copy p {
+    margin: 10px 0;
+    line-height: 1.6em;
+    font-size: 1.05em;
+  }
+
+  .live-badge {
+    display: inline-block;
+    margin: 0 0 14px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+  }
+
+  .live-badge.online {
+    color: #8dffb9;
+    background: rgba(46, 204, 113, 0.14);
+    border: 1px solid rgba(46, 204, 113, 0.32);
+    box-shadow: 0 0 16px rgba(46, 204, 113, 0.18);
+  }
+
+  .live-badge.offline {
+    color: #ddd;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+
+  .live-meta {
+    color: #f0df9b;
+    font-size: 1.02em;
+  }
+
+  .live-title {
+    color: #fff0b8;
+  }
+
+  .live-player-wrap {
+    min-height: 320px;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(245,197,24,0.2);
+    box-shadow: 0 0 22px rgba(245,197,24,0.18);
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 14px;
+  }
+
+  @media (max-width: 900px) {
+    .live-stream-grid {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>
 </head>
 
@@ -385,6 +465,40 @@
         </a>
       </div>
     </section>
+    
+    <section class="live-stream-card">
+  <div class="live-stream-grid">
+    <div class="live-stream-copy">
+      <h2>Live Stream Status</h2>
+
+      <span id="timLiveBadge" class="live-badge offline">Checking status...</span>
+
+      <p id="timLiveMeta" class="live-meta">
+        Loading current Twitch information.
+      </p>
+
+      <p id="timLiveTitle" class="live-title">
+        Please wait while we check whether blesstTim is live.
+      </p>
+
+      <div class="button-row">
+        <a
+          id="timWatchBtn"
+          class="gold-btn"
+          href="https://www.twitch.tv/blesstTim"
+          target="_blank"
+          rel="noopener"
+        >
+          Watch on Twitch
+        </a>
+      </div>
+    </div>
+
+    <div class="live-player-wrap" id="timPlayerWrap">
+      The Twitch player will appear here when blesstTim is live.
+    </div>
+  </div>
+</section>
     
     <!-- FEATURED VIDEO -->
     <section class="section">
@@ -488,10 +602,74 @@
       });
     });
   </script>
+<script src="https://embed.twitch.tv/embed/v1.js"></script>
 
+<script>
+  async function loadtim2LiveStatus() {
+    const badge = document.getElementById('timLiveBadge');
+    const meta = document.getElementById('timLiveMeta');
+    const title = document.getElementById('timLiveTitle');
+    const playerWrap = document.getElementById('timPlayerWrap');
+    const watchBtn = document.getElementById('timWatchBtn');
+
+    try {
+      const response = await fetch(
+        'https://faithforge-raidtrain-api.faithforgegaming.workers.dev/api/twitch-status',
+        { cache: 'no-store' }
+      );
+
+      const payload = await response.json();
+
+      if (!response.ok) {
+        throw new Error(payload.details || payload.error || 'Unable to load Twitch status.');
+      }
+
+      const stream = (payload.channels || []).find(
+        channel => String(channel.login).toLowerCase() === 'blesstTim'
+      );
+
+      if (!stream || !stream.live) {
+        badge.textContent = 'OFFLINE';
+        badge.className = 'live-badge offline';
+        meta.textContent = 'Currently offline';
+        title.textContent = 'blesstTim is not live right now. You can still visit the Twitch channel using the button below.';
+        playerWrap.innerHTML = 'The Twitch player will appear here when blesstTim is live.';
+        watchBtn.href = 'https://www.twitch.tv/blesstTim';
+        return;
+      }
+
+      badge.textContent = 'LIVE NOW';
+      badge.className = 'live-badge online';
+      meta.textContent = `${stream.game_name || 'Live on Twitch'}${stream.viewer_count ? ' • ' + stream.viewer_count + ' viewers' : ''}`;
+      title.textContent = stream.title || 'Currently streaming now.';
+      watchBtn.href = 'https://www.twitch.tv/blesstTim';
+
+      playerWrap.innerHTML = '<div id="timTwitchPlayer"></div>';
+
+      new Twitch.Embed('timTwitchPlayer', {
+        width: '100%',
+        height: 320,
+        channel: 'blesstTim',
+        parent: ['faithforgegaming.com', 'www.faithforgegaming.com'],
+        layout: 'video'
+      });
+    } catch (error) {
+      badge.textContent = 'STATUS ERROR';
+      badge.className = 'live-badge offline';
+      meta.textContent = 'Could not load Twitch status';
+      title.textContent = error.message;
+      playerWrap.innerHTML = 'We could not load the Twitch player right now.';
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    loadtim2LiveStatus();
+    setInterval(loadtim2LiveStatus, 90000);
+  });
+</script>
+  
   <script src="https://faithforgegaming.com/embers.js"></script>
 
 </body>
 
 </html>
-

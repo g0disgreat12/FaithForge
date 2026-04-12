@@ -60,7 +60,8 @@
     .hero-panel,
     .featured-panel,
     .schedule-panel,
-    .raid-card {
+    .raid-card,
+    .countdown-panel {
       background: rgba(0, 0, 0, 0.5);
       border: 1px solid rgba(245,197,24,0.18);
       border-radius: 18px;
@@ -68,18 +69,22 @@
       backdrop-filter: blur(4px);
     }
 
-    .hero-panel {
+    .hero-panel,
+    .countdown-panel {
       padding: 34px 24px;
       margin-bottom: 28px;
+      text-align: center;
     }
 
-    .hero-panel h2 {
+    .hero-panel h2,
+    .countdown-panel h3 {
       margin: 0 0 10px;
       font-size: 2rem;
       color: #f5c518;
     }
 
-    .hero-panel p {
+    .hero-panel p,
+    .countdown-subtext {
       max-width: 920px;
       margin: 10px auto;
       color: #f0df9b;
@@ -307,6 +312,46 @@
       font-size: 1.15rem;
     }
 
+    .countdown-timer {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin: 24px 0 18px;
+    }
+
+    .countdown-box {
+      min-width: 110px;
+      padding: 18px 14px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(245,197,24,0.2);
+      box-shadow: 0 0 14px rgba(245,197,24,0.12);
+    }
+
+    .countdown-box span {
+      display: block;
+      font-size: 2rem;
+      font-weight: 800;
+      color: #f5c518;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .countdown-box small {
+      display: block;
+      font-size: 0.9rem;
+      color: #d8c786;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .countdown-date {
+      color: #f0df9b;
+      font-size: 1rem;
+      margin-top: 10px;
+    }
+
     @media (max-width: 900px) {
       .featured-panel {
         grid-template-columns: 1fr;
@@ -321,7 +366,8 @@
       .hero-panel,
       .featured-panel,
       .schedule-panel,
-      .raid-card {
+      .raid-card,
+      .countdown-panel {
         padding-left: 16px;
         padding-right: 16px;
       }
@@ -333,6 +379,20 @@
       .featured-copy p,
       .seo-copy {
         text-align: center;
+      }
+
+      .countdown-box {
+        min-width: 90px;
+        padding: 16px 10px;
+      }
+
+      .countdown-box span {
+        font-size: 1.7rem;
+      }
+
+      .countdown-panel h3,
+      .hero-panel h2 {
+        font-size: 1.6rem;
       }
     }
   </style>
@@ -398,6 +458,43 @@
       <a href="https://www.twitch.tv/faithforgegaming" target="_blank" rel="noopener noreferrer">Main Twitch Channel</a>
       <a class="alt-link" href="/Streamers/">Meet Our Streamers</a>
       <a class="alt-link" href="https://discord.gg/bAQrudk5a9" target="_blank" rel="noopener noreferrer">Join Discord</a>
+    </div>
+  </section>
+
+  <section class="countdown-panel">
+    <div class="section-kicker">Upcoming Event</div>
+    <h3 id="nextRaidTrainName">The Forge Rally Raid Train</h3>
+    <p class="countdown-subtext">
+      Our next quarterly FaithForge Gaming Raid Train is coming soon. Join our community in supporting
+      current and up-and-coming streamers as we rally together for the next event.
+    </p>
+
+    <div class="countdown-timer" id="raidTrainCountdown">
+      <div class="countdown-box">
+        <span id="countdownDays">00</span>
+        <small>Days</small>
+      </div>
+      <div class="countdown-box">
+        <span id="countdownHours">00</span>
+        <small>Hours</small>
+      </div>
+      <div class="countdown-box">
+        <span id="countdownMinutes">00</span>
+        <small>Minutes</small>
+      </div>
+      <div class="countdown-box">
+        <span id="countdownSeconds">00</span>
+        <small>Seconds</small>
+      </div>
+    </div>
+
+    <p class="countdown-date" id="nextRaidTrainDateText">
+      Starts: July 18, 2026 at 7:00 PM EST
+    </p>
+
+    <div class="hero-buttons">
+      <a class="alt-link" href="https://discord.gg/bAQrudk5a9" target="_blank" rel="noopener noreferrer">Join Discord to Sign Up</a>
+      <a class="alt-link" href="/Events">See More Events</a>
     </div>
   </section>
 
@@ -545,12 +642,60 @@
     ]
   };
 
+  const NEXT_RAID_TRAIN = {
+    name: 'The Forge Rally Raid Train',
+    targetDate: '2026-07-18T19:00:00-04:00',
+    displayDate: 'July 18, 2026 at 7:00 PM EST'
+  };
+
   const raidGrid = document.getElementById('raidGrid');
   const featuredName = document.getElementById('featuredName');
   const featuredMeta = document.getElementById('featuredMeta');
   const featuredTitleText = document.getElementById('featuredTitleText');
   const featuredWatchBtn = document.getElementById('featuredWatchBtn');
   const featuredEmbedWrap = document.getElementById('featuredEmbedWrap');
+
+  function startRaidTrainCountdown() {
+    const nameEl = document.getElementById('nextRaidTrainName');
+    const dateTextEl = document.getElementById('nextRaidTrainDateText');
+    const daysEl = document.getElementById('countdownDays');
+    const hoursEl = document.getElementById('countdownHours');
+    const minutesEl = document.getElementById('countdownMinutes');
+    const secondsEl = document.getElementById('countdownSeconds');
+
+    if (!nameEl || !dateTextEl || !daysEl || !hoursEl || !minutesEl || !secondsEl) return;
+
+    nameEl.textContent = NEXT_RAID_TRAIN.name;
+    dateTextEl.textContent = `Starts: ${NEXT_RAID_TRAIN.displayDate}`;
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const target = new Date(NEXT_RAID_TRAIN.targetDate).getTime();
+      const distance = target - now;
+
+      if (distance <= 0) {
+        daysEl.textContent = '00';
+        hoursEl.textContent = '00';
+        minutesEl.textContent = '00';
+        secondsEl.textContent = '00';
+        dateTextEl.textContent = `${NEXT_RAID_TRAIN.name} is happening now!`;
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((distance / (1000 * 60)) % 60);
+      const seconds = Math.floor((distance / 1000) % 60);
+
+      daysEl.textContent = String(days).padStart(2, '0');
+      hoursEl.textContent = String(hours).padStart(2, '0');
+      minutesEl.textContent = String(minutes).padStart(2, '0');
+      secondsEl.textContent = String(seconds).padStart(2, '0');
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  }
 
   async function loadRaidTrainStatus() {
     try {
@@ -693,6 +838,7 @@
       });
     }
 
+    startRaidTrainCountdown();
     loadRaidTrainStatus();
     setInterval(loadRaidTrainStatus, 90000);
   });

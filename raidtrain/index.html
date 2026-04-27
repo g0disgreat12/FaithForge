@@ -3,895 +3,1641 @@
 <head>
   <meta charset="UTF-8">
 
-  <title>FaithForge Gaming Raid Train | Christian Twitch Raid Train, Streamer Support & Quarterly Event</title>
+  <title>FaithForge Gaming Raid Train | Christian Streamer Community Event</title>
 
-  <meta name="description" content="Join the FaithForge Gaming Raid Train, a quarterly Christian gaming community event that helps new and growing streamers gain support, visibility, and real community backing. See who is live, learn how to join through our Discord, and support current and upcoming FaithForge streamers.">
-
-  <meta name="keywords" content="FaithForge Gaming, FaithForge Raid Train, Christian gaming community, Christian streamers, Twitch raid train, streamer support, new streamers, growing streamers, Christian Twitch streamers, Discord streamer signup, quarterly gaming event, FaithForge Discord">
+  <meta name="description" content="Join the FaithForge Gaming Raid Train, a quarterly Christian gaming community event supporting FaithForge streamers through live raids, chat encouragement, fellowship, and clean gaming content.">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="canonical" href="https://faithforgegaming.com/raidtrain/">
 
-  <!-- Open Graph / Facebook / Discord -->
-  <meta property="og:title" content="FaithForge Gaming Raid Train | Christian Twitch Raid Train, Streamer Support & Quarterly Event">
-  <meta property="og:description" content="Support Christian gaming creators through the FaithForge Gaming Raid Train, a quarterly community event built to help new and growing streamers gain visibility, encouragement, and live support. Join through our Discord and follow the current lineup.">
-  <meta property="og:image" content="https://faithforgegaming.com/raidtrain/raidtrain.webp">
+  <!-- Open Graph -->
+  <meta property="og:title" content="FaithForge Gaming Raid Train">
+  <meta property="og:description" content="Support FaithForge Christian streamers during our quarterly Raid Train event. Watch live, follow the schedule, join the Discord, and ride with us from stream to stream.">
+  <meta property="og:image" content="https://faithforgegaming.com/Homepage.webp">
   <meta property="og:url" content="https://faithforgegaming.com/raidtrain/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="FaithForge Gaming">
 
-  <!-- Twitter / X Preview -->
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="FaithForge Gaming Raid Train | Christian Twitch Raid Train, Streamer Support & Quarterly Event">
-  <meta name="twitter:description" content="Join the FaithForge Gaming Raid Train, a quarterly Christian gaming event that supports new and growing streamers through live raids, community participation, and Discord signups.">
-  <meta name="twitter:image" content="https://faithforgegaming.com/raidtrain/raidtrain.webp">
+  <meta name="twitter:title" content="FaithForge Gaming Raid Train">
+  <meta name="twitter:description" content="A quarterly FaithForge Gaming event supporting Christian streamers through live raids, fellowship, and community encouragement.">
+  <meta name="twitter:image" content="https://faithforgegaming.com/Homepage.webp">
 
-  <!-- Shared FaithForge CSS -->
-  <link rel="stylesheet" href="https://faithforgegaming.com/style.css">
-
-  <!-- Theme & Icons -->
   <meta name="theme-color" content="#000000">
   <link rel="icon" href="https://faithforgegaming.com/Anvil.webp">
 
-  <style>
-    body {
-      background: radial-gradient(circle at center, #0d0d0d 40%, #000 100%);
-      color: #f5c518;
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-      min-height: 100vh;
-      position: relative;
-    }
+  <link rel="stylesheet" href="https://faithforgegaming.com/style.css">
 
-    .navbar a {
-      white-space: nowrap;
-    }
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    .raidtrain-wrap {
-      width: 92%;
-      max-width: 1180px;
-      margin: 30px auto 60px;
-      position: relative;
-      z-index: 2;
-    }
+html {
+  scroll-behavior: smooth;
+}
 
-    .hero-panel,
-    .featured-panel,
-    .schedule-panel,
-    .raid-card,
-    .countdown-panel {
-      background: rgba(0, 0, 0, 0.5);
-      border: 1px solid rgba(245,197,24,0.18);
-      border-radius: 18px;
-      box-shadow: 0 0 25px rgba(245,197,24,0.16);
-      backdrop-filter: blur(4px);
-    }
+body {
+  background: radial-gradient(circle at center, #0d0d0d 35%, #000 100%);
+  font-family: Segoe UI, Tahoma, Verdana, sans-serif;
+  color: #f5c518;
+  overflow-x: hidden;
+}
 
-    .hero-panel,
-    .countdown-panel {
-      padding: 34px 24px;
-      margin-bottom: 28px;
-      text-align: center;
-    }
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
 
-    .hero-panel h2,
-    .countdown-panel h3 {
-      margin: 0 0 10px;
-      font-size: 2rem;
-      color: #f5c518;
-    }
+/* HEADER */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 40px;
+  background: rgba(0,0,0,.82);
+  border-bottom: 1px solid rgba(245,197,24,.3);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(8px);
+}
 
-    .hero-panel p,
-    .countdown-subtext {
-      max-width: 920px;
-      margin: 10px auto;
-      color: #f0df9b;
-      line-height: 1.7;
-    }
+.logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
 
-    .hero-buttons,
-    .card-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-      margin-top: 18px;
-    }
+.logo-wrap img {
+  height: 42px;
+}
 
-    .hero-buttons a,
-    .card-links a,
-    .discord-button,
-    .watch-btn {
-      display: inline-block;
-      padding: 12px 20px;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: .25s ease;
-    }
+.logo-text {
+  font-weight: 700;
+  letter-spacing: 1px;
+}
 
-    .hero-buttons a,
-    .card-links a.watch-link,
-    .watch-btn {
-      color: #000;
-      background: #f5c518;
-      box-shadow: 0 0 15px rgba(245,197,24,0.5);
-    }
+.header-emblem img {
+  height: 48px;
+  opacity: .9;
+}
 
-    .hero-buttons a:hover,
-    .card-links a.watch-link:hover,
-    .watch-btn:hover {
-      background: #ffe27a;
-      box-shadow: 0 0 25px rgba(245,197,24,0.8);
-    }
+nav {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
 
-    .hero-buttons a.alt-link,
-    .card-links a.alt-link {
-      color: #f5c518;
-      background: rgba(0,0,0,.75);
-      border: 1px solid rgba(245,197,24,.35);
-      box-shadow: 0 0 12px rgba(245,197,24,.2);
-    }
+nav a {
+  color: #f5c518;
+  text-decoration: none;
+  font-weight: 600;
+}
 
-    .hero-buttons a.alt-link:hover,
-    .card-links a.alt-link:hover {
-      color: #fff;
-      box-shadow: 0 0 18px rgba(245,197,24,.5);
-    }
+nav a:hover {
+  color: white;
+}
 
-    .featured-panel {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      padding: 22px;
-      margin-bottom: 28px;
-      align-items: stretch;
-    }
+.join-btn {
+  background: linear-gradient(45deg, #f5c518, #cfa214);
+  padding: 10px 20px;
+  border-radius: 6px;
+  color: black !important;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 0 15px rgba(245,197,24,.6);
+}
 
-    .featured-copy {
-      text-align: left;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
+/* GENERAL */
+main {
+  width: 100%;
+}
 
-    .section-kicker {
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-size: 0.85rem;
-      color: #d7b646;
-      margin-bottom: 8px;
-      font-weight: 700;
-    }
+.section {
+  padding: 56px 50px;
+}
 
-    .featured-copy h3 {
-      margin: 0 0 10px;
-      font-size: 1.8rem;
-      color: #f5c518;
-    }
+.section-dark {
+  background: rgba(0,0,0,.78);
+  border-top: 1px solid rgba(245,197,24,.18);
+  border-bottom: 1px solid rgba(245,197,24,.18);
+}
 
-    .featured-copy p {
-      margin: 8px 0;
-      color: #f0df9b;
-      text-align: left;
-      line-height: 1.6;
-    }
+.section-title {
+  text-align: center;
+  color: #f5c518;
+  font-size: 2.2rem;
+  margin-bottom: 12px;
+  text-shadow: 0 0 12px rgba(245,197,24,.35);
+}
 
-    .featured-embed {
-      min-height: 320px;
-      border-radius: 14px;
-      overflow: hidden;
-      background: rgba(255,255,255,0.04);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #f0df9b;
-      text-align: center;
-      padding: 10px;
-    }
+.section-subtitle {
+  max-width: 850px;
+  margin: 0 auto 32px;
+  text-align: center;
+  color: #ddd;
+  line-height: 1.65;
+}
 
-    .schedule-panel {
-      padding: 24px;
-      margin-bottom: 28px;
-    }
+.gold-text {
+  color: #f5c518;
+}
 
-    .schedule-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 16px;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
-    }
+.white-text {
+  color: #fff;
+}
 
-    .schedule-head h3 {
-      margin: 0;
-      color: #f5c518;
-      font-size: 1.8rem;
-    }
+.muted-text {
+  color: #ddd;
+}
 
-    .schedule-head p {
-      margin: 6px 0 0;
-      color: #d8c786;
-      font-size: 1rem;
-    }
+.primary-btn,
+.secondary-btn,
+.twitch-btn,
+.discord-btn,
+.copy-btn {
+  display: inline-block;
+  padding: 12px 22px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 800;
+  text-align: center;
+  transition: .2s ease;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1rem;
+}
 
-    .auto-refresh {
-      font-size: 0.95rem;
-      color: #bca13d;
-    }
+.primary-btn,
+.discord-btn {
+  background: linear-gradient(45deg, #f5c518, #cfa214);
+  color: #000 !important;
+  box-shadow: 0 0 18px rgba(245,197,24,.55);
+}
 
-    .raid-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
-      gap: 18px;
-    }
+.primary-btn:hover,
+.discord-btn:hover {
+  background: #ffe27a;
+  transform: translateY(-2px);
+  box-shadow: 0 0 26px rgba(245,197,24,.85);
+}
 
-    .raid-card {
-      padding: 18px;
-      text-align: left;
-    }
+.secondary-btn {
+  color: #f5c518;
+  border: 2px solid rgba(245,197,24,.72);
+  background: transparent;
+}
 
-    .raid-card h4 {
-      margin: 0 0 8px;
-      color: #f5c518;
-      font-size: 1.3rem;
-    }
+.secondary-btn:hover {
+  background: #f5c518;
+  color: #000;
+}
 
-    .slot {
-      color: #d8c786;
-      font-size: 0.98rem;
-      margin-bottom: 14px;
-    }
+.twitch-btn {
+  background: #9146ff;
+  color: white !important;
+  box-shadow: 0 0 18px rgba(145,70,255,.45);
+}
 
-    .status-badge {
-      display: inline-block;
-      margin-bottom: 14px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      font-size: 0.85rem;
-      font-weight: 800;
-      letter-spacing: .3px;
-    }
+.twitch-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 26px rgba(145,70,255,.7);
+}
 
-    .status-live {
-      background: rgba(46, 204, 113, 0.14);
-      color: #8dffb9;
-      border: 1px solid rgba(46, 204, 113, 0.3);
-      box-shadow: 0 0 15px rgba(46, 204, 113, 0.15);
-    }
+.copy-btn {
+  background: rgba(245,197,24,.1);
+  border: 1px solid rgba(245,197,24,.35);
+  color: #f5c518;
+  padding: 9px 14px;
+  font-size: .92rem;
+}
 
-    .status-offline {
-      background: rgba(255,255,255,0.06);
-      color: #ddd;
-      border: 1px solid rgba(255,255,255,0.12);
-    }
+.copy-btn:hover {
+  background: #f5c518;
+  color: #000;
+}
 
-    .card-meta,
-    .card-title {
-      color: #f0df9b;
-      margin: 10px 0;
-      line-height: 1.45em;
-    }
+/* HERO */
+.raid-hero {
+  position: relative;
+  min-height: 78vh;
+  display: flex;
+  align-items: center;
+  padding: 70px 50px;
+  background:
+    linear-gradient(to right, rgba(0,0,0,.96), rgba(0,0,0,.78), rgba(0,0,0,.35)),
+    url("https://faithforgegaming.com/Knightlong.webp") right center / cover no-repeat;
+}
 
-    .discord-button {
-      display: inline-block;
-      margin: 18px auto 18px;
-      padding: 16px 34px;
-      font-size: 1.2rem;
-      font-weight: bold;
-      border-radius: 14px;
-      text-decoration: none;
-      color: #f5c518;
-      background: rgba(0,0,0,.75);
-      border: 2px solid #f5c518;
-      box-shadow: 0 0 18px rgba(245,197,24,.55);
-      transition: all .2s ease-in-out;
-    }
+.raid-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 850px;
+}
 
-    .discord-button:hover {
-      background: linear-gradient(90deg,#f5c518,#cfa214);
-      color: #000;
-      box-shadow: 0 0 26px rgba(245,197,24,.9);
-      transform: scale(1.04);
-    }
+.eyebrow {
+  color: #f0df9b;
+  font-weight: 900;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
 
-    .seo-copy {
-      color: #f0df9b;
-      line-height: 1.75;
-      text-align: left;
-      max-width: 980px;
-      margin: 0 auto;
-    }
+.raid-hero h1 {
+  font-size: 4.2rem;
+  line-height: 1.05;
+  background: linear-gradient(90deg, #f5c518, #cfa214);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 22px rgba(245,197,24,.15);
+}
 
-    .seo-copy h4 {
-      color: #f5c518;
-      margin: 22px 0 8px;
-      font-size: 1.15rem;
-    }
+.raid-hero h2 {
+  color: #fff;
+  font-size: 1.45rem;
+  margin-top: 14px;
+  line-height: 1.4;
+}
 
-    .countdown-timer {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 16px;
-      margin: 24px 0 18px;
-    }
+.raid-date {
+  margin-top: 18px;
+  display: inline-block;
+  color: #000;
+  background: linear-gradient(45deg, #f5c518, #cfa214);
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-weight: 900;
+  box-shadow: 0 0 18px rgba(245,197,24,.45);
+}
 
-    .countdown-box {
-      min-width: 110px;
-      padding: 18px 14px;
-      border-radius: 16px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(245,197,24,0.2);
-      box-shadow: 0 0 14px rgba(245,197,24,0.12);
-    }
+.raid-summary {
+  margin-top: 24px;
+  max-width: 760px;
+  color: #e4e4e4;
+  line-height: 1.7;
+  font-size: 1.08rem;
+  border-left: 3px solid rgba(245,197,24,.45);
+  padding-left: 18px;
+}
 
-    .countdown-box span {
-      display: block;
-      font-size: 2rem;
-      font-weight: 800;
-      color: #f5c518;
-      line-height: 1;
-      margin-bottom: 8px;
-    }
+.hero-actions,
+.card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px;
+  margin-top: 26px;
+}
 
-    .countdown-box small {
-      display: block;
-      font-size: 0.9rem;
-      color: #d8c786;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
+/* DASHBOARD */
+.raid-dashboard {
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  gap: 24px;
+  padding: 34px 50px 50px;
+  background: rgba(0,0,0,.82);
+  border-top: 1px solid rgba(245,197,24,.18);
+  border-bottom: 1px solid rgba(245,197,24,.18);
+}
 
-    .countdown-date {
-      color: #f0df9b;
-      font-size: 1rem;
-      margin-top: 10px;
-    }
+.dashboard-card,
+.countdown-card,
+.stream-card,
+.info-card,
+.guide-card,
+.chat-card,
+.signup-card,
+.faq-item {
+  background: rgba(0,0,0,.78);
+  border: 1px solid rgba(245,197,24,.25);
+  border-radius: 18px;
+  padding: 26px;
+  box-shadow:
+    0 0 22px rgba(245,197,24,.12),
+    inset 0 0 0 1px rgba(245,197,24,.04);
+}
 
-    @media (max-width: 900px) {
-      .featured-panel {
-        grid-template-columns: 1fr;
-      }
-    }
+.dashboard-card h2,
+.countdown-card h2,
+.stream-card h2,
+.info-card h2,
+.signup-card h2 {
+  color: #f5c518;
+  margin-bottom: 12px;
+}
 
-    @media (max-width: 700px) {
-      .raidtrain-wrap {
-        width: 94%;
-      }
+.dashboard-card p,
+.countdown-card p,
+.stream-card p,
+.info-card p,
+.signup-card p,
+.faq-item p {
+  color: #ddd;
+  line-height: 1.62;
+}
 
-      .hero-panel,
-      .featured-panel,
-      .schedule-panel,
-      .raid-card,
-      .countdown-panel {
-        padding-left: 16px;
-        padding-right: 16px;
-      }
+.status-badge {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-weight: 900;
+  letter-spacing: .5px;
+  margin-bottom: 14px;
+  font-size: .9rem;
+}
 
-      .featured-copy {
-        text-align: center;
-      }
+.status-badge.live {
+  color: #8dffb9;
+  background: rgba(46,204,113,.14);
+  border: 1px solid rgba(46,204,113,.35);
+  box-shadow: 0 0 16px rgba(46,204,113,.18);
+}
 
-      .featured-copy p,
-      .seo-copy {
-        text-align: center;
-      }
+.status-badge.offline {
+  color: #ddd;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.14);
+}
 
-      .countdown-box {
-        min-width: 90px;
-        padding: 16px 10px;
-      }
+.status-badge.upnext {
+  color: #000;
+  background: #f5c518;
+  border: 1px solid rgba(245,197,24,.6);
+}
 
-      .countdown-box span {
-        font-size: 1.7rem;
-      }
+.status-badge.error {
+  color: #ffb5b5;
+  background: rgba(255,0,0,.08);
+  border: 1px solid rgba(255,0,0,.22);
+}
 
-      .countdown-panel h3,
-      .hero-panel h2 {
-        font-size: 1.6rem;
-      }
-    }
-  </style>
+/* COUNTDOWN */
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin: 18px 0;
+}
+
+.countdown-box {
+  background: rgba(245,197,24,.08);
+  border: 1px solid rgba(245,197,24,.22);
+  border-radius: 14px;
+  padding: 16px 8px;
+  text-align: center;
+}
+
+.countdown-number {
+  display: block;
+  color: #f5c518;
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.countdown-label {
+  display: block;
+  margin-top: 8px;
+  color: #e5d593;
+  font-size: .85rem;
+  text-transform: uppercase;
+  letter-spacing: .7px;
+}
+
+/* STREAM */
+.stream-layout {
+  display: grid;
+  grid-template-columns: .75fr 1.25fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.stream-player {
+  min-height: 380px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(245,197,24,.24);
+  background: rgba(0,0,0,.72);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f0df9b;
+  text-align: center;
+  padding: 20px;
+}
+
+.stream-player iframe {
+  width: 100%;
+  height: 380px;
+  border: 0;
+}
+
+/* SCHEDULE */
+.schedule-table {
+  max-width: 1150px;
+  margin: 0 auto;
+  border: 1px solid rgba(245,197,24,.24);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 0 24px rgba(245,197,24,.12);
+}
+
+.schedule-row {
+  display: grid;
+  grid-template-columns: 125px 1.1fr 1.4fr 130px;
+  gap: 14px;
+  align-items: center;
+  padding: 17px 20px;
+  border-bottom: 1px solid rgba(245,197,24,.15);
+  background: rgba(0,0,0,.68);
+}
+
+.schedule-row:last-child {
+  border-bottom: none;
+}
+
+.schedule-row.current {
+  background: rgba(46,204,113,.11);
+  box-shadow: inset 4px 0 0 rgba(46,204,113,.75);
+}
+
+.schedule-row.upnext-row {
+  background: rgba(245,197,24,.09);
+  box-shadow: inset 4px 0 0 #f5c518;
+}
+
+.schedule-row.complete {
+  opacity: .62;
+}
+
+.schedule-row.open-slot {
+  background: rgba(245,197,24,.06);
+}
+
+.schedule-time {
+  color: #fff;
+  font-weight: 900;
+}
+
+.schedule-streamer {
+  color: #f5c518;
+  font-weight: 900;
+}
+
+.schedule-details {
+  color: #e7d78d;
+  line-height: 1.45;
+}
+
+.schedule-action a {
+  width: 100%;
+  padding: 9px 14px;
+  font-size: .95rem;
+}
+
+.row-label {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  font-size: .75rem;
+  font-weight: 900;
+  letter-spacing: .4px;
+}
+
+.row-label.live {
+  color: #8dffb9;
+  background: rgba(46,204,113,.16);
+}
+
+.row-label.next {
+  color: #000;
+  background: #f5c518;
+}
+
+.row-label.done {
+  color: #ddd;
+  background: rgba(255,255,255,.08);
+}
+
+.row-label.open {
+  color: #f5c518;
+  border: 1px solid rgba(245,197,24,.35);
+}
+
+/* GUIDE */
+.guide-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+.guide-card {
+  text-align: center;
+}
+
+.guide-card h3 {
+  color: #f5c518;
+  margin-bottom: 10px;
+}
+
+.guide-card p {
+  color: #ddd;
+  line-height: 1.55;
+}
+
+/* CHAT PROMPTS */
+.chat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+.chat-card p {
+  color: #fff;
+  line-height: 1.55;
+  margin-bottom: 15px;
+}
+
+/* SPLIT INFO */
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+.info-card ul {
+  margin-top: 14px;
+  padding-left: 20px;
+  color: #ddd;
+  line-height: 1.8;
+}
+
+/* SIGNUP */
+.signup-card {
+  max-width: 950px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.signup-card p {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.signup-card .card-actions {
+  justify-content: center;
+}
+
+/* FAQ */
+.faq-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+.faq-item h3 {
+  color: #f5c518;
+  margin-bottom: 10px;
+}
+
+/* SOCIAL BAR */
+.hero-social {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 14px;
+  background: rgba(0,0,0,.45);
+  border-top: 1px solid rgba(245,197,24,.3);
+  border-bottom: 1px solid rgba(245,197,24,.3);
+  flex-wrap: wrap;
+}
+
+.hero-social a {
+  color: #f5c518;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.hero-social a:hover {
+  color: white;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 30px;
+  border-top: 1px solid rgba(245,197,24,.25);
+  margin-top: 0;
+  background: rgba(0,0,0,.78);
+}
+
+footer a {
+  color: #f5c518;
+  text-decoration: none;
+  margin: 0 12px;
+}
+
+footer a:hover {
+  color: white;
+}
+
+/* MOBILE STICKY BAR */
+.mobile-sticky {
+  display: none;
+}
+
+/* MOBILE */
+@media(max-width: 1000px) {
+  header {
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .raid-hero {
+    padding: 48px 22px;
+    text-align: center;
+    background-position: center;
+  }
+
+  .raid-hero-content {
+    margin: 0 auto;
+  }
+
+  .raid-hero h1 {
+    font-size: 2.65rem;
+  }
+
+  .raid-summary {
+    border-left: none;
+    padding-left: 0;
+  }
+
+  .hero-actions,
+  .card-actions {
+    justify-content: center;
+  }
+
+  .raid-dashboard,
+  .stream-layout,
+  .info-grid,
+  .faq-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .raid-dashboard,
+  .section {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .guide-grid,
+  .chat-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .schedule-row {
+    grid-template-columns: 1fr;
+    gap: 7px;
+  }
+
+  .schedule-action a {
+    margin-top: 8px;
+  }
+
+  .countdown-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stream-player,
+  .stream-player iframe {
+    min-height: 300px;
+    height: 300px;
+  }
+
+  .mobile-sticky {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 60;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background: rgba(0,0,0,.94);
+    border-top: 1px solid rgba(245,197,24,.35);
+  }
+
+  .mobile-sticky a {
+    color: #f5c518;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 900;
+    padding: 12px 6px;
+    font-size: .9rem;
+  }
+
+  body {
+    padding-bottom: 48px;
+  }
+}
+
+@media(max-width: 560px) {
+  .raid-hero h1 {
+    font-size: 2.25rem;
+  }
+
+  .raid-hero h2 {
+    font-size: 1.1rem;
+  }
+
+  .primary-btn,
+  .secondary-btn,
+  .twitch-btn,
+  .discord-btn {
+    width: 100%;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+  }
+}
+</style>
 </head>
 
 <body>
-  <img class="emblem" src="../watermark.png" alt="FaithForge Emblem">
-  <canvas id="embers"></canvas>
+
+<canvas id="particles"></canvas>
 
 <header>
-  <h1>FaithForge Gaming Raid Train</h1>
-
-  <div class="mobile-header">
-    <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
-      ☰
-    </button>
-    <span class="page-title">FaithForge Raid Train</span>
+  <div class="logo-wrap">
+    <img src="https://faithforgegaming.com/watermarklogo.webp" alt="FaithForge Gaming Logo">
+    <span class="logo-text">FAITHFORGE GAMING</span>
   </div>
 
-  <nav class="navbar">
-    <div class="menu-links">
-      <a href="/index.html">Home</a>
-      <a href="/Aboutus/">About Us</a>
-      <a href="/Staff/">Our Team</a>
-      <a href="/Streamers/">Streamers</a>
-      <a href="https://shop.faithforgegaming.com/">Merch Store</a>
-      <a href="/Devotions/">Devotions</a>
-      <a href="/Prayers/">Prayers</a>
-      <a href="/Servers/">Servers</a>
-      <a href="/Events/">Events</a>
-      <a href="/Contact/">Contact Us</a>
-    </div>
+  <div class="header-emblem">
+    <img src="https://faithforgegaming.com/Anvil.webp" alt="FaithForge Gaming Anvil Logo">
+  </div>
+
+  <nav>
+    <a href="/">Home</a>
+    <a href="/Aboutus">About Us</a>
+    <a href="/Staff">Our Team</a>
+    <a href="/Streamers">Streamers</a>
+    <a href="https://shop.faithforgegaming.com/">Merch Store</a>
+    <a href="/Devotions">Devotions</a>
+    <a href="/Prayers">Prayers</a>
+    <a href="/Servers">Servers</a>
+    <a href="/Events">Events</a>
+    <a class="join-btn" href="https://discord.gg/bAQrudk5a9" target="_blank" rel="noopener noreferrer">Join Discord</a>
   </nav>
 </header>
 
-<a class="discord-button" href="https://discord.gg/bAQrudk5a9" target="_blank" rel="noopener noreferrer">
-  Join Our Discord
-</a>
+<main>
 
-<div class="raidtrain-wrap">
+<section class="raid-hero">
+  <div class="raid-hero-content">
+    <p class="eyebrow">Faith • Fellowship • Gaming</p>
 
-  <section class="hero-panel">
-    <div class="section-kicker">Faith • Fellowship • Gaming</div>
-    <h2>Join the FaithForge Gaming Raid Train</h2>
-    <p>
-      The FaithForge Gaming Raid Train is a quarterly Christian gaming community event designed
-      to support current, new, and up-and-coming streamers through shared visibility, live raids,
-      real encouragement, and active community participation.
-    </p>
-    <p>
-      During each raid train, our community comes together to back FaithForge creators by showing
-      up in chat, following channels, sharing streams, participating in raids, and helping each
-      featured streamer feel supported as they grow. This is one of the ways FaithForge Gaming helps
-      new streamers build momentum and become part of a stronger Christian creator community.
-    </p>
-    <p>
-      Streamers who want to be part of future FaithForge raid train events can sign up through our
-      Discord community, where we organize quarterly event details, creator participation, lineup
-      updates, and community involvement.
+    <h1>The Forge Rally Raid Train</h1>
+
+    <h2>A quarterly FaithForge Gaming event supporting Christian streamers through live raids, clean content, and community encouragement.</h2>
+
+    <div class="raid-date">
+      Saturday, May 16, 2026 • Main Channel Starts at 10:30 AM ET
+    </div>
+
+    <p class="raid-summary">
+      Join the FaithForge community as we move from streamer to streamer, encouraging creators, showing up in chat, following channels, sharing streams, and helping current, new, and up-and-coming Christian streamers grow with real community support.
     </p>
 
-    <div class="hero-buttons">
-      <a href="https://www.twitch.tv/faithforgegaming" target="_blank" rel="noopener noreferrer">Main Twitch Channel</a>
-      <a class="alt-link" href="/Streamers/">Meet Our Streamers</a>
-      <a class="alt-link" href="https://discord.gg/bAQrudk5a9" target="_blank" rel="noopener noreferrer">Join Discord</a>
+    <div class="hero-actions">
+      <a class="twitch-btn" href="https://www.twitch.tv/faithforgegaming" target="_blank" rel="noopener noreferrer">Watch Main Channel</a>
+      <a class="secondary-btn" href="#raidSchedule">View Schedule</a>
+      <a class="discord-btn" href="https://discord.gg/bAQrudk5a9" target="_blank" rel="noopener noreferrer">Join Discord</a>
+      <a class="secondary-btn" href="https://discord.com/channels/1370183268900540567/1493279687290392658" target="_blank" rel="noopener noreferrer">Apply / Event Info</a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="countdown-panel">
-    <div class="section-kicker">Upcoming Event</div>
-    <h3 id="nextRaidTrainName">The FaithForge Raid Train</h3>
-    <p class="countdown-subtext">
-      Our next quarterly FaithForge Gaming Raid Train is coming soon. Join our community in supporting
-      current and up-and-coming streamers as we rally together for the next event.
-    </p>
-
-    <div class="countdown-timer" id="raidTrainCountdown">
-      <div class="countdown-box">
-        <span id="countdownDays">00</span>
-        <small>Days</small>
-      </div>
-      <div class="countdown-box">
-        <span id="countdownHours">00</span>
-        <small>Hours</small>
-      </div>
-      <div class="countdown-box">
-        <span id="countdownMinutes">00</span>
-        <small>Minutes</small>
-      </div>
-      <div class="countdown-box">
-        <span id="countdownSeconds">00</span>
-        <small>Seconds</small>
-      </div>
-    </div>
-
-    <p class="countdown-date" id="nextRaidTrainDateText">
-      Starts: June 20, 2026 at 12:00 PM EST
-    </p>
-
-    <div class="hero-buttons">
-      <a class="alt-link" href="https://discord.gg/bAQrudk5a9" target="_blank" rel="noopener noreferrer">Join Discord to Sign Up</a>
-      <a class="alt-link" href="/Events">See More Events</a>
-    </div>
-  </section>
-
-  <section class="featured-panel">
-    <div class="featured-copy">
-      <div class="section-kicker">Featured Stream</div>
-      <h3 id="featuredName">Checking live status...</h3>
-      <p id="featuredMeta">Loading current raid train information.</p>
-      <p id="featuredTitleText">Please wait while we check Twitch.</p>
-      <div class="hero-buttons" style="justify-content:flex-start;">
-        <a id="featuredWatchBtn" class="watch-btn" href="#" target="_blank" rel="noopener noreferrer" style="display:none;">Watch on Twitch</a>
-      </div>
-    </div>
-
-    <div class="featured-embed" id="featuredEmbedWrap">
-      The live stream player will appear here when someone is live.
-    </div>
-  </section>
-
-  <section class="schedule-panel">
-    <div class="schedule-head">
-      <div>
-        <div class="section-kicker">About the Event</div>
-        <h3>How the FaithForge Raid Train Works</h3>
-      </div>
-    </div>
-
-    <div class="seo-copy">
-      <p>
-        The FaithForge Gaming Raid Train is a recurring quarterly event created to strengthen our
-        Christian gaming community and actively support FaithForge streamers. Our goal is to help
-        both established creators and newer streamers grow through shared exposure, meaningful
-        encouragement, and strong community support.
-      </p>
-
-      <p>
-        Throughout the event, viewers move from one featured streamer to the next, helping boost
-        engagement, welcome new audiences, and create a more connected community experience. Rather
-        than letting streamers grow alone, the FaithForge community comes together to back the
-        current lineup and help rising creators get noticed.
-      </p>
-
-      <p>
-        This page makes it easy to follow the live lineup, see who is currently streaming, and know
-        where the next stop on the raid train is headed. It is built to help viewers support the
-        event in real time while also helping new visitors understand what the FaithForge Raid Train
-        is all about.
-      </p>
-
-      <p>
-        If you are a streamer who wants to participate in a future raid train, the best place to get
-        started is inside the FaithForge Gaming Discord. That is where creators can connect with the
-        community, find sign-up details, stay informed about upcoming quarterly events, and learn how
-        to become part of the FaithForge creator lineup.
-      </p>
-    </div>
-  </section>
-
-  <section class="schedule-panel">
-    <div class="schedule-head">
-      <div>
-        <div class="section-kicker">Current Lineup</div>
-        <h3>Raid Train Streamers</h3>
-        <p>Support the current creator and follow the next stop.</p>
-      </div>
-      <div class="auto-refresh">Auto-refreshes every 90 seconds</div>
-    </div>
-
-    <div id="raidGrid" class="raid-grid"></div>
-  </section>
-
-  <section class="schedule-panel">
-    <div class="schedule-head">
-      <div>
-        <div class="section-kicker">FAQ</div>
-        <h3>FaithForge Raid Train FAQ</h3>
-      </div>
-    </div>
-
-    <div class="seo-copy">
-      <h4>What is the FaithForge Raid Train?</h4>
-      <p>
-        The FaithForge Raid Train is a quarterly FaithForge Gaming event where the community supports
-        Christian streamers by joining live streams, encouraging creators, and raiding from one
-        channel to the next.
-      </p>
-
-      <h4>How do streamers join the raid train?</h4>
-      <p>
-        Streamers can join by becoming part of the FaithForge Gaming Discord community and following
-        the sign-up information shared there for each upcoming quarterly raid train event.
-      </p>
-
-      <h4>Who is the raid train for?</h4>
-      <p>
-        The raid train is for current FaithForge creators, new streamers, and up-and-coming Christian
-        streamers who want more support, more visibility, and a stronger community around their content.
-      </p>
-
-      <h4>How can the community support the event?</h4>
-      <p>
-        Community members can support the raid train by watching streams, chatting, following, sharing,
-        participating in raids, and helping encourage each featured creator during the event.
-      </p>
-    </div>
-  </section>
+<div class="hero-social">
+  <a href="https://www.facebook.com/profile.php?id=100070219355952" target="_blank" rel="noopener noreferrer">Facebook</a>
+  <a href="https://www.instagram.com/faithforgegaming" target="_blank" rel="noopener noreferrer">Instagram</a>
+  <a href="https://www.reddit.com/r/FaithForgeGaming/" target="_blank" rel="noopener noreferrer">Reddit</a>
+  <a href="https://www.youtube.com/@FaithForgeGaming" target="_blank" rel="noopener noreferrer">YouTube</a>
+  <a href="https://www.twitch.tv/faithforgegaming" target="_blank" rel="noopener noreferrer">Twitch</a>
+  <a href="https://www.tiktok.com/@faithforge.gaming" target="_blank" rel="noopener noreferrer">TikTok</a>
 </div>
 
+<section class="raid-dashboard">
+
+  <div class="dashboard-card">
+    <span id="raidLiveBadge" class="status-badge offline">Checking Status...</span>
+
+    <h2 id="raidCurrentTitle">Watch Now</h2>
+
+    <p id="raidCurrentStreamer">
+      Loading the current Raid Train stop...
+    </p>
+
+    <p id="raidNextStreamer" style="margin-top:10px;">
+      Up next: Loading...
+    </p>
+
+    <div class="card-actions">
+      <a id="raidWatchBtn" class="twitch-btn" href="https://www.twitch.tv/faithforgegaming" target="_blank" rel="noopener noreferrer">Open Current Stream</a>
+      <a class="secondary-btn" href="#raidSchedule">Full Lineup</a>
+      <a class="discord-btn" href="https://discord.gg/bAQrudk5a9" target="_blank" rel="noopener noreferrer">Join Discord Chat</a>
+    </div>
+  </div>
+
+  <div class="countdown-card">
+    <h2>Event Countdown</h2>
+
+    <div class="countdown-grid">
+      <div class="countdown-box">
+        <span id="countDays" class="countdown-number">--</span>
+        <span class="countdown-label">Days</span>
+      </div>
+
+      <div class="countdown-box">
+        <span id="countHours" class="countdown-number">--</span>
+        <span class="countdown-label">Hours</span>
+      </div>
+
+      <div class="countdown-box">
+        <span id="countMinutes" class="countdown-number">--</span>
+        <span class="countdown-label">Minutes</span>
+      </div>
+
+      <div class="countdown-box">
+        <span id="countSeconds" class="countdown-number">--</span>
+        <span class="countdown-label">Seconds</span>
+      </div>
+    </div>
+
+    <p id="countdownMessage">
+      The first FaithForge Raid Train stop begins soon.
+    </p>
+  </div>
+
+</section>
+
+<section id="featuredStream" class="section section-dark">
+  <div class="stream-layout">
+
+    <div class="stream-card">
+      <h2>Featured Stream</h2>
+
+      <span id="featuredBadge" class="status-badge offline">Checking Twitch...</span>
+
+      <p id="featuredName">
+        Loading featured streamer.
+      </p>
+
+      <p id="featuredMeta" style="margin-top:10px;">
+        The live player will appear when a Raid Train streamer is live.
+      </p>
+
+      <p id="featuredTitle" style="margin-top:10px;">
+        Check the schedule below to see the next stop.
+      </p>
+
+      <div class="card-actions">
+        <a id="featuredWatchBtn" class="twitch-btn" href="https://www.twitch.tv/faithforgegaming" target="_blank" rel="noopener noreferrer">Watch on Twitch</a>
+      </div>
+    </div>
+
+    <div class="stream-player" id="featuredPlayer">
+      The featured Twitch stream will appear here when someone in the Raid Train lineup is live.
+    </div>
+
+  </div>
+</section>
+
+<section id="raidSchedule" class="section">
+  <h2 class="section-title">Raid Train Schedule</h2>
+
+  <p class="section-subtitle">
+    Follow the current streamer, encourage them in chat, and ride with us to the next stop when their time ends.
+  </p>
+
+  <div id="scheduleTable" class="schedule-table">
+    <!-- Schedule rows are generated by JavaScript -->
+  </div>
+</section>
+
+<section class="section section-dark">
+  <h2 class="section-title">How to Support the Raid Train</h2>
+
+  <p class="section-subtitle">
+    New to raid trains? Here is the simple way to participate and help each FaithForge streamer feel supported.
+  </p>
+
+  <div class="guide-grid">
+
+    <div class="guide-card">
+      <h3>1. Join the Current Stream</h3>
+      <p>Start with the streamer listed as live or up next on this page.</p>
+    </div>
+
+    <div class="guide-card">
+      <h3>2. Encourage in Chat</h3>
+      <p>Say hello, cheer them on, and let them know FaithForge is with them.</p>
+    </div>
+
+    <div class="guide-card">
+      <h3>3. Follow & Share</h3>
+      <p>If you enjoy their content, follow their channel and share the stream.</p>
+    </div>
+
+    <div class="guide-card">
+      <h3>4. Ride to the Next Stop</h3>
+      <p>When the time ends, join the raid into the next streamer’s channel.</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="section-title">Copy a Chat Message</h2>
+
+  <p class="section-subtitle">
+    Help keep the event active and encouraging by posting a quick FaithForge message in chat.
+  </p>
+
+  <div class="chat-grid">
+
+    <div class="chat-card">
+      <p id="chatMsg1">FaithForge Raid Train is here! Excited to support this stream!</p>
+      <button class="copy-btn" onclick="copyChatMessage('chatMsg1')">Copy Message</button>
+    </div>
+
+    <div class="chat-card">
+      <p id="chatMsg2">Dropping in from FaithForge Gaming. Hope you have a great stream!</p>
+      <button class="copy-btn" onclick="copyChatMessage('chatMsg2')">Copy Message</button>
+    </div>
+
+    <div class="chat-card">
+      <p id="chatMsg3">Let’s keep the raid train going! Who’s ready for the next stop?</p>
+      <button class="copy-btn" onclick="copyChatMessage('chatMsg3')">Copy Message</button>
+    </div>
+
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="info-grid">
+
+    <div class="info-card">
+      <h2>What Is the FaithForge Raid Train?</h2>
+
+      <p>
+        The FaithForge Raid Train is a quarterly Christian gaming event where our community moves from one livestream to the next to support FaithForge creators.
+      </p>
+
+      <p style="margin-top:12px;">
+        Each streamer gets a scheduled time slot, and when their stream ends, the community raids into the next channel. Our goal is to help current, new, and up-and-coming Christian streamers feel supported, grow their audience, and build stronger fellowship through gaming.
+      </p>
+    </div>
+
+    <div class="info-card">
+      <h2>FaithForge Content Standard</h2>
+
+      <p>
+        Raid Train streams should remain clean, community-friendly, and aligned with FaithForge Gaming values.
+      </p>
+
+      <ul>
+        <li>Clean and respectful content</li>
+        <li>Community-friendly chat environment</li>
+        <li>FaithForge-approved games or content style</li>
+        <li>Encouraging, welcoming, and family-conscious atmosphere</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="signup-card">
+    <h2>Want to Stream in a Future Raid Train?</h2>
+
+    <p>
+      Streamers who want to be part of future FaithForge Raid Train events can sign up through our Discord community. That is where we organize quarterly event details, creator participation, lineup updates, and community involvement.
+    </p>
+
+    <div class="card-actions">
+      <a class="discord-btn" href="https://discord.gg/bAQrudk5a9" target="_blank" rel="noopener noreferrer">Join the Discord</a>
+      <a class="secondary-btn" href="https://discord.com/channels/1370183268900540567/1493279687290392658" target="_blank" rel="noopener noreferrer">Raid Train Info</a>
+      <a class="secondary-btn" href="/Streamers/">Meet Our Streamers</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <h2 class="section-title">FaithForge Raid Train FAQ</h2>
+
+  <p class="section-subtitle">
+    Quick answers for viewers, streamers, and community members.
+  </p>
+
+  <div class="faq-grid">
+
+    <div class="faq-item">
+      <h3>What is the FaithForge Raid Train?</h3>
+      <p>
+        The FaithForge Raid Train is a quarterly FaithForge Gaming event where the community supports Christian streamers by joining live streams, encouraging creators, and raiding from one channel to the next.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>How do streamers join?</h3>
+      <p>
+        Streamers can join by becoming part of the FaithForge Gaming Discord community and following the sign-up information shared there for each upcoming quarterly raid train event.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Who is the raid train for?</h3>
+      <p>
+        The raid train is for current FaithForge creators, new streamers, and up-and-coming Christian streamers who want more support, visibility, and community around their content.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>How can viewers support the event?</h3>
+      <p>
+        Viewers can support the raid train by watching streams, chatting, following, sharing, participating in raids, and helping encourage each featured creator during the event.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
 <footer>
-  <div style="text-align:center; margin-bottom:15px;">
-    <a class="discord-button" href="https://discord.gg/bAQrudk5a9" target="_blank" rel="noopener noreferrer">
-      Join Our Discord
-    </a>
-  </div>
-
-  <div class="footer-links">
-    <a href="/index.html">Home</a>
-    <a href="/Aboutus/">About Us</a>
-    <a href="/Staff/">Our Team</a>
-    <a href="/Streamers/">Streamers</a>
-    <a href="https://shop.faithforgegaming.com/">Merch Store</a>
-    <a href="/Devotions/">Devotions</a>
-    <a href="/Prayers/">Prayers</a>
-    <a href="/Servers/">Servers</a>
-    <a href="/Events/">Events</a>
-    <a href="/Contact/">Contact Us</a>
-  </div>
-
-  <div class="footer-copy">
-    © 2026 FaithForge Gaming
-  </div>
+  <a href="/index.html">Home</a>
+  <a href="/Aboutus">About Us</a>
+  <a href="/Staff">Our Team</a>
+  <a href="/Streamers">Streamers</a>
+  <a href="https://shop.faithforgegaming.com/">Merch Store</a>
+  <a href="/Devotions">Devotions</a>
+  <a href="/Prayers">Prayers</a>
+  <a href="/Servers">Servers</a>
+  <a href="/Events">Events</a>
+  <a href="/Contact">Contact Us</a>
+  <br><br>
+  © 2026 FaithForge Gaming
 </footer>
 
+<div class="mobile-sticky">
+  <a href="#featuredStream">Watch</a>
+  <a href="#raidSchedule">Schedule</a>
+  <a href="https://discord.gg/bAQrudk5a9" target="_blank" rel="noopener noreferrer">Discord</a>
+</div>
+
 <script>
-  const FFG_RAID_TRAIN = {
-    apiUrl: 'https://faithforge-raidtrain-api.faithforgegaming.workers.dev/api/twitch-status',
-    twitchParent: ['faithforgegaming.com', 'www.faithforgegaming.com'],
-    schedule: [
-      { login: 'faithforgegaming', displayName: 'FaithForgeGaming', slot: 'Main Channel Start 10:30 AM-11 PM' },
-      { login: 'forgedbygrace7', displayName: 'forgedbygrace7', slot: 'Raid Train 11-12PM EST Worship & Bible Study' },
-      { login: 'blesstTim', displayName: 'blesstTim', slot: 'Raid Train 12-1PM EST' },
-      { login: 'doctorjsways', displayName: 'doctorjsways', slot: 'Raid Train 1-2PM EST' },
-      { login: 'Brn2bEw1Ld', displayName: 'Brn2bEw1Ld', slot: 'Raid Train 2-3PM EST' },
-      { login: 'seawolf_30', displayName: 'seawolf_30', slot: 'Raid Train 3-4PM EST' },
-      { login: 'TBD', displayName: 'TBD', slot: 'Raid Train 4-5PM EST' },
-      { login: 'TBD', displayName: 'TBD', slot: 'Raid Train 5-6PM EST' },
-      { login: 'TBD', displayName: 'TBD', slot: 'Raid Train 6-7PM EST' },
-      { login: 'mooncalfmage', displayName: 'mooncalfmage', slot: 'Raid Train 7-8PM EST' },
-      { login: 'faithforgegaming', displayName: 'FaithForgeGaming', slot: 'Main Channel Community Event 8-10PM EST' },
-    ]
-  };
+/* PARTICLES */
+const c = document.getElementById("particles");
+const x = c.getContext("2d");
 
-  const NEXT_RAID_TRAIN = {
-    name: 'The Forge Rally Raid Train',
-    targetDate: '2026-05-16T11:00:00-04:00',
-    displayDate: 'May 16, 2026 at 11:00 AM EST'
-  };
+function resizeParticles() {
+  c.width = innerWidth;
+  c.height = innerHeight;
+}
 
-  const raidGrid = document.getElementById('raidGrid');
-  const featuredName = document.getElementById('featuredName');
-  const featuredMeta = document.getElementById('featuredMeta');
-  const featuredTitleText = document.getElementById('featuredTitleText');
-  const featuredWatchBtn = document.getElementById('featuredWatchBtn');
-  const featuredEmbedWrap = document.getElementById('featuredEmbedWrap');
+window.addEventListener("resize", resizeParticles);
+resizeParticles();
 
-  function startRaidTrainCountdown() {
-    const nameEl = document.getElementById('nextRaidTrainName');
-    const dateTextEl = document.getElementById('nextRaidTrainDateText');
-    const daysEl = document.getElementById('countdownDays');
-    const hoursEl = document.getElementById('countdownHours');
-    const minutesEl = document.getElementById('countdownMinutes');
-    const secondsEl = document.getElementById('countdownSeconds');
+let parts = [];
 
-    if (!nameEl || !dateTextEl || !daysEl || !hoursEl || !minutesEl || !secondsEl) return;
-
-    nameEl.textContent = NEXT_RAID_TRAIN.name;
-    dateTextEl.textContent = `Starts: ${NEXT_RAID_TRAIN.displayDate}`;
-
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const target = new Date(NEXT_RAID_TRAIN.targetDate).getTime();
-      const distance = target - now;
-
-      if (distance <= 0) {
-        daysEl.textContent = '00';
-        hoursEl.textContent = '00';
-        minutesEl.textContent = '00';
-        secondsEl.textContent = '00';
-        dateTextEl.textContent = `${NEXT_RAID_TRAIN.name} is happening now!`;
-        return;
-      }
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((distance / (1000 * 60)) % 60);
-      const seconds = Math.floor((distance / 1000) % 60);
-
-      daysEl.textContent = String(days).padStart(2, '0');
-      hoursEl.textContent = String(hours).padStart(2, '0');
-      minutesEl.textContent = String(minutes).padStart(2, '0');
-      secondsEl.textContent = String(seconds).padStart(2, '0');
-    }
-
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-  }
-
-  async function loadRaidTrainStatus() {
-    try {
-      const response = await fetch(FFG_RAID_TRAIN.apiUrl, { cache: 'no-store' });
-      const payload = await response.json();
-
-      if (!response.ok) {
-        throw new Error(payload.details || payload.error || 'Failed to load Twitch status');
-      }
-
-      const merged = FFG_RAID_TRAIN.schedule.map((entry) => {
-        const match = (payload.channels || []).find(
-          (channel) => channel.login.toLowerCase() === entry.login.toLowerCase()
-        );
-
-        return {
-          ...entry,
-          ...(match || {
-            live: false,
-            title: '',
-            game_name: '',
-            viewer_count: 0
-          })
-        };
-      });
-
-      renderFeatured(merged);
-      renderGrid(merged);
-    } catch (error) {
-      featuredName.textContent = 'Unable to load stream status';
-      featuredMeta.textContent = 'Check the Worker URL or Twitch credentials.';
-      featuredTitleText.textContent = error.message;
-      raidGrid.innerHTML = `
-        <div class="raid-card">
-          <h4>Status unavailable</h4>
-          <p class="card-meta">The Twitch status feed could not be loaded right now.</p>
-          <p class="card-title">${escapeHtml(error.message)}</p>
-        </div>
-      `;
-    }
-  }
-
-  function renderFeatured(channels) {
-    const liveChannel = channels.find(channel => channel.live);
-
-    if (!liveChannel) {
-      featuredName.textContent = 'No one is live right now';
-      featuredMeta.textContent = 'Check back soon for the next FaithForge stream.';
-      featuredTitleText.textContent = 'The featured player will appear automatically when someone in the raid train lineup goes live.';
-      featuredWatchBtn.style.display = 'none';
-      featuredEmbedWrap.innerHTML = 'The live stream player will appear here when someone is live.';
-      return;
-    }
-
-    featuredName.textContent = `${liveChannel.display_name || liveChannel.displayName} is live now`;
-    featuredMeta.textContent = `${liveChannel.game_name || 'Live on Twitch'}${liveChannel.viewer_count ? ' • ' + liveChannel.viewer_count + ' viewers' : ''}`;
-    featuredTitleText.textContent = liveChannel.title || 'Currently streaming now.';
-    featuredWatchBtn.href = `https://www.twitch.tv/${liveChannel.login}`;
-    featuredWatchBtn.style.display = 'inline-block';
-
-    renderTwitchEmbed(liveChannel.login);
-  }
-
-  function renderTwitchEmbed(channelName) {
-    featuredEmbedWrap.innerHTML = '<div id="twitch-player"></div>';
-
-    if (window.Twitch && window.Twitch.Embed) {
-      new Twitch.Embed('twitch-player', {
-        width: '100%',
-        height: 320,
-        channel: channelName,
-        parent: FFG_RAID_TRAIN.twitchParent,
-        layout: 'video'
-      });
-    } else {
-      featuredEmbedWrap.innerHTML = `
-        <a class="watch-btn" href="https://www.twitch.tv/${encodeURIComponent(channelName)}" target="_blank" rel="noopener noreferrer">
-          Open stream on Twitch
-        </a>
-      `;
-    }
-  }
-
-  function renderGrid(channels) {
-    const sorted = [...channels].sort((a, b) => Number(b.live) - Number(a.live));
-
-    raidGrid.innerHTML = sorted.map((channel) => {
-      const displayName = channel.display_name || channel.displayName || channel.login;
-      const badgeClass = channel.live ? 'status-live' : 'status-offline';
-      const badgeText = channel.live ? 'LIVE NOW' : 'OFFLINE';
-      const meta = channel.live
-        ? `${channel.game_name || 'Live on Twitch'}${channel.viewer_count ? ' • ' + channel.viewer_count + ' viewers' : ''}`
-        : 'Currently offline';
-
-      const titleText = channel.title
-        ? channel.title
-        : 'Follow this creator and be ready for the next raid stop.';
-
-      return `
-        <article class="raid-card">
-          <h4>${escapeHtml(displayName)}</h4>
-          <div class="slot">${escapeHtml(channel.slot || '')}</div>
-          <span class="status-badge ${badgeClass}">${badgeText}</span>
-          <p class="card-meta">${escapeHtml(meta)}</p>
-          <p class="card-title">${escapeHtml(titleText)}</p>
-
-          <div class="card-links">
-            <a class="watch-link" href="https://www.twitch.tv/${encodeURIComponent(channel.login)}" target="_blank" rel="noopener noreferrer">Visit Twitch</a>
-            <a class="alt-link" href="/Streamers/">FaithForge Streamers</a>
-          </div>
-        </article>
-      `;
-    }).join('');
-  }
-
-  function escapeHtml(value) {
-    return String(value)
-      .replaceAll('&', '&amp;')
-      .replaceAll('<', '&lt;')
-      .replaceAll('>', '&gt;')
-      .replaceAll('"', '&quot;')
-      .replaceAll("'", '&#39;');
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const toggle = document.querySelector('.menu-toggle');
-    const menu = document.querySelector('.menu-links');
-
-    if (toggle && menu) {
-      toggle.addEventListener('click', () => {
-        const isOpen = menu.classList.toggle('show');
-        toggle.setAttribute('aria-expanded', isOpen);
-      });
-
-      menu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          menu.classList.remove('show');
-          toggle.setAttribute('aria-expanded', 'false');
-        });
-      });
-    }
-
-    startRaidTrainCountdown();
-    loadRaidTrainStatus();
-    setInterval(loadRaidTrainStatus, 90000);
+function spawnParticle() {
+  parts.push({
+    x: Math.random() * c.width,
+    y: c.height,
+    s: Math.random() * 2 + 1,
+    o: 0.7
   });
-</script>
+}
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is the FaithForge Raid Train?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The FaithForge Raid Train is a quarterly FaithForge Gaming event where the community supports Christian streamers by joining live streams, encouraging creators, and raiding from one channel to the next."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do streamers join the raid train?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Streamers can join by becoming part of the FaithForge Gaming Discord community and following the sign-up information shared there for each upcoming quarterly raid train event."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Who is the raid train for?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The raid train is for current FaithForge creators, new streamers, and up-and-coming Christian streamers who want more support, more visibility, and a stronger community around their content."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How can the community support the event?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Community members can support the raid train by watching streams, chatting, following, sharing, participating in raids, and helping encourage each featured creator during the event."
-      }
-    }
-  ]
+const isMobile = window.innerWidth < 768;
+const spawnRate = isMobile ? 0.15 : 0.4;
+const speed = isMobile ? 1.5 : 2.5;
+
+function drawParticles() {
+  x.clearRect(0, 0, c.width, c.height);
+
+  parts.forEach((p, i) => {
+    x.fillStyle = `rgba(245,197,24,${p.o})`;
+    x.beginPath();
+    x.arc(p.x, p.y, p.s, 0, Math.PI * 2);
+    x.fill();
+
+    p.y -= speed;
+    p.o -= 0.004;
+
+    if (p.o <= 0) parts.splice(i, 1);
+  });
+
+  if (Math.random() < spawnRate) spawnParticle();
+
+  requestAnimationFrame(drawParticles);
+}
+
+const prefersReducedMotion =
+  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+if (!prefersReducedMotion) {
+  drawParticles();
 }
 </script>
 
 <script src="https://embed.twitch.tv/embed/v1.js"></script>
-<script src="https://faithforgegaming.com/embers.js"></script>
+
+<script>
+/*
+  RAID TRAIN SETTINGS
+  May is daylight saving time, so the code uses -04:00.
+  The page displays ET instead of EST so it remains viewer-friendly.
+*/
+
+const eventStart = new Date("2026-05-16T10:30:00-04:00");
+const eventEnd = new Date("2026-05-16T22:00:00-04:00");
+
+const raidSchedule = [
+  {
+    time: "10:30 AM",
+    start: "2026-05-16T10:30:00-04:00",
+    end: "2026-05-16T11:00:00-04:00",
+    login: "faithforgegaming",
+    display: "FaithForgeGaming",
+    details: "Main Channel Start"
+  },
+  {
+    time: "11:00 AM",
+    start: "2026-05-16T11:00:00-04:00",
+    end: "2026-05-16T12:00:00-04:00",
+    login: "forgedbygrace7",
+    display: "forgedbygrace7",
+    details: "Worship & Bible Study"
+  },
+  {
+    time: "12:00 PM",
+    start: "2026-05-16T12:00:00-04:00",
+    end: "2026-05-16T13:00:00-04:00",
+    login: "blessttim",
+    display: "blessttim",
+    details: "Raid Train"
+  },
+  {
+    time: "1:00 PM",
+    start: "2026-05-16T13:00:00-04:00",
+    end: "2026-05-16T14:00:00-04:00",
+    login: "doctorjsways",
+    display: "doctorjsways",
+    details: "Raid Train"
+  },
+  {
+    time: "2:00 PM",
+    start: "2026-05-16T14:00:00-04:00",
+    end: "2026-05-16T15:00:00-04:00",
+    login: "brn2bew1ld",
+    display: "brn2bew1ld",
+    details: "Raid Train"
+  },
+  {
+    time: "3:00 PM",
+    start: "2026-05-16T15:00:00-04:00",
+    end: "2026-05-16T16:00:00-04:00",
+    login: "seawolf_30",
+    display: "seawolf_30",
+    details: "Raid Train"
+  },
+  {
+    time: "4:00 PM",
+    start: "2026-05-16T16:00:00-04:00",
+    end: "2026-05-16T17:00:00-04:00",
+    login: "",
+    display: "Open Slot",
+    details: "Streamer spot available",
+    openSlot: true
+  },
+  {
+    time: "5:00 PM",
+    start: "2026-05-16T17:00:00-04:00",
+    end: "2026-05-16T18:00:00-04:00",
+    login: "",
+    display: "Open Slot",
+    details: "Streamer spot available",
+    openSlot: true
+  },
+  {
+    time: "6:00 PM",
+    start: "2026-05-16T18:00:00-04:00",
+    end: "2026-05-16T19:00:00-04:00",
+    login: "",
+    display: "Open Slot",
+    details: "Streamer spot available",
+    openSlot: true
+  },
+  {
+    time: "7:00 PM",
+    start: "2026-05-16T19:00:00-04:00",
+    end: "2026-05-16T20:00:00-04:00",
+    login: "mooncalfmage",
+    display: "mooncalfmage",
+    details: "Raid Train"
+  },
+  {
+    time: "8:00 PM",
+    start: "2026-05-16T20:00:00-04:00",
+    end: "2026-05-16T22:00:00-04:00",
+    login: "faithforgegaming",
+    display: "FaithForgeGaming",
+    details: "Main Channel Community Event"
+  }
+];
+
+function twitchUrl(login) {
+  return `https://www.twitch.tv/${login}`;
+}
+
+function escapeHtml(value) {
+  return String(value || "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function getScheduleState() {
+  const now = new Date();
+
+  const current = raidSchedule.find(item => {
+    const start = new Date(item.start);
+    const end = new Date(item.end);
+    return now >= start && now < end;
+  });
+
+  const next = raidSchedule.find(item => {
+    const start = new Date(item.start);
+    return now < start;
+  });
+
+  return { now, current, next };
+}
+
+function renderSchedule() {
+  const table = document.getElementById("scheduleTable");
+  const { now, current, next } = getScheduleState();
+
+  table.innerHTML = raidSchedule.map(item => {
+    const start = new Date(item.start);
+    const end = new Date(item.end);
+
+    let rowClass = "";
+    let label = "";
+
+    if (current === item) {
+      rowClass = "current";
+      label = `<span class="row-label live">CURRENT STOP</span>`;
+    } else if (next === item) {
+      rowClass = "upnext-row";
+      label = `<span class="row-label next">UP NEXT</span>`;
+    } else if (now >= end) {
+      rowClass = "complete";
+      label = `<span class="row-label done">COMPLETED</span>`;
+    }
+
+    if (item.openSlot) {
+      rowClass += " open-slot";
+      if (!label) label = `<span class="row-label open">OPEN SLOT</span>`;
+    }
+
+    const action = item.openSlot
+      ? `<a class="secondary-btn" href="https://discord.com/channels/1370183268900540567/1493279687290392658" target="_blank" rel="noopener noreferrer">Apply</a>`
+      : `<a class="twitch-btn" href="${twitchUrl(item.login)}" target="_blank" rel="noopener noreferrer">Watch</a>`;
+
+    const streamer = item.openSlot
+      ? "Open Slot"
+      : escapeHtml(item.display);
+
+    return `
+      <div class="schedule-row ${rowClass}">
+        <div>
+          <div class="schedule-time">${item.time} ET</div>
+          ${label}
+        </div>
+
+        <div class="schedule-streamer">${streamer}</div>
+
+        <div class="schedule-details">${escapeHtml(item.details)}</div>
+
+        <div class="schedule-action">${action}</div>
+      </div>
+    `;
+  }).join("");
+}
+
+function updateCountdown() {
+  const now = new Date();
+  const target = eventStart;
+  const end = eventEnd;
+
+  const daysEl = document.getElementById("countDays");
+  const hoursEl = document.getElementById("countHours");
+  const minutesEl = document.getElementById("countMinutes");
+  const secondsEl = document.getElementById("countSeconds");
+  const messageEl = document.getElementById("countdownMessage");
+
+  if (now >= end) {
+    daysEl.textContent = "0";
+    hoursEl.textContent = "0";
+    minutesEl.textContent = "0";
+    secondsEl.textContent = "0";
+    messageEl.textContent = "This Raid Train event has wrapped up. Join Discord for future quarterly events.";
+    return;
+  }
+
+  if (now >= target && now < end) {
+    daysEl.textContent = "LIVE";
+    hoursEl.textContent = "NOW";
+    minutesEl.textContent = "";
+    secondsEl.textContent = "";
+    messageEl.textContent = "The FaithForge Raid Train is live now. Check the Watch Now section for the current stop.";
+    return;
+  }
+
+  const distance = target - now;
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((distance / (1000 * 60)) % 60);
+  const seconds = Math.floor((distance / 1000) % 60);
+
+  daysEl.textContent = days;
+  hoursEl.textContent = hours;
+  minutesEl.textContent = minutes;
+  secondsEl.textContent = seconds;
+
+  messageEl.textContent = "The Raid Train begins Saturday, May 16, 2026 at 10:30 AM ET on the FaithForgeGaming main channel.";
+}
+
+function updateDashboardFromSchedule(liveChannel = null) {
+  const badge = document.getElementById("raidLiveBadge");
+  const title = document.getElementById("raidCurrentTitle");
+  const currentText = document.getElementById("raidCurrentStreamer");
+  const nextText = document.getElementById("raidNextStreamer");
+  const watchBtn = document.getElementById("raidWatchBtn");
+
+  const { now, current, next } = getScheduleState();
+
+  if (liveChannel) {
+    const login = String(liveChannel.login || "").toLowerCase();
+    const display = liveChannel.display_name || liveChannel.login;
+
+    badge.textContent = "LIVE NOW";
+    badge.className = "status-badge live";
+    title.textContent = "Watch Now";
+    currentText.textContent = `${display} is live now. Join the stream, encourage them in chat, and ride with us to the next stop.`;
+    nextText.textContent = next && !next.openSlot
+      ? `Up next: ${next.display} at ${next.time} ET`
+      : next && next.openSlot
+        ? `Up next: Open Slot at ${next.time} ET`
+        : "This is the final scheduled stop.";
+    watchBtn.href = twitchUrl(login);
+    watchBtn.textContent = "Open Live Stream";
+    return;
+  }
+
+  if (current && !current.openSlot) {
+    badge.textContent = "CURRENT STOP";
+    badge.className = "status-badge upnext";
+    title.textContent = "Current Raid Stop";
+    currentText.textContent = `${current.display} is the scheduled current stop. If they are live, open their Twitch channel and join the chat.`;
+    nextText.textContent = next
+      ? `Up next: ${next.display} at ${next.time} ET`
+      : "This is the final scheduled stop.";
+    watchBtn.href = twitchUrl(current.login);
+    watchBtn.textContent = "Open Current Stream";
+    return;
+  }
+
+  if (current && current.openSlot) {
+    badge.textContent = "OPEN SLOT";
+    badge.className = "status-badge offline";
+    title.textContent = "Open Slot";
+    currentText.textContent = "This time slot is currently open for a FaithForge streamer.";
+    nextText.textContent = next
+      ? `Up next: ${next.display} at ${next.time} ET`
+      : "This is the final scheduled block.";
+    watchBtn.href = "https://discord.com/channels/1370183268900540567/1493279687290392658";
+    watchBtn.textContent = "Apply / Event Info";
+    return;
+  }
+
+  if (next) {
+    badge.textContent = "UP NEXT";
+    badge.className = "status-badge upnext";
+    title.textContent = "Next Raid Train Stop";
+    currentText.textContent = `${next.display} is scheduled next at ${next.time} ET.`;
+    nextText.textContent = next.openSlot
+      ? "This is currently an open streamer slot. Check Discord for updates."
+      : "Follow the channel early so you are ready when the stream starts.";
+    watchBtn.href = next.openSlot
+      ? "https://discord.com/channels/1370183268900540567/1493279687290392658"
+      : twitchUrl(next.login);
+    watchBtn.textContent = next.openSlot ? "Apply / Event Info" : "Open Next Stream";
+    return;
+  }
+
+  if (now >= eventEnd) {
+    badge.textContent = "EVENT ENDED";
+    badge.className = "status-badge offline";
+    title.textContent = "Raid Train Complete";
+    currentText.textContent = "This FaithForge Raid Train event has wrapped up.";
+    nextText.textContent = "Join Discord to stay updated on the next quarterly Raid Train.";
+    watchBtn.href = "https://discord.gg/bAQrudk5a9";
+    watchBtn.textContent = "Join Discord";
+    return;
+  }
+
+  badge.textContent = "NO ONE LIVE";
+  badge.className = "status-badge offline";
+  title.textContent = "Watch Now";
+  currentText.textContent = "No Raid Train streamer is live yet.";
+  nextText.textContent = "Check back soon or join Discord for event updates.";
+  watchBtn.href = "https://www.twitch.tv/faithforgegaming";
+  watchBtn.textContent = "Open Main Channel";
+}
+
+function setFeaturedOffline(message = "The featured Twitch stream will appear here when someone in the Raid Train lineup is live.") {
+  const badge = document.getElementById("featuredBadge");
+  const name = document.getElementById("featuredName");
+  const meta = document.getElementById("featuredMeta");
+  const title = document.getElementById("featuredTitle");
+  const watchBtn = document.getElementById("featuredWatchBtn");
+  const player = document.getElementById("featuredPlayer");
+
+  badge.textContent = "NO ONE LIVE";
+  badge.className = "status-badge offline";
+  name.textContent = "No Raid Train streamer is live right now.";
+  meta.textContent = "Check the schedule for the next stop.";
+  title.textContent = "The player will update automatically when someone in the lineup goes live.";
+  watchBtn.href = "https://www.twitch.tv/faithforgegaming";
+  player.innerHTML = message;
+}
+
+function setFeaturedLive(featured) {
+  const badge = document.getElementById("featuredBadge");
+  const name = document.getElementById("featuredName");
+  const meta = document.getElementById("featuredMeta");
+  const title = document.getElementById("featuredTitle");
+  const watchBtn = document.getElementById("featuredWatchBtn");
+  const player = document.getElementById("featuredPlayer");
+
+  const login = String(featured.login || "").toLowerCase();
+  const display = featured.display_name || featured.login;
+
+  badge.textContent = "LIVE NOW";
+  badge.className = "status-badge live";
+
+  name.textContent = `${display} is live now`;
+  meta.textContent = `${featured.game_name || "Live on Twitch"}${featured.viewer_count ? " • " + featured.viewer_count + " viewers" : ""}`;
+  title.textContent = featured.title || "Currently streaming now.";
+  watchBtn.href = twitchUrl(login);
+
+  player.innerHTML = '<div id="featuredTwitchPlayer" style="width:100%;"></div>';
+
+  new Twitch.Embed("featuredTwitchPlayer", {
+    width: "100%",
+    height: 380,
+    channel: login,
+    parent: ["faithforgegaming.com", "www.faithforgegaming.com"],
+    layout: "video"
+  });
+}
+
+async function loadRaidTrainLiveStatus() {
+  try {
+    const response = await fetch(
+      "https://faithforge-raidtrain-api.faithforgegaming.workers.dev/api/twitch-status",
+      { cache: "no-store" }
+    );
+
+    const payload = await response.json();
+
+    if (!response.ok) {
+      throw new Error(payload.details || payload.error || "Unable to load Twitch status.");
+    }
+
+    const channels = payload.channels || [];
+
+    const scheduleLogins = raidSchedule
+      .filter(item => item.login)
+      .map(item => item.login.toLowerCase());
+
+    const liveChannels = channels.filter(channel =>
+      scheduleLogins.includes(String(channel.login || "").toLowerCase()) && channel.live
+    );
+
+    let featured = null;
+
+    if (liveChannels.length) {
+      const { current } = getScheduleState();
+
+      if (current && current.login) {
+        featured = liveChannels.find(channel =>
+          String(channel.login || "").toLowerCase() === current.login.toLowerCase()
+        );
+      }
+
+      if (!featured) {
+        featured = liveChannels[0];
+      }
+    }
+
+    if (featured) {
+      setFeaturedLive(featured);
+      updateDashboardFromSchedule(featured);
+    } else {
+      setFeaturedOffline();
+      updateDashboardFromSchedule(null);
+    }
+
+  } catch (error) {
+    const badge = document.getElementById("featuredBadge");
+    const name = document.getElementById("featuredName");
+    const meta = document.getElementById("featuredMeta");
+    const title = document.getElementById("featuredTitle");
+    const player = document.getElementById("featuredPlayer");
+
+    badge.textContent = "STATUS ERROR";
+    badge.className = "status-badge error";
+    name.textContent = "Could not load Twitch status.";
+    meta.textContent = "There was a problem reaching the FaithForge Twitch status feed.";
+    title.textContent = error.message;
+    player.innerHTML = "We could not load the featured Twitch player right now.";
+
+    updateDashboardFromSchedule(null);
+  }
+}
+
+function copyChatMessage(id) {
+  const text = document.getElementById(id).textContent;
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(() => {
+      alert("Chat message copied!");
+    }).catch(() => {
+      alert("Copy failed. You can manually highlight and copy the message.");
+    });
+  } else {
+    alert("Copy is not supported on this browser. You can manually highlight and copy the message.");
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  renderSchedule();
+  updateCountdown();
+  updateDashboardFromSchedule(null);
+  loadRaidTrainLiveStatus();
+
+  setInterval(() => {
+    renderSchedule();
+    updateCountdown();
+    updateDashboardFromSchedule(null);
+  }, 1000);
+
+  setInterval(loadRaidTrainLiveStatus, 90000);
+});
+</script>
 
 </body>
 </html>

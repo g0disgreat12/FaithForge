@@ -235,9 +235,29 @@ main {
   display: flex;
   align-items: center;
   padding: 70px 50px;
-  background:
-    linear-gradient(to right, rgba(0,0,0,.96), rgba(0,0,0,.78), rgba(0,0,0,.35)),
-    url("https://faithforgegaming.com/raidtrain/raidtrain.webp") right center / cover no-repeat;
+  background-color: #000;
+
+  background-image:
+    linear-gradient(
+      to right,
+      rgba(0,0,0,.96) 0%,
+      rgba(0,0,0,.82) 38%,
+      rgba(0,0,0,.45) 65%,
+      rgba(0,0,0,.18) 100%
+    ),
+    url("https://faithforgegaming.com/raidtrain/raidtrain.webp");
+
+  background-position:
+    center,
+    right center;
+
+  background-size:
+    cover,
+    auto 82%;
+
+  background-repeat:
+    no-repeat,
+    no-repeat;
 }
 
 .raid-hero-content {
@@ -679,9 +699,20 @@ footer a:hover {
   }
 
   .raid-hero {
-    padding: 48px 22px;
+    padding: 48px 22px 300px;
     text-align: center;
-    background-position: center;
+
+    background-position:
+      center,
+      center bottom;
+
+    background-size:
+      cover,
+      85% auto;
+
+    background-repeat:
+      no-repeat,
+      no-repeat;
   }
 
   .raid-hero-content {

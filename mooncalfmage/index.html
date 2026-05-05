@@ -3,380 +3,713 @@
 <head>
   <meta charset="UTF-8">
 
-  <title>mooncalfmage | FaithForge Gaming Christian Streamer</title>
+  <title>Mooncalfmage | Christian Cozy Gamer, Veteran & FaithForge Creator</title>
 
-  <meta name="description" content="Watch mooncalfmage, a Christian gaming content creator at FaithForge Gaming. Family-friendly streams, Christ-centered content, and faith-based gaming community.">
+  <meta name="description" content="Meet mooncalfmage, also known as Moonpie: a Christian cozy gamer, veteran, woman gamer, and FaithForge Gaming Content Creator Partner. Watch family-friendly streams, recent games, videos, testimony, schedule, and community links.">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow, max-image-preview:large">
 
   <link rel="canonical" href="https://faithforgegaming.com/mooncalfmage/">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="mooncalfmage | FaithForge Gaming">
-  <meta property="og:description" content="Family-friendly, Christ-centered gaming content from mooncalfmage.">
+  <meta property="og:title" content="Mooncalfmage | Christian Cozy Gamer & FaithForge Creator">
+  <meta property="og:description" content="Follow mooncalfmage, a Christian cozy gamer, veteran, woman gamer, and FaithForge Gaming Content Creator Partner sharing family-friendly streams, faith, community, and cozy gaming content.">
   <meta property="og:image" content="https://faithforgegaming.com/Streamers/mooncalfmage.webp">
   <meta property="og:url" content="https://faithforgegaming.com/mooncalfmage/">
   <meta property="og:type" content="profile">
+  <meta property="og:site_name" content="FaithForge Gaming">
 
+  <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Family-friendly, Christ-centered gaming content from mooncalfmage.">
-  <meta name="twitter:description" content="Discover FaithForge Gaming, a Christ-centered community where gamers grow in faith and fellowship.">
+  <meta name="twitter:title" content="Mooncalfmage | Christian Cozy Gamer & FaithForge Creator">
+  <meta name="twitter:description" content="Watch mooncalfmage, a Christian cozy gamer, veteran, woman gamer, and FaithForge Gaming Content Creator Partner.">
   <meta name="twitter:image" content="https://faithforgegaming.com/Streamers/mooncalfmage.webp">
 
   <link rel="stylesheet" href="https://faithforgegaming.com/style.css">
   <meta name="theme-color" content="#000000">
   <link rel="icon" href="https://faithforgegaming.com/Anvil.webp">
 
-  <style>
-  /* Page Layout */
-  .profile-container {
-    max-width: 1150px;
-    margin: 40px auto;
-    padding: 20px;
-    text-align: left;
-  }
-
-  .back-button {
-    display: inline-block;
-    margin-bottom: 22px;
-    text-decoration: none;
-    color: #f5c518;
-    font-weight: 700;
-    transition: 0.2s;
-  }
-  .back-button:hover { text-shadow: 0 0 12px #f5c518; }
-
-  /* Top Profile Card */
-  .profile-card {
-    display: flex;
-    gap: 34px;
-    align-items: center;
-    background: rgba(0,0,0,0.55);
-    padding: 34px;
-    border-radius: 16px;
-    border: 1px solid rgba(245,197,24,0.2);
-    box-shadow: 0 0 30px rgba(245,197,24,0.25);
-  }
-
-  .profile-image {
-    width: 290px;
-    max-width: 90vw;
-    border-radius: 16px;
-    border: 3px solid #f5c518;
-    box-shadow: 0 0 25px rgba(245,197,24,0.5);
-    object-fit: cover;
-  }
-
-  .profile-content h1 {
-    margin: 0 0 10px;
-    font-size: 2.5em;
-    background: linear-gradient(90deg, #f5c518, #cfa214);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow:
-      0 0 18px rgba(245,197,24,0.35),
-      0 0 30px rgba(245,197,24,0.18);
-  }
-
-  .profile-bio {
-    margin-top: 12px;
-    line-height: 1.6em;
-    font-size: 1.1em;
-  }
-
-  /* Buttons */
-  .button-row {
-    margin-top: 18px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-
-  .gold-btn {
-    display: inline-block;
-    padding: 12px 20px;
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight: 800;
-    background: #f5c518;
-    color: #000;
-    box-shadow: 0 0 18px rgba(245,197,24,0.6);
-    transition: 0.2s;
-  }
-  .gold-btn:hover {
-    background: #ffe27a;
-    box-shadow: 0 0 28px rgba(245,197,24,0.9);
-    transform: translateY(-2px);
-  }
-
-  .outline-btn {
-    display: inline-block;
-    padding: 12px 20px;
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight: 800;
-    background: rgba(0,0,0,.75);
-    color: #f5c518;
-    border: 2px solid #f5c518;
-    box-shadow: 0 0 18px rgba(245,197,24,.45);
-    transition: 0.2s;
-  }
-  .outline-btn:hover {
-    background: linear-gradient(90deg,#f5c518,#cfa214);
-    color: #000;
-    box-shadow: 0 0 26px rgba(245,197,24,.9);
-    transform: translateY(-2px);
-  }
-
-  /* Section Cards */
-  .section {
-    margin-top: 28px;
-    background: rgba(0,0,0,0.5);
-    border-radius: 16px;
-    padding: 26px;
-    border: 1px solid rgba(245,197,24,0.16);
-    box-shadow: 0 0 24px rgba(245,197,24,0.18);
-  }
-
-  .section h2 {
-    margin: 0 0 12px;
-    font-size: 1.7em;
-    color: #f5c518;
-    text-shadow: 0 0 10px rgba(245,197,24,0.25);
-  }
-
-  .section p {
-    margin: 8px 0 0;
-    line-height: 1.6em;
-    font-size: 1.05em;
-  }
-
-
-/* TOP 5 GAMES */
-.games-section {
-  margin-top: 28px;
-  background: rgba(0,0,0,0.5);
-  border-radius: 16px;
-  padding: 26px;
-  border: 1px solid rgba(245,197,24,0.16);
-  box-shadow: 0 0 24px rgba(245,197,24,0.18);
-}
-
-.games-section h2 {
-  margin: 0 0 18px;
-  font-size: 1.7em;
-  color: #f5c518;
-  text-shadow: 0 0 10px rgba(245,197,24,0.25);
-}
-
-.streamer-games-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
-}
-
-.streamer-game-card {
-  display: flex;
-  flex-direction: column;
-  background: #000;
-  border: 1px solid rgba(245,197,24,.22);
-  border-radius: 12px;
-  overflow: hidden;
-  text-decoration: none;
-  color: #f5c518;
-  transition: transform .2s ease, box-shadow .2s ease;
-}
-
-.streamer-game-card:hover {
-  transform: translateY(-2px);
-  box-shadow:
-    0 0 16px rgba(245,197,24,.45),
-    0 0 5px rgba(245,197,24,.35) inset;
-}
-
-.streamer-game-logo-wrap {
-  height: 170px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 14px;
-  background: #000;
-}
-
-.streamer-game-card img {
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-  display: block;
-  object-fit: contain;
-}
-
-.streamer-game-card span {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 48px;
-  padding: 10px 8px;
-  text-align: center;
-  font-weight: 700;
-  font-size: 0.92rem;
-  line-height: 1.25;
-  color: #f5c518;
-  background: rgba(0,0,0,.92);
-  border-top: 1px solid rgba(245,197,24,.16);
-}
-
-@media (max-width: 900px) {
-  .streamer-games-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 640px) {
-  .streamer-games-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-  /* Video + Calendar Embeds */
-  .embed-wrap {
-    position: relative;
-    width: 100%;
-    padding-top: 56.25%; /* 16:9 */
-    border-radius: 14px;
-    overflow: hidden;
-    border: 1px solid rgba(245,197,24,0.2);
-    box-shadow: 0 0 22px rgba(245,197,24,0.18);
-    background: rgba(0,0,0,0.6);
-  }
-
-  .embed-wrap iframe {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-  }
-
-  /* Calendar: give it a bit more height */
-  .calendar-wrap {
-    position: relative;
-    width: 100%;
-    height: 650px;
-    border-radius: 14px;
-    overflow: hidden;
-    border: 1px solid rgba(245,197,24,0.2);
-    box-shadow: 0 0 22px rgba(245,197,24,0.18);
-    background: rgba(0,0,0,0.6);
-  }
-
-  .calendar-wrap iframe {
-    width: 100%;
-    height: 100%;
-    border: 0;
-  }
-
-  /* Mobile */
-  @media (max-width: 900px) {
-    .profile-container { text-align: center; }
-    .profile-card { flex-direction: column; text-align: center; }
-    .button-row { justify-content: center; }
-    .section { text-align: left; }
-    .games-section { text-align: left; }
-    .streamer-games-grid { grid-template-columns: repeat(3, 1fr); }
-  }
-
-  @media (max-width: 640px) {
-    .streamer-games-grid { grid-template-columns: repeat(2, 1fr); }
-  }
- 
-  .live-stream-card {
-    margin-top: 28px;
-    background: rgba(0,0,0,0.5);
-    border-radius: 16px;
-    padding: 26px;
-    border: 1px solid rgba(245,197,24,0.16);
-    box-shadow: 0 0 24px rgba(245,197,24,0.18);
-  }
-
-  .live-stream-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 22px;
-    align-items: stretch;
-  }
-
-  .live-stream-copy h2 {
-    margin: 0 0 12px;
-    font-size: 1.7em;
-    color: #f5c518;
-    text-shadow: 0 0 10px rgba(245,197,24,0.25);
-  }
-
-  .live-stream-copy p {
-    margin: 10px 0;
-    line-height: 1.6em;
-    font-size: 1.05em;
-  }
-
-  .live-badge {
-    display: inline-block;
-    margin: 0 0 14px;
-    padding: 8px 14px;
-    border-radius: 999px;
-    font-size: 0.9rem;
-    font-weight: 800;
-    letter-spacing: 0.4px;
-  }
-
-  .live-badge.online {
-    color: #8dffb9;
-    background: rgba(46, 204, 113, 0.14);
-    border: 1px solid rgba(46, 204, 113, 0.32);
-    box-shadow: 0 0 16px rgba(46, 204, 113, 0.18);
-  }
-
-  .live-badge.offline {
-    color: #ddd;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.12);
-  }
-
-  .live-meta {
-    color: #f0df9b;
-    font-size: 1.02em;
-  }
-
-  .live-title {
-    color: #fff0b8;
-  }
-
-  .live-player-wrap {
-    min-height: 320px;
-    border-radius: 14px;
-    overflow: hidden;
-    border: 1px solid rgba(245,197,24,0.2);
-    box-shadow: 0 0 22px rgba(245,197,24,0.18);
-    background: rgba(0,0,0,0.6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 14px;
-  }
-
-  @media (max-width: 900px) {
-    .live-stream-grid {
-      grid-template-columns: 1fr;
+  <!-- ProfilePage Schema: helps Google understand this page is about one creator -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "dateModified": "2026-05-05T00:00:00-04:00",
+    "url": "https://faithforgegaming.com/mooncalfmage/",
+    "name": "mooncalfmage FaithForge Gaming Streamer Profile",
+    "description": "Profile page for mooncalfmage, also known as Moonpie, a Christian cozy gamer, veteran, woman gamer, and FaithForge Gaming Content Creator Partner.",
+    "mainEntity": {
+      "@type": "Person",
+      "name": "Moonpie",
+      "alternateName": "mooncalfmage",
+      "description": "Christian cozy gamer, veteran, woman gamer, family-friendly streamer, and FaithForge Gaming Content Creator Partner.",
+      "image": "https://faithforgegaming.com/Streamers/mooncalfmage.webp",
+      "url": "https://faithforgegaming.com/mooncalfmage/",
+      "jobTitle": "FaithForge Gaming Content Creator Partner",
+      "memberOf": {
+        "@type": "Organization",
+        "name": "FaithForge Gaming",
+        "url": "https://faithforgegaming.com/"
+      },
+      "knowsAbout": [
+        "Christian gaming",
+        "cozy gaming",
+        "family-friendly streaming",
+        "Minecraft",
+        "Animal Crossing",
+        "Dead by Daylight",
+        "Immortals Fenyx Rising"
+      ],
+      "sameAs": [
+        "https://www.twitch.tv/mooncalfmage",
+        "https://youtube.com/@mooncalfmage?si=w6Tqk_XE1uMFnw6S",
+        "https://www.tiktok.com/@mooncalfmage?_t=ZP-90zCge5NnDS&_r=1",
+        "https://www.instagram.com/mooncalfmage?igsh=MWx0M3hoaXN3cGJtYw=="
+      ]
     }
   }
-    
-</style>
+  </script>
+
+  <!-- FAQ Schema: mirrors the visible FAQ section at the bottom of this page -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Who is mooncalfmage?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "mooncalfmage, also known as Moonpie, is a Christian cozy gamer, veteran, woman gamer, family-friendly streamer, and FaithForge Gaming Content Creator Partner."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What kind of games does mooncalfmage stream?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "mooncalfmage streams cozy, survival, adventure, and scary games, including Minecraft, Animal Crossing, Immortals Fenyx Rising, and Dead by Daylight."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is mooncalfmage family-friendly?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. mooncalfmage creates family-friendly gaming content focused on positivity, kindness, community, and faith."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Where can I follow mooncalfmage?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can follow mooncalfmage on Twitch, YouTube, TikTok, Instagram, and through her Discord community links on her FaithForge Gaming profile page."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is mooncalfmage connected to FaithForge Gaming?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "mooncalfmage is a FaithForge Gaming Content Creator Partner, creating family-friendly Christian gaming content as part of the FaithForge community."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --ff-gold: #f5c518;
+      --ff-gold-soft: #ffe27a;
+      --ff-gold-deep: #cfa214;
+      --ff-black-card: rgba(0, 0, 0, 0.56);
+      --ff-black-card-strong: rgba(0, 0, 0, 0.76);
+      --ff-border: rgba(245, 197, 24, 0.18);
+      --ff-border-strong: rgba(245, 197, 24, 0.34);
+      --ff-text-soft: #f0df9b;
+      --ff-white-soft: #fff7d6;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    .profile-container {
+      max-width: 1150px;
+      margin: 40px auto;
+      padding: 20px;
+      text-align: left;
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-bottom: 22px;
+      text-decoration: none;
+      color: var(--ff-gold);
+      font-weight: 800;
+      transition: 0.2s ease;
+    }
+
+    .back-button:hover,
+    .back-button:focus-visible {
+      text-shadow: 0 0 12px var(--ff-gold);
+      outline: none;
+    }
+
+    .profile-card,
+    .section,
+    .games-section,
+    .live-stream-card,
+    .cta-panel {
+      background: var(--ff-black-card);
+      border-radius: 16px;
+      border: 1px solid var(--ff-border);
+      box-shadow: 0 0 26px rgba(245, 197, 24, 0.18);
+    }
+
+    .profile-card {
+      display: grid;
+      grid-template-columns: 290px 1fr;
+      gap: 34px;
+      align-items: center;
+      padding: 34px;
+    }
+
+    .profile-image {
+      width: 290px;
+      max-width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 16px;
+      border: 3px solid var(--ff-gold);
+      box-shadow: 0 0 25px rgba(245, 197, 24, 0.5);
+      object-fit: cover;
+    }
+
+    .profile-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 10px;
+      color: var(--ff-text-soft);
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+    }
+
+    .profile-content h1 {
+      margin: 0 0 8px;
+      font-size: clamp(2.1rem, 5vw, 3.2rem);
+      line-height: 1.05;
+      background: linear-gradient(90deg, var(--ff-gold), var(--ff-gold-deep));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow:
+        0 0 18px rgba(245, 197, 24, 0.35),
+        0 0 30px rgba(245, 197, 24, 0.18);
+    }
+
+    .profile-subtitle {
+      margin: 0 0 14px;
+      color: var(--ff-white-soft);
+      font-size: 1.14rem;
+      font-weight: 800;
+      line-height: 1.45;
+    }
+
+    .profile-bio {
+      margin: 12px 0 0;
+      line-height: 1.65;
+      font-size: 1.07rem;
+    }
+
+    .profile-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin: 16px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .profile-tags li {
+      border: 1px solid rgba(245, 197, 24, 0.28);
+      border-radius: 999px;
+      padding: 7px 11px;
+      color: var(--ff-text-soft);
+      background: rgba(0, 0, 0, 0.35);
+      font-size: 0.88rem;
+      font-weight: 800;
+    }
+
+    .button-row {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .gold-btn,
+    .outline-btn,
+    .small-link-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 12px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 900;
+      line-height: 1.1;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+    }
+
+    .gold-btn {
+      background: var(--ff-gold);
+      color: #000;
+      box-shadow: 0 0 18px rgba(245, 197, 24, 0.56);
+    }
+
+    .gold-btn:hover,
+    .gold-btn:focus-visible {
+      background: var(--ff-gold-soft);
+      box-shadow: 0 0 28px rgba(245, 197, 24, 0.85);
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .outline-btn,
+    .small-link-btn {
+      background: rgba(0, 0, 0, 0.72);
+      color: var(--ff-gold);
+      border: 2px solid var(--ff-gold);
+      box-shadow: 0 0 18px rgba(245, 197, 24, 0.38);
+    }
+
+    .outline-btn:hover,
+    .outline-btn:focus-visible,
+    .small-link-btn:hover,
+    .small-link-btn:focus-visible {
+      background: linear-gradient(90deg, var(--ff-gold), var(--ff-gold-deep));
+      color: #000;
+      box-shadow: 0 0 26px rgba(245, 197, 24, 0.82);
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .quick-follow-strip {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .quick-follow-card {
+      padding: 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(245, 197, 24, 0.18);
+      background: rgba(0, 0, 0, 0.45);
+    }
+
+    .quick-follow-card strong {
+      display: block;
+      color: var(--ff-gold);
+      font-size: 1rem;
+      margin-bottom: 5px;
+    }
+
+    .quick-follow-card span {
+      display: block;
+      line-height: 1.45;
+      color: rgba(255, 255, 255, 0.86);
+      font-size: 0.95rem;
+    }
+
+    .section,
+    .games-section,
+    .live-stream-card,
+    .cta-panel {
+      margin-top: 28px;
+      padding: 26px;
+    }
+
+    .section h2,
+    .games-section h2,
+    .live-stream-copy h2,
+    .cta-panel h2 {
+      margin: 0 0 12px;
+      font-size: clamp(1.45rem, 4vw, 1.85rem);
+      color: var(--ff-gold);
+      text-shadow: 0 0 10px rgba(245, 197, 24, 0.25);
+    }
+
+    .section p,
+    .games-section p,
+    .live-stream-copy p,
+    .cta-panel p {
+      margin: 8px 0 0;
+      line-height: 1.65;
+      font-size: 1.04rem;
+    }
+
+    .live-stream-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .live-badge {
+      display: inline-block;
+      margin: 0 0 14px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 900;
+      letter-spacing: 0.4px;
+    }
+
+    .live-badge.online {
+      color: #8dffb9;
+      background: rgba(46, 204, 113, 0.14);
+      border: 1px solid rgba(46, 204, 113, 0.32);
+      box-shadow: 0 0 16px rgba(46, 204, 113, 0.18);
+    }
+
+    .live-badge.offline {
+      color: #ddd;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .live-meta {
+      color: var(--ff-text-soft);
+      font-size: 1.02rem;
+    }
+
+    .live-title {
+      color: var(--ff-white-soft);
+    }
+
+    .live-player-wrap {
+      min-height: 320px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(245, 197, 24, 0.2);
+      box-shadow: 0 0 22px rgba(245, 197, 24, 0.18);
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 14px;
+    }
+
+    .embed-wrap {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(245, 197, 24, 0.2);
+      box-shadow: 0 0 22px rgba(245, 197, 24, 0.18);
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .embed-wrap iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .video-section-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(250px, 0.75fr);
+      gap: 20px;
+      align-items: center;
+      margin-top: 16px;
+    }
+
+    .video-copy-box {
+      border-radius: 14px;
+      border: 1px solid rgba(245, 197, 24, 0.16);
+      background: rgba(0, 0, 0, 0.36);
+      padding: 18px;
+    }
+
+    .recent-games-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .streamer-game-card {
+      display: flex;
+      flex-direction: column;
+      background: #000;
+      border: 1px solid rgba(245, 197, 24, 0.22);
+      border-radius: 12px;
+      overflow: hidden;
+      text-decoration: none;
+      color: var(--ff-gold);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      min-height: 100%;
+    }
+
+    .streamer-game-card:hover,
+    .streamer-game-card:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 0 16px rgba(245, 197, 24, 0.45), 0 0 5px rgba(245, 197, 24, 0.35) inset;
+      outline: none;
+    }
+
+    .streamer-game-logo-wrap {
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px;
+      background: #000;
+    }
+
+    .streamer-game-card img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .game-card-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 12px;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.92);
+      border-top: 1px solid rgba(245, 197, 24, 0.16);
+      flex: 1;
+    }
+
+    .game-card-copy strong {
+      color: var(--ff-gold);
+      font-size: 0.98rem;
+    }
+
+    .game-card-copy span {
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 0.84rem;
+      line-height: 1.35;
+    }
+
+    .recent-empty-card {
+      grid-column: 1 / -1;
+      padding: 22px;
+      border-radius: 14px;
+      border: 1px dashed rgba(245, 197, 24, 0.34);
+      background: rgba(0, 0, 0, 0.42);
+      text-align: center;
+    }
+
+    .recent-empty-card strong {
+      display: block;
+      color: var(--ff-gold);
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+    }
+
+    .recent-empty-card span {
+      display: block;
+      color: rgba(255, 255, 255, 0.84);
+      line-height: 1.55;
+    }
+
+    .calendar-wrap {
+      position: relative;
+      width: 100%;
+      height: 430px;
+      margin-top: 14px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(245, 197, 24, 0.2);
+      box-shadow: 0 0 22px rgba(245, 197, 24, 0.18);
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .calendar-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .about-box {
+      padding: 18px;
+      border-radius: 14px;
+      background: rgba(0, 0, 0, 0.36);
+      border: 1px solid rgba(245, 197, 24, 0.16);
+    }
+
+    .about-box h3 {
+      margin: 0 0 8px;
+      color: var(--ff-gold);
+      font-size: 1.06rem;
+    }
+
+    .about-box p {
+      margin: 0;
+      font-size: 0.98rem;
+    }
+
+    .verse-box {
+      border-left: 4px solid var(--ff-gold);
+      padding-left: 18px;
+    }
+
+    .verse-text {
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--ff-white-soft);
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .faq-list details {
+      border: 1px solid rgba(245, 197, 24, 0.18);
+      border-radius: 12px;
+      background: rgba(0, 0, 0, 0.42);
+      padding: 14px 16px;
+    }
+
+    .faq-list summary {
+      cursor: pointer;
+      color: var(--ff-gold);
+      font-weight: 900;
+      line-height: 1.4;
+    }
+
+    .faq-list details p {
+      margin-top: 10px;
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    .cta-panel {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: center;
+      background:
+        radial-gradient(circle at top left, rgba(245, 197, 24, 0.14), transparent 32%),
+        rgba(0, 0, 0, 0.58);
+    }
+
+    @media (max-width: 980px) {
+      .profile-card,
+      .live-stream-grid,
+      .video-section-grid,
+      .cta-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-card {
+        text-align: center;
+        justify-items: center;
+      }
+
+      .profile-tags,
+      .button-row {
+        justify-content: center;
+      }
+
+      .quick-follow-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .recent-games-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .profile-container {
+        margin: 22px auto;
+        padding: 12px;
+      }
+
+      .profile-card,
+      .section,
+      .games-section,
+      .live-stream-card,
+      .cta-panel {
+        padding: 18px;
+        border-radius: 14px;
+      }
+
+      .profile-image {
+        width: min(260px, 88vw);
+      }
+
+      .profile-subtitle {
+        font-size: 1.02rem;
+      }
+
+      .button-row {
+        width: 100%;
+      }
+
+      .gold-btn,
+      .outline-btn,
+      .small-link-btn {
+        width: 100%;
+      }
+
+      .recent-games-grid,
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .streamer-game-logo-wrap {
+        height: 145px;
+      }
+
+      .calendar-wrap {
+        height: 360px;
+      }
+
+      .live-player-wrap {
+        min-height: 245px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-
   <img class="emblem" src="../watermark.png" alt="FaithForge Emblem">
   <canvas id="embers"></canvas>
 
@@ -388,7 +721,7 @@
       <span class="page-title">Streamer Profile</span>
     </div>
 
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Main navigation">
       <div class="menu-links">
         <a href="/index.html">Home</a>
         <a href="/Aboutus/">About Us</a>
@@ -405,136 +738,141 @@
   </header>
 
   <main class="profile-container">
-
     <a href="/Streamers/" class="back-button">← Back to Streamers</a>
 
-    <!-- TOP PROFILE CARD -->
-    <section class="profile-card">
-      <img src="/Streamers/mooncalfmage.webp" alt="mooncalfmage" class="profile-image">
+    <!-- 1. HERO / FOLLOW-FIRST SECTION -->
+    <section class="profile-card" aria-labelledby="profile-heading">
+      <img src="/Streamers/mooncalfmage.webp" alt="mooncalfmage profile image" class="profile-image" loading="eager" decoding="async" fetchpriority="high">
 
       <div class="profile-content">
-        <h1>mooncalfmage</h1>
+        <p class="profile-kicker">FaithForge Gaming Content Creator Partner</p>
+        <h1 id="profile-heading">mooncalfmage</h1>
+        <p class="profile-subtitle">Christian cozy gamer • Veteran • Woman gamer • Family-friendly streamer</p>
 
         <p class="profile-bio">
-          Hello! My name is Moonpie. I am a cozy/survival/scary gamer who loves the Lord, reading, tea, and crochetting!
-          I am a family friendly multi-game streamer and content creator! My goal is to bring positivity, kindness
-          and happiness to people. I hope you love and enjoy my content, if you do I would love for you to stay and
-          join the community -- God Bless 
+          Hello! My name is Moonpie. I am a cozy, survival, and scary gamer who loves the Lord, reading, tea, and crocheting. I am a veteran, woman gamer, family-friendly multi-game streamer, and FaithForge Gaming Content Creator Partner. My goal is to bring positivity, kindness, and happiness to people through cozy community, faith-filled encouragement, and fun gaming content. I hope you love and enjoy my content. If you do, I would love for you to stay and join the community. God bless!
         </p>
 
-        <!-- Social + Discord -->
-        <div class="button-row">
-          <a class="gold-btn" href="https://youtube.com/@mooncalfmage?si=w6Tqk_XE1uMFnw6S" target="_blank" rel="noopener">YouTube</a>
-          <a class="gold-btn" href="https://www.twitch.tv/mooncalfmage" target="_blank" rel="noopener">Twitch</a>
+        <ul class="profile-tags" aria-label="mooncalfmage creator tags">
+          <li>Christian Gamer</li>
+          <li>Cozy Gamer</li>
+          <li>Veteran</li>
+          <li>Woman Gamer</li>
+          <li>Family-Friendly</li>
+        </ul>
+
+        <div class="button-row" aria-label="mooncalfmage primary links">
+          <a class="gold-btn" href="https://www.twitch.tv/mooncalfmage" target="_blank" rel="noopener">Follow on Twitch</a>
+          <a class="gold-btn" href="https://youtube.com/@mooncalfmage?si=w6Tqk_XE1uMFnw6S" target="_blank" rel="noopener">Watch on YouTube</a>
           <a class="gold-btn" href="https://www.tiktok.com/@mooncalfmage?_t=ZP-90zCge5NnDS&_r=1" target="_blank" rel="noopener">TikTok</a>
           <a class="gold-btn" href="https://www.instagram.com/mooncalfmage?igsh=MWx0M3hoaXN3cGJtYw==" target="_blank" rel="noopener">Instagram</a>
-          <!-- Merch Store -->
-          <a class="outline-btn" href="https://shop.faithforgegaming.com/" target="_blank" rel="noopener">
-            Merch Store
-          </a>
-          <!-- Personal FaithForge Discord Invite -->
-          <a class="outline-btn" href="https://discord.gg/97FGSmTqBm" target="_blank" rel="noopener">
-            Join Our Discord
-          </a>
-          <!-- Personal Discord Invite -->
-          <a class="outline-btn" href="https://discord.gg/aqHH4UR8PM" target="_blank" rel="noopener">
-            moonpie's grotto Discord
-          </a>
+          <a class="outline-btn" href="https://discord.gg/aqHH4UR8PM" target="_blank" rel="noopener">Join Moonpie's Grotto</a>
+          <a class="outline-btn" href="https://discord.gg/97FGSmTqBm" target="_blank" rel="noopener">Join FaithForge Discord</a>
+          <a class="outline-btn" href="https://shop.faithforgegaming.com/" target="_blank" rel="noopener">Merch Store</a>
         </div>
       </div>
     </section>
-        <!-- TOP 5 GAMES -->
-    <section class="games-section">
-      <h2>Top 4 Games Streamed</h2>
 
-      <div class="streamer-games-grid">
-        <a class="streamer-game-card" href="/Games">
-          <img src="/Gameswebp/MINECRAFT.webp" alt="Minecraft" loading="lazy">
-          <span>Minecraft</span>
-        </a>
-
-        <a class="streamer-game-card" href="/Games">
-          <img src="/Gameswebp/animalcrossing.webp" alt="animalcrossing" loading="lazy">
-          <span>Animal Crossing</span>
-        </a>
-
-        <a class="streamer-game-card" href="/Games">
-          <img src="/Gameswebp/immortalsfenyxrising.webp" alt="immortalsfenyxrising" loading="lazy">
-          <span>Immortals Fenyx Rising</span>
-        </a>
-
-        <a class="streamer-game-card" href="/Games">
-          <img src="/Gameswebp/deadbydaylight.webp" alt="deadbydaylight" loading="lazy">
-          <span>Dead By Daylight</span>
-        </a>
+    <!-- 2. QUICK VALUE STRIP -->
+    <section class="quick-follow-strip" aria-label="Why follow mooncalfmage">
+      <div class="quick-follow-card">
+        <strong>Cozy Community</strong>
+        <span>Warm, welcoming streams built around kindness, conversation, and relaxing game nights.</span>
+      </div>
+      <div class="quick-follow-card">
+        <strong>Faith-Friendly Content</strong>
+        <span>Positive Christian gaming content connected to the FaithForge mission of fellowship and encouragement.</span>
+      </div>
+      <div class="quick-follow-card">
+        <strong>Variety Streams</strong>
+        <span>Cozy, survival, adventure, and scary games with family-friendly energy and community focus.</span>
       </div>
     </section>
-    
-    <section class="live-stream-card">
-  <div class="live-stream-grid">
-    <div class="live-stream-copy">
-      <h2>Live Stream Status</h2>
 
-      <span id="moonLiveBadge" class="live-badge offline">Checking status...</span>
+    <!-- 3. LIVE STATUS -->
+    <section class="live-stream-card" aria-labelledby="live-heading">
+      <div class="live-stream-grid">
+        <div class="live-stream-copy">
+          <h2 id="live-heading">Live Stream Status</h2>
 
-      <p id="moonLiveMeta" class="live-meta">
-        Loading current Twitch information.
-      </p>
+          <span id="moonLiveBadge" class="live-badge offline">Checking status...</span>
 
-      <p id="moonLiveTitle" class="live-title">
-        Please wait while we check whether mooncalfmage is live.
-      </p>
+          <p id="moonLiveMeta" class="live-meta">
+            Loading current Twitch information.
+          </p>
 
-      <div class="button-row">
-        <a
-          id="moonWatchBtn"
-          class="gold-btn"
-          href="https://www.twitch.tv/mooncalfmage"
-          target="_blank"
-          rel="noopener"
-        >
-          Watch on Twitch
-        </a>
+          <p id="moonLiveTitle" class="live-title">
+            Please wait while we check whether mooncalfmage is live.
+          </p>
+
+          <div class="button-row">
+            <a id="moonWatchBtn" class="gold-btn" href="https://www.twitch.tv/mooncalfmage" target="_blank" rel="noopener">
+              Watch on Twitch
+            </a>
+            <a class="outline-btn" href="#schedule">View Schedule</a>
+          </div>
+        </div>
+
+        <div class="live-player-wrap" id="moonPlayerWrap">
+          The Twitch player will appear here when mooncalfmage is live.
+        </div>
       </div>
-    </div>
-
-    <div class="live-player-wrap" id="moonPlayerWrap">
-      The Twitch player will appear here when mooncalfmage is live.
-    </div>
-  </div>
-</section>
-    
-    <!-- FEATURED VIDEO -->
-    <section class="section">
-      <h2>Featured Video</h2>
-      <div class="embed-wrap">
-        <!-- Using embed format for the example video you provided -->
-        <iframe
-          src="https://www.youtube.com/embed/7wXpRSDXc-M"
-          title="mooncalfmage Featured Video"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen>
-        </iframe>
-      </div>
-      <p style="margin-top:12px;">
-        Check out my other videos above!
-      </p>
     </section>
 
-<!-- TikTok Embed Script (ONLY include once per page) -->
-<script async src="https://www.tiktok.com/embed.js"></script>
-
-    <!-- STREAMING CALENDAR -->
-    <section class="section">
-      <h2>Streaming Schedule</h2>
+    <!-- 4. FEATURED VIDEO -->
+    <section class="section" aria-labelledby="video-heading">
+      <h2 id="video-heading">Featured Video</h2>
       <p>
-        This calendar reflects mooncalfmage's streaming and event schedule.
-        Times may shift — join Discord for live updates.
+        Start here for a quick look at Moonpie's style, personality, and family-friendly gaming content.
       </p>
 
-      <div class="calendar-wrap" style="margin-top:14px; height:430px;">
+      <div class="video-section-grid">
+        <div class="embed-wrap">
+          <iframe
+            src="https://www.youtube.com/embed/7wXpRSDXc-M"
+            title="mooncalfmage Featured Video"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+
+        <div class="video-copy-box">
+          <h3 style="margin:0 0 8px; color:#f5c518;">Watch, follow, and join in</h3>
+          <p>
+            If you enjoy cozy gaming, Christian community, and positive variety streams, follow Moonpie and join the community so you do not miss the next live stream.
+          </p>
+          <div class="button-row">
+            <a class="gold-btn" href="https://www.twitch.tv/mooncalfmage" target="_blank" rel="noopener">Follow on Twitch</a>
+            <a class="outline-btn" href="https://youtube.com/@mooncalfmage?si=w6Tqk_XE1uMFnw6S" target="_blank" rel="noopener">More Videos</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Optional: Add VideoObject schema later when you know the exact YouTube uploadDate. Do not publish guessed upload dates in structured data. -->
+
+    <!-- 5. ACTIVE RECENTLY STREAMED GAMES -->
+    <section class="games-section" aria-labelledby="games-heading">
+      <h2 id="games-heading">Recently Streamed Games</h2>
+      <p id="recentGamesStatus">
+        Loading Moonpie's recent Twitch activity...
+      </p>
+
+      <div class="recent-games-grid" id="moonRecentGamesGrid" aria-live="polite">
+        <!-- JavaScript fills this with recent Twitch games. Static fallback appears if the tracker is unavailable. -->
+      </div>
+    </section>
+
+    <!-- 6. STREAMING CALENDAR -->
+    <section class="section" id="schedule" aria-labelledby="schedule-heading">
+      <h2 id="schedule-heading">Streaming Schedule</h2>
+      <p>
+        This calendar reflects mooncalfmage's streaming and event schedule. Times may shift, so join Discord for live updates and announcements.
+      </p>
+
+      <div class="calendar-wrap">
         <iframe
-          title="FaithForge Gaming Events Calendar"
+          title="mooncalfmage Streaming Schedule Calendar"
           src="https://calendar.google.com/calendar/embed?src=mooncalfmage%40gmail.com&ctz=America%2FChicago"
           width="100%"
           height="430"
@@ -544,13 +882,40 @@
       </div>
 
       <p style="margin-top:12px; opacity:.9;">
-        This Calander is set to Central Standard Time (CST) UTC-6
+        This calendar is set to Central Standard Time (CST) UTC-6.
       </p>
     </section>
 
-    <!-- TESTIMONY -->
-    <section class="section">
-      <h2>Testimony</h2>
+    <!-- 7. ABOUT / TRUST SECTION -->
+    <section class="section" aria-labelledby="about-heading">
+      <h2 id="about-heading">About Moonpie</h2>
+      <p>
+        Moonpie creates a welcoming space for people who enjoy cozy gaming, faith-friendly conversations, and positive community. As a Christian gamer, veteran, woman gamer, and FaithForge Gaming Content Creator Partner, her content is built around encouragement, kindness, and connection.
+      </p>
+
+      <div class="about-grid">
+        <div class="about-box">
+          <h3>Cozy Gamer</h3>
+          <p>Relaxed streams with warm community energy, cozy game choices, and a peaceful place to hang out.</p>
+        </div>
+        <div class="about-box">
+          <h3>Christian Gamer</h3>
+          <p>Faith-friendly content that points toward positivity, kindness, hope, and encouragement.</p>
+        </div>
+        <div class="about-box">
+          <h3>Veteran Creator</h3>
+          <p>A creator with a servant-hearted background and a desire to build community with purpose.</p>
+        </div>
+        <div class="about-box">
+          <h3>FaithForge Partner</h3>
+          <p>Part of FaithForge Gaming's mission to connect Christian gamers through fellowship, games, and online ministry.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. TESTIMONY - KEPT AS PROVIDED -->
+    <section class="section" aria-labelledby="testimony-heading">
+      <h2 id="testimony-heading">Testimony</h2>
       <p>
         My Christian Journey started off as a kid, going to church every sunday with my family, but after some hard times,
         and moving we stopped going to church. At first that didnt mean I didnt stop believing, but at one point in my life
@@ -570,18 +935,66 @@
       </p>
     </section>
 
-    <!-- FAVORITE BIBLE VERSE -->
-    <section class="section">
-      <h2>Favorite Bible Verse</h2>
-      <p style="font-style: italic; font-size: 1.15em;">
+    <!-- 9. FAVORITE BIBLE VERSE -->
+    <section class="section verse-box" aria-labelledby="verse-heading">
+      <h2 id="verse-heading">Favorite Bible Verse</h2>
+      <p class="verse-text">
         “Let the morning bring me word of your unfailing love, for I have put my trust in you.
         Show me the way I should go, for with you I entrust my life."
       </p>
-      <p style="margin-top:6px; font-weight: 600;">
+      <p style="margin-top:6px; font-weight: 800; color:#f5c518;">
         — Psalm 143:8
       </p>
     </section>
 
+    <!-- 10. FINAL CTA -->
+    <section class="cta-panel" aria-labelledby="join-heading">
+      <div>
+        <h2 id="join-heading">Join Moonpie's Community</h2>
+        <p>
+          Follow mooncalfmage for cozy Christian gaming, positive community, family-friendly streams, and FaithForge creator content.
+        </p>
+      </div>
+      <div class="button-row">
+        <a class="gold-btn" href="https://www.twitch.tv/mooncalfmage" target="_blank" rel="noopener">Follow Twitch</a>
+        <a class="outline-btn" href="https://discord.gg/aqHH4UR8PM" target="_blank" rel="noopener">Join Discord</a>
+      </div>
+    </section>
+
+    <!-- 11. FAQ SECTION -->
+    <section class="section" aria-labelledby="faq-heading">
+      <h2 id="faq-heading">FAQ</h2>
+      <p>
+        Quick answers for visitors searching for mooncalfmage, Christian cozy gamers, FaithForge Gaming creators, and family-friendly streamers.
+      </p>
+
+      <div class="faq-list">
+        <details>
+          <summary>Who is mooncalfmage?</summary>
+          <p>mooncalfmage, also known as Moonpie, is a Christian cozy gamer, veteran, woman gamer, family-friendly streamer, and FaithForge Gaming Content Creator Partner.</p>
+        </details>
+
+        <details>
+          <summary>What kind of games does mooncalfmage stream?</summary>
+          <p>Moonpie streams cozy, survival, adventure, and scary games, including Minecraft, Animal Crossing, Immortals Fenyx Rising, and Dead by Daylight.</p>
+        </details>
+
+        <details>
+          <summary>Is mooncalfmage family-friendly?</summary>
+          <p>Yes. mooncalfmage creates family-friendly gaming content focused on positivity, kindness, community, and faith.</p>
+        </details>
+
+        <details>
+          <summary>Where can I watch mooncalfmage live?</summary>
+          <p>You can watch mooncalfmage live on Twitch and find her YouTube, TikTok, Instagram, Discord, and FaithForge links near the top of this page.</p>
+        </details>
+
+        <details>
+          <summary>How is mooncalfmage connected to FaithForge Gaming?</summary>
+          <p>mooncalfmage is a FaithForge Gaming Content Creator Partner, creating family-friendly Christian gaming content as part of the FaithForge community.</p>
+        </details>
+      </div>
+    </section>
   </main>
 
   <footer>
@@ -603,7 +1016,7 @@
     </div>
   </footer>
 
-  <!-- Mobile menu toggle (matches your site behavior) -->
+  <!-- Mobile menu toggle -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const toggle = document.querySelector('.menu-toggle');
@@ -612,7 +1025,7 @@
 
       toggle.addEventListener('click', () => {
         const isOpen = menu.classList.toggle('show');
-        toggle.setAttribute('aria-expanded', isOpen);
+        toggle.setAttribute('aria-expanded', String(isOpen));
       });
 
       menu.querySelectorAll('a').forEach(link => {
@@ -623,82 +1036,215 @@
       });
     });
   </script>
-  
-<script src="https://embed.twitch.tv/embed/v1.js"></script>
 
-<script>
-  async function loadmoon2LiveStatus() {
-    const badge = document.getElementById('moonLiveBadge');
-    const meta = document.getElementById('moonLiveMeta');
-    const title = document.getElementById('moonLiveTitle');
-    const playerWrap = document.getElementById('moonPlayerWrap');
-    const watchBtn = document.getElementById('moonWatchBtn');
+  <script src="https://embed.twitch.tv/embed/v1.js"></script>
 
-    try {
-      const response = await fetch(
-        'https://faithforge-raidtrain-api.faithforgegaming.workers.dev/api/twitch-status',
-        { cache: 'no-store' }
-      );
+  <script>
+    const MOON_LOGIN = 'mooncalfmage';
+    const MOON_DISPLAY_NAME = 'Moonpie';
+    const TWITCH_API_BASE = 'https://faithforge-raidtrain-api.faithforgegaming.workers.dev';
+    const REFRESH_INTERVAL_MS = 90000;
 
-      const payload = await response.json();
+    let latestMoonLiveStream = null;
+    let moonTwitchEmbedLoaded = false;
 
-      if (!response.ok) {
-        throw new Error(payload.details || payload.error || 'Unable to load Twitch status.');
+    function escapeHTML(value) {
+      return String(value || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function normalizeGameImage(game) {
+      if (game.box_art_url) {
+        return String(game.box_art_url)
+          .replace('{width}', '285')
+          .replace('{height}', '380');
       }
 
-      const stream = (payload.channels || []).find(
-        channel => String(channel.login).toLowerCase() === 'mooncalfmage'
-      );
+      return game.image || '/Anvil.webp';
+    }
 
-      if (!stream || !stream.live) {
-        badge.textContent = 'OFFLINE';
-        badge.className = 'live-badge offline';
-        meta.textContent = 'Currently offline';
-        title.textContent = 'mooncalfmage is not live right now. You can still visit the Twitch channel using the button below.';
-        playerWrap.innerHTML = 'The Twitch player will appear here when mooncalfmage is live.';
-        watchBtn.href = 'https://www.twitch.tv/mooncalfmage';
+    function renderMoonRecentGames(games) {
+      const grid = document.getElementById('moonRecentGamesGrid');
+      if (!grid) return;
+
+      if (!games || !games.length) {
+        grid.innerHTML = `
+          <div class="recent-empty-card">
+            <strong>No Twitch game history collected yet.</strong>
+            <span>This section is fully active and will update automatically after ${escapeHTML(MOON_DISPLAY_NAME)} goes live or changes games on Twitch.</span>
+          </div>
+        `;
         return;
       }
 
-      badge.textContent = 'LIVE NOW';
-      badge.className = 'live-badge online';
-      meta.textContent = `${stream.game_name || 'Live on Twitch'}${stream.viewer_count ? ' • ' + stream.viewer_count + ' viewers' : ''}`;
-      title.textContent = stream.title || 'Currently streaming now.';
-      watchBtn.href = 'https://www.twitch.tv/mooncalfmage';
+      grid.innerHTML = games.slice(0, 4).map(game => {
+        const name = game.name || game.game_name || 'Recently Streamed Game';
+        const image = normalizeGameImage({ ...game, name });
+        const description = game.last_title || game.title || `Recently streamed by ${MOON_DISPLAY_NAME}.`;
+        const safeName = escapeHTML(name);
+        const safeImage = escapeHTML(image);
+        const safeDescription = escapeHTML(description);
+        const activityLabel = game.live
+          ? '<span>Live now on Twitch</span>'
+          : game.last_played
+            ? `<span>Last played: ${escapeHTML(game.last_played)}</span>`
+            : '';
 
-      playerWrap.innerHTML = '<div id="moonTwitchPlayer"></div>';
-
-      new Twitch.Embed('moonTwitchPlayer', {
-        width: '100%',
-        height: 320,
-        channel: 'mooncalfmage',
-        parent: ['faithforgegaming.com', 'www.faithforgegaming.com'],
-        layout: 'video'
-      });
-    } catch (error) {
-      badge.textContent = 'STATUS ERROR';
-      badge.className = 'live-badge offline';
-      meta.textContent = 'Could not load Twitch status';
-      title.textContent = error.message;
-      playerWrap.innerHTML = 'We could not load the Twitch player right now.';
+        return `
+          <a class="streamer-game-card" href="https://www.twitch.tv/${MOON_LOGIN}" target="_blank" rel="noopener" aria-label="Watch ${escapeHTML(MOON_LOGIN)} play ${safeName} on Twitch">
+            <div class="streamer-game-logo-wrap">
+              <img src="${safeImage}" alt="${safeName} artwork" loading="lazy" decoding="async">
+            </div>
+            <div class="game-card-copy">
+              <strong>${safeName}</strong>
+              <span>${safeDescription}</span>
+              ${activityLabel}
+            </div>
+          </a>
+        `;
+      }).join('');
     }
-  }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    loadmoon2LiveStatus();
-    setInterval(loadmoon2LiveStatus, 90000);
-  });
-</script>
-  
+    async function loadMoonRecentGames() {
+      const status = document.getElementById('recentGamesStatus');
+
+      try {
+        const response = await fetch(
+          `${TWITCH_API_BASE}/api/recent-games?login=${encodeURIComponent(MOON_LOGIN)}&limit=4`,
+          { cache: 'no-store' }
+        );
+
+        const payload = await response.json();
+        const games = payload.games || payload.recentGames || [];
+
+        if (response.ok && games.length) {
+          renderMoonRecentGames(games);
+
+          if (status) {
+            status.textContent = `These games are pulled from ${MOON_DISPLAY_NAME}'s saved Twitch activity and update automatically as she streams.`;
+          }
+          return;
+        }
+
+        if (latestMoonLiveStream && latestMoonLiveStream.game_name) {
+          renderMoonRecentGames([latestMoonLiveStream]);
+
+          if (status) {
+            status.textContent = `${MOON_DISPLAY_NAME} is live now. Showing the current Twitch game while recent history is being saved.`;
+          }
+          return;
+        }
+
+        renderMoonRecentGames([]);
+
+        if (status) {
+          status.textContent = `No recent Twitch game history has been collected yet. This will update automatically after ${MOON_DISPLAY_NAME} streams.`;
+        }
+      } catch (error) {
+        if (latestMoonLiveStream && latestMoonLiveStream.game_name) {
+          renderMoonRecentGames([latestMoonLiveStream]);
+
+          if (status) {
+            status.textContent = `${MOON_DISPLAY_NAME} is live now. Showing the current Twitch game while recent history is being checked.`;
+          }
+          return;
+        }
+
+        renderMoonRecentGames([]);
+
+        if (status) {
+          status.textContent = 'Recent Twitch game history could not load right now. This section will keep checking automatically.';
+        }
+      }
+    }
+
+    async function loadMoonLiveStatus() {
+      const badge = document.getElementById('moonLiveBadge');
+      const meta = document.getElementById('moonLiveMeta');
+      const title = document.getElementById('moonLiveTitle');
+      const playerWrap = document.getElementById('moonPlayerWrap');
+      const watchBtn = document.getElementById('moonWatchBtn');
+
+      if (!badge || !meta || !title || !playerWrap || !watchBtn) return;
+
+      try {
+        const response = await fetch(
+          `${TWITCH_API_BASE}/api/twitch-status`,
+          { cache: 'no-store' }
+        );
+
+        const payload = await response.json();
+
+        if (!response.ok) {
+          throw new Error(payload.details || payload.error || 'Unable to load Twitch status.');
+        }
+
+        const stream = (payload.channels || []).find(
+          channel => String(channel.login).toLowerCase() === MOON_LOGIN
+        );
+
+        if (!stream || !stream.live) {
+          latestMoonLiveStream = null;
+          moonTwitchEmbedLoaded = false;
+          badge.textContent = 'OFFLINE';
+          badge.className = 'live-badge offline';
+          meta.textContent = 'Currently offline';
+          title.textContent = 'mooncalfmage is not live right now. Follow on Twitch, check the schedule, or join Discord for the next stream update.';
+          playerWrap.innerHTML = 'The Twitch player will appear here when mooncalfmage is live.';
+          watchBtn.href = `https://www.twitch.tv/${MOON_LOGIN}`;
+          return;
+        }
+
+        latestMoonLiveStream = {
+          ...stream,
+          live: true,
+          name: stream.game_name,
+          last_title: stream.title || 'Currently live on Twitch'
+        };
+
+        badge.textContent = 'LIVE NOW';
+        badge.className = 'live-badge online';
+        meta.textContent = `${stream.game_name || 'Live on Twitch'}${stream.viewer_count ? ' • ' + stream.viewer_count + ' viewers' : ''}`;
+        title.textContent = stream.title || 'Currently streaming now.';
+        watchBtn.href = `https://www.twitch.tv/${MOON_LOGIN}`;
+
+        if (!moonTwitchEmbedLoaded) {
+          playerWrap.innerHTML = '<div id="moonTwitchPlayer"></div>';
+
+          new Twitch.Embed('moonTwitchPlayer', {
+            width: '100%',
+            height: 320,
+            channel: MOON_LOGIN,
+            parent: ['faithforgegaming.com', 'www.faithforgegaming.com'],
+            layout: 'video'
+          });
+
+          moonTwitchEmbedLoaded = true;
+        }
+      } catch (error) {
+        badge.textContent = 'STATUS ERROR';
+        badge.className = 'live-badge offline';
+        meta.textContent = 'Could not load Twitch status';
+        title.textContent = error.message;
+        playerWrap.innerHTML = 'We could not load the Twitch player right now.';
+      }
+    }
+
+    async function refreshMoonTwitchSections() {
+      await loadMoonLiveStatus();
+      await loadMoonRecentGames();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      refreshMoonTwitchSections();
+      setInterval(refreshMoonTwitchSections, REFRESH_INTERVAL_MS);
+    });
+  </script>
+
   <script src="https://faithforgegaming.com/embers.js"></script>
-
 </body>
-
-
 </html>
-
-
-
-
-
-

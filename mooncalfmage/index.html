@@ -123,6 +123,11 @@
 
   <style>
     :root {
+      /*
+        FAITHFORGE MAIN COLORS
+        These keep the page in the normal FaithForge gold/black style.
+        Change these only if you want to change the buttons, text, borders, and gold accents.
+      */
       --ff-gold: #f5c518;
       --ff-gold-soft: #ffe27a;
       --ff-gold-deep: #cfa214;
@@ -132,6 +137,25 @@
       --ff-border-strong: rgba(245, 197, 24, 0.34);
       --ff-text-soft: #f0df9b;
       --ff-white-soft: #fff7d6;
+
+      /*
+        MOONCALFMAGE BACKGROUND HIGHLIGHT COLORS
+        Change these if you want the page background glow/highlights to match another streamer card later.
+        These do NOT change the FaithForge gold buttons or gold text.
+      */
+      --moon-bg-top: #100313;
+      --moon-bg-mid: #070109;
+      --moon-bg-bottom: #000000;
+
+      /*
+        ONE-COLOR MOONCALFMAGE GLOW
+        Main card-matching glow color: bright magical pink/magenta.
+        Change these rgba values if you want the whole page glow stronger, softer, or a different single color.
+      */
+      --moon-main-glow-strong: rgba(255, 64, 190, 0.28);
+      --moon-main-glow-medium: rgba(255, 64, 190, 0.18);
+      --moon-main-glow-soft: rgba(255, 64, 190, 0.10);
+      --moon-card-highlight: rgba(255, 64, 190, 0.14);
     }
 
     * {
@@ -144,13 +168,38 @@
 
     body {
       overflow-x: hidden;
+
+      /*
+        MOONCALFMAGE PAGE BACKGROUND
+        To change the background glow later, edit the --moon-* colors inside :root above.
+      */
       background:
-        radial-gradient(circle at 50% 8%, rgba(142, 43, 212, 0.22), transparent 36%),
-        radial-gradient(circle at 18% 42%, rgba(255, 79, 195, 0.12), transparent 34%),
-        radial-gradient(circle at 82% 76%, rgba(142, 43, 212, 0.14), transparent 32%),
-        linear-gradient(180deg, #08030f 0%, #050208 55%, #000000 100%);
+        radial-gradient(circle at 50% 10%, var(--moon-main-glow-strong), transparent 34%),
+        radial-gradient(circle at 50% 46%, var(--moon-main-glow-medium), transparent 42%),
+        radial-gradient(circle at 50% 88%, var(--moon-main-glow-soft), transparent 40%),
+        linear-gradient(180deg, var(--moon-bg-top) 0%, var(--moon-bg-mid) 56%, var(--moon-bg-bottom) 100%);
       background-attachment: fixed;
     }
+
+    /*
+      BACKGROUND/HEADER GLOW OVERRIDES
+      These only adjust the surrounding glow/highlight color from the external site CSS.
+      They do not change the FaithForge gold text or button colors.
+    */
+    header h1 {
+      text-shadow:
+        0 0 14px rgba(245, 197, 24, 0.55),
+        0 0 28px var(--moon-main-glow-medium),
+        0 0 42px var(--moon-main-glow-soft);
+    }
+
+    .navbar,
+    footer {
+      box-shadow:
+        0 0 18px var(--moon-main-glow-medium),
+        0 0 34px var(--moon-main-glow-soft);
+    }
+
 
     .profile-container {
       max-width: 1150px;
@@ -184,7 +233,7 @@
       border: 1px solid var(--ff-border);
       box-shadow:
         0 0 26px rgba(245, 197, 24, 0.18),
-        0 0 42px rgba(142, 43, 212, 0.10);
+        0 0 44px var(--moon-card-highlight);
     }
 
     .profile-card {
@@ -632,8 +681,14 @@
       grid-template-columns: 1fr auto;
       gap: 18px;
       align-items: center;
+
+      /*
+        CTA BACKGROUND HIGHLIGHT
+        Uses the Mooncalfmage magenta highlight colors while keeping FaithForge gold buttons/text.
+      */
       background:
-        radial-gradient(circle at top left, rgba(245, 197, 24, 0.14), transparent 32%),
+        radial-gradient(circle at top center, var(--moon-main-glow-medium), transparent 40%),
+        radial-gradient(circle at bottom center, var(--moon-main-glow-soft), transparent 42%),
         rgba(0, 0, 0, 0.58);
     }
 

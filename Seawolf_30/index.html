@@ -15,7 +15,7 @@
   <!-- Open Graph -->
   <meta property="og:title" content="Seawolf_30 | Christian Woman Gamer & FaithForge Streamer">
   <meta property="og:description" content="Follow Seawolf_30, a Christian woman gamer, D&D lover, wife, mom, variety streamer, and FaithForge Gaming Streamer Partner sharing family-friendly content and community-focused streams.">
-  <meta property="og:image" content="https://faithforgegaming.com/Streamers/Seawolf.webp">
+  <meta property="og:image" content="https://faithforgegaming.com/Seawolf_30/Seawolf.webp">
   <meta property="og:url" content="https://faithforgegaming.com/Seawolf_30/">
   <meta property="og:type" content="profile">
   <meta property="og:site_name" content="FaithForge Gaming">
@@ -24,10 +24,10 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Seawolf_30 | Christian Woman Gamer & FaithForge Streamer">
   <meta name="twitter:description" content="Watch Seawolf_30, a Christian woman gamer, D&D lover, wife, mom, variety streamer, and FaithForge Gaming Streamer Partner.">
-  <meta name="twitter:image" content="https://faithforgegaming.com/Streamers/Seawolf.webp">
+  <meta name="twitter:image" content="https://faithforgegaming.com/Seawolf_30/Seawolf.webp">
 
   <link rel="stylesheet" href="https://faithforgegaming.com/style.css">
-  <meta name="theme-color" content="#000000">
+  <meta name="theme-color" content="#050713">
   <link rel="icon" href="https://faithforgegaming.com/Anvil.webp">
 
   <!-- ProfilePage Schema: helps search engines understand this page is about one creator -->
@@ -124,6 +124,11 @@
 
   <style>
     :root {
+      /*
+        FAITHFORGE MAIN COLORS
+        These keep the page in the normal FaithForge gold/black style.
+        Change these only if you want to change the buttons, text, borders, and gold accents.
+      */
       --ff-gold: #f5c518;
       --ff-gold-soft: #ffe27a;
       --ff-gold-deep: #cfa214;
@@ -133,6 +138,27 @@
       --ff-border-strong: rgba(245, 197, 24, 0.34);
       --ff-text-soft: #f0df9b;
       --ff-white-soft: #fff7d6;
+
+      /*
+        SEAWOLF BACKGROUND + GLOW COLORS
+        These control the page background glow/highlights only.
+        Change these if you want the background to match a different Seawolf card later.
+        They do NOT change the FaithForge gold buttons or gold text.
+      */
+      --seawolf-bg-top: #060817;
+      --seawolf-bg-mid: #03040d;
+      --seawolf-bg-bottom: #000000;
+
+      --seawolf-cyan-glow-strong: rgba(45, 214, 255, 0.26);
+      --seawolf-cyan-glow-medium: rgba(45, 214, 255, 0.16);
+      --seawolf-cyan-glow-soft: rgba(45, 214, 255, 0.08);
+
+      --seawolf-blue-glow: rgba(47, 111, 255, 0.20);
+      --seawolf-purple-glow: rgba(132, 54, 255, 0.18);
+      --seawolf-magenta-glow: rgba(255, 55, 224, 0.20);
+
+      --seawolf-card-highlight: rgba(45, 214, 255, 0.10);
+      --seawolf-card-highlight-alt: rgba(255, 55, 224, 0.08);
     }
 
     * {
@@ -145,7 +171,42 @@
 
     body {
       overflow-x: hidden;
+
+      /*
+        SEAWOLF PAGE BACKGROUND
+        This matches the attached Seawolf card style:
+        deep navy/black base with cyan-blue glow blending into purple/magenta.
+        To adjust it later, edit the --seawolf-* colors inside :root above.
+      */
+      background:
+        radial-gradient(circle at 34% 26%, var(--seawolf-cyan-glow-strong), transparent 30%),
+        radial-gradient(circle at 48% 48%, var(--seawolf-blue-glow), transparent 40%),
+        radial-gradient(circle at 68% 34%, var(--seawolf-purple-glow), transparent 34%),
+        radial-gradient(circle at 74% 70%, var(--seawolf-magenta-glow), transparent 34%),
+        radial-gradient(circle at 50% 94%, var(--seawolf-cyan-glow-soft), transparent 42%),
+        linear-gradient(180deg, var(--seawolf-bg-top) 0%, var(--seawolf-bg-mid) 55%, var(--seawolf-bg-bottom) 100%);
+      background-attachment: fixed;
     }
+
+    /*
+      BACKGROUND/HEADER GLOW OVERRIDES
+      These only adjust the surrounding glow/highlight color from the external site CSS.
+      They do not change the FaithForge gold text or button colors.
+    */
+    header h1 {
+      text-shadow:
+        0 0 14px rgba(245, 197, 24, 0.55),
+        0 0 28px var(--seawolf-cyan-glow-medium),
+        0 0 42px var(--seawolf-magenta-glow);
+    }
+
+    .navbar,
+    footer {
+      box-shadow:
+        0 0 18px var(--seawolf-cyan-glow-medium),
+        0 0 34px var(--seawolf-magenta-glow);
+    }
+
 
     .profile-container {
       max-width: 1150px;
@@ -177,7 +238,10 @@
       background: var(--ff-black-card);
       border-radius: 16px;
       border: 1px solid var(--ff-border);
-      box-shadow: 0 0 26px rgba(245, 197, 24, 0.18);
+      box-shadow:
+        0 0 26px rgba(245, 197, 24, 0.18),
+        0 0 42px var(--seawolf-card-highlight),
+        0 0 56px var(--seawolf-card-highlight-alt);
     }
 
     .profile-card {
@@ -614,8 +678,14 @@
       grid-template-columns: 1fr auto;
       gap: 18px;
       align-items: center;
+
+      /*
+        CTA BACKGROUND HIGHLIGHT
+        Uses the Seawolf cyan/blue/magenta glow while keeping FaithForge gold buttons/text.
+      */
       background:
-        radial-gradient(circle at top left, rgba(245, 197, 24, 0.14), transparent 32%),
+        radial-gradient(circle at top left, var(--seawolf-cyan-glow-medium), transparent 34%),
+        radial-gradient(circle at bottom right, var(--seawolf-magenta-glow), transparent 38%),
         rgba(0, 0, 0, 0.58);
     }
 
@@ -717,7 +787,7 @@
         <a href="/Aboutus/">About Us</a>
         <a href="/Staff/">Our Team</a>
         <a href="/Streamers/">Streamers</a>
-        <a href="https://shop.faithforgegaming.com/">Merch Store</a>
+        <a href="/raidtrain/">Raid Train</a>
         <a href="/Devotions/">Devotions</a>
         <a href="/Prayers/">Prayers</a>
         <a href="/Servers/">Servers</a>
@@ -732,15 +802,15 @@
 
     <!-- 1. HERO / FOLLOW-FIRST SECTION -->
     <section class="profile-card" aria-labelledby="profile-heading">
-      <img src="/Streamers/Seawolf.webp" alt="Seawolf_30 profile image" class="profile-image" loading="eager" decoding="async" fetchpriority="high">
+      <img src="/Seawolf_30/Seawolf.webp" alt="Seawolf_30 profile image" class="profile-image" loading="eager" decoding="async" fetchpriority="high">
 
       <div class="profile-content">
         <p class="profile-kicker">FaithForge Gaming Streamer Partner</p>
         <h1 id="profile-heading">Seawolf_30</h1>
-        <p class="profile-subtitle">D&D lover • Woman gamer • Wife & mom • Christian variety streamer</p>
+        <p class="profile-subtitle">D&D lover • Woman gamer • Wife & Mom • Christian variety streamer</p>
 
         <p class="profile-bio">
-          I didn’t really grow up playing video games. I discovered a love of playing games with other people a bit later in life. Now, I am a wife, mom, FaithForge Streamer Partner, and woman gamer who loves Jesus, D&D, variety gaming, collaborating with other people, and creating solo family-friendly content.
+          I didn’t really grow up playing video games. I discovered a love of playing games with other people a bit later in life. Now, I am a wife, mom, FaithForge Streamer Partner, and woman gamer who loves Jesus, D&D, variety gaming, collaborating with other people, and creating family-friendly content.
         </p>
 
         <ul class="profile-tags" aria-label="Seawolf_30 creator tags">
@@ -831,7 +901,7 @@
           </p>
           <div class="button-row">
             <a class="gold-btn" href="https://www.twitch.tv/seawolf_30" target="_blank" rel="noopener">Follow on Twitch</a>
-            <a class="outline-btn" href="https://www.youtube.com/@TRCCozyCorner" target="_blank" rel="noopener">More Videos</a>
+            <a class="outline-btn" href="https://www.youtube.com/@TRCCozyCorner" target="_blank" rel="noopener">More Youtube Videos</a>
           </div>
         </div>
       </div>
@@ -981,7 +1051,7 @@
       <a href="/Aboutus/">About Us</a>
       <a href="/Staff/">Our Team</a>
       <a href="/Streamers/">Streamers</a>
-      <a href="https://shop.faithforgegaming.com/">Merch Store</a>
+      <a href="/raidtrain/">Raid Train</a>
       <a href="/Devotions/">Devotions</a>
       <a href="/Prayers/">Prayers</a>
       <a href="/Servers/">Servers</a>
@@ -1191,7 +1261,4 @@
   <script src="https://faithforgegaming.com/embers.js"></script>
 </body>
 </html>
-
-
-
 

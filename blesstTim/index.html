@@ -14,7 +14,7 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="blesstTim | Overwatch Master & FaithForge Christian Streamer">
-  <meta property="og:description" content="Follow blesstTim, an Overwatch Master, cat lover, online evangelist, variety streamer, and FaithForge Gaming Christian content creator sharing FPS, RPG, and family-friendly streams.">
+  <meta property="og:description" content="Follow blesstTim, a Hero Shooter FPS Master, cat lover, online evangelist, variety streamer, and FaithForge Gaming Christian content creator sharing FPS, RPG, and Christ-centered streams.">
   <meta property="og:image" content="https://faithforgegaming.com/blesstTim/blesstTim.webp">
   <meta property="og:url" content="https://faithforgegaming.com/blesstTim/">
   <meta property="og:type" content="profile">
@@ -22,12 +22,12 @@
 
   <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="blesstTim | Overwatch Master & FaithForge Christian Streamer">
-  <meta name="twitter:description" content="Watch blesstTim, an Overwatch Master, cat lover, online evangelist, variety streamer, and FaithForge Gaming Christian content creator.">
+  <meta name="twitter:title" content="blesstTim | Hero Shooter FPS Master & FaithForge Christian Streamer">
+  <meta name="twitter:description" content="Watch blesstTim, a Hero Shooter FPS Master, cat lover, online evangelist, variety streamer, and FaithForge Gaming Christian content creator.">
   <meta name="twitter:image" content="https://faithforgegaming.com/blesstTim/blesstTim.webp">
 
   <link rel="stylesheet" href="https://faithforgegaming.com/style.css">
-  <meta name="theme-color" content="#000000">
+  <meta name="theme-color" content="#06150f">
   <link rel="icon" href="https://faithforgegaming.com/Anvil.webp">
 
   <!-- ProfilePage Schema: helps search engines understand this page is about one creator -->
@@ -122,6 +122,11 @@
 
   <style>
     :root {
+      /*
+        FAITHFORGE MAIN COLORS
+        These keep the page in the normal FaithForge gold/black style.
+        Change these only if you want to change the buttons, text, borders, and gold accents.
+      */
       --ff-gold: #f5c518;
       --ff-gold-soft: #ffe27a;
       --ff-gold-deep: #cfa214;
@@ -131,6 +136,27 @@
       --ff-border-strong: rgba(245, 197, 24, 0.34);
       --ff-text-soft: #f0df9b;
       --ff-white-soft: #fff7d6;
+
+      /*
+        BLESSTTIM BACKGROUND + GLOW COLORS
+        These control the page background glow/highlights only.
+        Change these if you want the background to match a different card later.
+        They do NOT change the FaithForge gold buttons or gold text.
+      */
+      --tim-bg-top: #06150f;
+      --tim-bg-mid: #020806;
+      --tim-bg-bottom: #000000;
+
+      --tim-hunter-green-strong: rgba(18, 83, 55, 0.34);
+      --tim-hunter-green-medium: rgba(18, 83, 55, 0.22);
+      --tim-hunter-green-soft: rgba(18, 83, 55, 0.12);
+
+      --tim-light-gray-strong: rgba(218, 226, 221, 0.18);
+      --tim-light-gray-medium: rgba(218, 226, 221, 0.12);
+      --tim-light-gray-soft: rgba(218, 226, 221, 0.07);
+
+      --tim-card-highlight: rgba(18, 83, 55, 0.16);
+      --tim-card-highlight-alt: rgba(218, 226, 221, 0.08);
     }
 
     * {
@@ -143,7 +169,41 @@
 
     body {
       overflow-x: hidden;
+
+      /*
+        BLESSTTIM PAGE BACKGROUND
+        Hunter green + light gray glow blend.
+        To adjust it later, edit the --tim-* colors inside :root above.
+      */
+      background:
+        radial-gradient(circle at 50% 10%, var(--tim-light-gray-strong), transparent 30%),
+        radial-gradient(circle at 36% 34%, var(--tim-hunter-green-strong), transparent 34%),
+        radial-gradient(circle at 64% 44%, var(--tim-light-gray-medium), transparent 38%),
+        radial-gradient(circle at 50% 78%, var(--tim-hunter-green-medium), transparent 42%),
+        radial-gradient(circle at 50% 96%, var(--tim-light-gray-soft), transparent 40%),
+        linear-gradient(180deg, var(--tim-bg-top) 0%, var(--tim-bg-mid) 55%, var(--tim-bg-bottom) 100%);
+      background-attachment: fixed;
     }
+
+    /*
+      BACKGROUND/HEADER GLOW OVERRIDES
+      These only adjust the surrounding glow/highlight color from the external site CSS.
+      They do not change the FaithForge gold text or button colors.
+    */
+    header h1 {
+      text-shadow:
+        0 0 14px rgba(245, 197, 24, 0.55),
+        0 0 28px var(--tim-hunter-green-medium),
+        0 0 42px var(--tim-light-gray-medium);
+    }
+
+    .navbar,
+    footer {
+      box-shadow:
+        0 0 18px var(--tim-hunter-green-medium),
+        0 0 34px var(--tim-light-gray-soft);
+    }
+
 
     .profile-container {
       max-width: 1150px;
@@ -175,7 +235,10 @@
       background: var(--ff-black-card);
       border-radius: 16px;
       border: 1px solid var(--ff-border);
-      box-shadow: 0 0 26px rgba(245, 197, 24, 0.18);
+      box-shadow:
+        0 0 26px rgba(245, 197, 24, 0.18),
+        0 0 42px var(--tim-card-highlight),
+        0 0 56px var(--tim-card-highlight-alt);
     }
 
     .profile-card {
@@ -612,8 +675,14 @@
       grid-template-columns: 1fr auto;
       gap: 18px;
       align-items: center;
+
+      /*
+        CTA BACKGROUND HIGHLIGHT
+        Uses the hunter green/light gray glow while keeping FaithForge gold buttons/text.
+      */
       background:
-        radial-gradient(circle at top left, rgba(245, 197, 24, 0.14), transparent 32%),
+        radial-gradient(circle at top left, var(--tim-light-gray-medium), transparent 34%),
+        radial-gradient(circle at bottom right, var(--tim-hunter-green-medium), transparent 38%),
         rgba(0, 0, 0, 0.58);
     }
 
@@ -715,7 +784,7 @@
         <a href="/Aboutus/">About Us</a>
         <a href="/Staff/">Our Team</a>
         <a href="/Streamers/">Streamers</a>
-        <a href="https://shop.faithforgegaming.com/">Merch Store</a>
+        <a href="/raidtrain/">Raid Train</a>
         <a href="/Devotions/">Devotions</a>
         <a href="/Prayers/">Prayers</a>
         <a href="/Servers/">Servers</a>
@@ -735,14 +804,14 @@
       <div class="profile-content">
         <p class="profile-kicker">FaithForge Gaming Streamer Partner</p>
         <h1 id="profile-heading">blesstTim</h1>
-        <p class="profile-subtitle">Overwatch Master • Cat lover • Online evangelist • Variety streamer</p>
+        <p class="profile-subtitle">Hero Shooter FPS Master • Cat lover • Online evangelist • Variety streamer</p>
 
         <p class="profile-bio">
-          I’m an FPS and RPG streamer who adventures online with my cat, Spooks, while sharing the Good Word. You’ll usually find me playing Overwatch or World of Warcraft, bringing variety gaming, online evangelism, and faith-centered encouragement into the stream. Before long, I’ll be adding my e-drums to the stream too.
+          I’m an FPS and RPG streamer who adventures online with my cat, Spooks, while sharing the Good Word. You’ll usually find me playing FPS or RPG games, bringing variety gaming, online evangelism, and faith-centered encouragement into the stream. Also check out my e-drums in the stream.
         </p>
 
         <ul class="profile-tags" aria-label="blesstTim creator tags">
-          <li>Overwatch Master</li>
+          <li>E-drum Enthusiast</li>
           <li>Cat Lover</li>
           <li>Online Evangelist</li>
           <li>Variety Streamer</li>
@@ -762,8 +831,8 @@
     <!-- 2. QUICK VALUE STRIP -->
     <section class="quick-follow-strip" aria-label="Why follow blesstTim">
       <div class="quick-follow-card">
-        <strong>Overwatch Master</strong>
-        <span>FPS-focused gameplay, competitive energy, and Overwatch streams with faith-centered community.</span>
+        <strong>Hero FPS Master</strong>
+        <span>FPS-focused gameplay, competitive energy, with positive encouraging atmosphere.</span>
       </div>
       <div class="quick-follow-card">
         <strong>Online Evangelist</strong>
@@ -853,7 +922,7 @@
     <section class="section" id="schedule" aria-labelledby="schedule-heading">
       <h2 id="schedule-heading">Streaming Schedule</h2>
       <p>
-        This calendar reflects the blesstTim Gaming streaming and event schedule. Times may shift, so join Discord for live updates and announcements.
+        This calendar reflects the FaithForge Gaming streaming and event schedule. Times may shift, so join Discord for live updates and announcements.
       </p>
 
       <div class="calendar-wrap">
@@ -876,13 +945,13 @@
     <section class="section" aria-labelledby="about-heading">
       <h2 id="about-heading">About blesstTim</h2>
       <p>
-        blesstTim creates faith-centered gaming content as an Overwatch Master, cat lover, online evangelist, and variety streamer. His streams blend FPS action, RPG adventures, encouragement, the Good Word, and community.
+        blesstTim creates faith-centered gaming content as a Hero FPS Master, cat lover, online evangelist, and variety streamer. His streams blend FPS action, RPG adventures, encouragement, the Good Word, and community.
       </p>
 
       <div class="about-grid">
         <div class="about-box">
-          <h3>Overwatch Master</h3>
-          <p>Known for Overwatch gameplay, FPS energy, and competitive-style streaming with a FaithForge community focus.</p>
+          <h3>Hero FPS Master</h3>
+          <p>Known for FPS and RPG gameplay, great energy, and competitive-style streaming with a FaithForge community focus.</p>
         </div>
         <div class="about-box">
           <h3>Cat Lover</h3>
@@ -894,7 +963,7 @@
         </div>
         <div class="about-box">
           <h3>Variety Streamer</h3>
-          <p>Plays FPS, RPG, World of Warcraft, Overwatch, and other games, with more creative content planned for the future.</p>
+          <p>Plays FPS, RPG, and other games, with more creative content planned for the future.</p>
         </div>
       </div>
     </section>
@@ -924,7 +993,7 @@
       <div>
         <h2 id="join-heading">Join blesstTim’s Community</h2>
         <p>
-          Follow blesstTim for Overwatch gameplay, FPS and RPG streams, online evangelism, cat-loving community moments, and FaithForge Christian gaming content.
+          Follow blesstTim for Hero FPS gameplay, FPS and RPG streams, online evangelism, cat-loving community moments, and FaithForge Christian gaming content.
         </p>
       </div>
       <div class="button-row">
@@ -943,12 +1012,12 @@
       <div class="faq-list">
         <details>
           <summary>Who is blesstTim?</summary>
-          <p>blesstTim is an Overwatch Master, cat lover, online evangelist, variety streamer, FPS and RPG creator, and FaithForge Gaming Christian streamer.</p>
+          <p>blesstTim is a Hero FPS Master, cat lover, online evangelist, variety streamer, FPS and RPG creator, and FaithForge Gaming Christian streamer.</p>
         </details>
 
         <details>
           <summary>What kind of games does blesstTim stream?</summary>
-          <p>blesstTim streams FPS, RPG, and variety content, often including Overwatch, World of Warcraft, Palia, Arc Raiders, and other online games.</p>
+          <p>blesstTim streams FPS, RPG, and variety content, often including  E-Drum music, Overwatch, Palia, Arc Raiders, and other online games.</p>
         </details>
 
         <details>
@@ -975,7 +1044,7 @@
       <a href="/Aboutus/">About Us</a>
       <a href="/Staff/">Our Team</a>
       <a href="/Streamers/">Streamers</a>
-      <a href="https://shop.faithforgegaming.com/">Merch Store</a>
+      <a href="/raidtrain/">Raid Train</a>
       <a href="/Devotions/">Devotions</a>
       <a href="/Prayers/">Prayers</a>
       <a href="/Servers/">Servers</a>

@@ -474,7 +474,7 @@ main {
 
 .schedule-row {
   display: grid;
-  grid-template-columns: 125px 1.1fr 1.4fr 130px;
+  grid-template-columns: 125px 1.1fr 1.4fr 120px 130px;
   gap: 14px;
   align-items: center;
   padding: 17px 20px;
@@ -517,6 +517,53 @@ main {
 .schedule-details {
   color: #e7d78d;
   line-height: 1.45;
+}
+
+.schedule-live-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.live-status-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-width: 100px;
+  padding: 7px 9px;
+  border-radius: 999px;
+  font-size: .76rem;
+  font-weight: 900;
+  letter-spacing: .35px;
+  text-transform: uppercase;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.live-status-pill.live {
+  color: #8dffb9;
+  background: rgba(46,204,113,.16);
+  border: 1px solid rgba(46,204,113,.45);
+  box-shadow: 0 0 14px rgba(46,204,113,.2);
+}
+
+.live-status-pill.offline {
+  color: #ddd;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.14);
+}
+
+.live-status-pill.checking {
+  color: #f5c518;
+  background: rgba(245,197,24,.08);
+  border: 1px solid rgba(245,197,24,.24);
+}
+
+.live-status-pill.error {
+  color: #ffb5b5;
+  background: rgba(255,0,0,.08);
+  border: 1px solid rgba(255,0,0,.22);
 }
 
 .schedule-action a {
@@ -758,6 +805,14 @@ footer a:hover {
 
   .schedule-action a {
     margin-top: 8px;
+  }
+
+  .schedule-live-status {
+    justify-content: flex-start;
+  }
+
+  .live-status-pill {
+    width: auto;
   }
 
   .countdown-grid {
@@ -1320,6 +1375,8 @@ const raidSchedule = [
   }
 ];
 
+let raidLiveStatusByLogin = {};
+
 function twitchUrl(login) {
   return `https://www.twitch.tv/${login}`;
 }
@@ -1331,6 +1388,27 @@ function escapeHtml(value) {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
+}
+
+function getLiveStatusBadge(item) {
+  if (item.openSlot || !item.login) {
+    return `<span class="live-status-pill offline">Offline</span>`;
+  }
+
+  const login = item.login.toLowerCase();
+  const status = raidLiveStatusByLogin[login];
+
+  if (!status) {
+    return `<span class="live-status-pill checking">Checking...</span>`;
+  }
+
+  if (status.error) {
+    return `<span class="live-status-pill error">Status Error</span>`;
+  }
+
+  return status.live
+    ? `<span class="live-status-pill live">Live Now</span>`
+    : `<span class="live-status-pill offline">Offline</span>`;
 }
 
 function getScheduleState() {
@@ -1395,6 +1473,8 @@ function renderSchedule() {
         <div class="schedule-streamer">${streamer}</div>
 
         <div class="schedule-details">${escapeHtml(item.details)}</div>
+
+        <div class="schedule-live-status">${getLiveStatusBadge(item)}</div>
 
         <div class="schedule-action">${action}</div>
       </div>
@@ -1596,6 +1676,31 @@ async function loadRaidTrainLiveStatus() {
 
     const channels = payload.channels || [];
 
+    const channelStatusByLogin = {};
+
+    channels.forEach(channel => {
+      const login = String(channel.login || "").toLowerCase();
+      if (login) {
+        channelStatusByLogin[login] = channel;
+      }
+    });
+
+    raidLiveStatusByLogin = {};
+
+    raidSchedule.forEach(item => {
+      if (!item.login) return;
+
+      const login = item.login.toLowerCase();
+      const channel = channelStatusByLogin[login];
+
+      raidLiveStatusByLogin[login] = {
+        live: channel ? Boolean(channel.live) : false,
+        error: false
+      };
+    });
+
+    renderSchedule();
+
     const scheduleLogins = raidSchedule
       .filter(item => item.login)
       .map(item => item.login.toLowerCase());
@@ -1642,6 +1747,17 @@ async function loadRaidTrainLiveStatus() {
     title.textContent = error.message;
     player.innerHTML = "We could not load the featured Twitch player right now.";
 
+    raidLiveStatusByLogin = {};
+
+    raidSchedule.forEach(item => {
+      if (!item.login) return;
+      raidLiveStatusByLogin[item.login.toLowerCase()] = {
+        live: false,
+        error: true
+      };
+    });
+
+    renderSchedule();
     updateDashboardFromSchedule(null);
   }
 }

@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FaithForge Gaming | Streamer Shops</title>
+  <meta name="description" content="Choose a FaithForge Gaming streamer shop and browse official FaithForge streamer merch collections." />
+  <link rel="canonical" href="https://faithforgegaming.com/Streamer-Shops/" />
+
+  <meta property="og:title" content="FaithForge Gaming | Streamer Shops" />
+  <meta property="og:description" content="Choose a FaithForge Gaming streamer shop and browse official FaithForge streamer merch collections." />
+  <meta property="og:image" content="https://faithforgegaming.com/Homepage.webp" />
+  <meta property="og:url" content="https://faithforgegaming.com/Streamer-Shops/" />
+  <meta property="og:type" content="website" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="FaithForge Gaming | Streamer Shops" />
+  <meta name="twitter:description" content="Choose a FaithForge Gaming streamer shop and browse official FaithForge streamer merch collections." />
+  <meta name="twitter:image" content="https://faithforgegaming.com/Homepage.webp" />
+
+  <meta name="theme-color" content="#050505" />
+  <link rel="icon" href="https://faithforgegaming.com/Anvil.webp" />
+
+  <style>
+    :root {
+      --gold: #f5c518;
+      --gold-dark: #b88708;
+      --gold-soft: rgba(245, 197, 24, 0.28);
+      --bg: #050505;
+      --panel: rgba(255, 255, 255, 0.045);
+      --text: #f8f8f8;
+      --muted: #c9c9c9;
+      --border: rgba(245, 197, 24, 0.24);
+      --shadow: rgba(245, 197, 24, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(245, 197, 24, 0.14), transparent 34%),
+        radial-gradient(circle at 15% 35%, rgba(245, 197, 24, 0.08), transparent 24%),
+        radial-gradient(circle at 85% 40%, rgba(116, 77, 255, 0.08), transparent 28%),
+        linear-gradient(180deg, #080808 0%, #020202 100%);
+      color: var(--text);
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(circle at center, black, transparent 78%);
+      z-index: -3;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(circle at center, rgba(245, 197, 24, 0.08) 0%, rgba(0, 0, 0, 0) 68%);
+      animation: glowPulse 7s ease-in-out infinite alternate;
+      z-index: -2;
+    }
+
+    @keyframes glowPulse {
+      from { opacity: 0.32; transform: scale(1); }
+      to { opacity: 0.72; transform: scale(1.08); }
+    }
+
+    canvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      padding: 16px clamp(18px, 3vw, 46px);
+      background: rgba(0, 0, 0, 0.82);
+      border-bottom: 1px solid rgba(245, 197, 24, 0.28);
+      box-shadow: 0 0 24px rgba(245, 197, 24, 0.14);
+      backdrop-filter: blur(8px);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      min-width: fit-content;
+    }
+
+    .brand img {
+      width: auto;
+      height: 42px;
+      filter: drop-shadow(0 0 12px rgba(245, 197, 24, 0.3));
+    }
+
+    .brand span {
+      color: var(--gold);
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-shadow: 0 0 14px rgba(245, 197, 24, 0.34);
+      white-space: nowrap;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: rgba(0, 0, 0, 0.78);
+      border: 1px solid rgba(245, 197, 24, 0.5);
+      color: var(--gold);
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-size: 1.2rem;
+      font-weight: 900;
+      box-shadow: 0 0 16px rgba(245, 197, 24, 0.22);
+      cursor: pointer;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .main-nav a {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 0.97rem;
+      transition: color 0.2s ease, text-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .main-nav a:hover,
+    .main-nav a:focus-visible {
+      color: #ffffff;
+      text-shadow: 0 0 12px rgba(245, 197, 24, 0.8);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .discord-btn {
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: #000 !important;
+      padding: 10px 18px;
+      border-radius: 12px;
+      box-shadow: 0 0 18px rgba(245, 197, 24, 0.38);
+    }
+
+    .discord-btn:hover,
+    .discord-btn:focus-visible {
+      color: #000 !important;
+      text-shadow: none !important;
+      box-shadow: 0 0 24px rgba(245, 197, 24, 0.62);
+    }
+
+    main {
+      width: min(1560px, 100%);
+      margin: 0 auto;
+      padding: 0 clamp(16px, 3vw, 42px) 42px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: clamp(44px, 7vw, 86px) 0 30px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(245, 197, 24, 0.84);
+      border: 1px solid rgba(245, 197, 24, 0.28);
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      box-shadow: 0 0 18px rgba(245, 197, 24, 0.12);
+      margin-bottom: 18px;
+    }
+
+    .eyebrow::before,
+    .eyebrow::after {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--gold);
+      box-shadow: 0 0 12px var(--gold);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.45rem, 5vw, 5.4rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      margin-bottom: 18px;
+      background: linear-gradient(90deg, #ffffff 0%, var(--gold) 42%, #ffe895 62%, var(--gold-dark) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 28px rgba(245, 197, 24, 0.28);
+    }
+
+    .hero p {
+      max-width: 850px;
+      margin: 0 auto;
+      color: #e7e7e7;
+      font-size: clamp(1rem, 1.5vw, 1.18rem);
+      line-height: 1.75;
+    }
+
+    .shop-grid-section {
+      margin-top: 28px;
+    }
+
+    .shop-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: clamp(18px, 2.4vw, 32px);
+      align-items: stretch;
+    }
+
+    .streamer-card {
+      position: relative;
+      display: block;
+      min-height: 100%;
+      overflow: hidden;
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,0.055), rgba(0,0,0,0.48));
+      box-shadow: 0 0 26px rgba(245, 197, 24, 0.12);
+      text-decoration: none;
+      isolation: isolate;
+      transform: translateZ(0);
+      transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
+    }
+
+    .streamer-card::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      background:
+        radial-gradient(circle at 50% 16%, rgba(245, 197, 24, 0.24), transparent 30%),
+        linear-gradient(135deg, transparent 0%, rgba(245, 197, 24, 0.18) 50%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.24s ease;
+      z-index: -1;
+    }
+
+    .streamer-card:hover,
+    .streamer-card:focus-visible {
+      transform: translateY(-7px) scale(1.01);
+      border-color: rgba(245, 197, 24, 0.58);
+      box-shadow: 0 0 34px rgba(245, 197, 24, 0.28);
+      outline: none;
+    }
+
+    .streamer-card:hover::before,
+    .streamer-card:focus-visible::before {
+      opacity: 1;
+    }
+
+    .image-shell {
+      position: relative;
+      aspect-ratio: 2 / 3;
+      background: #000;
+      overflow: hidden;
+    }
+
+    .image-shell img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+      object-position: center;
+      transition: filter 0.35s ease;
+    }
+
+    .streamer-card:hover .image-shell img,
+    .streamer-card:focus-visible .image-shell img {
+      filter: brightness(1.08) contrast(1.04);
+    }
+
+    .card-caption {
+      position: absolute;
+      right: 12px;
+      bottom: 12px;
+      z-index: 2;
+      padding: 0;
+      display: flex;
+      justify-content: flex-end;
+      pointer-events: none;
+    }
+
+    .card-caption h2 {
+      display: none;
+    }
+
+    .shop-pill {
+      flex: 0 0 auto;
+      color: #000;
+      background: linear-gradient(135deg, var(--gold), #ffe88c 48%, var(--gold-dark));
+      border-radius: 999px;
+      padding: 9px 12px;
+      font-size: 0.8rem;
+      font-weight: 900;
+      box-shadow: 0 0 18px rgba(245, 197, 24, 0.38);
+      white-space: nowrap;
+    }
+
+    .note {
+      margin: 30px auto 0;
+      max-width: 900px;
+      text-align: center;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.98rem;
+    }
+
+    footer {
+      margin-top: 64px;
+      padding: 34px 18px 26px;
+      text-align: center;
+      border-top: 1px solid rgba(245, 197, 24, 0.18);
+      background: radial-gradient(circle at center, rgba(245, 197, 24, 0.06), rgba(0, 0, 0, 0.72));
+      box-shadow: inset 0 20px 48px rgba(0, 0, 0, 0.58);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .footer-links a {
+      color: var(--gold);
+      font-weight: 800;
+      text-decoration: none;
+      padding: 9px 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(245, 197, 24, 0.34);
+      background: rgba(0,0,0,0.62);
+      transition: transform 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .footer-links a:hover,
+    .footer-links a:focus-visible {
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 0 18px rgba(245, 197, 24, 0.28);
+      outline: none;
+    }
+
+    .footer-copy {
+      color: #8d8d8d;
+      font-size: 0.86rem;
+    }
+
+    @media (min-width: 1180px) {
+      .shop-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 820px) {
+      .site-header {
+        align-items: flex-start;
+        flex-wrap: wrap;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .main-nav {
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transform: translateY(-8px);
+        flex-direction: column;
+        align-items: stretch;
+        transition: max-height 0.32s ease, opacity 0.22s ease, transform 0.22s ease;
+      }
+
+      .main-nav.show {
+        max-height: 420px;
+        opacity: 1;
+        transform: translateY(0);
+        padding-top: 8px;
+      }
+
+      .main-nav a {
+        width: 100%;
+        text-align: center;
+        padding: 12px 14px;
+        border: 1px solid rgba(245, 197, 24, 0.26);
+        border-radius: 12px;
+        background: rgba(0, 0, 0, 0.62);
+      }
+
+      .discord-btn {
+        display: block;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .brand span {
+        font-size: 0.88rem;
+      }
+
+      .brand img {
+        height: 36px;
+      }
+
+      .shop-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .image-shell {
+        aspect-ratio: 2 / 3;
+      }
+
+      .card-caption {
+        right: 10px;
+        bottom: 10px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.001ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="embers" aria-hidden="true"></canvas>
+
+  <header class="site-header">
+    <a class="brand" href="https://faithforgegaming.com/" aria-label="FaithForge Gaming Home">
+      <img src="https://faithforgegaming.com/Anvil.webp" alt="FaithForge Gaming anvil logo" width="80" height="80" />
+      <span>FaithForge Gaming</span>
+    </a>
+
+    <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
+
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="https://faithforgegaming.com/Streamers/">Streamers</a>
+      <a href="https://shop.faithforgegaming.com/">Merch Store</a>
+      <a href="https://faithforgegaming.com/Events/">Events</a>
+      <a class="discord-btn" href="https://discord.gg/bAQrudk5a9" target="_blank" rel="noopener">Join Discord</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow">Official Streamer Collections</div>
+      <h1>Choose Your Streamer Merch Collection</h1>
+      <p>
+        Click a FaithForge gamer card below to visit that streamer’s official merch collection. Each shop opens directly through the FaithForge Gaming store.
+      </p>
+    </section>
+
+    <section class="shop-grid-section" aria-label="FaithForge streamer shops">
+      <div class="shop-grid">
+
+        <a class="streamer-card" href="https://shop.faithforgegaming.com/discount/DOCTORJSWAYS?dt_id=3121324&redirect=/collections/doctorjsways" target="_blank" rel="noopener" aria-label="Shop DoctorJSWAYS collection">
+          <div class="image-shell">
+            <img src="cardDoctorJSWAYS.webp" alt="DoctorJSWAYS gamer card" loading="lazy" width="900" height="1350" />
+            <div class="card-caption">
+              <h2>DoctorJSWAYS</h2>
+              <span class="shop-pill">Shop</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="streamer-card" href="https://shop.faithforgegaming.com/discount/MOONCALFMAGE?dt_id=3155622&redirect=/collections/mooncalfmage" target="_blank" rel="noopener" aria-label="Shop mooncalfmage collection">
+          <div class="image-shell">
+            <img src="cardmooncalfmage.webp" alt="mooncalfmage gamer card" loading="lazy" width="900" height="1350" />
+            <div class="card-caption">
+              <h2>mooncalfmage</h2>
+              <span class="shop-pill">Shop</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="streamer-card" href="https://shop.faithforgegaming.com/discount/BLESSTTIM?dt_id=3165262&redirect=/collections/blessttim" target="_blank" rel="noopener" aria-label="Shop blesstTim collection">
+          <div class="image-shell">
+            <img src="cardblesstTim.webp" alt="blesstTim gamer card" loading="lazy" width="900" height="1350" />
+            <div class="card-caption">
+              <h2>blesstTim</h2>
+              <span class="shop-pill">Shop</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="streamer-card" href="https://shop.faithforgegaming.com/discount/BRN2BEW1LD?dt_id=3158754&redirect=/collections/brn2bew1ld" target="_blank" rel="noopener" aria-label="Shop Brn2bEw1Ld collection">
+          <div class="image-shell">
+            <img src="cardBrn2bEw1Ld.webp" alt="Brn2bEw1Ld gamer card" loading="lazy" width="900" height="1350" />
+            <div class="card-caption">
+              <h2>Brn2bEw1Ld</h2>
+              <span class="shop-pill">Shop</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="streamer-card" href="https://shop.faithforgegaming.com/collections/seawolf-30" target="_blank" rel="noopener" aria-label="Shop Seawolf_30 collection">
+          <div class="image-shell">
+            <img src="cardSeawolf_30.webp" alt="Seawolf_30 gamer card" loading="lazy" width="900" height="1350" />
+            <div class="card-caption">
+              <h2>Seawolf_30</h2>
+              <span class="shop-pill">Shop</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="streamer-card" href="https://shop.faithforgegaming.com" target="_blank" rel="noopener" aria-label="Shop FaithFamilyDad collection">
+          <div class="image-shell">
+            <img src="cardFaithFamilyDad.webp" alt="FaithFamilyDad gamer card" loading="lazy" width="900" height="1350" />
+            <div class="card-caption">
+              <h2>FaithFamilyDad</h2>
+              <span class="shop-pill">Shop</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="streamer-card" href="https://shop.faithforgegaming.com" target="_blank" rel="noopener" aria-label="Shop NinjaSauceX collection">
+          <div class="image-shell">
+            <img src="cardNinjaSauceX.webp" alt="NinjaSauceX gamer card" loading="lazy" width="900" height="1350" />
+            <div class="card-caption">
+              <h2>NinjaSauceX</h2>
+              <span class="shop-pill">Shop</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+
+      <p class="note">
+        Thank you for shopping our Streamer Collections!
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-links">
+      <a href="https://faithforgegaming.com/Streamers/">Streamers</a>
+      <a href="https://shop.faithforgegaming.com/">Merch Store</a>
+      <a href="https://faithforgegaming.com/Events/">Events</a>
+      <a href="https://discord.gg/bAQrudk5a9" target="_blank" rel="noopener">Join Discord</a>
+    </div>
+    <div class="footer-copy">© 2026 FaithForge Gaming</div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggle = document.querySelector(".menu-toggle");
+      const menu = document.querySelector(".main-nav");
+
+      if (toggle && menu) {
+        toggle.addEventListener("click", () => {
+          const isOpen = menu.classList.toggle("show");
+          toggle.setAttribute("aria-expanded", String(isOpen));
+        });
+
+        menu.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            menu.classList.remove("show");
+            toggle.setAttribute("aria-expanded", "false");
+          });
+        });
+      }
+    });
+  </script>
+
+  <script>
+    const canvas = document.getElementById("embers");
+    const ctx = canvas.getContext("2d");
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const embers = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    function spawnEmber() {
+      embers.push({
+        x: Math.random() * canvas.width,
+        y: canvas.height + 10,
+        radius: Math.random() * 2.2 + 0.7,
+        opacity: Math.random() * 0.38 + 0.18,
+        velocity: Math.random() * 1.45 + 0.55,
+        drift: (Math.random() - 0.5) * 0.55
+      });
+    }
+
+    function drawEmbers() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (let i = embers.length - 1; i >= 0; i--) {
+        const ember = embers[i];
+        ctx.fillStyle = `rgba(245, 197, 24, ${ember.opacity})`;
+        ctx.beginPath();
+        ctx.arc(ember.x, ember.y, ember.radius, 0, Math.PI * 2);
+        ctx.fill();
+
+        ember.y -= ember.velocity;
+        ember.x += ember.drift;
+        ember.opacity -= 0.0022;
+
+        if (ember.opacity <= 0 || ember.y < -20) {
+          embers.splice(i, 1);
+        }
+      }
+
+      const spawnRate = window.innerWidth < 768 ? 0.11 : 0.24;
+      if (Math.random() < spawnRate) spawnEmber();
+
+      requestAnimationFrame(drawEmbers);
+    }
+
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    if (!prefersReducedMotion) {
+      drawEmbers();
+    }
+  </script>
+</body>
+</html>

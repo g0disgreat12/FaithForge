@@ -163,6 +163,8 @@
     .section,
     .games-section,
     .live-stream-card,
+    .live-chat-card,
+    .live-status-panel,
     .cta-panel {
       background: var(--ff-black-card);
       border-radius: 16px;
@@ -355,9 +357,24 @@
 
     .live-stream-grid {
       display: grid;
-      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-      gap: 22px;
+      grid-template-columns: 1fr;
+      gap: 18px;
       align-items: stretch;
+    }
+
+    .live-bottom-grid {
+      display: grid;
+      grid-template-columns: minmax(260px, 0.85fr) minmax(0, 1.15fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .live-status-panel {
+      padding: 22px;
+      border-radius: 14px;
+      border: 1px solid rgba(245, 197, 24, 0.18);
+      background: rgba(0, 0, 0, 0.44);
+      box-shadow: 0 0 18px rgba(245, 197, 24, 0.12);
     }
 
     .live-badge {
@@ -387,17 +404,69 @@
     .live-title { color: var(--ff-white-soft); }
 
     .live-player-wrap {
-      min-height: 320px;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      min-height: 430px;
       border-radius: 14px;
       overflow: hidden;
       border: 1px solid rgba(245, 197, 24, 0.2);
       box-shadow: 0 0 22px rgba(245, 197, 24, 0.18);
       background: rgba(0, 0, 0, 0.6);
+      display: block;
+      padding: 0;
+    }
+
+    .live-player-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+      background: #000;
+    }
+
+    .live-chat-card {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(245, 197, 24, 0.2);
+      background: rgba(0, 0, 0, 0.68);
+      box-shadow: 0 0 22px rgba(245, 197, 24, 0.18);
+    }
+
+    .live-chat-heading {
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 14px;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(245, 197, 24, 0.16);
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .live-chat-heading h3 {
+      margin: 0;
+      color: var(--ff-gold);
+      font-size: 1.08rem;
+    }
+
+    .live-chat-heading p {
+      margin: 0;
+      color: var(--ff-text-soft);
+      font-size: 0.92rem;
+      line-height: 1.35;
+    }
+
+    .live-chat-frame {
+      height: 430px;
+      background: #0e0e10;
+    }
+
+    .live-chat-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+      background: #0e0e10;
     }
 
     .embed-wrap {
@@ -600,10 +669,16 @@
         justify-items: center;
       }
 
+      .live-bottom-grid {
+        grid-template-columns: 1fr;
+      }
+
       .profile-tags,
       .button-row { justify-content: center; }
       .quick-follow-strip { grid-template-columns: 1fr; }
       .recent-games-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .live-player-wrap { min-height: 320px; }
+      .live-chat-frame { height: 360px; }
     }
 
     @media (max-width: 640px) {
@@ -631,7 +706,8 @@
       .about-grid { grid-template-columns: 1fr; }
       .streamer-game-logo-wrap { height: 145px; }
       .calendar-wrap { height: 360px; }
-      .live-player-wrap { min-height: 245px; }
+      .live-player-wrap { min-height: 230px; }
+      .live-chat-frame { height: 340px; }
     }
 
     /* Brn2bEw1Ld purple/blue background + glow override only */
@@ -658,6 +734,8 @@
     .section,
     .games-section,
     .live-stream-card,
+    .live-chat-card,
+    .live-status-panel,
     .cta-panel {
       background:
         radial-gradient(circle at 18% 12%, rgba(180, 38, 255, 0.16), transparent 34%),
@@ -703,6 +781,8 @@
     }
 
     .live-player-wrap,
+    .live-chat-card,
+    .live-status-panel,
     .embed-wrap,
     .calendar-wrap {
       background:
@@ -819,29 +899,52 @@
     <!-- 3. LIVE STATUS -->
     <section class="live-stream-card" aria-labelledby="live-heading">
       <div class="live-stream-grid">
-        <div class="live-stream-copy">
-          <h2 id="live-heading">Live Stream Status</h2>
-
-          <span id="brnLiveBadge" class="live-badge offline">Checking status...</span>
-
-          <p id="brnLiveMeta" class="live-meta">
-            Loading current Twitch information.
-          </p>
-
-          <p id="brnLiveTitle" class="live-title">
-            Please wait while we check whether Brn2bEw1Ld is live.
-          </p>
-
-          <div class="button-row">
-            <a id="brnWatchBtn" class="gold-btn" href="https://www.twitch.tv/brn2bew1ld" target="_blank" rel="noopener">
-              Watch on Twitch
-            </a>
-            <a class="outline-btn" href="#schedule">View Schedule</a>
-          </div>
+        <div class="live-player-wrap" id="brnPlayerWrap">
+          <iframe
+            id="brnTwitchVideo"
+            title="Brn2bEw1Ld Twitch Video Player"
+            allowfullscreen
+            scrolling="no"
+            allow="autoplay; fullscreen">
+          </iframe>
         </div>
 
-        <div class="live-player-wrap" id="brnPlayerWrap">
-          The Twitch player will appear here when Brn2bEw1Ld is live.
+        <div class="live-bottom-grid">
+          <div class="live-stream-copy live-status-panel">
+            <h2 id="live-heading">Live Stream Status</h2>
+
+            <span id="brnLiveBadge" class="live-badge offline">Checking status...</span>
+
+            <p id="brnLiveMeta" class="live-meta">
+              Loading current Twitch information.
+            </p>
+
+            <p id="brnLiveTitle" class="live-title">
+              Please wait while we check whether Brn2bEw1Ld is live.
+            </p>
+
+            <div class="button-row">
+              <a id="brnWatchBtn" class="gold-btn" href="https://www.twitch.tv/brn2bew1ld" target="_blank" rel="noopener">
+                Watch on Twitch
+              </a>
+              <a class="outline-btn" href="#schedule">View Schedule</a>
+            </div>
+          </div>
+
+          <div class="live-chat-card" aria-label="Brn2bEw1Ld Twitch chat">
+            <div class="live-chat-heading">
+              <h3>Live Chat</h3>
+              <p>Chat is loaded from Brn2bEw1Ld's Twitch channel.</p>
+            </div>
+
+            <div class="live-chat-frame">
+              <iframe
+                id="brnTwitchChat"
+                title="Brn2bEw1Ld Twitch Chat"
+                scrolling="no">
+              </iframe>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1074,6 +1177,37 @@
     let latestBrnLiveStream = null;
     let brnTwitchEmbedLoaded = false;
 
+    function getBrnTwitchParents() {
+      const parents = new Set(['faithforgegaming.com', 'www.faithforgegaming.com']);
+      const currentHost = window.location.hostname;
+
+      if (currentHost) {
+        parents.add(currentHost);
+      }
+
+      return Array.from(parents).filter(Boolean);
+    }
+
+    function getBrnTwitchParentQuery() {
+      return getBrnTwitchParents()
+        .map(parent => `parent=${encodeURIComponent(parent)}`)
+        .join('&');
+    }
+
+    function loadBrnTwitchWindows() {
+      const video = document.getElementById('brnTwitchVideo');
+      const chat = document.getElementById('brnTwitchChat');
+      const parentQuery = getBrnTwitchParentQuery();
+
+      if (video) {
+        video.src = `https://player.twitch.tv/?channel=${encodeURIComponent(BRN_LOGIN)}&${parentQuery}&autoplay=true&muted=false`;
+      }
+
+      if (chat) {
+        chat.src = `https://www.twitch.tv/embed/${encodeURIComponent(BRN_LOGIN)}/chat?${parentQuery}&darkpopout`;
+      }
+    }
+
     function escapeHTML(value) {
       return String(value || '')
         .replace(/&/g, '&amp;')
@@ -1228,7 +1362,6 @@
           badge.className = 'live-badge offline';
           meta.textContent = 'Currently offline';
           title.textContent = 'Brn2bEw1Ld is not live right now. Follow on Twitch, check the schedule, or join Discord for the next stream update.';
-          playerWrap.innerHTML = 'The Twitch player will appear here when Brn2bEw1Ld is live.';
           watchBtn.href = `https://www.twitch.tv/${BRN_LOGIN}`;
           return;
         }
@@ -1246,25 +1379,12 @@
         title.textContent = stream.title || 'Currently streaming now.';
         watchBtn.href = `https://www.twitch.tv/${BRN_LOGIN}`;
 
-        if (!brnTwitchEmbedLoaded) {
-          playerWrap.innerHTML = '<div id="brnTwitchPlayer"></div>';
-
-          new Twitch.Embed('brnTwitchPlayer', {
-            width: '100%',
-            height: 320,
-            channel: BRN_LOGIN,
-            parent: ['faithforgegaming.com', 'www.faithforgegaming.com'],
-            layout: 'video'
-          });
-
-          brnTwitchEmbedLoaded = true;
-        }
+        brnTwitchEmbedLoaded = true;
       } catch (error) {
         badge.textContent = 'STATUS ERROR';
         badge.className = 'live-badge offline';
         meta.textContent = 'Could not load Twitch status';
         title.textContent = error.message;
-        playerWrap.innerHTML = 'We could not load the Twitch player right now.';
       }
     }
 
@@ -1306,6 +1426,7 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
+      loadBrnTwitchWindows();
       loadLatestYouTubeVideo();
       refreshBrnSections();
       setInterval(refreshBrnSections, REFRESH_INTERVAL_MS);

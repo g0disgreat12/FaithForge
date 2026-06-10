@@ -415,11 +415,65 @@
       border: 1px solid rgba(245, 197, 24, 0.2);
       box-shadow: 0 0 22px rgba(245, 197, 24, 0.18);
       background: rgba(0, 0, 0, 0.6);
+      display: block;
+      text-align: left;
+      padding: 0;
+    }
+
+    .live-twitch-stack {
+      width: 100%;
+      background: #000;
+    }
+
+    .twitch-video-frame {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      min-height: 320px;
+      background: #000;
+      overflow: hidden;
+    }
+
+    .twitch-video-frame iframe,
+    .twitch-chat-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+      background: #000;
+    }
+
+    .twitch-chat-card {
+      background: rgba(0, 0, 0, 0.82);
+      border-top: 1px solid rgba(245, 197, 24, 0.2);
+    }
+
+    .twitch-chat-heading {
+      padding: 14px 16px;
       display: flex;
+      justify-content: space-between;
+      gap: 12px;
       align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 14px;
+      flex-wrap: wrap;
+      border-bottom: 1px solid rgba(245, 197, 24, 0.14);
+    }
+
+    .twitch-chat-heading h3 {
+      margin: 0;
+      color: var(--ff-gold);
+      font-size: 1.05rem;
+    }
+
+    .twitch-chat-heading p {
+      margin: 0;
+      color: var(--ff-text-soft);
+      font-size: 0.92rem;
+      line-height: 1.4;
+    }
+
+    .twitch-chat-frame {
+      height: 360px;
+      background: #000;
+      overflow: hidden;
     }
 
     .embed-wrap {
@@ -699,6 +753,14 @@
       .live-player-wrap {
         min-height: 245px;
       }
+
+      .twitch-video-frame {
+        min-height: 220px;
+      }
+
+      .twitch-chat-frame {
+        height: 320px;
+      }
     }
   </style>
 </head>
@@ -811,7 +873,32 @@
         </div>
 
         <div class="live-player-wrap" id="faithForgePlayerWrap">
-          The Twitch player will appear here when FaithForgeGaming is live.
+          <div class="live-twitch-stack">
+            <div class="twitch-video-frame">
+              <iframe
+                id="faithForgeTwitchVideo"
+                title="FaithForgeGaming Twitch Video Player"
+                allowfullscreen
+                scrolling="no"
+                allow="autoplay; fullscreen">
+              </iframe>
+            </div>
+
+            <section class="twitch-chat-card" aria-label="FaithForgeGaming Twitch chat">
+              <div class="twitch-chat-heading">
+                <h3>Live Chat</h3>
+                <p>Chat is loaded from FaithForgeGaming's Twitch channel.</p>
+              </div>
+
+              <div class="twitch-chat-frame">
+                <iframe
+                  id="faithForgeTwitchChat"
+                  title="FaithForgeGaming Twitch Chat"
+                  scrolling="no">
+                </iframe>
+              </div>
+            </section>
+          </div>
         </div>
       </div>
     </section>
@@ -1030,6 +1117,37 @@
     const faithForgeDisplayName = 'FaithForgeGaming';
     let latestFaithForgeLiveStream = null;
 
+    function getTwitchParents() {
+      const parents = new Set(['faithforgegaming.com', 'www.faithforgegaming.com']);
+      const currentHost = window.location.hostname;
+
+      if (currentHost) {
+        parents.add(currentHost);
+      }
+
+      return Array.from(parents).filter(Boolean);
+    }
+
+    function getTwitchParentQuery() {
+      return getTwitchParents()
+        .map(parent => `parent=${encodeURIComponent(parent)}`)
+        .join('&');
+    }
+
+    function updateFaithForgeTwitchWindows() {
+      const video = document.getElementById('faithForgeTwitchVideo');
+      const chat = document.getElementById('faithForgeTwitchChat');
+      const parentQuery = getTwitchParentQuery();
+
+      if (video) {
+        video.src = `https://player.twitch.tv/?channel=${encodeURIComponent(faithForgeLogin)}&${parentQuery}&autoplay=true&muted=false`;
+      }
+
+      if (chat) {
+        chat.src = `https://www.twitch.tv/embed/${encodeURIComponent(faithForgeLogin)}/chat?${parentQuery}&darkpopout`;
+      }
+    }
+
     function getFaithForgeGameImage(game) {
       if (game.box_art_url) {
         return String(game.box_art_url)
@@ -1127,10 +1245,11 @@
       const badge = document.getElementById('faithForgeLiveBadge');
       const meta = document.getElementById('faithForgeLiveMeta');
       const title = document.getElementById('faithForgeLiveTitle');
-      const playerWrap = document.getElementById('faithForgePlayerWrap');
       const watchBtn = document.getElementById('faithForgeWatchBtn');
 
-      if (!badge || !meta || !title || !playerWrap || !watchBtn) return;
+      if (!badge || !meta || !title || !watchBtn) return;
+
+      updateFaithForgeTwitchWindows();
 
       try {
         const response = await fetch(
@@ -1154,7 +1273,6 @@
           badge.className = 'live-badge offline';
           meta.textContent = 'Currently offline';
           title.textContent = 'FaithForgeGaming is not live right now. Follow on Twitch, check the schedule, or join Discord for the next stream update.';
-          playerWrap.innerHTML = 'The Twitch player will appear here when FaithForgeGaming is live.';
           watchBtn.href = 'https://www.twitch.tv/faithforgegaming';
           return;
         }
@@ -1166,22 +1284,14 @@
         title.textContent = stream.title || 'Currently streaming now.';
         watchBtn.href = 'https://www.twitch.tv/faithforgegaming';
 
-        playerWrap.innerHTML = '<div id="faithForgeTwitchPlayer"></div>';
-
-        new Twitch.Embed('faithForgeTwitchPlayer', {
-          width: '100%',
-          height: 320,
-          channel: 'faithforgegaming',
-          parent: ['faithforgegaming.com', 'www.faithforgegaming.com'],
-          layout: 'video'
-        });
+        updateFaithForgeTwitchWindows();
       } catch (error) {
         latestFaithForgeLiveStream = null;
         badge.textContent = 'STATUS ERROR';
         badge.className = 'live-badge offline';
         meta.textContent = 'Could not load Twitch status';
         title.textContent = error.message;
-        playerWrap.innerHTML = 'We could not load the Twitch player right now.';
+        updateFaithForgeTwitchWindows();
       }
     }
 
@@ -1191,6 +1301,7 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
+      updateFaithForgeTwitchWindows();
       refreshFaithForgeTwitchSections();
       setInterval(refreshFaithForgeTwitchSections, 90000);
     });

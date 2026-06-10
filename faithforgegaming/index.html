@@ -370,46 +370,10 @@
     }
 
     .live-stream-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-      gap: 22px;
-      align-items: stretch;
-    }
-
-    .live-badge {
-      display: inline-block;
-      margin: 0 0 14px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      font-size: 0.9rem;
-      font-weight: 900;
-      letter-spacing: 0.4px;
-    }
-
-    .live-badge.online {
-      color: #8dffb9;
-      background: rgba(46, 204, 113, 0.14);
-      border: 1px solid rgba(46, 204, 113, 0.32);
-      box-shadow: 0 0 16px rgba(46, 204, 113, 0.18);
-    }
-
-    .live-badge.offline {
-      color: #ddd;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-    }
-
-    .live-meta {
-      color: var(--ff-text-soft);
-      font-size: 1.02rem;
-    }
-
-    .live-title {
-      color: var(--ff-white-soft);
+      display: block;
     }
 
     .live-player-wrap {
-      min-height: 320px;
       border-radius: 14px;
       overflow: hidden;
       border: 1px solid rgba(245, 197, 24, 0.2);
@@ -428,7 +392,7 @@
     .twitch-video-frame {
       width: 100%;
       aspect-ratio: 16 / 9;
-      min-height: 320px;
+      min-height: 520px;
       background: #000;
       overflow: hidden;
     }
@@ -442,9 +406,23 @@
       background: #000;
     }
 
+    .live-lower-grid {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.88fr) minmax(0, 1.12fr);
+      align-items: stretch;
+      border-top: 1px solid rgba(245, 197, 24, 0.2);
+    }
+
+    .live-lower-grid .live-stream-copy {
+      padding: 22px;
+      background:
+        radial-gradient(circle at top left, rgba(245, 197, 24, 0.1), transparent 36%),
+        rgba(0, 0, 0, 0.72);
+      border-right: 1px solid rgba(245, 197, 24, 0.18);
+    }
+
     .twitch-chat-card {
       background: rgba(0, 0, 0, 0.82);
-      border-top: 1px solid rgba(245, 197, 24, 0.2);
     }
 
     .twitch-chat-heading {
@@ -679,10 +657,22 @@
 
     @media (max-width: 980px) {
       .profile-card,
-      .live-stream-grid,
       .video-section-grid,
       .cta-panel {
         grid-template-columns: 1fr;
+      }
+
+      .live-lower-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .live-lower-grid .live-stream-copy {
+        border-right: 0;
+        border-bottom: 1px solid rgba(245, 197, 24, 0.18);
+      }
+
+      .twitch-video-frame {
+        min-height: 360px;
       }
 
       .profile-card {
@@ -750,8 +740,12 @@
         height: 360px;
       }
 
-      .live-player-wrap {
+      .twitch-video-frame {
         min-height: 245px;
+      }
+
+      .twitch-chat-frame {
+        height: 340px;
       }
 
       .twitch-video-frame {
@@ -851,27 +845,6 @@
     <!-- 3. LIVE STATUS -->
     <section class="live-stream-card" aria-labelledby="live-heading">
       <div class="live-stream-grid">
-        <div class="live-stream-copy">
-          <h2 id="live-heading">Live Stream Status</h2>
-
-          <span id="faithForgeLiveBadge" class="live-badge offline">Checking status...</span>
-
-          <p id="faithForgeLiveMeta" class="live-meta">
-            Loading current Twitch information.
-          </p>
-
-          <p id="faithForgeLiveTitle" class="live-title">
-            Please wait while we check whether FaithForgeGaming is live.
-          </p>
-
-          <div class="button-row">
-            <a id="faithForgeWatchBtn" class="gold-btn" href="https://www.twitch.tv/faithforgegaming" target="_blank" rel="noopener">
-              Watch on Twitch
-            </a>
-            <a class="outline-btn" href="#schedule">View Schedule</a>
-          </div>
-        </div>
-
         <div class="live-player-wrap" id="faithForgePlayerWrap">
           <div class="live-twitch-stack">
             <div class="twitch-video-frame">
@@ -884,20 +857,43 @@
               </iframe>
             </div>
 
-            <section class="twitch-chat-card" aria-label="FaithForgeGaming Twitch chat">
-              <div class="twitch-chat-heading">
-                <h3>Live Chat</h3>
-                <p>Chat is loaded from FaithForgeGaming's Twitch channel.</p>
+            <div class="live-lower-grid">
+              <div class="live-stream-copy">
+                <h2 id="live-heading">Live Stream Status</h2>
+
+                <span id="faithForgeLiveBadge" class="live-badge offline">Checking status...</span>
+
+                <p id="faithForgeLiveMeta" class="live-meta">
+                  Loading current Twitch information.
+                </p>
+
+                <p id="faithForgeLiveTitle" class="live-title">
+                  Please wait while we check whether FaithForgeGaming is live.
+                </p>
+
+                <div class="button-row">
+                  <a id="faithForgeWatchBtn" class="gold-btn" href="https://www.twitch.tv/faithforgegaming" target="_blank" rel="noopener">
+                    Watch on Twitch
+                  </a>
+                  <a class="outline-btn" href="#schedule">View Schedule</a>
+                </div>
               </div>
 
-              <div class="twitch-chat-frame">
-                <iframe
-                  id="faithForgeTwitchChat"
-                  title="FaithForgeGaming Twitch Chat"
-                  scrolling="no">
-                </iframe>
-              </div>
-            </section>
+              <section class="twitch-chat-card" aria-label="FaithForgeGaming Twitch chat">
+                <div class="twitch-chat-heading">
+                  <h3>Live Chat</h3>
+                  <p>Chat is loaded from FaithForgeGaming's Twitch channel.</p>
+                </div>
+
+                <div class="twitch-chat-frame">
+                  <iframe
+                    id="faithForgeTwitchChat"
+                    title="FaithForgeGaming Twitch Chat"
+                    scrolling="no">
+                  </iframe>
+                </div>
+              </section>
+            </div>
           </div>
         </div>
       </div>

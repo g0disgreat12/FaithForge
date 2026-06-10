@@ -5,11 +5,12 @@
 
   <title>FaithForge Stream Team | Christian Gaming Streamers & Live Streams</title>
 
-  <meta name="description" content="Watch the FaithForge Gaming Stream Team live. Discover Christian gaming streamers, clean gaming content, faith-based creators, Twitch streams, creator bios, and family-friendly gaming communities.">
+  <meta name="description" content="Watch the FaithForge Gaming Stream Team live. Discover Christian gaming streamers, clean gaming content, faith-based creators, Twitch streams, creator bios, recently streamed games, and family-friendly gaming communities.">
 
-  <meta name="keywords" content="FaithForge Gaming, Christian gaming streamers, Christian Twitch streamers, faith based gaming, clean gaming streams, family friendly streamers, Christian content creators, Twitch stream team">
+  <meta name="keywords" content="FaithForge Gaming, Christian gaming streamers, Christian Twitch streamers, faith based gaming, clean gaming streams, family friendly streamers, Christian content creators, Twitch stream team, recently streamed games">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow, max-image-preview:large">
 
   <link rel="canonical" href="https://faithforgegaming.com/Streamers/">
 
@@ -105,17 +106,27 @@
   <style>
     :root {
       --ffg-black: #050505;
-      --ffg-panel: rgba(0, 0, 0, 0.68);
-      --ffg-panel-soft: rgba(17, 17, 17, 0.78);
+      --ffg-panel: rgba(0, 0, 0, 0.72);
+      --ffg-panel-soft: rgba(18, 18, 18, 0.88);
       --ffg-gold: #f5c518;
       --ffg-gold-soft: #f0df9b;
+      --ffg-gold-light: #ffe27a;
       --ffg-gold-dark: #a77d08;
-      --ffg-border: rgba(245, 197, 24, 0.2);
+      --ffg-border: rgba(245, 197, 24, 0.22);
       --ffg-glow: rgba(245, 197, 24, 0.3);
       --ffg-live: #32d77a;
+      --ffg-live-soft: #a8ffc9;
       --ffg-offline: #a9a9a9;
-      --ffg-red: #c0392b;
-      --ffg-white: #f7f1d0;
+      --ffg-white: #fff6cf;
+      --ffg-muted: rgba(255, 255, 255, 0.78);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -152,13 +163,13 @@
       border-radius: 22px;
       background:
         linear-gradient(135deg, rgba(245, 197, 24, 0.09), transparent 34%),
-        rgba(0, 0, 0, 0.56);
+        rgba(0, 0, 0, 0.62);
       box-shadow: 0 0 32px rgba(245, 197, 24, 0.15);
     }
 
     .stream-hero .eyebrow {
       color: var(--ffg-gold-soft);
-      font-weight: 800;
+      font-weight: 900;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       font-size: 0.8rem;
@@ -174,7 +185,7 @@
 
     .stream-hero p {
       color: var(--ffg-gold-soft);
-      max-width: 860px;
+      max-width: 920px;
       margin: 0 auto;
       line-height: 1.65;
       font-size: 1.06rem;
@@ -195,16 +206,18 @@
       transition: all 0.2s ease-in-out;
     }
 
-    .discord-button:hover {
+    .discord-button:hover,
+    .discord-button:focus-visible {
       background: linear-gradient(90deg, var(--ffg-gold), #cfa214);
       color: #000;
       box-shadow: 0 0 28px rgba(245, 197, 24, 0.9);
       transform: translateY(-2px);
+      outline: none;
     }
 
     .stream-team-layout {
       display: grid;
-      grid-template-columns: 330px minmax(0, 1fr);
+      grid-template-columns: 345px minmax(0, 1fr);
       gap: 22px;
       align-items: start;
       margin: 26px 0 42px;
@@ -214,7 +227,8 @@
     .watch-card,
     .seo-copy,
     .creator-card,
-    .creator-program {
+    .creator-program,
+    .selected-games-section {
       border: 1px solid var(--ffg-border);
       background: var(--ffg-panel);
       box-shadow: 0 0 26px rgba(245, 197, 24, 0.13);
@@ -251,7 +265,7 @@
       display: none;
       margin: 14px 18px 8px;
       color: var(--ffg-gold-soft);
-      font-weight: 800;
+      font-weight: 900;
     }
 
     .streamer-select {
@@ -263,7 +277,7 @@
       border: 1px solid var(--ffg-border);
       background: #080808;
       color: var(--ffg-gold);
-      font-weight: 800;
+      font-weight: 900;
       font-size: 1rem;
     }
 
@@ -298,11 +312,13 @@
     }
 
     .streamer-button:hover,
+    .streamer-button:focus-visible,
     .streamer-button.active {
       transform: translateY(-1px);
       border-color: rgba(245, 197, 24, 0.55);
       background: rgba(245, 197, 24, 0.08);
       box-shadow: 0 0 18px rgba(245, 197, 24, 0.16);
+      outline: none;
     }
 
     .streamer-avatar-wrap {
@@ -359,13 +375,14 @@
 
     .streamer-list-status {
       color: var(--ffg-gold-soft);
-      font-size: 0.86rem;
+      font-size: 0.84rem;
       line-height: 1.35;
       margin-top: 4px;
+      display: block;
     }
 
     .streamer-list-status.live {
-      color: #a8ffc9;
+      color: var(--ffg-live-soft);
     }
 
     .watch-card {
@@ -375,8 +392,8 @@
 
     .watch-header {
       display: grid;
-      grid-template-columns: 90px minmax(0, 1fr);
-      gap: 16px;
+      grid-template-columns: 94px minmax(0, 1fr);
+      gap: 17px;
       padding: 20px;
       background:
         linear-gradient(135deg, rgba(245, 197, 24, 0.13), transparent 45%),
@@ -385,8 +402,8 @@
     }
 
     .active-avatar {
-      width: 90px;
-      height: 90px;
+      width: 94px;
+      height: 94px;
       border-radius: 18px;
       object-fit: cover;
       border: 2px solid var(--ffg-gold);
@@ -395,23 +412,34 @@
     }
 
     .watch-header h2 {
-      margin: 5px 0 4px;
+      margin: 7px 0 5px;
       color: var(--ffg-gold);
-      font-size: clamp(1.5rem, 3vw, 2.2rem);
-      line-height: 1.1;
+      font-size: clamp(1.55rem, 3vw, 2.2rem);
+      line-height: 1.12;
     }
 
-    .watch-meta {
-      margin: 0;
+    .watch-meta,
+    .watch-last-date,
+    .watch-source {
+      margin: 4px 0;
       color: var(--ffg-gold-soft);
-      line-height: 1.5;
+      line-height: 1.45;
+      font-size: 0.98rem;
     }
 
     .watch-title {
-      margin: 8px 0 0;
+      margin: 9px 0 0;
       color: var(--ffg-white);
       line-height: 1.45;
-      font-weight: 600;
+      font-weight: 800;
+      font-size: 1.02rem;
+    }
+
+    .watch-description {
+      margin: 8px 0 0;
+      color: #d8c786;
+      line-height: 1.5;
+      font-size: 0.96rem;
     }
 
     .status-badge {
@@ -430,7 +458,7 @@
     }
 
     .status-badge.live {
-      color: #a8ffc9;
+      color: var(--ffg-live-soft);
       background: rgba(50, 215, 122, 0.12);
       border-color: rgba(50, 215, 122, 0.35);
       box-shadow: 0 0 16px rgba(50, 215, 122, 0.18);
@@ -453,7 +481,8 @@
     }
 
     .watch-actions a,
-    .creator-links a {
+    .creator-links a,
+    .small-link-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -469,21 +498,31 @@
     }
 
     .watch-actions a:hover,
-    .creator-links a:hover {
-      background: #ffe27a;
+    .watch-actions a:focus-visible,
+    .creator-links a:hover,
+    .creator-links a:focus-visible,
+    .small-link-btn:hover,
+    .small-link-btn:focus-visible {
+      background: var(--ffg-gold-light);
       transform: translateY(-1px);
       box-shadow: 0 0 20px rgba(245, 197, 24, 0.48);
+      outline: none;
     }
 
     .watch-actions a.secondary,
-    .creator-links a.secondary {
+    .creator-links a.secondary,
+    .small-link-btn.secondary {
       color: var(--ffg-gold);
       background: rgba(0, 0, 0, 0.65);
       border: 1px solid var(--ffg-border);
     }
 
     .watch-actions a.secondary:hover,
-    .creator-links a.secondary:hover {
+    .watch-actions a.secondary:focus-visible,
+    .creator-links a.secondary:hover,
+    .creator-links a.secondary:focus-visible,
+    .small-link-btn.secondary:hover,
+    .small-link-btn.secondary:focus-visible {
       color: #000;
       background: var(--ffg-gold);
     }
@@ -538,6 +577,111 @@
 
     .chat-frame {
       height: 430px;
+    }
+
+    .selected-games-section {
+      margin: 0 0 34px;
+      padding: 22px;
+      text-align: left;
+    }
+
+    .selected-games-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .selected-games-header h2 {
+      margin: 0;
+      color: var(--ffg-gold);
+      font-size: clamp(1.45rem, 3vw, 2rem);
+    }
+
+    .selected-games-header p {
+      margin: 6px 0 0;
+      color: var(--ffg-gold-soft);
+      line-height: 1.55;
+    }
+
+    .recent-games-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .streamer-game-card {
+      display: flex;
+      flex-direction: column;
+      background: #000;
+      border: 1px solid rgba(245, 197, 24, 0.22);
+      border-radius: 12px;
+      overflow: hidden;
+      text-decoration: none;
+      color: var(--ffg-gold);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      min-height: 100%;
+    }
+
+    .streamer-game-card:hover,
+    .streamer-game-card:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 0 16px rgba(245, 197, 24, 0.45), 0 0 5px rgba(245, 197, 24, 0.35) inset;
+      outline: none;
+    }
+
+    .streamer-game-logo-wrap {
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px;
+      background: #000;
+    }
+
+    .streamer-game-card img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .game-card-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 12px;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.92);
+      border-top: 1px solid rgba(245, 197, 24, 0.16);
+      flex: 1;
+    }
+
+    .game-card-copy strong {
+      color: var(--ffg-gold);
+      font-size: 0.98rem;
+    }
+
+    .game-card-copy span {
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 0.84rem;
+      line-height: 1.35;
+    }
+
+    .empty-state-card {
+      grid-column: 1 / -1;
+      border-radius: 14px;
+      border: 1px solid rgba(245, 197, 24, 0.18);
+      background: rgba(0, 0, 0, 0.38);
+      padding: 18px;
+      color: rgba(255, 255, 255, 0.86);
+      line-height: 1.55;
+      text-align: center;
     }
 
     .seo-copy {
@@ -598,8 +742,10 @@
       text-decoration: none;
     }
 
-    .creator-card h3 a:hover {
+    .creator-card h3 a:hover,
+    .creator-card h3 a:focus-visible {
       text-decoration: underline;
+      outline: none;
     }
 
     .creator-card p {
@@ -634,18 +780,6 @@
       margin: 0 auto 12px;
     }
 
-    .screen-reader-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
-    }
-
     @media (max-width: 1050px) {
       .stream-team-layout {
         grid-template-columns: 1fr;
@@ -654,6 +788,7 @@
       .team-roster-card {
         position: relative;
         top: auto;
+        text-align: center;
       }
 
       .streamer-list {
@@ -665,12 +800,14 @@
         display: block;
       }
 
-      .team-roster-card {
-        text-align: center;
-      }
-
       .status-note {
         text-align: center;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .recent-games-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
@@ -699,8 +836,13 @@
         height: 360px;
       }
 
-      .seo-copy {
+      .seo-copy,
+      .selected-games-section {
         text-align: center;
+      }
+
+      .selected-games-header {
+        justify-content: center;
       }
 
       .creator-grid {
@@ -715,7 +857,8 @@
 
       .stream-hero,
       .seo-copy,
-      .creator-program {
+      .creator-program,
+      .selected-games-section {
         padding: 20px 16px;
       }
 
@@ -733,6 +876,14 @@
 
       .chat-frame {
         height: 340px;
+      }
+
+      .recent-games-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .streamer-game-logo-wrap {
+        height: 145px;
       }
     }
   </style>
@@ -774,9 +925,9 @@
       <p class="eyebrow">FaithForge Gaming Creator Partnership Program</p>
       <h2>FaithForge Stream Team</h2>
       <p>
-        Watch Christian gaming streamers from FaithForge Gaming. This page highlights live creators first,
-        keeps FaithForgeGaming as the main featured channel when live, and gives every creator a clear path
-        to their personal FaithForge page, Twitch channel, and social links.
+        Watch Christian gaming streamers from FaithForge Gaming. Live creators move to the top by viewer count.
+        FaithForgeGaming stays featured first when live. Select any streamer to switch the video, chat, creator links,
+        live status, and recently streamed games.
       </p>
 
       <a class="discord-button" href="https://discord.gg/bAQrudk5a9" target="_blank" rel="noopener noreferrer">
@@ -788,7 +939,7 @@
       <aside class="team-roster-card">
         <div class="roster-heading">
           <h2>Team Members</h2>
-          <p>Live streamers move to the top. Select any creator to switch the player and chat.</p>
+          <p>Live streamers move to the top. Select any creator to switch the player, chat, and recent games.</p>
         </div>
 
         <div id="statusNote" class="status-note" aria-live="polite">
@@ -809,7 +960,9 @@
             <span id="activeStatusBadge" class="status-badge">Checking status</span>
             <h2 id="activeName">FaithForgeGaming</h2>
             <p id="activeMeta" class="watch-meta">Loading stream details...</p>
+            <p id="activeLastDate" class="watch-last-date">Checking recent Twitch activity...</p>
             <p id="activeTitle" class="watch-title">The featured FaithForge stream will load here.</p>
+            <p id="activeDescription" class="watch-description"></p>
           </div>
         </div>
 
@@ -846,6 +999,27 @@
       </section>
     </section>
 
+    <section class="selected-games-section" aria-labelledby="selected-games-heading">
+      <div class="selected-games-header">
+        <div>
+          <h2 id="selected-games-heading">Recently Streamed Games</h2>
+          <p id="selectedRecentGamesStatus">
+            Loading recent Twitch activity for the selected streamer...
+          </p>
+        </div>
+
+        <a id="selectedRecentGamesTwitchBtn" class="small-link-btn secondary" href="https://www.twitch.tv/faithforgegaming" target="_blank" rel="noopener noreferrer">
+          Open Twitch Channel
+        </a>
+      </div>
+
+      <div class="recent-games-grid" id="selectedRecentGamesGrid" aria-live="polite">
+        <div class="empty-state-card">
+          Recent Twitch games will appear here as FaithForge creators stream.
+        </div>
+      </div>
+    </section>
+
     <section class="seo-copy">
       <h2>Christian Gaming Streamers & Faith-Based Content Creators</h2>
       <p>
@@ -856,7 +1030,8 @@
       </p>
       <p>
         Use the stream selector above to watch FaithForge creators live, open their personal creator pages,
-        visit their Twitch channels, and connect with their communities.
+        visit their Twitch channels, view current Twitch status, and see recently streamed games collected from
+        each creator’s Twitch activity.
       </p>
     </section>
 
@@ -1072,12 +1247,14 @@
 
   <script>
     const STREAM_STATUS_ENDPOINT = 'https://faithforge-raidtrain-api.faithforgegaming.workers.dev/api/twitch-status';
+    const RECENT_GAMES_ENDPOINT = 'https://faithforge-raidtrain-api.faithforgegaming.workers.dev/api/recent-games';
 
     /*
       TO ADD MORE STREAMERS:
-      1. Add another object to this STREAMERS array.
-      2. Add a matching static creator card above for better SEO.
-      3. If your Cloudflare Worker has a hard-coded Twitch roster, add the Twitch login there too.
+      1. Add the streamer to STREAMERS below.
+      2. Add their Twitch login to your Cloudflare Worker team list if the Worker uses a hard-coded list.
+      3. Create their personal page for SEO.
+      4. Add a static creator card above for better search value.
     */
     const STREAMERS = [
       {
@@ -1087,10 +1264,8 @@
         image: 'G0dsblessing.webp',
         page: '/faithforgegaming/',
         twitch: 'https://www.twitch.tv/faithforgegaming',
-        lastKnown: {
-          game: 'FaithForge Gaming',
-          title: 'Christian gaming, community streams, events, and FaithForge adventures'
-        },
+        fallbackGame: 'FaithForge Gaming',
+        fallbackTitle: 'Christian gaming, community streams, events, and FaithForge adventures',
         links: [
           { label: 'YouTube', url: 'https://www.youtube.com/@FaithForgeGaming' },
           { label: 'TikTok', url: 'https://www.tiktok.com/@faithforge.gaming?is_from_webapp=1&sender_device=pc' },
@@ -1106,10 +1281,8 @@
         image: '/DoctorJSWAYS/DoctorJSWAYS1.webp',
         page: '/DoctorJSWAYS/',
         twitch: 'https://www.twitch.tv/doctorjsways',
-        lastKnown: {
-          game: 'Fortnite / Variety Gaming',
-          title: 'Family friendly and Christ-centered gaming content'
-        },
+        fallbackGame: 'Fortnite / Variety Gaming',
+        fallbackTitle: 'Family friendly and Christ-centered gaming content',
         links: [
           { label: 'YouTube', url: 'https://www.youtube.com/@DoctorJSW' },
           { label: 'TikTok', url: 'https://www.tiktok.com/@doctorjsways?_t=ZP-90qlk47XjQt&_r=1' }
@@ -1122,10 +1295,8 @@
         image: '/Seawolf_30/Seawolf.webp',
         page: '/Seawolf_30/',
         twitch: 'https://www.twitch.tv/seawolf_30?sr=a',
-        lastKnown: {
-          game: 'Cozy / Community Gaming',
-          title: 'Heartfelt adventures, laughter, creativity, and shared stories'
-        },
+        fallbackGame: 'Cozy / Community Gaming',
+        fallbackTitle: 'Heartfelt adventures, laughter, creativity, and shared stories',
         links: [
           { label: 'YouTube', url: 'https://www.youtube.com/@TRCCozyCorner' },
           { label: 'YouTube VODS', url: 'https://www.youtube.com/@Seawolf_30VODS' }
@@ -1138,10 +1309,8 @@
         image: '/mooncalfmage/mooncalfmage.webp',
         page: '/mooncalfmage/',
         twitch: 'https://www.twitch.tv/mooncalfmage',
-        lastKnown: {
-          game: 'Cozy / Survival Gaming',
-          title: 'Family friendly cozy and survival gaming while representing Christ'
-        },
+        fallbackGame: 'Cozy / Survival Gaming',
+        fallbackTitle: 'Family friendly cozy and survival gaming while representing Christ',
         links: [
           { label: 'YouTube', url: 'https://www.youtube.com/@mooncalfmage' },
           { label: 'Instagram', url: 'https://www.instagram.com/mooncalfmage/reel/DQcJURbEb_U' },
@@ -1155,10 +1324,8 @@
         image: '/Brn2bEw1Ld/Brn2bEw1Ld.webp',
         page: '/Brn2bEw1Ld/',
         twitch: 'https://www.twitch.tv/brn2bew1ld',
-        lastKnown: {
-          game: 'Variety Gaming',
-          title: 'Faith-centered gaming, encouragement, and real-life growth'
-        },
+        fallbackGame: 'Variety Gaming',
+        fallbackTitle: 'Faith-centered gaming, encouragement, and real-life growth',
         links: [
           { label: 'YouTube', url: 'https://www.youtube.com/@Brn2bEw1Ld' }
         ]
@@ -1170,10 +1337,8 @@
         image: '/blesstTim/blesstTim.webp',
         page: '/blesstTim/',
         twitch: 'https://www.twitch.tv/blesstTim',
-        lastKnown: {
-          game: 'Overwatch / World of Warcraft',
-          title: 'FPS and RPG adventures while sharing the Good Word'
-        },
+        fallbackGame: 'Overwatch / World of Warcraft',
+        fallbackTitle: 'FPS and RPG adventures while sharing the Good Word',
         links: [
           { label: 'YouTube', url: 'https://www.youtube.com/@blesstTim' }
         ]
@@ -1185,10 +1350,8 @@
         image: '/FaithFamilyDad/FaithFamilyDad1.webp',
         page: '/FaithFamilyDad/',
         twitch: 'https://www.twitch.tv/faithfamilydad',
-        lastKnown: {
-          game: 'Bible Study / Variety Gaming',
-          title: 'Bible study, clean gaming content, and Christ-centered community'
-        },
+        fallbackGame: 'Bible Study / Variety Gaming',
+        fallbackTitle: 'Bible study, clean gaming content, and Christ-centered community',
         links: [
           { label: 'Kick', url: 'https://kick.com/faithfamilydad' },
           { label: 'YouTube', url: 'https://www.youtube.com/@FaithFamilyDad' },
@@ -1203,10 +1366,8 @@
         image: '/NinjaSauceX/NinjaSauceX.webp',
         page: '/NinjaSauceX/',
         twitch: 'https://www.twitch.tv/ninjasaucex',
-        lastKnown: {
-          game: 'FPS / PVE Variety Gaming',
-          title: 'Non-toxic, PG-rated, encouraging gaming and community'
-        },
+        fallbackGame: 'FPS / PVE Variety Gaming',
+        fallbackTitle: 'Non-toxic, PG-rated, encouraging gaming and community',
         links: [
           { label: 'YouTube', url: 'https://www.youtube.com/@ninjasaucexgaming' },
           { label: 'YouTube TQOutside', url: 'https://www.youtube.com/@TQOutside' }
@@ -1215,13 +1376,28 @@
     ];
 
     let statusByLogin = new Map();
+    let recentGamesByLogin = new Map();
+    let recentGamesFetchedAt = new Map();
     let selectedLogin = 'faithforgegaming';
     let userPickedStreamer = false;
     let embeddedLogin = null;
-    let statusLoadFailed = false;
+    let recentGamesRequestCounter = 0;
 
     function normalizeLogin(value) {
       return String(value || '').trim().toLowerCase();
+    }
+
+    function escapeHTML(value) {
+      return String(value || '')
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#039;');
+    }
+
+    function escapeAttribute(value) {
+      return escapeHTML(value);
     }
 
     function getStreamer(login) {
@@ -1229,14 +1405,28 @@
     }
 
     function getStatus(login) {
+      const streamer = getStreamer(login);
+
       return statusByLogin.get(normalizeLogin(login)) || {
-        login: normalizeLogin(login),
+        login: streamer.login,
+        display_name: streamer.name,
         live: false,
         game_name: '',
         title: '',
         viewer_count: 0,
-        display_name: ''
+        started_at: '',
+        game_id: '',
+        box_art_url: ''
       };
+    }
+
+    function getRecentGames(login) {
+      return recentGamesByLogin.get(normalizeLogin(login)) || [];
+    }
+
+    function getBestRecentGame(login) {
+      const games = getRecentGames(login);
+      return games.length ? games[0] : null;
     }
 
     function getTwitchParents() {
@@ -1274,6 +1464,36 @@
       return `${number.toLocaleString()} ${number === 1 ? 'viewer' : 'viewers'}`;
     }
 
+    function getGameName(game) {
+      return game?.name || game?.game_name || game?.category || '';
+    }
+
+    function getGameTitle(game) {
+      return game?.last_title || game?.title || game?.description || '';
+    }
+
+    function getGameLastPlayed(game) {
+      return game?.last_played || game?.lastLive || game?.last_live_at || game?.played_at || '';
+    }
+
+    function getGameImage(game) {
+      if (game?.box_art_url) {
+        return String(game.box_art_url)
+          .replace('{width}', '285')
+          .replace('{height}', '380');
+      }
+
+      return game?.image || game?.thumbnail_url || '/Anvil.webp';
+    }
+
+    function setStatusNote(message) {
+      const statusNote = document.getElementById('statusNote');
+
+      if (statusNote) {
+        statusNote.textContent = message;
+      }
+    }
+
     function normalizeStatusChannel(rawChannel) {
       const login = normalizeLogin(
         rawChannel.login ||
@@ -1283,60 +1503,55 @@
         rawChannel.name
       );
 
+      const streamer = getStreamer(login);
+
       return {
         login,
-        display_name: rawChannel.display_name || rawChannel.user_name || rawChannel.name || login,
+        display_name: rawChannel.display_name || rawChannel.user_name || streamer.name || login,
         live: Boolean(rawChannel.live || rawChannel.type === 'live' || rawChannel.is_live),
         game_name: rawChannel.game_name || rawChannel.game || rawChannel.category || '',
         title: rawChannel.title || rawChannel.stream_title || '',
         viewer_count: Number(rawChannel.viewer_count || rawChannel.viewers || 0) || 0,
-        started_at: rawChannel.started_at || ''
+        started_at: rawChannel.started_at || '',
+        game_id: rawChannel.game_id || '',
+        box_art_url: rawChannel.box_art_url || rawChannel.game_box_art_url || ''
       };
     }
 
-    function saveLastKnown(login, status) {
-      if (!status.live) return;
+    function applyStatusPayload(payload) {
+      const rawChannels = Array.isArray(payload.channels)
+        ? payload.channels
+        : Array.isArray(payload.data)
+          ? payload.data
+          : [];
 
-      const lastKnown = {
-        game: status.game_name || 'Live on Twitch',
-        title: status.title || 'Currently streaming now',
-        savedAt: new Date().toISOString()
-      };
+      const nextStatusMap = new Map();
 
-      try {
-        window.localStorage.setItem(`ffg-last-known-${login}`, JSON.stringify(lastKnown));
-      } catch (error) {
-        // Local storage may be unavailable in some browsers. The page still works without it.
-      }
-    }
+      rawChannels.forEach(rawChannel => {
+        const status = normalizeStatusChannel(rawChannel);
 
-    function getLastKnown(streamer) {
-      try {
-        const stored = window.localStorage.getItem(`ffg-last-known-${streamer.login}`);
+        if (!status.login) return;
 
-        if (stored) {
-          const parsed = JSON.parse(stored);
+        nextStatusMap.set(status.login, status);
+      });
 
-          if (parsed && (parsed.game || parsed.title)) {
-            return parsed;
-          }
+      STREAMERS.forEach(streamer => {
+        if (!nextStatusMap.has(streamer.login)) {
+          nextStatusMap.set(streamer.login, {
+            login: streamer.login,
+            display_name: streamer.name,
+            live: false,
+            game_name: '',
+            title: '',
+            viewer_count: 0,
+            started_at: '',
+            game_id: '',
+            box_art_url: ''
+          });
         }
-      } catch (error) {
-        // Ignore storage read errors.
-      }
+      });
 
-      return streamer.lastKnown || {
-        game: 'FaithForge Gaming',
-        title: 'Last known stream info will appear after this creator goes live.'
-      };
-    }
-
-    function getOfflineLine(streamer) {
-      const lastKnown = getLastKnown(streamer);
-      const game = lastKnown.game || 'FaithForge Gaming';
-      const title = lastKnown.title || 'Last known stream info unavailable.';
-
-      return `Offline • Last known: ${game} — ${title}`;
+      statusByLogin = nextStatusMap;
     }
 
     function getSortedStreamers() {
@@ -1375,12 +1590,28 @@
       return 'faithforgegaming';
     }
 
-    function setStatusNote(message) {
-      const statusNote = document.getElementById('statusNote');
+    function getRosterStatusLine(streamer, status) {
+      const recentGame = getBestRecentGame(streamer.login);
 
-      if (statusNote) {
-        statusNote.textContent = message;
+      if (status.live) {
+        const game = status.game_name || 'Live on Twitch';
+        const title = status.title || 'Currently streaming now';
+        return `LIVE • ${game} • ${title}`;
       }
+
+      if (recentGame) {
+        const game = getGameName(recentGame) || streamer.fallbackGame || 'Recently streamed game';
+        const title = getGameTitle(recentGame) || streamer.fallbackTitle || 'Recent Twitch activity';
+        const lastPlayed = getGameLastPlayed(recentGame);
+
+        if (lastPlayed) {
+          return `Offline • ${lastPlayed} • ${game} — ${title}`;
+        }
+
+        return `Offline • ${game} — ${title}`;
+      }
+
+      return `Offline • Loading recent games...`;
     }
 
     function renderRoster() {
@@ -1395,6 +1626,7 @@
         button.type = 'button';
         button.className = `streamer-button ${streamer.login === selectedLogin ? 'active' : ''}`;
         button.setAttribute('aria-label', `Watch ${streamer.name}`);
+
         button.addEventListener('click', () => {
           userPickedStreamer = true;
           selectStreamer(streamer.login);
@@ -1433,9 +1665,7 @@
 
         const statusLine = document.createElement('span');
         statusLine.className = `streamer-list-status ${status.live ? 'live' : ''}`;
-        statusLine.textContent = status.live
-          ? `LIVE • ${status.game_name || 'Live on Twitch'} • ${status.title || 'Currently streaming'}`
-          : getOfflineLine(streamer);
+        statusLine.textContent = getRosterStatusLine(streamer, status);
 
         details.appendChild(nameLine);
         details.appendChild(statusLine);
@@ -1455,11 +1685,18 @@
       select.innerHTML = '';
 
       getSortedStreamers().forEach(({ streamer, status }) => {
+        const recentGame = getBestRecentGame(streamer.login);
         const option = document.createElement('option');
         option.value = streamer.login;
-        option.textContent = status.live
-          ? `LIVE • ${streamer.name} • ${formatViewers(status.viewer_count)}`
-          : `Offline • ${streamer.name}`;
+
+        if (status.live) {
+          option.textContent = `LIVE • ${streamer.name} • ${formatViewers(status.viewer_count)}`;
+        } else if (recentGame) {
+          const game = getGameName(recentGame) || streamer.fallbackGame || 'Recent Twitch activity';
+          option.textContent = `Offline • ${streamer.name} • ${game}`;
+        } else {
+          option.textContent = `Offline • ${streamer.name}`;
+        }
 
         select.appendChild(option);
       });
@@ -1472,7 +1709,7 @@
       };
     }
 
-    function renderActiveLinks(streamer) {
+    function renderActiveLinks(streamer, status) {
       const linksContainer = document.getElementById('activeLinks');
 
       if (!linksContainer) return;
@@ -1525,16 +1762,19 @@
     function updateActivePanel() {
       const streamer = getStreamer(selectedLogin);
       const status = getStatus(streamer.login);
-      const lastKnown = getLastKnown(streamer);
+      const recentGame = getBestRecentGame(streamer.login);
 
       const activeAvatar = document.getElementById('activeAvatar');
       const activeStatusBadge = document.getElementById('activeStatusBadge');
       const activeName = document.getElementById('activeName');
       const activeMeta = document.getElementById('activeMeta');
+      const activeLastDate = document.getElementById('activeLastDate');
       const activeTitle = document.getElementById('activeTitle');
+      const activeDescription = document.getElementById('activeDescription');
       const liveReason = document.getElementById('liveReason');
       const chatLabel = document.getElementById('chatLabel');
       const select = document.getElementById('streamerSelect');
+      const twitchBtn = document.getElementById('selectedRecentGamesTwitchBtn');
 
       if (activeAvatar) {
         activeAvatar.src = streamer.image;
@@ -1551,20 +1791,48 @@
       }
 
       if (activeMeta) {
-        activeMeta.textContent = status.live
-          ? `${status.game_name || 'Live on Twitch'} • ${formatViewers(status.viewer_count)}`
-          : `Offline • Last known: ${lastKnown.game || 'FaithForge Gaming'}`;
+        if (status.live) {
+          activeMeta.textContent = `${status.game_name || 'Live on Twitch'} • ${formatViewers(status.viewer_count)}`;
+        } else if (recentGame) {
+          activeMeta.textContent = `Last game/category: ${getGameName(recentGame) || streamer.fallbackGame || 'Recent Twitch activity'}`;
+        } else {
+          activeMeta.textContent = `Last game/category: Loading recent Twitch activity...`;
+        }
+      }
+
+      if (activeLastDate) {
+        if (status.live) {
+          activeLastDate.textContent = status.started_at
+            ? `Started: ${new Date(status.started_at).toLocaleString()}`
+            : `Currently live on Twitch`;
+        } else if (recentGame && getGameLastPlayed(recentGame)) {
+          activeLastDate.textContent = `Last played: ${getGameLastPlayed(recentGame)}`;
+        } else {
+          activeLastDate.textContent = `Last played: Loading from Twitch...`;
+        }
       }
 
       if (activeTitle) {
-        activeTitle.textContent = status.live
-          ? (status.title || 'Currently streaming now.')
-          : (lastKnown.title || 'This creator is offline right now. Use the links below to visit their page or Twitch channel.');
+        if (status.live) {
+          activeTitle.textContent = status.title || 'Currently streaming now.';
+        } else if (recentGame) {
+          activeTitle.textContent = getGameTitle(recentGame) || streamer.fallbackTitle || 'Recent Twitch activity loaded.';
+        } else {
+          activeTitle.textContent = streamer.fallbackTitle || 'Recent Twitch activity will load here.';
+        }
+      }
+
+      if (activeDescription) {
+        if (!status.live && recentGame && recentGame.description && recentGame.description !== getGameTitle(recentGame)) {
+          activeDescription.textContent = recentGame.description;
+        } else {
+          activeDescription.textContent = '';
+        }
       }
 
       if (liveReason) {
         if (userPickedStreamer) {
-          liveReason.textContent = `You selected ${streamer.name}. The player and chat will stay on this creator unless you choose someone else.`;
+          liveReason.textContent = `You selected ${streamer.name}. The player, chat, links, and recent games will stay on this creator unless you choose someone else.`;
         } else if (streamer.login === 'faithforgegaming' && status.live) {
           liveReason.textContent = 'FaithForgeGaming is live, so it stays featured first.';
         } else if (status.live) {
@@ -1582,50 +1850,186 @@
         select.value = streamer.login;
       }
 
-      renderActiveLinks(streamer);
+      if (twitchBtn) {
+        twitchBtn.href = streamer.twitch;
+        twitchBtn.textContent = `Open ${streamer.name} on Twitch`;
+      }
+
+      renderActiveLinks(streamer, status);
       updateEmbeds(streamer.login);
+    }
+
+    function getLiveGameCard(status) {
+      if (!status.live || !status.game_name) return null;
+
+      return {
+        name: status.game_name,
+        game_name: status.game_name,
+        game_id: status.game_id || '',
+        box_art_url: status.box_art_url || '',
+        last_title: status.title || 'Currently live on Twitch',
+        last_played: 'Live now',
+        description: status.title || 'Currently live on Twitch'
+      };
+    }
+
+    function dedupeGames(games) {
+      const seen = new Set();
+      const cleanGames = [];
+
+      games.forEach(game => {
+        const name = String(getGameName(game) || '').toLowerCase();
+        const gameId = String(game?.game_id || '').toLowerCase();
+        const key = gameId || name;
+
+        if (!key || seen.has(key)) return;
+
+        seen.add(key);
+        cleanGames.push(game);
+      });
+
+      return cleanGames;
+    }
+
+    async function fetchRecentGames(login, force = false) {
+      const normalizedLogin = normalizeLogin(login);
+      const now = Date.now();
+      const lastFetched = recentGamesFetchedAt.get(normalizedLogin) || 0;
+
+      if (!force && recentGamesByLogin.has(normalizedLogin) && now - lastFetched < 120000) {
+        return recentGamesByLogin.get(normalizedLogin);
+      }
+
+      const response = await fetch(
+        `${RECENT_GAMES_ENDPOINT}?login=${encodeURIComponent(normalizedLogin)}&limit=4`,
+        { cache: 'no-store' }
+      );
+
+      const payload = await response.json();
+
+      if (!response.ok) {
+        throw new Error(payload.details || payload.error || 'Unable to load recent games.');
+      }
+
+      const rawGames = payload.games || payload.recentGames || [];
+      const status = getStatus(normalizedLogin);
+      const liveGame = getLiveGameCard(status);
+
+      const games = dedupeGames([
+        ...(liveGame ? [liveGame] : []),
+        ...rawGames
+      ]).slice(0, 4);
+
+      recentGamesByLogin.set(normalizedLogin, games);
+      recentGamesFetchedAt.set(normalizedLogin, now);
+
+      return games;
+    }
+
+    function renderSelectedRecentGames(games, streamer) {
+      const grid = document.getElementById('selectedRecentGamesGrid');
+
+      if (!grid) return;
+
+      if (!games.length) {
+        grid.innerHTML = `
+          <div class="empty-state-card">
+            Recent Twitch games will appear here as ${escapeHTML(streamer.name)} streams.
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = games.slice(0, 4).map(game => {
+        const name = getGameName(game) || 'Recently Streamed Game';
+        const image = getGameImage(game);
+        const description = getGameTitle(game) || `Recently streamed by ${streamer.name}.`;
+        const lastPlayed = getGameLastPlayed(game)
+          ? `<span>Last played: ${escapeHTML(getGameLastPlayed(game))}</span>`
+          : '';
+
+        return `
+          <a class="streamer-game-card" href="${escapeAttribute(streamer.twitch)}" target="_blank" rel="noopener noreferrer" aria-label="Watch ${escapeAttribute(streamer.name)} play ${escapeAttribute(name)} on Twitch">
+            <div class="streamer-game-logo-wrap">
+              <img src="${escapeAttribute(image)}" alt="${escapeAttribute(name)} artwork" loading="lazy" decoding="async">
+            </div>
+            <div class="game-card-copy">
+              <strong>${escapeHTML(name)}</strong>
+              <span>${escapeHTML(description)}</span>
+              ${lastPlayed}
+            </div>
+          </a>
+        `;
+      }).join('');
+    }
+
+    async function loadSelectedStreamerRecentGames(force = false) {
+      const requestId = ++recentGamesRequestCounter;
+      const streamer = getStreamer(selectedLogin);
+      const statusText = document.getElementById('selectedRecentGamesStatus');
+
+      if (statusText) {
+        statusText.textContent = `Loading ${streamer.name}'s recent Twitch activity...`;
+      }
+
+      try {
+        const games = await fetchRecentGames(streamer.login, force);
+
+        if (requestId !== recentGamesRequestCounter) return;
+
+        renderSelectedRecentGames(games, streamer);
+
+        if (statusText) {
+          statusText.textContent = games.length
+            ? `These games update from ${streamer.name}'s recent Twitch activity.`
+            : `No recent Twitch games have been collected yet for ${streamer.name}.`;
+        }
+
+        renderRoster();
+        renderMobileSelect();
+        updateActivePanel();
+      } catch (error) {
+        if (requestId !== recentGamesRequestCounter) return;
+
+        const grid = document.getElementById('selectedRecentGamesGrid');
+
+        if (grid) {
+          grid.innerHTML = `
+            <div class="empty-state-card">
+              Recent game tracking is connected, but no Twitch activity could be loaded right now for ${escapeHTML(streamer.name)}.
+            </div>
+          `;
+        }
+
+        if (statusText) {
+          statusText.textContent = 'Recent game tracking could not be loaded right now.';
+        }
+
+        console.error(`Recent games error for ${streamer.login}:`, error);
+      }
+    }
+
+    async function hydrateAllRecentGames(force = false) {
+      await Promise.allSettled(
+        STREAMERS.map(streamer => fetchRecentGames(streamer.login, force))
+      );
+
       renderRoster();
+      renderMobileSelect();
+      updateActivePanel();
+
+      const selectedStreamer = getStreamer(selectedLogin);
+      renderSelectedRecentGames(getRecentGames(selectedStreamer.login), selectedStreamer);
     }
 
     function selectStreamer(login) {
       selectedLogin = normalizeLogin(login);
-      updateActivePanel();
+
       renderMobileSelect();
-    }
-
-    function applyStatusPayload(payload) {
-      const rawChannels = Array.isArray(payload.channels)
-        ? payload.channels
-        : Array.isArray(payload.data)
-          ? payload.data
-          : [];
-
-      const nextStatusMap = new Map();
-
-      rawChannels.forEach(rawChannel => {
-        const status = normalizeStatusChannel(rawChannel);
-
-        if (!status.login) return;
-
-        nextStatusMap.set(status.login, status);
-        saveLastKnown(status.login, status);
-      });
-
-      STREAMERS.forEach(streamer => {
-        if (!nextStatusMap.has(streamer.login)) {
-          nextStatusMap.set(streamer.login, {
-            login: streamer.login,
-            display_name: streamer.name,
-            live: false,
-            game_name: '',
-            title: '',
-            viewer_count: 0,
-            started_at: ''
-          });
-        }
-      });
-
-      statusByLogin = nextStatusMap;
+      renderRoster();
+      updateActivePanel();
+      renderSelectedRecentGames(getRecentGames(selectedLogin), getStreamer(selectedLogin));
+      loadSelectedStreamerRecentGames(false);
     }
 
     async function refreshStatuses() {
@@ -1637,7 +2041,6 @@
           throw new Error(payload.details || payload.error || 'Unable to load Twitch status.');
         }
 
-        statusLoadFailed = false;
         applyStatusPayload(payload);
 
         const liveCount = STREAMERS.filter(streamer => getStatus(streamer.login).live).length;
@@ -1645,7 +2048,7 @@
         if (liveCount > 0) {
           setStatusNote(`${liveCount} FaithForge ${liveCount === 1 ? 'creator is' : 'creators are'} live right now. Live channels are sorted by viewer count.`);
         } else {
-          setStatusNote('No FaithForge creators are live right now. Offline creators show last known stream info.');
+          setStatusNote('No FaithForge creators are live right now. Offline creators show recently streamed games when Twitch activity is available.');
         }
 
         if (!userPickedStreamer) {
@@ -1655,8 +2058,9 @@
         renderMobileSelect();
         renderRoster();
         updateActivePanel();
+
+        await loadSelectedStreamerRecentGames(true);
       } catch (error) {
-        statusLoadFailed = true;
         console.error('FaithForge Twitch status error:', error);
 
         STREAMERS.forEach(streamer => {
@@ -1668,7 +2072,9 @@
               game_name: '',
               title: '',
               viewer_count: 0,
-              started_at: ''
+              started_at: '',
+              game_id: '',
+              box_art_url: ''
             });
           }
         });
@@ -1677,6 +2083,7 @@
         renderMobileSelect();
         renderRoster();
         updateActivePanel();
+        loadSelectedStreamerRecentGames(false);
       }
     }
 
@@ -1689,16 +2096,36 @@
           game_name: '',
           title: '',
           viewer_count: 0,
-          started_at: ''
+          started_at: '',
+          game_id: '',
+          box_art_url: ''
         });
       });
 
       renderMobileSelect();
       renderRoster();
       updateActivePanel();
+      renderSelectedRecentGames([], getStreamer(selectedLogin));
 
       refreshStatuses();
+
+      /*
+        Loads recent games for everyone so offline roster cards can show last known game/title.
+        This uses the same /api/recent-games route as the personal streamer pages.
+      */
+      setTimeout(() => {
+        hydrateAllRecentGames(false);
+      }, 1000);
+
       setInterval(refreshStatuses, 90000);
+
+      /*
+        Refresh all recent games every 5 minutes.
+        This keeps the left roster and recent-games cards updated without hammering the API.
+      */
+      setInterval(() => {
+        hydrateAllRecentGames(true);
+      }, 300000);
     });
   </script>
 

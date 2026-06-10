@@ -355,6 +355,14 @@
       align-items: stretch;
     }
 
+    .live-lower-grid {
+      display: grid;
+      grid-template-columns: minmax(260px, 0.82fr) minmax(0, 1.18fr);
+      gap: 18px;
+      align-items: stretch;
+      margin-top: 18px;
+    }
+
     .live-badge {
       display: inline-block;
       margin: 0 0 14px;
@@ -381,18 +389,76 @@
     .live-meta { color: var(--ff-text-soft); font-size: 1.02rem; }
     .live-title { color: var(--ff-white-soft); }
 
-    .live-player-wrap {
-      min-height: 320px;
+    .live-player-wrap,
+    .live-video-wrap,
+    .live-chat-card {
       border-radius: 14px;
       overflow: hidden;
       border: 1px solid rgba(245, 197, 24, 0.2);
       box-shadow: 0 0 22px rgba(245, 197, 24, 0.18);
       background: rgba(0, 0, 0, 0.6);
+    }
+
+    .live-player-wrap {
+      min-height: 320px;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
       padding: 14px;
+    }
+
+    .live-video-wrap {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      min-height: 430px;
+      padding: 0;
+    }
+
+    .live-video-wrap iframe,
+    .live-chat-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+      background: #000;
+    }
+
+    .live-chat-card {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 430px;
+    }
+
+    .live-chat-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding: 13px 16px;
+      border-bottom: 1px solid rgba(245, 197, 24, 0.18);
+      background: rgba(0, 0, 0, 0.48);
+    }
+
+    .live-chat-heading h3 {
+      margin: 0;
+      color: var(--ff-gold);
+      font-size: 1.05rem;
+    }
+
+    .live-chat-heading p {
+      margin: 0;
+      color: var(--ff-text-soft);
+      font-size: 0.9rem;
+      line-height: 1.35;
+    }
+
+    .live-chat-wrap {
+      flex: 1;
+      min-height: 360px;
+      background: #000;
     }
 
     .embed-wrap {
@@ -558,6 +624,7 @@
     @media (max-width: 980px) {
       .profile-card,
       .live-stream-grid,
+      .live-lower-grid,
       .video-section-grid,
       .cta-panel { grid-template-columns: 1fr; }
 
@@ -585,6 +652,9 @@
       .streamer-game-logo-wrap { height: 145px; }
       .calendar-wrap { height: 360px; }
       .live-player-wrap { min-height: 245px; }
+      .live-video-wrap { min-height: 245px; }
+      .live-chat-card { min-height: 360px; }
+      .live-chat-wrap { min-height: 300px; }
     }
   </style>
 </head>
@@ -667,9 +737,19 @@
       </div>
     </section>
 
-    <!-- 3. LIVE STATUS -->
+    <!-- 3. LIVE STATUS / TWITCH VIDEO + CHAT -->
     <section class="live-stream-card" aria-labelledby="live-heading">
-      <div class="live-stream-grid">
+      <div class="live-video-wrap" id="doctorPlayerWrap">
+        <iframe
+          id="doctorTwitchVideo"
+          title="DoctorJSWAYS Twitch Video Player"
+          allowfullscreen
+          scrolling="no"
+          allow="autoplay; fullscreen">
+        </iframe>
+      </div>
+
+      <div class="live-lower-grid">
         <div class="live-stream-copy">
           <h2 id="live-heading">Live Stream Status</h2>
           <span id="doctorLiveBadge" class="live-badge offline">Checking status...</span>
@@ -681,8 +761,19 @@
           </div>
         </div>
 
-        <div class="live-player-wrap" id="doctorPlayerWrap">
-          The Twitch player will appear here when DoctorJSWAYS is live.
+        <div class="live-chat-card" aria-label="DoctorJSWAYS Twitch chat">
+          <div class="live-chat-heading">
+            <h3>Live Chat</h3>
+            <p id="doctorChatLabel">Chat is loaded from DoctorJSWAYS' Twitch channel.</p>
+          </div>
+
+          <div class="live-chat-wrap">
+            <iframe
+              id="doctorTwitchChat"
+              title="DoctorJSWAYS Twitch Chat"
+              scrolling="no">
+            </iframe>
+          </div>
         </div>
       </div>
     </section>
@@ -884,8 +975,6 @@
     });
   </script>
 
-  <script src="https://embed.twitch.tv/embed/v1.js"></script>
-
   <script>
     const streamerLogin = 'doctorjsways';
     const streamerDisplayName = 'DoctorJSWAYS';
@@ -898,6 +987,44 @@
         .replace(/>/g, '&gt;')
         .replace(/"/g, '&quot;')
         .replace(/'/g, '&#039;');
+    }
+
+    function getTwitchParents() {
+      const parents = new Set(['faithforgegaming.com', 'www.faithforgegaming.com']);
+      const currentHost = window.location.hostname;
+
+      if (currentHost) {
+        parents.add(currentHost);
+      }
+
+      return Array.from(parents).filter(Boolean);
+    }
+
+    function getTwitchParentQuery() {
+      return getTwitchParents()
+        .map(parent => `parent=${encodeURIComponent(parent)}`)
+        .join('&');
+    }
+
+    function getTwitchVideoSrc(login) {
+      return `https://player.twitch.tv/?channel=${encodeURIComponent(login)}&${getTwitchParentQuery()}&autoplay=true&muted=false`;
+    }
+
+    function getTwitchChatSrc(login) {
+      return `https://www.twitch.tv/embed/${encodeURIComponent(login)}/chat?${getTwitchParentQuery()}&darkpopout`;
+    }
+
+    function loadDoctorTwitchWindows() {
+      const video = document.getElementById('doctorTwitchVideo');
+      const chat = document.getElementById('doctorTwitchChat');
+
+      if (video && !video.src) {
+        video.src = getTwitchVideoSrc(streamerLogin);
+      }
+
+      if (chat && !chat.src) {
+        chat.src = getTwitchChatSrc(streamerLogin);
+      }
     }
 
     function normalizeGameImage(game) {
@@ -981,10 +1108,12 @@
       const badge = document.getElementById('doctorLiveBadge');
       const meta = document.getElementById('doctorLiveMeta');
       const title = document.getElementById('doctorLiveTitle');
-      const playerWrap = document.getElementById('doctorPlayerWrap');
       const watchBtn = document.getElementById('doctorWatchBtn');
+      const chatLabel = document.getElementById('doctorChatLabel');
 
-      if (!badge || !meta || !title || !playerWrap || !watchBtn) return;
+      loadDoctorTwitchWindows();
+
+      if (!badge || !meta || !title || !watchBtn) return;
 
       try {
         const response = await fetch(`${apiBase}/api/twitch-status`, { cache: 'no-store' });
@@ -1003,8 +1132,12 @@
           badge.className = 'live-badge offline';
           meta.textContent = 'Currently offline';
           title.textContent = `${streamerDisplayName} is not live right now. Follow on Twitch, check the schedule, or join Discord for the next stream update.`;
-          playerWrap.innerHTML = `The Twitch player will appear here when ${streamerDisplayName} is live.`;
           watchBtn.href = `https://www.twitch.tv/${streamerLogin}`;
+
+          if (chatLabel) {
+            chatLabel.textContent = `Chat is loaded from ${streamerDisplayName}' Twitch channel.`;
+          }
+
           return;
         }
 
@@ -1014,25 +1147,19 @@
         title.textContent = stream.title || 'Currently streaming now.';
         watchBtn.href = `https://www.twitch.tv/${streamerLogin}`;
 
-        playerWrap.innerHTML = '<div id="doctorTwitchPlayer"></div>';
-
-        new Twitch.Embed('doctorTwitchPlayer', {
-          width: '100%',
-          height: 320,
-          channel: streamerLogin,
-          parent: ['faithforgegaming.com', 'www.faithforgegaming.com'],
-          layout: 'video'
-        });
+        if (chatLabel) {
+          chatLabel.textContent = `${streamerDisplayName}' chat is live with the stream.`;
+        }
       } catch (error) {
         badge.textContent = 'STATUS ERROR';
         badge.className = 'live-badge offline';
         meta.textContent = 'Could not load Twitch status';
         title.textContent = error.message;
-        playerWrap.innerHTML = 'We could not load the Twitch player right now.';
       }
     }
 
     document.addEventListener('DOMContentLoaded', async () => {
+      loadDoctorTwitchWindows();
       await loadDoctorLiveStatus();
       await loadDoctorRecentGames();
 

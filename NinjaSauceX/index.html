@@ -644,6 +644,109 @@
       .streamer-game-logo-wrap { height: 145px; }
       .live-player-wrap { min-height: 245px; }
     }
+
+    /* Larger Twitch video with status beside chat */
+    .live-twitch-layout {
+      display: grid;
+      gap: 18px;
+    }
+
+    .live-player-wide {
+      width: 100%;
+      min-height: 0;
+      aspect-ratio: 16 / 9;
+      padding: 0;
+      display: block;
+      position: relative;
+    }
+
+    .live-player-wide iframe,
+    .live-player-wide > div,
+    .live-player-wide > div iframe {
+      width: 100% !important;
+      height: 100% !important;
+      border: 0;
+      display: block;
+    }
+
+    .live-bottom-grid {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1.1fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .live-bottom-grid .live-stream-copy,
+    .live-chat-card {
+      border-radius: 14px;
+      border: 1px solid rgba(255, 122, 0, 0.32);
+      background: linear-gradient(145deg, rgba(7, 140, 240, 0.11), rgba(255, 122, 0, 0.07)), rgba(0, 0, 0, 0.36);
+      padding: 18px;
+      min-height: 100%;
+    }
+
+    .live-chat-card {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .live-chat-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(255, 122, 0, 0.28);
+      background: rgba(0, 0, 0, 0.30);
+    }
+
+    .live-chat-heading h3 {
+      margin: 0;
+      color: var(--nsx-orange-soft);
+      font-size: 1.08rem;
+    }
+
+    .live-chat-heading p {
+      margin: 0;
+      color: var(--nsx-text-soft);
+      font-size: 0.92rem;
+      line-height: 1.4;
+    }
+
+    .live-chat-frame {
+      height: 370px;
+      background: #000;
+    }
+
+    .live-chat-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+      background: #000;
+    }
+
+    @media (max-width: 980px) {
+      .live-bottom-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .live-chat-frame {
+        height: 360px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .live-player-wide {
+        min-height: 220px;
+      }
+
+      .live-chat-frame {
+        height: 340px;
+      }
+    }
+
   </style>
 </head>
 
@@ -727,20 +830,37 @@
 
     <!-- 3. LIVE STATUS -->
     <section class="live-stream-card" aria-labelledby="live-heading">
-      <div class="live-stream-grid">
-        <div class="live-stream-copy">
-          <h2 id="live-heading">Live Stream Status</h2>
-          <span id="ninjaSauceLiveBadge" class="live-badge offline">Checking status...</span>
-          <p id="ninjaSauceLiveMeta" class="live-meta">Loading current Twitch information.</p>
-          <p id="ninjaSauceLiveTitle" class="live-title">Please wait while we check whether NinjaSauceX is live.</p>
-          <div class="button-row">
-            <a id="ninjaSauceWatchBtn" class="blue-btn" href="https://www.twitch.tv/ninjasaucex" target="_blank" rel="noopener">Watch on Twitch</a>
-            <a class="outline-btn" href="#schedule">View Schedule</a>
-          </div>
+      <div class="live-twitch-layout">
+        <div class="live-player-wrap live-player-wide" id="ninjaSaucePlayerWrap">
+          Loading NinjaSauceX's Twitch video...
         </div>
 
-        <div class="live-player-wrap" id="ninjaSaucePlayerWrap">
-          The Twitch player will appear here when NinjaSauceX is live.
+        <div class="live-bottom-grid">
+          <div class="live-stream-copy">
+            <h2 id="live-heading">Live Stream Status</h2>
+            <span id="ninjaSauceLiveBadge" class="live-badge offline">Checking status...</span>
+            <p id="ninjaSauceLiveMeta" class="live-meta">Loading current Twitch information.</p>
+            <p id="ninjaSauceLiveTitle" class="live-title">Please wait while we check whether NinjaSauceX is live.</p>
+            <div class="button-row">
+              <a id="ninjaSauceWatchBtn" class="blue-btn" href="https://www.twitch.tv/ninjasaucex" target="_blank" rel="noopener">Watch on Twitch</a>
+              <a class="outline-btn" href="#schedule">View Schedule</a>
+            </div>
+          </div>
+
+          <section class="live-chat-card" aria-label="NinjaSauceX Twitch chat">
+            <div class="live-chat-heading">
+              <h3>Live Chat</h3>
+              <p>Chat is loaded from NinjaSauceX's Twitch channel.</p>
+            </div>
+
+            <div class="live-chat-frame">
+              <iframe
+                id="ninjaSauceChatFrame"
+                title="NinjaSauceX Twitch Chat"
+                scrolling="no">
+              </iframe>
+            </div>
+          </section>
         </div>
       </div>
     </section>
@@ -947,6 +1067,53 @@
     const streamerDisplayName = 'NinjaSauceX';
     const apiBase = 'https://faithforge-raidtrain-api.faithforgegaming.workers.dev';
 
+    function getTwitchParents() {
+      const parents = new Set(['faithforgegaming.com', 'www.faithforgegaming.com']);
+      const currentHost = window.location.hostname;
+
+      if (currentHost) {
+        parents.add(currentHost);
+      }
+
+      return Array.from(parents).filter(Boolean);
+    }
+
+    function getTwitchParentQuery() {
+      return getTwitchParents()
+        .map(parent => `parent=${encodeURIComponent(parent)}`)
+        .join('&');
+    }
+
+    function getTwitchVideoSrc() {
+      return `https://player.twitch.tv/?channel=${encodeURIComponent(streamerLogin)}&${getTwitchParentQuery()}&autoplay=true&muted=false`;
+    }
+
+    function getTwitchChatSrc() {
+      return `https://www.twitch.tv/embed/${encodeURIComponent(streamerLogin)}/chat?${getTwitchParentQuery()}&darkpopout`;
+    }
+
+    function loadNinjaSauceTwitchWindows() {
+      const playerWrap = document.getElementById('ninjaSaucePlayerWrap');
+      const chatFrame = document.getElementById('ninjaSauceChatFrame');
+
+      if (playerWrap && !document.getElementById('ninjaSauceTwitchVideoFrame')) {
+        playerWrap.innerHTML = `
+          <iframe
+            id="ninjaSauceTwitchVideoFrame"
+            title="NinjaSauceX Twitch Video Player"
+            src="${getTwitchVideoSrc()}"
+            allowfullscreen
+            scrolling="no"
+            allow="autoplay; fullscreen">
+          </iframe>
+        `;
+      }
+
+      if (chatFrame && !chatFrame.src) {
+        chatFrame.src = getTwitchChatSrc();
+      }
+    }
+
     function escapeHTML(value) {
       return String(value || '')
         .replace(/&/g, '&amp;')
@@ -1033,6 +1200,8 @@
 
       if (!badge || !meta || !title || !playerWrap || !watchBtn) return;
 
+      loadNinjaSauceTwitchWindows();
+
       try {
         const response = await fetch(`${apiBase}/api/twitch-status`, { cache: 'no-store' });
         const payload = await response.json();
@@ -1050,7 +1219,7 @@
           badge.className = 'live-badge offline';
           meta.textContent = 'Currently offline';
           title.textContent = `${streamerDisplayName} is not live right now. Follow on Twitch or join FaithForge Discord for stream and community updates.`;
-          playerWrap.innerHTML = `The Twitch player will appear here when ${streamerDisplayName} is live.`;
+          loadNinjaSauceTwitchWindows();
           watchBtn.href = `https://www.twitch.tv/${streamerLogin}`;
           return;
         }
@@ -1061,25 +1230,18 @@
         title.textContent = stream.title || 'Currently streaming now.';
         watchBtn.href = `https://www.twitch.tv/${streamerLogin}`;
 
-        playerWrap.innerHTML = '<div id="ninjaSauceTwitchPlayer"></div>';
-
-        new Twitch.Embed('ninjaSauceTwitchPlayer', {
-          width: '100%',
-          height: 320,
-          channel: streamerLogin,
-          parent: ['faithforgegaming.com', 'www.faithforgegaming.com'],
-          layout: 'video'
-        });
+        loadNinjaSauceTwitchWindows();
       } catch (error) {
         badge.textContent = 'STATUS ERROR';
         badge.className = 'live-badge offline';
         meta.textContent = 'Could not load Twitch status';
         title.textContent = error.message;
-        playerWrap.innerHTML = 'We could not load the Twitch player right now.';
+        loadNinjaSauceTwitchWindows();
       }
     }
 
     document.addEventListener('DOMContentLoaded', async () => {
+      loadNinjaSauceTwitchWindows();
       await loadNinjaSauceLiveStatus();
       await loadNinjaSauceRecentGames();
 

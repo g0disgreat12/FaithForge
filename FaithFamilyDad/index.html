@@ -640,6 +640,109 @@
       .streamer-game-logo-wrap { height: 145px; }
       .live-player-wrap { min-height: 245px; }
     }
+
+    /* Larger Twitch video with status beside chat */
+    .live-twitch-layout {
+      display: grid;
+      gap: 18px;
+    }
+
+    .live-player-wide {
+      width: 100%;
+      min-height: 0;
+      aspect-ratio: 16 / 9;
+      padding: 0;
+      display: block;
+      position: relative;
+    }
+
+    .live-player-wide iframe,
+    .live-player-wide > div,
+    .live-player-wide > div iframe {
+      width: 100% !important;
+      height: 100% !important;
+      border: 0;
+      display: block;
+    }
+
+    .live-bottom-grid {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1.1fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .live-bottom-grid .live-stream-copy,
+    .live-chat-card {
+      border-radius: 14px;
+      border: 1px solid rgba(245, 197, 24, 0.34);
+      background: linear-gradient(145deg, rgba(245, 197, 24, 0.14), rgba(245, 197, 24, 0.04)), rgba(0, 0, 0, 0.34);
+      padding: 18px;
+      min-height: 100%;
+    }
+
+    .live-chat-card {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .live-chat-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(245, 197, 24, 0.22);
+      background: rgba(0, 0, 0, 0.28);
+    }
+
+    .live-chat-heading h3 {
+      margin: 0;
+      color: var(--ffd-gold);
+      font-size: 1.08rem;
+    }
+
+    .live-chat-heading p {
+      margin: 0;
+      color: var(--ffd-text-soft);
+      font-size: 0.92rem;
+      line-height: 1.4;
+    }
+
+    .live-chat-frame {
+      height: 370px;
+      background: #000;
+    }
+
+    .live-chat-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+      background: #000;
+    }
+
+    @media (max-width: 980px) {
+      .live-bottom-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .live-chat-frame {
+        height: 360px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .live-player-wide {
+        min-height: 220px;
+      }
+
+      .live-chat-frame {
+        height: 340px;
+      }
+    }
+
   </style>
 </head>
 
@@ -724,20 +827,37 @@
 
     <!-- 3. LIVE STATUS -->
     <section class="live-stream-card" aria-labelledby="live-heading">
-      <div class="live-stream-grid">
-        <div class="live-stream-copy">
-          <h2 id="live-heading">Live Stream Status</h2>
-          <span id="faithFamilyDadLiveBadge" class="live-badge offline">Checking status...</span>
-          <p id="faithFamilyDadLiveMeta" class="live-meta">Loading current Twitch information.</p>
-          <p id="faithFamilyDadLiveTitle" class="live-title">Please wait while we check whether FaithFamilyDad is live.</p>
-          <div class="button-row">
-            <a id="faithFamilyDadWatchBtn" class="gold-btn" href="https://www.twitch.tv/faithfamilydad" target="_blank" rel="noopener">Watch on Twitch</a>
-            <a class="outline-btn" href="#schedule">View Schedule</a>
-          </div>
+      <div class="live-twitch-layout">
+        <div class="live-player-wrap live-player-wide" id="faithFamilyDadPlayerWrap">
+          Loading FaithFamilyDad's Twitch video...
         </div>
 
-        <div class="live-player-wrap" id="faithFamilyDadPlayerWrap">
-          The Twitch player will appear here when FaithFamilyDad is live.
+        <div class="live-bottom-grid">
+          <div class="live-stream-copy">
+            <h2 id="live-heading">Live Stream Status</h2>
+            <span id="faithFamilyDadLiveBadge" class="live-badge offline">Checking status...</span>
+            <p id="faithFamilyDadLiveMeta" class="live-meta">Loading current Twitch information.</p>
+            <p id="faithFamilyDadLiveTitle" class="live-title">Please wait while we check whether FaithFamilyDad is live.</p>
+            <div class="button-row">
+              <a id="faithFamilyDadWatchBtn" class="gold-btn" href="https://www.twitch.tv/faithfamilydad" target="_blank" rel="noopener">Watch on Twitch</a>
+              <a class="outline-btn" href="#schedule">View Schedule</a>
+            </div>
+          </div>
+
+          <section class="live-chat-card" aria-label="FaithFamilyDad Twitch chat">
+            <div class="live-chat-heading">
+              <h3>Live Chat</h3>
+              <p>Chat is loaded from FaithFamilyDad's Twitch channel.</p>
+            </div>
+
+            <div class="live-chat-frame">
+              <iframe
+                id="faithFamilyDadChatFrame"
+                title="FaithFamilyDad Twitch Chat"
+                scrolling="no">
+              </iframe>
+            </div>
+          </section>
         </div>
       </div>
     </section>
@@ -983,6 +1103,53 @@
     const streamerDisplayName = 'FaithFamilyDad';
     const apiBase = 'https://faithforge-raidtrain-api.faithforgegaming.workers.dev';
 
+    function getTwitchParents() {
+      const parents = new Set(['faithforgegaming.com', 'www.faithforgegaming.com']);
+      const currentHost = window.location.hostname;
+
+      if (currentHost) {
+        parents.add(currentHost);
+      }
+
+      return Array.from(parents).filter(Boolean);
+    }
+
+    function getTwitchParentQuery() {
+      return getTwitchParents()
+        .map(parent => `parent=${encodeURIComponent(parent)}`)
+        .join('&');
+    }
+
+    function getTwitchVideoSrc() {
+      return `https://player.twitch.tv/?channel=${encodeURIComponent(streamerLogin)}&${getTwitchParentQuery()}&autoplay=true&muted=false`;
+    }
+
+    function getTwitchChatSrc() {
+      return `https://www.twitch.tv/embed/${encodeURIComponent(streamerLogin)}/chat?${getTwitchParentQuery()}&darkpopout`;
+    }
+
+    function loadFaithFamilyDadTwitchWindows() {
+      const playerWrap = document.getElementById('faithFamilyDadPlayerWrap');
+      const chatFrame = document.getElementById('faithFamilyDadChatFrame');
+
+      if (playerWrap && !document.getElementById('faithFamilyDadTwitchVideoFrame')) {
+        playerWrap.innerHTML = `
+          <iframe
+            id="faithFamilyDadTwitchVideoFrame"
+            title="FaithFamilyDad Twitch Video Player"
+            src="${getTwitchVideoSrc()}"
+            allowfullscreen
+            scrolling="no"
+            allow="autoplay; fullscreen">
+          </iframe>
+        `;
+      }
+
+      if (chatFrame && !chatFrame.src) {
+        chatFrame.src = getTwitchChatSrc();
+      }
+    }
+
     function escapeHTML(value) {
       return String(value || '')
         .replace(/&/g, '&amp;')
@@ -1079,6 +1246,8 @@
 
       if (!badge || !meta || !title || !playerWrap || !watchBtn) return;
 
+      loadFaithFamilyDadTwitchWindows();
+
       try {
         const response = await fetch(`${apiBase}/api/twitch-status`, { cache: 'no-store' });
         const payload = await response.json();
@@ -1096,7 +1265,7 @@
           badge.className = 'live-badge offline';
           meta.textContent = 'Currently offline';
           title.textContent = `${streamerDisplayName} is not live right now. Follow on Twitch or join Discord for Bible study, stream, and community updates.`;
-          playerWrap.innerHTML = `The Twitch player will appear here when ${streamerDisplayName} is live.`;
+          loadFaithFamilyDadTwitchWindows();
           watchBtn.href = `https://www.twitch.tv/${streamerLogin}`;
           return;
         }
@@ -1107,25 +1276,18 @@
         title.textContent = stream.title || 'Currently streaming now.';
         watchBtn.href = `https://www.twitch.tv/${streamerLogin}`;
 
-        playerWrap.innerHTML = '<div id="faithFamilyDadTwitchPlayer"></div>';
-
-        new Twitch.Embed('faithFamilyDadTwitchPlayer', {
-          width: '100%',
-          height: 320,
-          channel: streamerLogin,
-          parent: ['faithforgegaming.com', 'www.faithforgegaming.com'],
-          layout: 'video'
-        });
+        loadFaithFamilyDadTwitchWindows();
       } catch (error) {
         badge.textContent = 'STATUS ERROR';
         badge.className = 'live-badge offline';
         meta.textContent = 'Could not load Twitch status';
         title.textContent = error.message;
-        playerWrap.innerHTML = 'We could not load the Twitch player right now.';
+        loadFaithFamilyDadTwitchWindows();
       }
     }
 
     document.addEventListener('DOMContentLoaded', async () => {
+      loadFaithFamilyDadTwitchWindows();
       await loadFaithFamilyDadLiveStatus();
       await loadFaithFamilyDadRecentGames();
 

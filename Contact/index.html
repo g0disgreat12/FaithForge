@@ -1,4 +1,4 @@
-```html
+```html id="r31jfo"
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +29,6 @@
   <!-- Icons / Style -->
   <link rel="stylesheet" href="https://faithforgegaming.com/style.css">
 
-  <!-- Theme & Icons -->
   <meta name="theme-color" content="#000000">
   <link rel="icon" href="https://faithforgegaming.com/Anvil.webp">
 
@@ -51,36 +50,34 @@
     }
 
     .contact-wrap {
-      display: flex;
+      display: grid;
+      grid-template-columns: minmax(260px, 380px) minmax(420px, 680px);
       justify-content: center;
-      align-items: flex-start;
-      gap: 40px;
-      margin: 40px auto;
-      flex-wrap: wrap;
-      max-width: 1150px;
-      padding: 0 18px;
+      align-items: start;
+      gap: 32px;
+      width: min(1180px, calc(100% - 36px));
+      margin: 40px auto 60px;
     }
 
     .contact-img {
-      width: 400px;
-      height: 400px;
+      width: 100%;
+      max-width: 380px;
+      aspect-ratio: 1 / 1;
       object-fit: contain;
-      border-radius: 16px;
-      background: rgba(0, 0, 0, 0.4);
+      border-radius: 18px;
+      background: rgba(0, 0, 0, 0.45);
       box-shadow: 0 0 40px rgba(245,197,24,.35);
       padding: 10px;
     }
 
     .form {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      background: rgba(0,0,0,0.6);
-      padding: 30px;
-      border-radius: 16px;
-      box-shadow: 0 0 25px rgba(245,197,24,0.2);
+      width: 100%;
+      background: rgba(0,0,0,0.72);
+      padding: 28px;
+      border-radius: 18px;
+      border: 1px solid rgba(245,197,24,.25);
+      box-shadow: 0 0 25px rgba(245,197,24,0.22);
       text-align: left;
-      max-width: 520px;
     }
 
     .form * {
@@ -89,30 +86,97 @@
 
     .form-intro {
       color: #ddd;
-      line-height: 1.5;
+      line-height: 1.55;
       margin: 0 0 18px;
-      font-size: 0.95rem;
+      font-size: 0.98rem;
+    }
+
+    .purpose-toggle {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 18px 0 24px;
+    }
+
+    .purpose-btn {
+      border: 1px solid rgba(245,197,24,.45);
+      background: rgba(15,15,15,.9);
+      color: #f5c518;
+      border-radius: 14px;
+      padding: 15px 14px;
+      cursor: pointer;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .4px;
+      transition: all .2s ease;
+    }
+
+    .purpose-btn:hover,
+    .purpose-btn.active {
+      background: radial-gradient(circle at center, #f5c518 20%, #cfa214 100%);
+      color: #080808;
+      box-shadow: 0 0 22px rgba(245,197,24,.7);
+      transform: translateY(-1px);
+    }
+
+    .form-section {
+      border: 1px solid rgba(245,197,24,.25);
+      border-radius: 16px;
+      padding: 18px;
+      margin: 18px 0;
+      background: rgba(255,255,255,.03);
+    }
+
+    .form-section h2 {
+      color: #f5c518;
+      font-size: 1rem;
+      margin: 0 0 14px;
+      text-transform: uppercase;
+      letter-spacing: .7px;
+    }
+
+    .section-note {
+      color: #bbb;
+      font-size: 0.92rem;
+      line-height: 1.5;
+      margin: 0 0 16px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 14px;
+    }
+
+    .full {
+      grid-column: 1 / -1;
     }
 
     label {
-      font-weight: 700;
-      margin-top: 12px;
+      font-weight: 800;
+      margin: 0 0 7px;
       display: block;
       color: #f5c518;
+      font-size: 0.92rem;
     }
 
     input,
     textarea,
     select {
       width: 100%;
-      padding: 14px 16px;
+      padding: 13px 14px;
       border-radius: 10px;
       border: 1px solid rgba(245,197,24,.35);
-      background: rgba(15,15,15,.9);
+      background: rgba(15,15,15,.95);
       color: #f5c518;
       outline: none;
-      font-size: 1em;
-      margin-bottom: 16px;
+      font-size: 1rem;
+      margin-bottom: 15px;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: rgba(255,255,255,.45);
     }
 
     select {
@@ -120,31 +184,8 @@
     }
 
     textarea {
-      min-height: 140px;
+      min-height: 110px;
       resize: vertical;
-    }
-
-    fieldset {
-      border: 1px solid rgba(245,197,24,.25);
-      border-radius: 14px;
-      padding: 18px;
-      margin: 18px 0;
-      background: rgba(255,255,255,.03);
-    }
-
-    legend {
-      color: #f5c518;
-      font-weight: 900;
-      padding: 0 8px;
-      text-transform: uppercase;
-      letter-spacing: .5px;
-    }
-
-    .section-note {
-      color: #bbb;
-      font-size: 0.9rem;
-      line-height: 1.5;
-      margin: 0 0 14px;
     }
 
     .hidden {
@@ -168,11 +209,12 @@
     }
 
     .btn {
-      display: inline-block;
+      display: block;
+      width: 100%;
       margin-top: 14px;
-      padding: 14px 26px;
-      font-weight: 800;
-      border-radius: 10px;
+      padding: 15px 26px;
+      font-weight: 900;
+      border-radius: 12px;
       border: none;
       cursor: pointer;
       background: radial-gradient(circle at center, #f5c518 20%, #cfa214 100%);
@@ -190,9 +232,10 @@
     .muted {
       color: #aaa;
       display: block;
-      margin-top: 8px;
+      margin-top: 10px;
       font-size: 0.85em;
       line-height: 1.5;
+      text-align: center;
     }
 
     .discord-button {
@@ -217,23 +260,31 @@
       transform: scale(1.06);
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 950px) {
       .contact-wrap {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
+        grid-template-columns: 1fr;
+        max-width: 720px;
       }
 
       .contact-img {
-        width: 300px;
-        height: 300px;
-        margin-bottom: 20px;
+        margin: 0 auto;
+        max-width: 320px;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .form {
+        padding: 20px;
       }
 
-      .form {
-        width: 100%;
-        max-width: none;
-        text-align: left;
+      .purpose-toggle,
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .discord-button {
+        font-size: 1.1rem;
+        padding: 14px 24px;
       }
     }
   </style>
@@ -274,161 +325,198 @@
   Join Our Discord
 </a>
 
-  <div class="content">
-    <div class="contact-wrap">
+<div class="content">
+  <div class="contact-wrap">
 
-      <img class="contact-img" src="ContactUS.webp" alt="FaithForge Contact">
+    <img class="contact-img" src="ContactUS.webp" alt="FaithForge Contact">
 
-      <form id="contactForm" class="form" method="POST" action="https://formspree.io/f/mrbdwynw">
+    <form id="contactForm" class="form" method="POST" action="https://formspree.io/f/mrbdwynw">
 
-        <p class="form-intro">
-          Use this form to contact FaithForge Gaming or to submit giveaway claim information after being selected as a winner.
-        </p>
+      <p class="form-intro">
+        Contact FaithForge Gaming or submit giveaway claim information after being selected as a winner.
+      </p>
 
-        <label for="purpose">What is this form for?</label>
-        <select id="purpose" name="form_purpose" required>
-          <option value="general" selected>General Contact / Question</option>
-          <option value="giveaway">Claim a Giveaway Prize</option>
-        </select>
+      <div class="purpose-toggle" role="group" aria-label="Choose form purpose">
+        <button class="purpose-btn active" type="button" data-purpose="general">
+          Contact Us
+        </button>
+        <button class="purpose-btn" type="button" data-purpose="giveaway">
+          Claim Giveaway
+        </button>
+      </div>
 
-        <fieldset>
-          <legend>Your Info</legend>
+      <input id="formPurpose" type="hidden" name="form_purpose" value="General Contact">
 
-          <label for="first">First Name</label>
-          <input id="first" name="first_name" required placeholder="First name">
+      <div class="form-section">
+        <h2>Your Info</h2>
 
-          <label for="last">Last Name</label>
-          <input id="last" name="last_name" required placeholder="Last name">
-
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" required placeholder="you@example.com">
-        </fieldset>
-
-        <!-- GENERAL CONTACT SECTION -->
-        <fieldset id="generalSection">
-          <legend>General Contact</legend>
-
-          <label for="subject">Subject</label>
-          <input id="subject" name="subject" data-required="true" placeholder="How can we help?">
-
-          <label for="message">Message</label>
-          <textarea id="message" name="message" data-required="true" placeholder="Type your message here..."></textarea>
-        </fieldset>
-
-        <!-- GIVEAWAY CLAIM SECTION -->
-        <fieldset id="giveawaySection" class="hidden">
-          <legend>Giveaway Claim</legend>
-
-          <p class="section-note">
-            Please only submit this form after being told you won a FaithForge Gaming giveaway.
-            This helps us verify the prize and collect the right delivery information.
-          </p>
-
-          <label for="streamer">Which streamer was the giveaway from?</label>
-          <select id="streamer" name="giveaway_streamer" data-required="true">
-            <option value="">Select streamer</option>
-            <option value="FaithForge Gaming">FaithForge Gaming</option>
-            <option value="doctorjsways">doctorjsways</option>
-            <option value="seawolf_30">seawolf_30</option>
-            <option value="mooncalfmage">mooncalfmage</option>
-            <option value="brn2bew1ld">brn2bew1ld</option>
-            <option value="mrnthemrs">mrnthemrs</option>
-            <option value="blessttim">blessttim</option>
-            <option value="silentdillxxz">silentdillxxz</option>
-            <option value="faithfamilydad">faithfamilydad</option>
-            <option value="ninjasaucex">ninjasaucex</option>
-            <option value="blessingboat">blessingboat</option>
-            <option value="princess_lightfly">princess_lightfly</option>
-            <option value="romans1014xp">romans1014xp</option>
-            <option value="warrior_of_light777">warrior_of_light777</option>
-            <option value="nathanael_joseph">nathanael_joseph</option>
-            <option value="akay0dad">akay0dad</option>
-            <option value="forgedbygrace7">forgedbygrace7</option>
-            <option value="Other / Not Listed">Other / Not Listed</option>
-          </select>
-
-          <label for="platform">Where did you win?</label>
-          <select id="platform" name="giveaway_platform" data-required="true">
-            <option value="">Select platform</option>
-            <option value="Discord">Discord</option>
-            <option value="Twitch">Twitch</option>
-            <option value="YouTube">YouTube</option>
-            <option value="Kick">Kick</option>
-            <option value="Rumble">Rumble</option>
-            <option value="TikTok">TikTok</option>
-            <option value="FaithForge Event">FaithForge Event</option>
-            <option value="Other">Other</option>
-          </select>
-
-          <label for="winnerHandle">Winner Username / Handle</label>
-          <input id="winnerHandle" name="winner_username_or_handle" data-required="true" placeholder="Your Discord, Twitch, YouTube, Kick, or Rumble name">
-
-          <label for="itemWon">What item did you win?</label>
-          <input id="itemWon" name="giveaway_item_won" data-required="true" placeholder="Example: shirt, gift card, game key, merch credit">
-
-          <label for="prizeType">Prize Type</label>
-          <select id="prizeType" name="prize_type" data-required="true">
-            <option value="">Select prize type</option>
-            <option value="Physical Item / Merch">Physical Item / Merch</option>
-            <option value="Digital Prize / Code">Digital Prize / Code</option>
-            <option value="Gift Card">Gift Card</option>
-            <option value="Merch Store Credit">Merch Store Credit</option>
-            <option value="Other">Other</option>
-          </select>
-
-          <label for="giveawayNotes">Extra Notes</label>
-          <textarea id="giveawayNotes" name="giveaway_notes" placeholder="Anything else we need to know? Size, color, platform, or special instructions."></textarea>
-
-          <div id="shippingFields" class="hidden">
-            <fieldset>
-              <legend>Shipping Info</legend>
-
-              <p class="section-note">
-                Shipping information is only needed for physical prizes or merch that must be mailed.
-              </p>
-
-              <label for="shippingName">Full Name for Shipping</label>
-              <input id="shippingName" name="shipping_full_name" data-shipping-required="true" placeholder="Full name">
-
-              <label for="address1">Address Line 1</label>
-              <input id="address1" name="shipping_address_line_1" data-shipping-required="true" placeholder="Street address">
-
-              <label for="address2">Address Line 2</label>
-              <input id="address2" name="shipping_address_line_2" placeholder="Apartment, suite, unit, etc.">
-
-              <label for="city">City</label>
-              <input id="city" name="shipping_city" data-shipping-required="true" placeholder="City">
-
-              <label for="state">State / Province</label>
-              <input id="state" name="shipping_state" data-shipping-required="true" placeholder="State">
-
-              <label for="zip">ZIP / Postal Code</label>
-              <input id="zip" name="shipping_zip" data-shipping-required="true" placeholder="ZIP code">
-
-              <label for="country">Country</label>
-              <input id="country" name="shipping_country" data-shipping-required="true" placeholder="Country" value="United States">
-            </fieldset>
+        <div class="form-grid">
+          <div>
+            <label for="first">First Name</label>
+            <input id="first" name="first_name" required placeholder="First name">
           </div>
 
-          <label class="checkbox-row" for="winnerConfirm">
-            <input id="winnerConfirm" name="winner_confirmation" type="checkbox" value="Confirmed" data-required="true">
-            <span>I confirm I was selected as a giveaway winner and this information is accurate for prize verification.</span>
-          </label>
-        </fieldset>
+          <div>
+            <label for="last">Last Name</label>
+            <input id="last" name="last_name" required placeholder="Last name">
+          </div>
 
-        <input id="formSubject" type="hidden" name="_subject" value="New message from FaithForgeGaming.com">
-        <input type="hidden" name="form_source" value="FaithForgeGaming.com Contact Page">
+          <div class="full">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required placeholder="you@example.com">
+          </div>
+        </div>
+      </div>
 
-        <button id="submitBtn" class="btn" type="submit">Send Message</button>
+      <!-- GENERAL CONTACT SECTION -->
+      <div id="generalSection" class="form-section">
+        <h2>General Contact</h2>
 
-        <small class="muted">
-          Messages are securely routed to FaithForgeGaming@gmail.com via Formspree.
-          Giveaway information is used for winner verification and prize delivery.
-        </small>
+        <label for="subject">Subject</label>
+        <input id="subject" name="subject" data-required="true" placeholder="How can we help?">
 
-      </form>
-    </div>
+        <label for="message">Message</label>
+        <textarea id="message" name="message" data-required="true" placeholder="Type your message here..."></textarea>
+      </div>
+
+      <!-- GIVEAWAY CLAIM SECTION -->
+      <div id="giveawaySection" class="form-section hidden">
+        <h2>Giveaway Claim</h2>
+
+        <p class="section-note">
+          Please only submit this form after being told you won a FaithForge Gaming giveaway.
+        </p>
+
+        <div class="form-grid">
+          <div>
+            <label for="streamer">Giveaway Streamer</label>
+            <select id="streamer" name="giveaway_streamer" data-required="true">
+              <option value="">Select streamer</option>
+              <option value="FaithForgeGaming">FaithForgeGaming</option>
+              <option value="Mooncalfmage">Mooncalfmage</option>
+              <option value="Romans1014XP">Romans1014XP</option>
+              <option value="DoctorJSWAYS">DoctorJSWAYS</option>
+              <option value="Seawolf_30">Seawolf_30</option>
+              <option value="Brn2bEw1Ld">Brn2bEw1Ld</option>
+              <option value="blesstTim">blesstTim</option>
+              <option value="FaithFamilyDad">FaithFamilyDad</option>
+              <option value="NinjaSauceX">NinjaSauceX</option>
+              <option value="warrior_of_light777">warrior_of_light777</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="platform">Where Did You Win?</label>
+            <select id="platform" name="giveaway_platform" data-required="true">
+              <option value="">Select platform</option>
+              <option value="Discord">Discord</option>
+              <option value="Twitch">Twitch</option>
+              <option value="YouTube">YouTube</option>
+              <option value="Kick">Kick</option>
+              <option value="Rumble">Rumble</option>
+              <option value="TikTok">TikTok</option>
+              <option value="FaithForge Event">FaithForge Event</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="winnerHandle">Winner Username / Handle</label>
+            <input id="winnerHandle" name="winner_username_or_handle" data-required="true" placeholder="Discord, Twitch, YouTube, etc.">
+          </div>
+
+          <div>
+            <label for="dateWon">Date Won</label>
+            <input id="dateWon" name="date_won" type="date">
+          </div>
+
+          <div>
+            <label for="itemWon">Item Won</label>
+            <input id="itemWon" name="giveaway_item_won" data-required="true" placeholder="Gift card, shirt, game key, etc.">
+          </div>
+
+          <div>
+            <label for="prizeType">Prize Type</label>
+            <select id="prizeType" name="prize_type" data-required="true">
+              <option value="">Select prize type</option>
+              <option value="Physical Item / Merch">Physical Item / Merch</option>
+              <option value="Digital Prize / Code">Digital Prize / Code</option>
+              <option value="Gift Card">Gift Card</option>
+              <option value="Merch Store Credit">Merch Store Credit</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="full">
+            <label for="giveawayNotes">Extra Notes</label>
+            <textarea id="giveawayNotes" name="giveaway_notes" placeholder="Size, color, platform, special instructions, or anything else we need to know."></textarea>
+          </div>
+        </div>
+
+        <div id="shippingFields" class="hidden">
+          <div class="form-section">
+            <h2>Shipping Info</h2>
+
+            <p class="section-note">
+              Only needed for physical prizes or merch that must be mailed.
+            </p>
+
+            <div class="form-grid">
+              <div class="full">
+                <label for="shippingName">Full Name for Shipping</label>
+                <input id="shippingName" name="shipping_full_name" data-shipping-required="true" placeholder="Full name">
+              </div>
+
+              <div class="full">
+                <label for="address1">Address Line 1</label>
+                <input id="address1" name="shipping_address_line_1" data-shipping-required="true" placeholder="Street address">
+              </div>
+
+              <div class="full">
+                <label for="address2">Address Line 2</label>
+                <input id="address2" name="shipping_address_line_2" placeholder="Apartment, suite, unit, etc.">
+              </div>
+
+              <div>
+                <label for="city">City</label>
+                <input id="city" name="shipping_city" data-shipping-required="true" placeholder="City">
+              </div>
+
+              <div>
+                <label for="state">State / Province</label>
+                <input id="state" name="shipping_state" data-shipping-required="true" placeholder="State">
+              </div>
+
+              <div>
+                <label for="zip">ZIP / Postal Code</label>
+                <input id="zip" name="shipping_zip" data-shipping-required="true" placeholder="ZIP code">
+              </div>
+
+              <div>
+                <label for="country">Country</label>
+                <input id="country" name="shipping_country" data-shipping-required="true" placeholder="Country" value="United States">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <label class="checkbox-row" for="winnerConfirm">
+          <input id="winnerConfirm" name="winner_confirmation" type="checkbox" value="Confirmed" data-required="true">
+          <span>I confirm I was selected as a giveaway winner and this information is accurate for prize verification.</span>
+        </label>
+      </div>
+
+      <input id="formSubject" type="hidden" name="_subject" value="New message from FaithForgeGaming.com">
+      <input type="hidden" name="form_source" value="FaithForgeGaming.com Contact Page">
+
+      <button id="submitBtn" class="btn" type="submit">Send Message</button>
+
+      <small class="muted">
+        Messages are securely routed to FaithForgeGaming@gmail.com via Formspree.
+      </small>
+
+    </form>
   </div>
+</div>
 
 <footer>
   <div style="text-align:center; margin-bottom:15px;">
@@ -476,7 +564,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const form = document.getElementById('contactForm');
-  const purpose = document.getElementById('purpose');
+  const purposeBtns = document.querySelectorAll('.purpose-btn');
+  const formPurpose = document.getElementById('formPurpose');
   const generalSection = document.getElementById('generalSection');
   const giveawaySection = document.getElementById('giveawaySection');
   const prizeType = document.getElementById('prizeType');
@@ -484,49 +573,68 @@ document.addEventListener('DOMContentLoaded', () => {
   const formSubject = document.getElementById('formSubject');
   const submitBtn = document.getElementById('submitBtn');
 
-  function setRequiredFields(section, isRequired) {
-    section.querySelectorAll('[data-required="true"]').forEach(field => {
-      field.required = isRequired;
+  let currentPurpose = 'general';
+
+  function setFields(section, active) {
+    section.querySelectorAll('input, select, textarea').forEach(field => {
+      if (field.type !== 'hidden') {
+        field.disabled = !active;
+      }
+
+      if (field.hasAttribute('data-required')) {
+        field.required = active;
+      }
     });
   }
 
-  function setShippingRequired(isRequired) {
-    shippingFields.querySelectorAll('[data-shipping-required="true"]').forEach(field => {
-      field.required = isRequired;
+  function setShippingFields(active) {
+    shippingFields.querySelectorAll('input, select, textarea').forEach(field => {
+      field.disabled = !active;
+
+      if (field.hasAttribute('data-shipping-required')) {
+        field.required = active;
+      }
     });
   }
 
   function updateShippingFields() {
-    const isGiveaway = purpose.value === 'giveaway';
-    const needsShipping = prizeType.value === 'Physical Item / Merch';
+    const needsShipping = currentPurpose === 'giveaway' && prizeType.value === 'Physical Item / Merch';
 
-    if (isGiveaway && needsShipping) {
+    if (needsShipping) {
       shippingFields.classList.remove('hidden');
-      setShippingRequired(true);
+      setShippingFields(true);
     } else {
       shippingFields.classList.add('hidden');
-      setShippingRequired(false);
+      setShippingFields(false);
     }
   }
 
-  function updateFormPurpose() {
-    if (purpose.value === 'giveaway') {
+  function updatePurpose(purpose) {
+    currentPurpose = purpose;
+
+    purposeBtns.forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.purpose === purpose);
+    });
+
+    if (purpose === 'giveaway') {
       generalSection.classList.add('hidden');
       giveawaySection.classList.remove('hidden');
 
-      setRequiredFields(generalSection, false);
-      setRequiredFields(giveawaySection, true);
+      setFields(generalSection, false);
+      setFields(giveawaySection, true);
 
+      formPurpose.value = 'Giveaway Claim';
       formSubject.value = 'New Giveaway Claim from FaithForgeGaming.com';
       submitBtn.textContent = 'Submit Giveaway Claim';
     } else {
       generalSection.classList.remove('hidden');
       giveawaySection.classList.add('hidden');
 
-      setRequiredFields(generalSection, true);
-      setRequiredFields(giveawaySection, false);
-      setShippingRequired(false);
+      setFields(generalSection, true);
+      setFields(giveawaySection, false);
+      setShippingFields(false);
 
+      formPurpose.value = 'General Contact';
       formSubject.value = 'New message from FaithForgeGaming.com';
       submitBtn.textContent = 'Send Message';
     }
@@ -534,23 +642,31 @@ document.addEventListener('DOMContentLoaded', () => {
     updateShippingFields();
   }
 
-  purpose.addEventListener('change', updateFormPurpose);
+  purposeBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      updatePurpose(btn.dataset.purpose);
+    });
+  });
+
   prizeType.addEventListener('change', updateShippingFields);
 
   form.addEventListener('submit', () => {
     const first = document.getElementById('first').value.trim();
     const last = document.getElementById('last').value.trim();
-    const streamer = document.getElementById('streamer').value.trim();
-    const itemWon = document.getElementById('itemWon').value.trim();
 
-    if (purpose.value === 'giveaway') {
+    if (currentPurpose === 'giveaway') {
+      const streamer = document.getElementById('streamer').value.trim();
+      const itemWon = document.getElementById('itemWon').value.trim();
+
       formSubject.value = `Giveaway Claim - ${first} ${last} - ${streamer} - ${itemWon}`;
     } else {
-      formSubject.value = `Contact Message - ${first} ${last}`;
+      const subject = document.getElementById('subject').value.trim();
+
+      formSubject.value = `Contact Message - ${first} ${last} - ${subject}`;
     }
   });
 
-  updateFormPurpose();
+  updatePurpose('general');
 });
 </script>
 

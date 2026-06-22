@@ -1,4 +1,4 @@
-```html id="r31jfo"
+```html id="1ixqgd"
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,11 +51,11 @@
 
     .contact-wrap {
       display: grid;
-      grid-template-columns: minmax(260px, 380px) minmax(420px, 680px);
+      grid-template-columns: minmax(260px, 380px) minmax(420px, 700px);
       justify-content: center;
       align-items: start;
       gap: 32px;
-      width: min(1180px, calc(100% - 36px));
+      width: min(1200px, calc(100% - 36px));
       margin: 40px auto 60px;
     }
 
@@ -380,122 +380,141 @@
       </div>
 
       <!-- GIVEAWAY CLAIM SECTION -->
-      <div id="giveawaySection" class="form-section hidden">
-        <h2>Giveaway Claim</h2>
+      <div id="giveawaySection" class="hidden">
 
-        <p class="section-note">
-          Please only submit this form after being told you won a FaithForge Gaming giveaway.
-        </p>
+        <div class="form-section">
+          <h2>Giveaway Claim</h2>
 
-        <div class="form-grid">
-          <div>
-            <label for="streamer">Giveaway Streamer</label>
-            <select id="streamer" name="giveaway_streamer" data-required="true">
-              <option value="">Select streamer</option>
-              <option value="FaithForgeGaming">FaithForgeGaming</option>
-              <option value="Mooncalfmage">Mooncalfmage</option>
-              <option value="Romans1014XP">Romans1014XP</option>
-              <option value="DoctorJSWAYS">DoctorJSWAYS</option>
-              <option value="Seawolf_30">Seawolf_30</option>
-              <option value="Brn2bEw1Ld">Brn2bEw1Ld</option>
-              <option value="blesstTim">blesstTim</option>
-              <option value="FaithFamilyDad">FaithFamilyDad</option>
-              <option value="NinjaSauceX">NinjaSauceX</option>
-              <option value="warrior_of_light777">warrior_of_light777</option>
-            </select>
-          </div>
+          <p class="section-note">
+            Please only submit this form after being told you won a FaithForge Gaming giveaway.
+            Raid Train Event is the main giveaway event, but you can select another event if needed.
+          </p>
 
-          <div>
-            <label for="platform">Where Did You Win?</label>
-            <select id="platform" name="giveaway_platform" data-required="true">
-              <option value="">Select platform</option>
-              <option value="Discord">Discord</option>
-              <option value="Twitch">Twitch</option>
-              <option value="YouTube">YouTube</option>
-              <option value="Kick">Kick</option>
-              <option value="Rumble">Rumble</option>
-              <option value="TikTok">TikTok</option>
-              <option value="FaithForge Event">FaithForge Event</option>
-            </select>
-          </div>
+          <div class="form-grid">
 
-          <div>
-            <label for="winnerHandle">Winner Username / Handle</label>
-            <input id="winnerHandle" name="winner_username_or_handle" data-required="true" placeholder="Discord, Twitch, YouTube, etc.">
-          </div>
+            <div class="full">
+              <label for="giveawayEvent">Giveaway Event</label>
+              <select id="giveawayEvent" name="giveaway_event" data-required="true">
+                <option value="Raid Train Event" selected>Raid Train Event</option>
+                <option value="Community Game Night">Community Game Night</option>
+                <option value="FaithForge Discord Giveaway">FaithForge Discord Giveaway</option>
+                <option value="Streamer Giveaway">Streamer Giveaway</option>
+                <option value="Other FaithForge Event">Other FaithForge Event</option>
+              </select>
+            </div>
 
-          <div>
-            <label for="dateWon">Date Won</label>
-            <input id="dateWon" name="date_won" type="date">
-          </div>
+            <div>
+              <label for="streamer">Giveaway Streamer</label>
+              <select id="streamer" name="giveaway_streamer" data-required="true">
+                <option value="">Select streamer</option>
+                <option value="FaithForgeGaming">FaithForgeGaming</option>
+                <option value="Mooncalfmage">Mooncalfmage</option>
+                <option value="Romans1014XP">Romans1014XP</option>
+                <option value="DoctorJSWAYS">DoctorJSWAYS</option>
+                <option value="Seawolf_30">Seawolf_30</option>
+                <option value="Brn2bEw1Ld">Brn2bEw1Ld</option>
+                <option value="blesstTim">blesstTim</option>
+                <option value="FaithFamilyDad">FaithFamilyDad</option>
+                <option value="NinjaSauceX">NinjaSauceX</option>
+                <option value="warrior_of_light777">warrior_of_light777</option>
+              </select>
+            </div>
 
-          <div>
-            <label for="itemWon">Item Won</label>
-            <input id="itemWon" name="giveaway_item_won" data-required="true" placeholder="Gift card, shirt, game key, etc.">
-          </div>
+            <div>
+              <label for="platform">Where Did You Win?</label>
+              <select id="platform" name="giveaway_platform" data-required="true">
+                <option value="">Select platform</option>
+                <option value="Twitch">Twitch</option>
+                <option value="Discord">Discord</option>
+                <option value="YouTube">YouTube</option>
+                <option value="Kick">Kick</option>
+                <option value="Rumble">Rumble</option>
+                <option value="TikTok">TikTok</option>
+                <option value="FaithForge Event">FaithForge Event</option>
+              </select>
+            </div>
 
-          <div>
-            <label for="prizeType">Prize Type</label>
-            <select id="prizeType" name="prize_type" data-required="true">
-              <option value="">Select prize type</option>
-              <option value="Physical Item / Merch">Physical Item / Merch</option>
-              <option value="Digital Prize / Code">Digital Prize / Code</option>
-              <option value="Gift Card">Gift Card</option>
-              <option value="Merch Store Credit">Merch Store Credit</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
+            <div>
+              <label for="winnerHandle">Winner Username / Handle</label>
+              <input id="winnerHandle" name="winner_username_or_handle" data-required="true" placeholder="Discord, Twitch, YouTube, etc.">
+            </div>
 
-          <div class="full">
-            <label for="giveawayNotes">Extra Notes</label>
-            <textarea id="giveawayNotes" name="giveaway_notes" placeholder="Size, color, platform, special instructions, or anything else we need to know."></textarea>
+            <div>
+              <label for="dateWon">Date Won</label>
+              <input id="dateWon" name="date_won" type="text" inputmode="numeric" placeholder="MM/DD/YYYY">
+            </div>
+
+            <div>
+              <label for="itemWon">Item Won</label>
+              <input id="itemWon" name="giveaway_item_won" data-required="true" placeholder="Gift card, shirt, game key, etc.">
+            </div>
+
+            <div>
+              <label for="prizeType">Prize Type</label>
+              <select id="prizeType" name="prize_type" data-required="true">
+                <option value="">Select prize type</option>
+                <option value="Physical Item / Merch">Physical Item / Merch</option>
+                <option value="Digital Prize / Code">Digital Prize / Code</option>
+                <option value="Gift Card">Gift Card</option>
+                <option value="Merch Store Credit">Merch Store Credit</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="full">
+              <label for="giveawayNotes">Extra Notes</label>
+              <textarea id="giveawayNotes" name="giveaway_notes" placeholder="Size, color, platform, special instructions, or anything else we need to know."></textarea>
+            </div>
+
           </div>
         </div>
 
-        <div id="shippingFields" class="hidden">
-          <div class="form-section">
-            <h2>Shipping Info</h2>
+        <!-- SHIPPING SECTION -->
+        <div id="shippingFields" class="form-section">
+          <h2>Shipping / Delivery Info</h2>
 
-            <p class="section-note">
-              Only needed for physical prizes or merch that must be mailed.
-            </p>
+          <p class="section-note">
+            Please enter the address where your giveaway prize should be shipped.
+            If your prize is digital, you can write “Digital Prize” in Address Line 1.
+          </p>
 
-            <div class="form-grid">
-              <div class="full">
-                <label for="shippingName">Full Name for Shipping</label>
-                <input id="shippingName" name="shipping_full_name" data-shipping-required="true" placeholder="Full name">
-              </div>
+          <div class="form-grid">
 
-              <div class="full">
-                <label for="address1">Address Line 1</label>
-                <input id="address1" name="shipping_address_line_1" data-shipping-required="true" placeholder="Street address">
-              </div>
-
-              <div class="full">
-                <label for="address2">Address Line 2</label>
-                <input id="address2" name="shipping_address_line_2" placeholder="Apartment, suite, unit, etc.">
-              </div>
-
-              <div>
-                <label for="city">City</label>
-                <input id="city" name="shipping_city" data-shipping-required="true" placeholder="City">
-              </div>
-
-              <div>
-                <label for="state">State / Province</label>
-                <input id="state" name="shipping_state" data-shipping-required="true" placeholder="State">
-              </div>
-
-              <div>
-                <label for="zip">ZIP / Postal Code</label>
-                <input id="zip" name="shipping_zip" data-shipping-required="true" placeholder="ZIP code">
-              </div>
-
-              <div>
-                <label for="country">Country</label>
-                <input id="country" name="shipping_country" data-shipping-required="true" placeholder="Country" value="United States">
-              </div>
+            <div class="full">
+              <label for="shippingName">Full Name for Shipping</label>
+              <input id="shippingName" name="shipping_full_name" data-shipping-required="true" placeholder="Full name">
             </div>
+
+            <div class="full">
+              <label for="address1">Address Line 1</label>
+              <input id="address1" name="shipping_address_line_1" data-shipping-required="true" placeholder="Street address or Digital Prize">
+            </div>
+
+            <div class="full">
+              <label for="address2">Address Line 2</label>
+              <input id="address2" name="shipping_address_line_2" placeholder="Apartment, suite, unit, etc.">
+            </div>
+
+            <div>
+              <label for="city">City</label>
+              <input id="city" name="shipping_city" data-shipping-required="true" placeholder="City">
+            </div>
+
+            <div>
+              <label for="state">State / Province</label>
+              <input id="state" name="shipping_state" data-shipping-required="true" placeholder="State">
+            </div>
+
+            <div>
+              <label for="zip">ZIP / Postal Code</label>
+              <input id="zip" name="shipping_zip" data-shipping-required="true" placeholder="ZIP code">
+            </div>
+
+            <div>
+              <label for="country">Country</label>
+              <input id="country" name="shipping_country" data-shipping-required="true" placeholder="Country" value="United States">
+            </div>
+
           </div>
         </div>
 
@@ -503,6 +522,7 @@
           <input id="winnerConfirm" name="winner_confirmation" type="checkbox" value="Confirmed" data-required="true">
           <span>I confirm I was selected as a giveaway winner and this information is accurate for prize verification.</span>
         </label>
+
       </div>
 
       <input id="formSubject" type="hidden" name="_subject" value="New message from FaithForgeGaming.com">
@@ -568,8 +588,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const formPurpose = document.getElementById('formPurpose');
   const generalSection = document.getElementById('generalSection');
   const giveawaySection = document.getElementById('giveawaySection');
-  const prizeType = document.getElementById('prizeType');
-  const shippingFields = document.getElementById('shippingFields');
   const formSubject = document.getElementById('formSubject');
   const submitBtn = document.getElementById('submitBtn');
 
@@ -584,29 +602,11 @@ document.addEventListener('DOMContentLoaded', () => {
       if (field.hasAttribute('data-required')) {
         field.required = active;
       }
-    });
-  }
-
-  function setShippingFields(active) {
-    shippingFields.querySelectorAll('input, select, textarea').forEach(field => {
-      field.disabled = !active;
 
       if (field.hasAttribute('data-shipping-required')) {
         field.required = active;
       }
     });
-  }
-
-  function updateShippingFields() {
-    const needsShipping = currentPurpose === 'giveaway' && prizeType.value === 'Physical Item / Merch';
-
-    if (needsShipping) {
-      shippingFields.classList.remove('hidden');
-      setShippingFields(true);
-    } else {
-      shippingFields.classList.add('hidden');
-      setShippingFields(false);
-    }
   }
 
   function updatePurpose(purpose) {
@@ -632,14 +632,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       setFields(generalSection, true);
       setFields(giveawaySection, false);
-      setShippingFields(false);
 
       formPurpose.value = 'General Contact';
       formSubject.value = 'New message from FaithForgeGaming.com';
       submitBtn.textContent = 'Send Message';
     }
-
-    updateShippingFields();
   }
 
   purposeBtns.forEach(btn => {
@@ -648,17 +645,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  prizeType.addEventListener('change', updateShippingFields);
-
   form.addEventListener('submit', () => {
     const first = document.getElementById('first').value.trim();
     const last = document.getElementById('last').value.trim();
 
     if (currentPurpose === 'giveaway') {
+      const event = document.getElementById('giveawayEvent').value.trim();
       const streamer = document.getElementById('streamer').value.trim();
       const itemWon = document.getElementById('itemWon').value.trim();
 
-      formSubject.value = `Giveaway Claim - ${first} ${last} - ${streamer} - ${itemWon}`;
+      formSubject.value = `Giveaway Claim - ${event} - ${first} ${last} - ${streamer} - ${itemWon}`;
     } else {
       const subject = document.getElementById('subject').value.trim();
 

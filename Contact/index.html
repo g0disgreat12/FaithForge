@@ -1,19 +1,20 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
 
-  <title>Contact FaithForge Gaming | Join Our Christian Gaming Community</title>
+  <title>Contact FaithForge Gaming | Contact & Giveaway Claims</title>
 
-  <meta name="description" content="Contact FaithForge Gaming to join our Christian gaming community, ask questions, or get involved in our faith-based gaming servers and events.">
+  <meta name="description" content="Contact FaithForge Gaming, join our Christian gaming community, ask questions, or submit giveaway claim information for FaithForge Gaming events and streamers.">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="canonical" href="https://faithforgegaming.com/Contact">
 
   <!-- Open Graph / Facebook / Discord -->
-  <meta property="og:title" content="Contact FaithForge Gaming | Join Our Christian Gaming Community">
-  <meta property="og:description" content="Get in touch with FaithForge Gaming to connect with our Christian gaming community, servers, and events.">
+  <meta property="og:title" content="Contact FaithForge Gaming | Contact & Giveaway Claims">
+  <meta property="og:description" content="Get in touch with FaithForge Gaming or submit your giveaway claim information from a FaithForge Gaming event or streamer.">
   <meta property="og:image" content="https://faithforgegaming.com/Contact/ContactUS.webp">
   <meta property="og:url" content="https://faithforgegaming.com/Contact">
   <meta property="og:type" content="website">
@@ -21,8 +22,8 @@
 
   <!-- Twitter / X Preview -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Contact FaithForge Gaming | Join Our Christian Gaming Community">
-  <meta name="twitter:description" content="Connect with FaithForge Gaming and become part of a faith-based gaming fellowship.">
+  <meta name="twitter:title" content="Contact FaithForge Gaming | Contact & Giveaway Claims">
+  <meta name="twitter:description" content="Connect with FaithForge Gaming or submit giveaway claim information.">
   <meta name="twitter:image" content="https://faithforgegaming.com/Contact/ContactUS.webp">
 
   <!-- Icons / Style -->
@@ -31,9 +32,8 @@
   <!-- Theme & Icons -->
   <meta name="theme-color" content="#000000">
   <link rel="icon" href="https://faithforgegaming.com/Anvil.webp">
-  
+
   <style>
-    /* Force black background */
     body {
       background: radial-gradient(circle at center, #0d0d0d 40%, #000 100%);
       color: #f5c518;
@@ -46,22 +46,19 @@
       position: relative;
     }
 
-    /* Prevent link wrapping */
     .navbar a {
       white-space: nowrap;
     }
-  </style> <!-- ✅ FIXED: This closing tag was missing -->
 
-  <style>
-    /* Contact layout */
     .contact-wrap {
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
       gap: 40px;
       margin: 40px auto;
       flex-wrap: wrap;
-      max-width: 1100px;
+      max-width: 1150px;
+      padding: 0 18px;
     }
 
     .contact-img {
@@ -74,22 +71,27 @@
       padding: 10px;
     }
 
-    /* Updated form spacing FIXED */
     .form {
       flex: 1;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
       background: rgba(0,0,0,0.6);
       padding: 30px;
       border-radius: 16px;
       box-shadow: 0 0 25px rgba(245,197,24,0.2);
       text-align: left;
-      max-width: 450px;
+      max-width: 520px;
     }
 
     .form * {
       box-sizing: border-box;
+    }
+
+    .form-intro {
+      color: #ddd;
+      line-height: 1.5;
+      margin: 0 0 18px;
+      font-size: 0.95rem;
     }
 
     label {
@@ -99,7 +101,9 @@
       color: #f5c518;
     }
 
-    input, textarea {
+    input,
+    textarea,
+    select {
       width: 100%;
       padding: 14px 16px;
       border-radius: 10px;
@@ -111,9 +115,56 @@
       margin-bottom: 16px;
     }
 
+    select {
+      cursor: pointer;
+    }
+
     textarea {
       min-height: 140px;
       resize: vertical;
+    }
+
+    fieldset {
+      border: 1px solid rgba(245,197,24,.25);
+      border-radius: 14px;
+      padding: 18px;
+      margin: 18px 0;
+      background: rgba(255,255,255,.03);
+    }
+
+    legend {
+      color: #f5c518;
+      font-weight: 900;
+      padding: 0 8px;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+
+    .section-note {
+      color: #bbb;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin: 0 0 14px;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .checkbox-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin: 8px 0 16px;
+      color: #ddd;
+      line-height: 1.45;
+      font-size: 0.93rem;
+    }
+
+    .checkbox-row input {
+      width: auto;
+      margin: 4px 0 0;
+      accent-color: #f5c518;
     }
 
     .btn {
@@ -141,11 +192,35 @@
       display: block;
       margin-top: 8px;
       font-size: 0.85em;
+      line-height: 1.5;
+    }
+
+    .discord-button {
+      display: inline-block;
+      margin: 18px auto 10px;
+      padding: 16px 34px;
+      font-size: 1.4rem;
+      font-weight: bold;
+      border-radius: 14px;
+      text-decoration: none;
+      color: #f5c518;
+      background: rgba(0,0,0,.75);
+      border: 2px solid #f5c518;
+      box-shadow: 0 0 18px rgba(245,197,24,.55);
+      transition: all .2s ease-in-out;
+    }
+
+    .discord-button:hover {
+      background: linear-gradient(90deg,#f5c518,#cfa214);
+      color: #000;
+      box-shadow: 0 0 26px rgba(245,197,24,.9);
+      transform: scale(1.06);
     }
 
     @media (max-width: 900px) {
       .contact-wrap {
         flex-direction: column;
+        align-items: center;
         text-align: center;
       }
 
@@ -156,43 +231,21 @@
       }
 
       .form {
-        width: 90%;
+        width: 100%;
         max-width: none;
+        text-align: left;
       }
     }
-      .discord-button {
-        display: inline-block;
-        margin: 18px auto 10px;
-        padding: 16px 34px;
-        font-size: 1.4rem;
-        font-weight: bold;
-        border-radius: 14px;
-        text-decoration: none;
-        color: #f5c518;
-        background: rgba(0,0,0,.75);
-        border: 2px solid #f5c518;
-        box-shadow: 0 0 18px rgba(245,197,24,.55);
-        transition: all .2s ease-in-out;
-      }
-
-      .discord-button:hover {
-        background: linear-gradient(90deg,#f5c518,#cfa214);
-        color: #000;
-        box-shadow: 0 0 26px rgba(245,197,24,.9);
-        transform: scale(1.06);
-      }
   </style>
 </head>
 
 <body>
   <img class="emblem" src="/watermark.png" alt="FaithForge Emblem">
   <canvas id="embers"></canvas>
-  
+
 <header>
-  <!-- Desktop title -->
   <h1>Contact FaithForge Gaming</h1>
 
-  <!-- Mobile header bar -->
   <div class="mobile-header">
     <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
       ☰
@@ -200,7 +253,6 @@
     <span class="page-title">Contact FaithForge</span>
   </div>
 
-  <!-- Navigation dropdown -->
   <nav class="navbar">
     <div class="menu-links">
       <a href="/index.html">Home</a>
@@ -217,7 +269,7 @@
     </div>
   </nav>
 </header>
-  
+
 <a class="discord-button" href="https://discord.gg/bAQrudk5a9" target="_blank">
   Join Our Discord
 </a>
@@ -229,27 +281,149 @@
 
       <form id="contactForm" class="form" method="POST" action="https://formspree.io/f/mrbdwynw">
 
-        <label for="first">First Name</label>
-        <input id="first" name="first_name" required placeholder="First name">
+        <p class="form-intro">
+          Use this form to contact FaithForge Gaming or to submit giveaway claim information after being selected as a winner.
+        </p>
 
-        <label for="last">Last Name</label>
-        <input id="last" name="last_name" required placeholder="Last name">
+        <label for="purpose">What is this form for?</label>
+        <select id="purpose" name="form_purpose" required>
+          <option value="general" selected>General Contact / Question</option>
+          <option value="giveaway">Claim a Giveaway Prize</option>
+        </select>
 
-        <label for="email">Email</label>
-        <input id="email" name="email" type="email" required placeholder="you@example.com">
+        <fieldset>
+          <legend>Your Info</legend>
 
-        <label for="subject">Subject</label>
-        <input id="subject" name="subject" required placeholder="How can we help?">
+          <label for="first">First Name</label>
+          <input id="first" name="first_name" required placeholder="First name">
 
-        <label for="message">Message</label>
-        <textarea id="message" name="message" required placeholder="Type your message here..."></textarea>
+          <label for="last">Last Name</label>
+          <input id="last" name="last_name" required placeholder="Last name">
 
-        <input type="hidden" name="_subject" value="New message from FaithForgeGaming.com">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required placeholder="you@example.com">
+        </fieldset>
 
-        <button class="btn" type="submit">Send Message</button>
+        <!-- GENERAL CONTACT SECTION -->
+        <fieldset id="generalSection">
+          <legend>General Contact</legend>
+
+          <label for="subject">Subject</label>
+          <input id="subject" name="subject" data-required="true" placeholder="How can we help?">
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message" data-required="true" placeholder="Type your message here..."></textarea>
+        </fieldset>
+
+        <!-- GIVEAWAY CLAIM SECTION -->
+        <fieldset id="giveawaySection" class="hidden">
+          <legend>Giveaway Claim</legend>
+
+          <p class="section-note">
+            Please only submit this form after being told you won a FaithForge Gaming giveaway.
+            This helps us verify the prize and collect the right delivery information.
+          </p>
+
+          <label for="streamer">Which streamer was the giveaway from?</label>
+          <select id="streamer" name="giveaway_streamer" data-required="true">
+            <option value="">Select streamer</option>
+            <option value="FaithForge Gaming">FaithForge Gaming</option>
+            <option value="doctorjsways">doctorjsways</option>
+            <option value="seawolf_30">seawolf_30</option>
+            <option value="mooncalfmage">mooncalfmage</option>
+            <option value="brn2bew1ld">brn2bew1ld</option>
+            <option value="mrnthemrs">mrnthemrs</option>
+            <option value="blessttim">blessttim</option>
+            <option value="silentdillxxz">silentdillxxz</option>
+            <option value="faithfamilydad">faithfamilydad</option>
+            <option value="ninjasaucex">ninjasaucex</option>
+            <option value="blessingboat">blessingboat</option>
+            <option value="princess_lightfly">princess_lightfly</option>
+            <option value="romans1014xp">romans1014xp</option>
+            <option value="warrior_of_light777">warrior_of_light777</option>
+            <option value="nathanael_joseph">nathanael_joseph</option>
+            <option value="akay0dad">akay0dad</option>
+            <option value="forgedbygrace7">forgedbygrace7</option>
+            <option value="Other / Not Listed">Other / Not Listed</option>
+          </select>
+
+          <label for="platform">Where did you win?</label>
+          <select id="platform" name="giveaway_platform" data-required="true">
+            <option value="">Select platform</option>
+            <option value="Discord">Discord</option>
+            <option value="Twitch">Twitch</option>
+            <option value="YouTube">YouTube</option>
+            <option value="Kick">Kick</option>
+            <option value="Rumble">Rumble</option>
+            <option value="TikTok">TikTok</option>
+            <option value="FaithForge Event">FaithForge Event</option>
+            <option value="Other">Other</option>
+          </select>
+
+          <label for="winnerHandle">Winner Username / Handle</label>
+          <input id="winnerHandle" name="winner_username_or_handle" data-required="true" placeholder="Your Discord, Twitch, YouTube, Kick, or Rumble name">
+
+          <label for="itemWon">What item did you win?</label>
+          <input id="itemWon" name="giveaway_item_won" data-required="true" placeholder="Example: shirt, gift card, game key, merch credit">
+
+          <label for="prizeType">Prize Type</label>
+          <select id="prizeType" name="prize_type" data-required="true">
+            <option value="">Select prize type</option>
+            <option value="Physical Item / Merch">Physical Item / Merch</option>
+            <option value="Digital Prize / Code">Digital Prize / Code</option>
+            <option value="Gift Card">Gift Card</option>
+            <option value="Merch Store Credit">Merch Store Credit</option>
+            <option value="Other">Other</option>
+          </select>
+
+          <label for="giveawayNotes">Extra Notes</label>
+          <textarea id="giveawayNotes" name="giveaway_notes" placeholder="Anything else we need to know? Size, color, platform, or special instructions."></textarea>
+
+          <div id="shippingFields" class="hidden">
+            <fieldset>
+              <legend>Shipping Info</legend>
+
+              <p class="section-note">
+                Shipping information is only needed for physical prizes or merch that must be mailed.
+              </p>
+
+              <label for="shippingName">Full Name for Shipping</label>
+              <input id="shippingName" name="shipping_full_name" data-shipping-required="true" placeholder="Full name">
+
+              <label for="address1">Address Line 1</label>
+              <input id="address1" name="shipping_address_line_1" data-shipping-required="true" placeholder="Street address">
+
+              <label for="address2">Address Line 2</label>
+              <input id="address2" name="shipping_address_line_2" placeholder="Apartment, suite, unit, etc.">
+
+              <label for="city">City</label>
+              <input id="city" name="shipping_city" data-shipping-required="true" placeholder="City">
+
+              <label for="state">State / Province</label>
+              <input id="state" name="shipping_state" data-shipping-required="true" placeholder="State">
+
+              <label for="zip">ZIP / Postal Code</label>
+              <input id="zip" name="shipping_zip" data-shipping-required="true" placeholder="ZIP code">
+
+              <label for="country">Country</label>
+              <input id="country" name="shipping_country" data-shipping-required="true" placeholder="Country" value="United States">
+            </fieldset>
+          </div>
+
+          <label class="checkbox-row" for="winnerConfirm">
+            <input id="winnerConfirm" name="winner_confirmation" type="checkbox" value="Confirmed" data-required="true">
+            <span>I confirm I was selected as a giveaway winner and this information is accurate for prize verification.</span>
+          </label>
+        </fieldset>
+
+        <input id="formSubject" type="hidden" name="_subject" value="New message from FaithForgeGaming.com">
+        <input type="hidden" name="form_source" value="FaithForgeGaming.com Contact Page">
+
+        <button id="submitBtn" class="btn" type="submit">Send Message</button>
 
         <small class="muted">
           Messages are securely routed to FaithForgeGaming@gmail.com via Formspree.
+          Giveaway information is used for winner verification and prize delivery.
         </small>
 
       </form>
@@ -258,9 +432,11 @@
 
 <footer>
   <div style="text-align:center; margin-bottom:15px;">
-  <a class="discord-button" href="https://discord.gg/bAQrudk5a9" target="_blank">
-    Join Our Discord
-  </a>
+    <a class="discord-button" href="https://discord.gg/bAQrudk5a9" target="_blank">
+      Join Our Discord
+    </a>
+  </div>
+
   <div class="footer-links">
     <a href="/index.html">Home</a>
     <a href="/Aboutus/">About Us</a>
@@ -279,25 +455,102 @@
     © 2026 FaithForge Gaming
   </div>
 </footer>
-  
+
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const toggle = document.querySelector('.menu-toggle');
   const menu = document.querySelector('.menu-links');
 
-  if (!toggle || !menu) return;
-
-  toggle.addEventListener('click', () => {
-    const isOpen = menu.classList.toggle('show');
-    toggle.setAttribute('aria-expanded', isOpen);
-  });
-
-  menu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      menu.classList.remove('show');
-      toggle.setAttribute('aria-expanded', 'false');
+  if (toggle && menu) {
+    toggle.addEventListener('click', () => {
+      const isOpen = menu.classList.toggle('show');
+      toggle.setAttribute('aria-expanded', isOpen);
     });
+
+    menu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.remove('show');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  const form = document.getElementById('contactForm');
+  const purpose = document.getElementById('purpose');
+  const generalSection = document.getElementById('generalSection');
+  const giveawaySection = document.getElementById('giveawaySection');
+  const prizeType = document.getElementById('prizeType');
+  const shippingFields = document.getElementById('shippingFields');
+  const formSubject = document.getElementById('formSubject');
+  const submitBtn = document.getElementById('submitBtn');
+
+  function setRequiredFields(section, isRequired) {
+    section.querySelectorAll('[data-required="true"]').forEach(field => {
+      field.required = isRequired;
+    });
+  }
+
+  function setShippingRequired(isRequired) {
+    shippingFields.querySelectorAll('[data-shipping-required="true"]').forEach(field => {
+      field.required = isRequired;
+    });
+  }
+
+  function updateShippingFields() {
+    const isGiveaway = purpose.value === 'giveaway';
+    const needsShipping = prizeType.value === 'Physical Item / Merch';
+
+    if (isGiveaway && needsShipping) {
+      shippingFields.classList.remove('hidden');
+      setShippingRequired(true);
+    } else {
+      shippingFields.classList.add('hidden');
+      setShippingRequired(false);
+    }
+  }
+
+  function updateFormPurpose() {
+    if (purpose.value === 'giveaway') {
+      generalSection.classList.add('hidden');
+      giveawaySection.classList.remove('hidden');
+
+      setRequiredFields(generalSection, false);
+      setRequiredFields(giveawaySection, true);
+
+      formSubject.value = 'New Giveaway Claim from FaithForgeGaming.com';
+      submitBtn.textContent = 'Submit Giveaway Claim';
+    } else {
+      generalSection.classList.remove('hidden');
+      giveawaySection.classList.add('hidden');
+
+      setRequiredFields(generalSection, true);
+      setRequiredFields(giveawaySection, false);
+      setShippingRequired(false);
+
+      formSubject.value = 'New message from FaithForgeGaming.com';
+      submitBtn.textContent = 'Send Message';
+    }
+
+    updateShippingFields();
+  }
+
+  purpose.addEventListener('change', updateFormPurpose);
+  prizeType.addEventListener('change', updateShippingFields);
+
+  form.addEventListener('submit', () => {
+    const first = document.getElementById('first').value.trim();
+    const last = document.getElementById('last').value.trim();
+    const streamer = document.getElementById('streamer').value.trim();
+    const itemWon = document.getElementById('itemWon').value.trim();
+
+    if (purpose.value === 'giveaway') {
+      formSubject.value = `Giveaway Claim - ${first} ${last} - ${streamer} - ${itemWon}`;
+    } else {
+      formSubject.value = `Contact Message - ${first} ${last}`;
+    }
   });
+
+  updateFormPurpose();
 });
 </script>
 
@@ -305,3 +558,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
 </body>
 </html>
+```

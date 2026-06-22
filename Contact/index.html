@@ -1,4 +1,3 @@
-```html id="1ixqgd"
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,65 +48,73 @@
       white-space: nowrap;
     }
 
-    .contact-wrap {
-      display: grid;
-      grid-template-columns: minmax(260px, 380px) minmax(420px, 700px);
-      justify-content: center;
-      align-items: start;
-      gap: 32px;
-      width: min(1200px, calc(100% - 36px));
-      margin: 40px auto 60px;
+    .contact-page {
+      width: min(940px, calc(100% - 32px));
+      margin: 34px auto 60px;
+      position: relative;
+      z-index: 2;
     }
 
-    .contact-img {
-      width: 100%;
-      max-width: 380px;
-      aspect-ratio: 1 / 1;
-      object-fit: contain;
-      border-radius: 18px;
-      background: rgba(0, 0, 0, 0.45);
-      box-shadow: 0 0 40px rgba(245,197,24,.35);
-      padding: 10px;
-    }
-
-    .form {
-      width: 100%;
-      background: rgba(0,0,0,0.72);
+    .contact-card {
+      background: rgba(0, 0, 0, 0.76);
+      border: 1px solid rgba(245,197,24,.28);
+      border-radius: 24px;
+      box-shadow: 0 0 35px rgba(245,197,24,.22);
       padding: 28px;
-      border-radius: 18px;
-      border: 1px solid rgba(245,197,24,.25);
-      box-shadow: 0 0 25px rgba(245,197,24,0.22);
       text-align: left;
     }
 
-    .form * {
-      box-sizing: border-box;
+    .brand-row {
+      display: grid;
+      grid-template-columns: 125px 1fr;
+      gap: 22px;
+      align-items: center;
+      margin-bottom: 22px;
     }
 
-    .form-intro {
+    .brand-logo {
+      width: 125px;
+      height: 125px;
+      object-fit: contain;
+      border-radius: 18px;
+      background: rgba(0,0,0,.45);
+      box-shadow: 0 0 28px rgba(245,197,24,.35);
+      padding: 8px;
+    }
+
+    .brand-text h2 {
+      margin: 0 0 8px;
+      color: #f5c518;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      line-height: 1.1;
+      text-transform: uppercase;
+      letter-spacing: .8px;
+    }
+
+    .brand-text p {
+      margin: 0;
       color: #ddd;
       line-height: 1.55;
-      margin: 0 0 18px;
-      font-size: 0.98rem;
+      font-size: .98rem;
     }
 
     .purpose-toggle {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
-      margin: 18px 0 24px;
+      margin: 22px 0;
     }
 
     .purpose-btn {
       border: 1px solid rgba(245,197,24,.45);
-      background: rgba(15,15,15,.9);
+      background: rgba(15,15,15,.92);
       color: #f5c518;
       border-radius: 14px;
-      padding: 15px 14px;
+      padding: 16px 14px;
       cursor: pointer;
       font-weight: 900;
       text-transform: uppercase;
-      letter-spacing: .4px;
+      letter-spacing: .5px;
       transition: all .2s ease;
     }
 
@@ -121,23 +128,23 @@
 
     .form-section {
       border: 1px solid rgba(245,197,24,.25);
-      border-radius: 16px;
-      padding: 18px;
+      border-radius: 18px;
+      padding: 20px;
       margin: 18px 0;
-      background: rgba(255,255,255,.03);
+      background: rgba(255,255,255,.035);
     }
 
-    .form-section h2 {
+    .form-section h3 {
       color: #f5c518;
       font-size: 1rem;
-      margin: 0 0 14px;
+      margin: 0 0 16px;
       text-transform: uppercase;
-      letter-spacing: .7px;
+      letter-spacing: .8px;
     }
 
     .section-note {
       color: #bbb;
-      font-size: 0.92rem;
+      font-size: .93rem;
       line-height: 1.5;
       margin: 0 0 16px;
     }
@@ -145,7 +152,7 @@
     .form-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0 14px;
+      gap: 0 16px;
     }
 
     .full {
@@ -157,7 +164,7 @@
       margin: 0 0 7px;
       display: block;
       color: #f5c518;
-      font-size: 0.92rem;
+      font-size: .92rem;
     }
 
     input,
@@ -165,13 +172,14 @@
     select {
       width: 100%;
       padding: 13px 14px;
-      border-radius: 10px;
+      border-radius: 11px;
       border: 1px solid rgba(245,197,24,.35);
-      background: rgba(15,15,15,.95);
+      background: rgba(15,15,15,.96);
       color: #f5c518;
       outline: none;
       font-size: 1rem;
       margin-bottom: 15px;
+      box-sizing: border-box;
     }
 
     input::placeholder,
@@ -179,27 +187,90 @@
       color: rgba(255,255,255,.45);
     }
 
-    select {
-      cursor: pointer;
+    textarea {
+      min-height: 105px;
+      resize: vertical;
     }
 
-    textarea {
-      min-height: 110px;
-      resize: vertical;
+    select {
+      cursor: pointer;
     }
 
     .hidden {
       display: none !important;
     }
 
+    .step-bar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin: 16px 0 20px;
+    }
+
+    .step-pill {
+      border: 1px solid rgba(245,197,24,.35);
+      border-radius: 999px;
+      padding: 9px 10px;
+      text-align: center;
+      font-size: .83rem;
+      font-weight: 900;
+      color: #aaa;
+      background: rgba(15,15,15,.9);
+      text-transform: uppercase;
+    }
+
+    .step-pill.active {
+      color: #000;
+      background: radial-gradient(circle at center, #f5c518 20%, #cfa214 100%);
+      box-shadow: 0 0 18px rgba(245,197,24,.5);
+    }
+
+    .wizard-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+
+    .btn,
+    .btn-secondary {
+      display: inline-block;
+      width: 100%;
+      padding: 15px 22px;
+      font-weight: 900;
+      border-radius: 12px;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .btn {
+      border: none;
+      background: radial-gradient(circle at center, #f5c518 20%, #cfa214 100%);
+      color: #0d0d0d;
+      box-shadow: 0 0 25px rgba(245,197,24,.55);
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(245,197,24,.45);
+      background: rgba(15,15,15,.9);
+      color: #f5c518;
+    }
+
+    .btn:hover,
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 30px rgba(245,197,24,.75);
+    }
+
     .checkbox-row {
       display: flex;
       align-items: flex-start;
       gap: 10px;
-      margin: 8px 0 16px;
+      margin: 10px 0 18px;
       color: #ddd;
       line-height: 1.45;
-      font-size: 0.93rem;
+      font-size: .94rem;
     }
 
     .checkbox-row input {
@@ -208,34 +279,28 @@
       accent-color: #f5c518;
     }
 
-    .btn {
-      display: block;
-      width: 100%;
-      margin-top: 14px;
-      padding: 15px 26px;
-      font-weight: 900;
-      border-radius: 12px;
-      border: none;
-      cursor: pointer;
-      background: radial-gradient(circle at center, #f5c518 20%, #cfa214 100%);
-      color: #0d0d0d;
-      box-shadow: 0 0 25px rgba(245,197,24,.6);
-      text-transform: uppercase;
-      transition: transform .2s, box-shadow .2s;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 35px rgba(245,197,24,1);
-    }
-
     .muted {
       color: #aaa;
       display: block;
-      margin-top: 10px;
-      font-size: 0.85em;
+      margin-top: 12px;
+      font-size: .85em;
       line-height: 1.5;
       text-align: center;
+    }
+
+    .status-message {
+      color: #fff;
+      background: rgba(180, 0, 0, .25);
+      border: 1px solid rgba(255, 80, 80, .55);
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin: 12px 0;
+      line-height: 1.45;
+    }
+
+    .invalid {
+      border-color: rgba(255, 90, 90, .9) !important;
+      box-shadow: 0 0 12px rgba(255, 90, 90, .25);
     }
 
     .discord-button {
@@ -260,26 +325,28 @@
       transform: scale(1.06);
     }
 
-    @media (max-width: 950px) {
-      .contact-wrap {
-        grid-template-columns: 1fr;
-        max-width: 720px;
-      }
-
-      .contact-img {
-        margin: 0 auto;
-        max-width: 320px;
-      }
-    }
-
-    @media (max-width: 620px) {
-      .form {
+    @media (max-width: 720px) {
+      .contact-card {
         padding: 20px;
       }
 
-      .purpose-toggle,
-      .form-grid {
+      .brand-row {
         grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .brand-logo {
+        margin: 0 auto;
+      }
+
+      .purpose-toggle,
+      .form-grid,
+      .step-bar {
+        grid-template-columns: 1fr;
+      }
+
+      .wizard-actions {
+        flex-direction: column;
       }
 
       .discord-button {
@@ -325,73 +392,90 @@
   Join Our Discord
 </a>
 
-<div class="content">
-  <div class="contact-wrap">
+<main class="contact-page">
+  <form id="contactForm" class="contact-card" method="POST" action="https://formspree.io/f/mrbdwynw">
 
-    <img class="contact-img" src="ContactUS.webp" alt="FaithForge Contact">
+    <div class="brand-row">
+      <img class="brand-logo" src="ContactUS.webp" alt="FaithForge Contact">
 
-    <form id="contactForm" class="form" method="POST" action="https://formspree.io/f/mrbdwynw">
-
-      <p class="form-intro">
-        Contact FaithForge Gaming or submit giveaway claim information after being selected as a winner.
-      </p>
-
-      <div class="purpose-toggle" role="group" aria-label="Choose form purpose">
-        <button class="purpose-btn active" type="button" data-purpose="general">
-          Contact Us
-        </button>
-        <button class="purpose-btn" type="button" data-purpose="giveaway">
-          Claim Giveaway
-        </button>
+      <div class="brand-text">
+        <h2>Contact & Giveaway Claims</h2>
+        <p>
+          Contact FaithForge Gaming or claim a giveaway prize after being selected as a winner.
+          Giveaway claims are organized into simple steps so the form stays easy to use.
+        </p>
       </div>
+    </div>
 
-      <input id="formPurpose" type="hidden" name="form_purpose" value="General Contact">
+    <div class="purpose-toggle" role="group" aria-label="Choose form purpose">
+      <button class="purpose-btn active" type="button" data-purpose="general">
+        Contact Us
+      </button>
 
-      <div class="form-section">
-        <h2>Your Info</h2>
+      <button class="purpose-btn" type="button" data-purpose="giveaway">
+        Claim Giveaway
+      </button>
+    </div>
 
-        <div class="form-grid">
-          <div>
-            <label for="first">First Name</label>
-            <input id="first" name="first_name" required placeholder="First name">
-          </div>
+    <input id="formPurpose" type="hidden" name="form_purpose" value="General Contact">
+    <input id="formSubject" type="hidden" name="_subject" value="New message from FaithForgeGaming.com">
+    <input type="hidden" name="form_source" value="FaithForgeGaming.com Contact Page">
 
-          <div>
-            <label for="last">Last Name</label>
-            <input id="last" name="last_name" required placeholder="Last name">
-          </div>
+    <div id="statusMessage" class="status-message hidden"></div>
 
-          <div class="full">
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" required placeholder="you@example.com">
-          </div>
+    <section class="form-section">
+      <h3>Your Info</h3>
+
+      <div class="form-grid">
+        <div>
+          <label for="first">First Name</label>
+          <input id="first" name="first_name" required placeholder="First name">
+        </div>
+
+        <div>
+          <label for="last">Last Name</label>
+          <input id="last" name="last_name" required placeholder="Last name">
+        </div>
+
+        <div class="full">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required placeholder="you@example.com">
         </div>
       </div>
+    </section>
 
-      <!-- GENERAL CONTACT SECTION -->
-      <div id="generalSection" class="form-section">
-        <h2>General Contact</h2>
+    <!-- GENERAL CONTACT -->
+    <section id="generalSection" class="form-section">
+      <h3>General Contact</h3>
 
-        <label for="subject">Subject</label>
-        <input id="subject" name="subject" data-required="true" placeholder="How can we help?">
+      <label for="subject">Subject</label>
+      <input id="subject" name="subject" data-required="true" placeholder="How can we help?">
 
-        <label for="message">Message</label>
-        <textarea id="message" name="message" data-required="true" placeholder="Type your message here..."></textarea>
+      <label for="message">Message</label>
+      <textarea id="message" name="message" data-required="true" placeholder="Type your message here..."></textarea>
+
+      <button class="btn" type="submit">Send Message</button>
+    </section>
+
+    <!-- GIVEAWAY CLAIM -->
+    <section id="giveawaySection" class="hidden">
+
+      <div class="step-bar">
+        <div class="step-pill active" data-step-pill="1">1. Details</div>
+        <div class="step-pill" data-step-pill="2">2. Delivery</div>
+        <div class="step-pill" data-step-pill="3">3. Confirm</div>
       </div>
 
-      <!-- GIVEAWAY CLAIM SECTION -->
-      <div id="giveawaySection" class="hidden">
-
-        <div class="form-section">
-          <h2>Giveaway Claim</h2>
+      <!-- STEP 1 -->
+      <div class="wizard-step" data-step="1">
+        <section class="form-section">
+          <h3>Giveaway Details</h3>
 
           <p class="section-note">
-            Please only submit this form after being told you won a FaithForge Gaming giveaway.
-            Raid Train Event is the main giveaway event, but you can select another event if needed.
+            Raid Train Event is selected by default because that is the main FaithForge giveaway event.
           </p>
 
           <div class="form-grid">
-
             <div class="full">
               <label for="giveawayEvent">Giveaway Event</label>
               <select id="giveawayEvent" name="giveaway_event" data-required="true">
@@ -441,7 +525,7 @@
 
             <div>
               <label for="dateWon">Date Won</label>
-              <input id="dateWon" name="date_won" type="text" inputmode="numeric" placeholder="MM/DD/YYYY">
+              <input id="dateWon" name="date_won" type="text" inputmode="numeric" data-required="true" placeholder="MM/DD/YYYY">
             </div>
 
             <div>
@@ -465,78 +549,106 @@
               <label for="giveawayNotes">Extra Notes</label>
               <textarea id="giveawayNotes" name="giveaway_notes" placeholder="Size, color, platform, special instructions, or anything else we need to know."></textarea>
             </div>
-
           </div>
-        </div>
 
-        <!-- SHIPPING SECTION -->
-        <div id="shippingFields" class="form-section">
-          <h2>Shipping / Delivery Info</h2>
-
-          <p class="section-note">
-            Please enter the address where your giveaway prize should be shipped.
-            If your prize is digital, you can write “Digital Prize” in Address Line 1.
-          </p>
-
-          <div class="form-grid">
-
-            <div class="full">
-              <label for="shippingName">Full Name for Shipping</label>
-              <input id="shippingName" name="shipping_full_name" data-shipping-required="true" placeholder="Full name">
-            </div>
-
-            <div class="full">
-              <label for="address1">Address Line 1</label>
-              <input id="address1" name="shipping_address_line_1" data-shipping-required="true" placeholder="Street address or Digital Prize">
-            </div>
-
-            <div class="full">
-              <label for="address2">Address Line 2</label>
-              <input id="address2" name="shipping_address_line_2" placeholder="Apartment, suite, unit, etc.">
-            </div>
-
-            <div>
-              <label for="city">City</label>
-              <input id="city" name="shipping_city" data-shipping-required="true" placeholder="City">
-            </div>
-
-            <div>
-              <label for="state">State / Province</label>
-              <input id="state" name="shipping_state" data-shipping-required="true" placeholder="State">
-            </div>
-
-            <div>
-              <label for="zip">ZIP / Postal Code</label>
-              <input id="zip" name="shipping_zip" data-shipping-required="true" placeholder="ZIP code">
-            </div>
-
-            <div>
-              <label for="country">Country</label>
-              <input id="country" name="shipping_country" data-shipping-required="true" placeholder="Country" value="United States">
-            </div>
-
+          <div class="wizard-actions">
+            <button class="btn" type="button" data-next-step="2">Next: Delivery Info</button>
           </div>
-        </div>
-
-        <label class="checkbox-row" for="winnerConfirm">
-          <input id="winnerConfirm" name="winner_confirmation" type="checkbox" value="Confirmed" data-required="true">
-          <span>I confirm I was selected as a giveaway winner and this information is accurate for prize verification.</span>
-        </label>
-
+        </section>
       </div>
 
-      <input id="formSubject" type="hidden" name="_subject" value="New message from FaithForgeGaming.com">
-      <input type="hidden" name="form_source" value="FaithForgeGaming.com Contact Page">
+      <!-- STEP 2 -->
+      <div class="wizard-step hidden" data-step="2">
+        <section class="form-section">
+          <h3>Shipping / Delivery Info</h3>
 
-      <button id="submitBtn" class="btn" type="submit">Send Message</button>
+          <p class="section-note">
+            Use this section for the best delivery method. If this is a physical prize, choose “Ship to address.”
+            If it is a digital prize, choose “Digital / email delivery.”
+          </p>
 
-      <small class="muted">
-        Messages are securely routed to FaithForgeGaming@gmail.com via Formspree.
-      </small>
+          <label for="deliveryMethod">Delivery Method</label>
+          <select id="deliveryMethod" name="delivery_method" data-required="true">
+            <option value="Ship to address" selected>Ship to address</option>
+            <option value="Digital / email delivery">Digital / email delivery</option>
+            <option value="Not sure yet">Not sure yet</option>
+          </select>
 
-    </form>
-  </div>
-</div>
+          <div id="shippingAddressFields">
+            <div class="form-grid">
+              <div class="full">
+                <label for="shippingName">Full Name for Shipping</label>
+                <input id="shippingName" name="shipping_full_name" data-shipping-required="true" placeholder="Full name">
+              </div>
+
+              <div class="full">
+                <label for="address1">Address Line 1</label>
+                <input id="address1" name="shipping_address_line_1" data-shipping-required="true" placeholder="Street address">
+              </div>
+
+              <div class="full">
+                <label for="address2">Address Line 2</label>
+                <input id="address2" name="shipping_address_line_2" placeholder="Apartment, suite, unit, etc.">
+              </div>
+
+              <div>
+                <label for="city">City</label>
+                <input id="city" name="shipping_city" data-shipping-required="true" placeholder="City">
+              </div>
+
+              <div>
+                <label for="state">State / Province</label>
+                <input id="state" name="shipping_state" data-shipping-required="true" placeholder="State">
+              </div>
+
+              <div>
+                <label for="zip">ZIP / Postal Code</label>
+                <input id="zip" name="shipping_zip" data-shipping-required="true" placeholder="ZIP code">
+              </div>
+
+              <div>
+                <label for="country">Country</label>
+                <input id="country" name="shipping_country" data-shipping-required="true" placeholder="Country" value="United States">
+              </div>
+            </div>
+          </div>
+
+          <div class="wizard-actions">
+            <button class="btn-secondary" type="button" data-prev-step="1">Back</button>
+            <button class="btn" type="button" data-next-step="3">Next: Confirm</button>
+          </div>
+        </section>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="wizard-step hidden" data-step="3">
+        <section class="form-section">
+          <h3>Confirm Giveaway Claim</h3>
+
+          <p class="section-note">
+            Please confirm that your giveaway claim information is correct before submitting.
+          </p>
+
+          <label class="checkbox-row" for="winnerConfirm">
+            <input id="winnerConfirm" name="winner_confirmation" type="checkbox" value="Confirmed" data-required="true">
+            <span>I confirm I was selected as a giveaway winner and this information is accurate for prize verification.</span>
+          </label>
+
+          <div class="wizard-actions">
+            <button class="btn-secondary" type="button" data-prev-step="2">Back</button>
+            <button class="btn" type="submit">Submit Giveaway Claim</button>
+          </div>
+        </section>
+      </div>
+
+    </section>
+
+    <small class="muted">
+      Messages are securely routed to FaithForgeGaming@gmail.com via Formspree.
+    </small>
+
+  </form>
+</main>
 
 <footer>
   <div style="text-align:center; margin-bottom:15px;">
@@ -586,27 +698,82 @@ document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('contactForm');
   const purposeBtns = document.querySelectorAll('.purpose-btn');
   const formPurpose = document.getElementById('formPurpose');
+  const formSubject = document.getElementById('formSubject');
   const generalSection = document.getElementById('generalSection');
   const giveawaySection = document.getElementById('giveawaySection');
-  const formSubject = document.getElementById('formSubject');
-  const submitBtn = document.getElementById('submitBtn');
+  const statusMessage = document.getElementById('statusMessage');
+  const deliveryMethod = document.getElementById('deliveryMethod');
+  const shippingAddressFields = document.getElementById('shippingAddressFields');
 
   let currentPurpose = 'general';
+  let currentStep = 1;
 
-  function setFields(section, active) {
-    section.querySelectorAll('input, select, textarea').forEach(field => {
-      if (field.type !== 'hidden') {
-        field.disabled = !active;
-      }
+  function showStatus(message) {
+    statusMessage.textContent = message;
+    statusMessage.classList.remove('hidden');
+    statusMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
 
-      if (field.hasAttribute('data-required')) {
-        field.required = active;
-      }
+  function clearStatus() {
+    statusMessage.textContent = '';
+    statusMessage.classList.add('hidden');
 
-      if (field.hasAttribute('data-shipping-required')) {
-        field.required = active;
-      }
+    document.querySelectorAll('.invalid').forEach(field => {
+      field.classList.remove('invalid');
     });
+  }
+
+  function setRequiredStates() {
+    document.querySelectorAll('[data-required="true"], [data-shipping-required="true"]').forEach(field => {
+      field.required = false;
+    });
+
+    if (currentPurpose === 'general') {
+      generalSection.querySelectorAll('[data-required="true"]').forEach(field => {
+        field.required = true;
+      });
+    }
+
+    if (currentPurpose === 'giveaway') {
+      const activeStep = document.querySelector(`.wizard-step[data-step="${currentStep}"]`);
+
+      if (activeStep) {
+        activeStep.querySelectorAll('[data-required="true"]').forEach(field => {
+          field.required = true;
+        });
+
+        if (currentStep === 2 && deliveryMethod.value === 'Ship to address') {
+          activeStep.querySelectorAll('[data-shipping-required="true"]').forEach(field => {
+            field.required = true;
+          });
+        }
+      }
+    }
+  }
+
+  function updateShippingVisibility() {
+    if (deliveryMethod.value === 'Ship to address') {
+      shippingAddressFields.classList.remove('hidden');
+    } else {
+      shippingAddressFields.classList.add('hidden');
+    }
+
+    setRequiredStates();
+  }
+
+  function updateStep(step) {
+    currentStep = step;
+
+    document.querySelectorAll('.wizard-step').forEach(stepEl => {
+      stepEl.classList.toggle('hidden', Number(stepEl.dataset.step) !== step);
+    });
+
+    document.querySelectorAll('.step-pill').forEach(pill => {
+      pill.classList.toggle('active', Number(pill.dataset.stepPill) === step);
+    });
+
+    clearStatus();
+    setRequiredStates();
   }
 
   function updatePurpose(purpose) {
@@ -620,23 +787,105 @@ document.addEventListener('DOMContentLoaded', () => {
       generalSection.classList.add('hidden');
       giveawaySection.classList.remove('hidden');
 
-      setFields(generalSection, false);
-      setFields(giveawaySection, true);
-
       formPurpose.value = 'Giveaway Claim';
       formSubject.value = 'New Giveaway Claim from FaithForgeGaming.com';
-      submitBtn.textContent = 'Submit Giveaway Claim';
+
+      updateStep(1);
     } else {
       generalSection.classList.remove('hidden');
       giveawaySection.classList.add('hidden');
 
-      setFields(generalSection, true);
-      setFields(giveawaySection, false);
-
       formPurpose.value = 'General Contact';
       formSubject.value = 'New message from FaithForgeGaming.com';
-      submitBtn.textContent = 'Send Message';
+
+      clearStatus();
+      setRequiredStates();
     }
+  }
+
+  function getVisibleRequiredFields(container) {
+    return Array.from(container.querySelectorAll('input, select, textarea')).filter(field => {
+      if (!field.required) return false;
+      if (field.closest('.hidden')) return false;
+      return true;
+    });
+  }
+
+  function validateFields(fields) {
+    clearStatus();
+
+    for (const field of fields) {
+      const isCheckbox = field.type === 'checkbox';
+      const isValid = isCheckbox ? field.checked : field.checkValidity();
+
+      if (!isValid) {
+        field.classList.add('invalid');
+        field.focus();
+        showStatus('Please fill out the highlighted field before continuing.');
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  function validateYourInfo() {
+    const fields = [
+      document.getElementById('first'),
+      document.getElementById('last'),
+      document.getElementById('email')
+    ];
+
+    return validateFields(fields);
+  }
+
+  function validateCurrentStep() {
+    if (!validateYourInfo()) return false;
+
+    const activeStep = document.querySelector(`.wizard-step[data-step="${currentStep}"]`);
+    const fields = getVisibleRequiredFields(activeStep);
+
+    return validateFields(fields);
+  }
+
+  function validateAllGiveawaySteps() {
+    if (!validateYourInfo()) return false;
+
+    const requiredIds = [
+      'giveawayEvent',
+      'streamer',
+      'platform',
+      'winnerHandle',
+      'dateWon',
+      'itemWon',
+      'prizeType',
+      'deliveryMethod',
+      'winnerConfirm'
+    ];
+
+    if (deliveryMethod.value === 'Ship to address') {
+      requiredIds.push('shippingName', 'address1', 'city', 'state', 'zip', 'country');
+    }
+
+    for (const id of requiredIds) {
+      const field = document.getElementById(id);
+      const isCheckbox = field.type === 'checkbox';
+      const isValid = isCheckbox ? field.checked : field.checkValidity();
+
+      if (!isValid) {
+        const step = field.closest('.wizard-step');
+        if (step) {
+          updateStep(Number(step.dataset.step));
+        }
+
+        field.classList.add('invalid');
+        field.focus();
+        showStatus('Please complete all required giveaway fields before submitting.');
+        return false;
+      }
+    }
+
+    return true;
   }
 
   purposeBtns.forEach(btn => {
@@ -645,17 +894,48 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  form.addEventListener('submit', () => {
+  document.querySelectorAll('[data-next-step]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (!validateCurrentStep()) return;
+      updateStep(Number(btn.dataset.nextStep));
+    });
+  });
+
+  document.querySelectorAll('[data-prev-step]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      updateStep(Number(btn.dataset.prevStep));
+    });
+  });
+
+  deliveryMethod.addEventListener('change', updateShippingVisibility);
+
+  form.addEventListener('submit', (e) => {
+    clearStatus();
+
     const first = document.getElementById('first').value.trim();
     const last = document.getElementById('last').value.trim();
 
     if (currentPurpose === 'giveaway') {
+      if (!validateAllGiveawaySteps()) {
+        e.preventDefault();
+        return;
+      }
+
       const event = document.getElementById('giveawayEvent').value.trim();
       const streamer = document.getElementById('streamer').value.trim();
       const itemWon = document.getElementById('itemWon').value.trim();
 
       formSubject.value = `Giveaway Claim - ${event} - ${first} ${last} - ${streamer} - ${itemWon}`;
     } else {
+      setRequiredStates();
+
+      const generalFields = getVisibleRequiredFields(generalSection);
+
+      if (!validateYourInfo() || !validateFields(generalFields)) {
+        e.preventDefault();
+        return;
+      }
+
       const subject = document.getElementById('subject').value.trim();
 
       formSubject.value = `Contact Message - ${first} ${last} - ${subject}`;
@@ -663,6 +943,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   updatePurpose('general');
+  updateShippingVisibility();
 });
 </script>
 
@@ -670,4 +951,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
 </body>
 </html>
-```

@@ -279,6 +279,55 @@
       accent-color: #f5c518;
     }
 
+    .review-box {
+      border: 1px solid rgba(245,197,24,.28);
+      border-radius: 16px;
+      background: rgba(255,255,255,.04);
+      padding: 16px;
+      margin: 16px 0 20px;
+    }
+
+    .review-box h4 {
+      color: #f5c518;
+      margin: 0 0 12px;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: .7px;
+    }
+
+    .review-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 14px;
+    }
+
+    .review-item {
+      background: rgba(0,0,0,.45);
+      border: 1px solid rgba(245,197,24,.18);
+      border-radius: 12px;
+      padding: 10px 12px;
+    }
+
+    .review-label {
+      display: block;
+      color: #f5c518;
+      font-size: .78rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .review-value {
+      color: #eee;
+      font-size: .95rem;
+      line-height: 1.4;
+      word-break: break-word;
+    }
+
+    .review-full {
+      grid-column: 1 / -1;
+    }
+
     .muted {
       color: #aaa;
       display: block;
@@ -341,8 +390,13 @@
 
       .purpose-toggle,
       .form-grid,
-      .step-bar {
+      .step-bar,
+      .review-grid {
         grid-template-columns: 1fr;
+      }
+
+      .review-full {
+        grid-column: auto;
       }
 
       .wizard-actions {
@@ -626,8 +680,74 @@
           <h3>Confirm Giveaway Claim</h3>
 
           <p class="section-note">
-            Please confirm that your giveaway claim information is correct before submitting.
+            Please review your giveaway claim information before submitting. Use the Back button if anything needs to be changed.
           </p>
+
+          <div class="review-box">
+            <h4>Review Your Claim</h4>
+
+            <div class="review-grid">
+              <div class="review-item">
+                <span class="review-label">Name</span>
+                <span id="reviewName" class="review-value">—</span>
+              </div>
+
+              <div class="review-item">
+                <span class="review-label">Email</span>
+                <span id="reviewEmail" class="review-value">—</span>
+              </div>
+
+              <div class="review-item">
+                <span class="review-label">Giveaway Event</span>
+                <span id="reviewEvent" class="review-value">—</span>
+              </div>
+
+              <div class="review-item">
+                <span class="review-label">Streamer</span>
+                <span id="reviewStreamer" class="review-value">—</span>
+              </div>
+
+              <div class="review-item">
+                <span class="review-label">Platform</span>
+                <span id="reviewPlatform" class="review-value">—</span>
+              </div>
+
+              <div class="review-item">
+                <span class="review-label">Winner Username</span>
+                <span id="reviewHandle" class="review-value">—</span>
+              </div>
+
+              <div class="review-item">
+                <span class="review-label">Date Won</span>
+                <span id="reviewDateWon" class="review-value">—</span>
+              </div>
+
+              <div class="review-item">
+                <span class="review-label">Item Won</span>
+                <span id="reviewItemWon" class="review-value">—</span>
+              </div>
+
+              <div class="review-item">
+                <span class="review-label">Prize Type</span>
+                <span id="reviewPrizeType" class="review-value">—</span>
+              </div>
+
+              <div class="review-item">
+                <span class="review-label">Delivery Method</span>
+                <span id="reviewDeliveryMethod" class="review-value">—</span>
+              </div>
+
+              <div class="review-item review-full">
+                <span class="review-label">Delivery / Shipping Info</span>
+                <span id="reviewShipping" class="review-value">—</span>
+              </div>
+
+              <div class="review-item review-full">
+                <span class="review-label">Extra Notes</span>
+                <span id="reviewNotes" class="review-value">—</span>
+              </div>
+            </div>
+          </div>
 
           <label class="checkbox-row" for="winnerConfirm">
             <input id="winnerConfirm" name="winner_confirmation" type="checkbox" value="Confirmed" data-required="true">
@@ -723,6 +843,53 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  function fieldValue(id) {
+    const field = document.getElementById(id);
+    if (!field) return '—';
+
+    const value = field.value.trim();
+    return value || '—';
+  }
+
+  function setReviewValue(id, value) {
+    const reviewField = document.getElementById(id);
+    if (reviewField) {
+      reviewField.textContent = value || '—';
+    }
+  }
+
+  function updateReviewSummary() {
+    const first = fieldValue('first');
+    const last = fieldValue('last');
+    const delivery = fieldValue('deliveryMethod');
+
+    setReviewValue('reviewName', `${first} ${last}`.trim());
+    setReviewValue('reviewEmail', fieldValue('email'));
+    setReviewValue('reviewEvent', fieldValue('giveawayEvent'));
+    setReviewValue('reviewStreamer', fieldValue('streamer'));
+    setReviewValue('reviewPlatform', fieldValue('platform'));
+    setReviewValue('reviewHandle', fieldValue('winnerHandle'));
+    setReviewValue('reviewDateWon', fieldValue('dateWon'));
+    setReviewValue('reviewItemWon', fieldValue('itemWon'));
+    setReviewValue('reviewPrizeType', fieldValue('prizeType'));
+    setReviewValue('reviewDeliveryMethod', delivery);
+    setReviewValue('reviewNotes', fieldValue('giveawayNotes'));
+
+    if (delivery === 'Ship to address') {
+      const shippingLines = [
+        fieldValue('shippingName'),
+        fieldValue('address1'),
+        fieldValue('address2') !== '—' ? fieldValue('address2') : '',
+        `${fieldValue('city')}, ${fieldValue('state')} ${fieldValue('zip')}`,
+        fieldValue('country')
+      ].filter(line => line && line !== '—');
+
+      setReviewValue('reviewShipping', shippingLines.join(' | '));
+    } else {
+      setReviewValue('reviewShipping', delivery);
+    }
+  }
+
   function setRequiredStates() {
     document.querySelectorAll('[data-required="true"], [data-shipping-required="true"]').forEach(field => {
       field.required = false;
@@ -771,6 +938,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.step-pill').forEach(pill => {
       pill.classList.toggle('active', Number(pill.dataset.stepPill) === step);
     });
+
+    if (step === 3) {
+      updateReviewSummary();
+    }
 
     clearStatus();
     setRequiredStates();
@@ -869,8 +1040,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     for (const id of requiredIds) {
       const field = document.getElementById(id);
+      if (!field) continue;
+
       const isCheckbox = field.type === 'checkbox';
-      const isValid = isCheckbox ? field.checked : field.checkValidity();
+      const isValid = isCheckbox ? field.checked : field.value.trim() !== '' && field.checkValidity();
 
       if (!isValid) {
         const step = field.closest('.wizard-step');

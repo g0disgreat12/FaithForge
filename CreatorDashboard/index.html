@@ -1016,6 +1016,7 @@ function requirement(title, done = false, taggedFaithForge = false, link = '', t
 */
 
 const STREAMER_PROGRESS = [
+
   {
     login: 'faithforgegaming',
     name: 'FaithForgeGaming',
@@ -1025,26 +1026,28 @@ const STREAMER_PROGRESS = [
     platform: 'Twitch / YouTube / TikTok / Rumble / Kick',
     profileUrl: '/faithforgegaming/',
     twitchUrl: 'https://www.twitch.tv/faithforgegaming',
-    merchStoreTrack: false,
-    merchStoreApproved: false,
+    merchStoreTrack: true,
+    merchStoreApproved: true,
     notes: 'Main FaithForge channel. Use this if the main brand channel has its own quarterly requirements.',
     baseLongForm: [
-      requirement('Base Long Form Video 1')
+      requirement('Base Long Form Video 1', true, true)
     ],
     baseShorts: [
-      requirement('Base Short / Reel / TikTok 1'),
-      requirement('Base Short / Reel / TikTok 2'),
-      requirement('Base Short / Reel / TikTok 3')
+      requirement('Base Short / Reel / TikTok 1', true, true),
+      requirement('Base Short / Reel / TikTok 2', true, true),
+      requirement('Base Short / Reel / TikTok 3', true, true)
     ],
     merchLongForm: [
-      requirement('Merch Extra Long Form Video 2')
+      requirement('Merch Extra Long Form Video 2', true, true)
     ],
     merchShorts: [
-      requirement('Merch Extra Short / Reel / TikTok 4'),
-      requirement('Merch Extra Short / Reel / TikTok 5'),
-      requirement('Merch Extra Short / Reel / TikTok 6')
+      requirement('Merch Extra Short / Reel / TikTok 4', true, true),
+      requirement('Merch Extra Short / Reel / TikTok 5', true, true),
+      requirement('Merch Extra Short / Reel / TikTok 6', true, true)
     ]
   },
+
+
 
   {
     login: 'mooncalfmage',
@@ -1059,20 +1062,20 @@ const STREAMER_PROGRESS = [
     merchStoreApproved: false,
     notes: '',
     baseLongForm: [
-      requirement('Base Long Form Video 1')
+      requirement('Base Long Form Video 1', false, false)
     ],
     baseShorts: [
-      requirement('Base Short / Reel / TikTok 1'),
-      requirement('Base Short / Reel / TikTok 2'),
-      requirement('Base Short / Reel / TikTok 3')
+      requirement('Base Short / Reel / TikTok 1', false, false),
+      requirement('Base Short / Reel / TikTok 2', false, false),
+      requirement('Base Short / Reel / TikTok 3', false, false)
     ],
     merchLongForm: [
-      requirement('Merch Extra Long Form Video 2')
+      requirement('Merch Extra Long Form Video 2', false, false)
     ],
     merchShorts: [
-      requirement('Merch Extra Short / Reel / TikTok 4'),
-      requirement('Merch Extra Short / Reel / TikTok 5'),
-      requirement('Merch Extra Short / Reel / TikTok 6')
+      requirement('Merch Extra Short / Reel / TikTok 4', false, false),
+      requirement('Merch Extra Short / Reel / TikTok 5', false, false),
+      requirement('Merch Extra Short / Reel / TikTok 6', false, false)
     ]
   },
 
@@ -1089,20 +1092,20 @@ const STREAMER_PROGRESS = [
     merchStoreApproved: false,
     notes: '',
     baseLongForm: [
-      requirement('Base Long Form Video 1')
+      requirement('Base Long Form Video 1', false, false)
     ],
     baseShorts: [
-      requirement('Base Short / Reel / TikTok 1'),
-      requirement('Base Short / Reel / TikTok 2'),
-      requirement('Base Short / Reel / TikTok 3')
+      requirement('Base Short / Reel / TikTok 1', false, false),
+      requirement('Base Short / Reel / TikTok 2', false, false),
+      requirement('Base Short / Reel / TikTok 3', false, false)
     ],
     merchLongForm: [
-      requirement('Merch Extra Long Form Video 2')
+      requirement('Merch Extra Long Form Video 2', false, false)
     ],
     merchShorts: [
-      requirement('Merch Extra Short / Reel / TikTok 4'),
-      requirement('Merch Extra Short / Reel / TikTok 5'),
-      requirement('Merch Extra Short / Reel / TikTok 6')
+      requirement('Merch Extra Short / Reel / TikTok 4', false, false),
+      requirement('Merch Extra Short / Reel / TikTok 5', false, false),
+      requirement('Merch Extra Short / Reel / TikTok 6', false, false)
     ]
   },
 
@@ -1119,20 +1122,20 @@ const STREAMER_PROGRESS = [
     merchStoreApproved: false,
     notes: '',
     baseLongForm: [
-      requirement('Base Long Form Video 1')
+      requirement('Base Long Form Video 1', false, false)
     ],
     baseShorts: [
-      requirement('Base Short / Reel / TikTok 1'),
-      requirement('Base Short / Reel / TikTok 2'),
-      requirement('Base Short / Reel / TikTok 3')
+      requirement('Base Short / Reel / TikTok 1', false, false),
+      requirement('Base Short / Reel / TikTok 2', false, false),
+      requirement('Base Short / Reel / TikTok 3', false, false)
     ],
     merchLongForm: [
-      requirement('Merch Extra Long Form Video 2')
+      requirement('Merch Extra Long Form Video 2', false, false)
     ],
     merchShorts: [
-      requirement('Merch Extra Short / Reel / TikTok 4'),
-      requirement('Merch Extra Short / Reel / TikTok 5'),
-      requirement('Merch Extra Short / Reel / TikTok 6')
+      requirement('Merch Extra Short / Reel / TikTok 4', false, false),
+      requirement('Merch Extra Short / Reel / TikTok 5', false, false),
+      requirement('Merch Extra Short / Reel / TikTok 6', false, false)
     ]
   },
 
@@ -1149,20 +1152,20 @@ const STREAMER_PROGRESS = [
     merchStoreApproved: false,
     notes: '',
     baseLongForm: [
-      requirement('Base Long Form Video 1')
+      requirement('Base Long Form Video 1', false, false)
     ],
     baseShorts: [
-      requirement('Base Short / Reel / TikTok 1'),
-      requirement('Base Short / Reel / TikTok 2'),
-      requirement('Base Short / Reel / TikTok 3')
+      requirement('Base Short / Reel / TikTok 1', false, false),
+      requirement('Base Short / Reel / TikTok 2', false, false),
+      requirement('Base Short / Reel / TikTok 3', false, false)
     ],
     merchLongForm: [
-      requirement('Merch Extra Long Form Video 2')
+      requirement('Merch Extra Long Form Video 2', false, false)
     ],
     merchShorts: [
-      requirement('Merch Extra Short / Reel / TikTok 4'),
-      requirement('Merch Extra Short / Reel / TikTok 5'),
-      requirement('Merch Extra Short / Reel / TikTok 6')
+      requirement('Merch Extra Short / Reel / TikTok 4', false, false),
+      requirement('Merch Extra Short / Reel / TikTok 5', false, false),
+      requirement('Merch Extra Short / Reel / TikTok 6', false, false)
     ]
   },
 
@@ -1179,20 +1182,20 @@ const STREAMER_PROGRESS = [
     merchStoreApproved: false,
     notes: '',
     baseLongForm: [
-      requirement('Base Long Form Video 1')
+      requirement('Base Long Form Video 1', false, false)
     ],
     baseShorts: [
-      requirement('Base Short / Reel / TikTok 1'),
-      requirement('Base Short / Reel / TikTok 2'),
-      requirement('Base Short / Reel / TikTok 3')
+      requirement('Base Short / Reel / TikTok 1', false, false),
+      requirement('Base Short / Reel / TikTok 2', false, false),
+      requirement('Base Short / Reel / TikTok 3', false, false)
     ],
     merchLongForm: [
-      requirement('Merch Extra Long Form Video 2')
+      requirement('Merch Extra Long Form Video 2', false, false)
     ],
     merchShorts: [
-      requirement('Merch Extra Short / Reel / TikTok 4'),
-      requirement('Merch Extra Short / Reel / TikTok 5'),
-      requirement('Merch Extra Short / Reel / TikTok 6')
+      requirement('Merch Extra Short / Reel / TikTok 4', false, false),
+      requirement('Merch Extra Short / Reel / TikTok 5', false, false),
+      requirement('Merch Extra Short / Reel / TikTok 6', false, false)
     ]
   },
 
@@ -1209,20 +1212,20 @@ const STREAMER_PROGRESS = [
     merchStoreApproved: false,
     notes: '',
     baseLongForm: [
-      requirement('Base Long Form Video 1')
+      requirement('Base Long Form Video 1', false, false)
     ],
     baseShorts: [
-      requirement('Base Short / Reel / TikTok 1'),
-      requirement('Base Short / Reel / TikTok 2'),
-      requirement('Base Short / Reel / TikTok 3')
+      requirement('Base Short / Reel / TikTok 1', false, false),
+      requirement('Base Short / Reel / TikTok 2', false, false),
+      requirement('Base Short / Reel / TikTok 3', false, false)
     ],
     merchLongForm: [
-      requirement('Merch Extra Long Form Video 2')
+      requirement('Merch Extra Long Form Video 2', false, false)
     ],
     merchShorts: [
-      requirement('Merch Extra Short / Reel / TikTok 4'),
-      requirement('Merch Extra Short / Reel / TikTok 5'),
-      requirement('Merch Extra Short / Reel / TikTok 6')
+      requirement('Merch Extra Short / Reel / TikTok 4', false, false),
+      requirement('Merch Extra Short / Reel / TikTok 5', false, false),
+      requirement('Merch Extra Short / Reel / TikTok 6', false, false)
     ]
   },
 
@@ -1239,20 +1242,20 @@ const STREAMER_PROGRESS = [
     merchStoreApproved: false,
     notes: '',
     baseLongForm: [
-      requirement('Base Long Form Video 1')
+      requirement('Base Long Form Video 1', false, false)
     ],
     baseShorts: [
-      requirement('Base Short / Reel / TikTok 1'),
-      requirement('Base Short / Reel / TikTok 2'),
-      requirement('Base Short / Reel / TikTok 3')
+      requirement('Base Short / Reel / TikTok 1', false, false),
+      requirement('Base Short / Reel / TikTok 2', false, false),
+      requirement('Base Short / Reel / TikTok 3', false, false)
     ],
     merchLongForm: [
-      requirement('Merch Extra Long Form Video 2')
+      requirement('Merch Extra Long Form Video 2', false, false)
     ],
     merchShorts: [
-      requirement('Merch Extra Short / Reel / TikTok 4'),
-      requirement('Merch Extra Short / Reel / TikTok 5'),
-      requirement('Merch Extra Short / Reel / TikTok 6')
+      requirement('Merch Extra Short / Reel / TikTok 4', false, false),
+      requirement('Merch Extra Short / Reel / TikTok 5', false, false),
+      requirement('Merch Extra Short / Reel / TikTok 6', false, false)
     ]
   },
 
@@ -1269,20 +1272,20 @@ const STREAMER_PROGRESS = [
     merchStoreApproved: false,
     notes: '',
     baseLongForm: [
-      requirement('Base Long Form Video 1')
+      requirement('Base Long Form Video 1', false, false)
     ],
     baseShorts: [
-      requirement('Base Short / Reel / TikTok 1'),
-      requirement('Base Short / Reel / TikTok 2'),
-      requirement('Base Short / Reel / TikTok 3')
+      requirement('Base Short / Reel / TikTok 1', false, false),
+      requirement('Base Short / Reel / TikTok 2', false, false),
+      requirement('Base Short / Reel / TikTok 3', false, false)
     ],
     merchLongForm: [
-      requirement('Merch Extra Long Form Video 2')
+      requirement('Merch Extra Long Form Video 2', false, false)
     ],
     merchShorts: [
-      requirement('Merch Extra Short / Reel / TikTok 4'),
-      requirement('Merch Extra Short / Reel / TikTok 5'),
-      requirement('Merch Extra Short / Reel / TikTok 6')
+      requirement('Merch Extra Short / Reel / TikTok 4', false, false),
+      requirement('Merch Extra Short / Reel / TikTok 5', false, false),
+      requirement('Merch Extra Short / Reel / TikTok 6', false, false)
     ]
   },
 
@@ -1299,20 +1302,20 @@ const STREAMER_PROGRESS = [
     merchStoreApproved: false,
     notes: '',
     baseLongForm: [
-      requirement('Base Long Form Video 1')
+      requirement('Base Long Form Video 1', false, false)
     ],
     baseShorts: [
-      requirement('Base Short / Reel / TikTok 1'),
-      requirement('Base Short / Reel / TikTok 2'),
-      requirement('Base Short / Reel / TikTok 3')
+      requirement('Base Short / Reel / TikTok 1', false, false),
+      requirement('Base Short / Reel / TikTok 2', false, false),
+      requirement('Base Short / Reel / TikTok 3', false, false)
     ],
     merchLongForm: [
-      requirement('Merch Extra Long Form Video 2')
+      requirement('Merch Extra Long Form Video 2', false, false)
     ],
     merchShorts: [
-      requirement('Merch Extra Short / Reel / TikTok 4'),
-      requirement('Merch Extra Short / Reel / TikTok 5'),
-      requirement('Merch Extra Short / Reel / TikTok 6')
+      requirement('Merch Extra Short / Reel / TikTok 4', false, false),
+      requirement('Merch Extra Short / Reel / TikTok 5', false, false),
+      requirement('Merch Extra Short / Reel / TikTok 6', false, false)
     ]
   }
 ];

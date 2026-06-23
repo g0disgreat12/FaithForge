@@ -1,15 +1,16 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
 
-  <title>FaithForge Creator Dashboard | Quarterly Streamer Requirements</title>
+  <title>FaithForge Creator Dashboard | Streamer Requirements & Analytics</title>
 
-  <meta name="description" content="FaithForge Gaming creator dashboard for tracking quarterly streamer partnership requirements, content progress, and merch store eligibility.">
+  <meta name="description" content="FaithForge Gaming creator dashboard for quarterly streamer requirements, merch store eligibility, Twitch live status, and creator progress tracking.">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Keeps this internal-style page out of search engines -->
+  <!-- Keep this dashboard out of search engines unless you choose to make it public -->
   <meta name="robots" content="noindex, nofollow">
 
   <link rel="canonical" href="https://faithforgegaming.com/CreatorDashboard/">
@@ -32,6 +33,7 @@
       --ffg-green: #36d77d;
       --ffg-red: #ff6868;
       --ffg-orange: #ffbf4d;
+      --ffg-blue: #74b9ff;
     }
 
     * {
@@ -59,7 +61,7 @@
     }
 
     .dashboard-page {
-      width: min(1320px, 94%);
+      width: min(1360px, 94%);
       margin: 0 auto 60px;
       position: relative;
       z-index: 2;
@@ -115,7 +117,7 @@
     .dashboard-hero p {
       color: var(--ffg-gold-soft);
       line-height: 1.65;
-      max-width: 950px;
+      max-width: 1000px;
       margin: 0;
       font-size: 1.02rem;
     }
@@ -135,9 +137,24 @@
       color: var(--ffg-gold);
     }
 
+    .data-note {
+      margin: 0 0 18px;
+      padding: 14px 16px;
+      border: 1px solid rgba(116,185,255,.25);
+      border-radius: 16px;
+      background: rgba(116,185,255,.08);
+      color: rgba(255,255,255,.86);
+      line-height: 1.5;
+      text-align: left;
+    }
+
+    .data-note strong {
+      color: var(--ffg-blue);
+    }
+
     .summary-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(6, minmax(0, 1fr));
       gap: 14px;
       margin: 0 0 22px;
     }
@@ -155,7 +172,7 @@
       display: block;
       color: var(--ffg-gold-soft);
       text-transform: uppercase;
-      font-size: .78rem;
+      font-size: .74rem;
       font-weight: 900;
       letter-spacing: .08em;
       margin-bottom: 6px;
@@ -164,7 +181,7 @@
     .summary-card strong {
       display: block;
       color: var(--ffg-white);
-      font-size: 2rem;
+      font-size: 1.85rem;
       line-height: 1;
     }
 
@@ -267,6 +284,7 @@
       text-transform: uppercase;
       letter-spacing: .04em;
       border: 1px solid rgba(255,255,255,.12);
+      white-space: nowrap;
     }
 
     .badge.complete {
@@ -293,6 +311,13 @@
       border-color: rgba(245,197,24,.7);
     }
 
+    .badge.live {
+      color: #001707;
+      background: var(--ffg-green);
+      border-color: rgba(54,215,125,.7);
+    }
+
+    .badge.offline,
     .badge.soft {
       color: var(--ffg-gold);
       background: rgba(0,0,0,.45);
@@ -306,8 +331,53 @@
       font-size: .94rem;
     }
 
-    .progress-area {
+    .streamer-meta a {
+      color: var(--ffg-gold-light);
+      font-weight: 800;
+    }
+
+    .auto-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      padding: 16px 18px 0;
+    }
+
+    .metric {
+      border: 1px solid rgba(245,197,24,.16);
+      border-radius: 14px;
+      background: rgba(0,0,0,.35);
+      padding: 10px;
+      min-height: 74px;
+    }
+
+    .metric span {
+      display: block;
+      color: var(--ffg-muted);
+      font-size: .72rem;
+      text-transform: uppercase;
+      font-weight: 900;
+      letter-spacing: .06em;
+      margin-bottom: 5px;
+    }
+
+    .metric strong {
+      color: var(--ffg-gold);
+      font-size: .98rem;
+      line-height: 1.25;
+      word-break: break-word;
+    }
+
+    .metric.live-metric strong {
+      color: var(--ffg-green);
+    }
+
+    .requirement-wrap {
       padding: 18px;
+    }
+
+    .progress-group {
+      margin-bottom: 18px;
     }
 
     .progress-header {
@@ -339,7 +409,6 @@
       border-radius: 999px;
       background: rgba(0,0,0,.5);
       overflow: hidden;
-      margin-bottom: 16px;
     }
 
     .progress-fill {
@@ -350,30 +419,94 @@
       box-shadow: 0 0 14px rgba(245,197,24,.55);
     }
 
-    .requirement-grid {
+    .requirement-layout {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       gap: 14px;
     }
 
-    .requirement-section {
+    .track-section {
       border: 1px solid rgba(245,197,24,.18);
-      border-radius: 16px;
+      border-radius: 18px;
       background: rgba(255,255,255,.035);
       padding: 14px;
     }
 
-    .requirement-section h4 {
-      margin: 0 0 10px;
+    .track-section.inactive {
+      opacity: .78;
+      border-style: dashed;
+    }
+
+    .track-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .track-head h4 {
+      margin: 0;
       color: var(--ffg-gold);
-      font-size: .95rem;
+      font-size: 1rem;
       text-transform: uppercase;
       letter-spacing: .06em;
+    }
+
+    .track-subtitle {
+      color: var(--ffg-muted);
+      margin: -4px 0 12px;
+      line-height: 1.45;
+      font-size: .9rem;
+    }
+
+    .mini-progress {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .mini-progress-card {
+      border: 1px solid rgba(245,197,24,.15);
+      border-radius: 14px;
+      background: rgba(0,0,0,.32);
+      padding: 10px;
+    }
+
+    .mini-progress-card span {
+      color: var(--ffg-muted);
+      display: block;
+      font-size: .78rem;
+      text-transform: uppercase;
+      font-weight: 900;
+      letter-spacing: .06em;
+      margin-bottom: 5px;
+    }
+
+    .mini-progress-card strong {
+      color: var(--ffg-white);
+      font-size: 1.1rem;
+    }
+
+    .requirement-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
     }
 
     .requirement-list {
       display: grid;
       gap: 9px;
+    }
+
+    .requirement-list h5 {
+      color: var(--ffg-gold-soft);
+      font-size: .83rem;
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: .06em;
     }
 
     .requirement-item {
@@ -385,6 +518,10 @@
       background: rgba(0,0,0,.35);
       border-radius: 12px;
       padding: 10px;
+    }
+
+    .track-section.inactive .requirement-item {
+      background: rgba(0,0,0,.22);
     }
 
     .check-icon {
@@ -433,7 +570,7 @@
       margin-top: 6px;
       padding: 3px 7px;
       border-radius: 999px;
-      font-size: .72rem;
+      font-size: .7rem;
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: .04em;
@@ -460,35 +597,39 @@
       border-color: rgba(255,255,255,.6);
     }
 
-    .analytics-strip {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
+    .recent-box {
+      border-top: 1px solid rgba(245,197,24,.14);
       padding: 0 18px 18px;
     }
 
-    .metric {
-      border: 1px solid rgba(245,197,24,.16);
-      border-radius: 14px;
-      background: rgba(0,0,0,.35);
-      padding: 10px;
-    }
-
-    .metric span {
-      display: block;
-      color: var(--ffg-muted);
-      font-size: .74rem;
-      text-transform: uppercase;
-      font-weight: 900;
-      letter-spacing: .06em;
-      margin-bottom: 4px;
-    }
-
-    .metric strong {
+    .recent-box h4 {
       color: var(--ffg-gold);
-      font-size: 1rem;
-      line-height: 1.1;
-      word-break: break-word;
+      margin: 16px 0 10px;
+      font-size: .95rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .recent-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .recent-item {
+      border: 1px solid rgba(245,197,24,.12);
+      border-radius: 12px;
+      background: rgba(0,0,0,.28);
+      padding: 10px;
+      color: var(--ffg-muted);
+      line-height: 1.35;
+      font-size: .86rem;
+    }
+
+    .recent-item strong {
+      display: block;
+      color: var(--ffg-gold-soft);
+      margin-bottom: 4px;
     }
 
     .notes {
@@ -534,13 +675,24 @@
       transform: translateY(-2px);
     }
 
-    @media (max-width: 1050px) {
-      .dashboard-grid,
+    @media (max-width: 1200px) {
       .summary-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
       }
 
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 900px) {
       .controls {
+        grid-template-columns: 1fr;
+      }
+
+      .auto-strip,
+      .requirement-grid,
+      .recent-list {
         grid-template-columns: 1fr;
       }
     }
@@ -548,10 +700,8 @@
     @media (max-width: 720px) {
       .hero-grid,
       .streamer-top,
-      .requirement-grid,
-      .analytics-strip,
-      .dashboard-grid,
-      .summary-grid {
+      .summary-grid,
+      .mini-progress {
         grid-template-columns: 1fr;
       }
 
@@ -567,11 +717,14 @@
       }
 
       .progress-header,
-      .streamer-name-row {
+      .streamer-name-row,
+      .track-head {
         justify-content: center;
       }
 
-      .requirement-item {
+      .requirement-item,
+      .data-note,
+      .quick-help {
         text-align: left;
       }
     }
@@ -617,21 +770,25 @@
 
       <div>
         <p class="eyebrow">FaithForge Gaming Creator Partnership Program</p>
-        <h2>Quarterly Requirements Tracker</h2>
+        <h2>Quarterly Requirements & Streamer Dashboard</h2>
         <p>
-          Track each streamer’s quarterly FaithForge requirements, content progress, collaborator tagging, and optional merch store eligibility.
+          Track FaithForge streamer requirements, merch store eligibility, live Twitch status, current viewers, recent streamed games, and manual content progress.
         </p>
 
         <div class="quick-help">
-          <strong>How to update this page:</strong>
-          scroll to the <strong>STREAMER_PROGRESS</strong> section in the JavaScript and change each item’s
-          <strong>posted</strong> value from <strong>false</strong> to <strong>true</strong>.
-          Change <strong>taggedFaithForge</strong> to <strong>true</strong> when FaithForge was tagged as a collaborator.
-          Set <strong>merchStoreTrack: true</strong> to double the quarterly requirements for merch store access.
+          <strong>How to update requirements:</strong>
+          scroll to the <strong>STREAMER_PROGRESS</strong> section in this file.
+          Change <strong>done: false</strong> to <strong>done: true</strong> when a video or short is completed.
+          Change <strong>taggedFaithForge: true</strong> when FaithForge was tagged as a collaborator.
+          Turn on the merch requirement by changing <strong>merchStoreTrack: false</strong> to <strong>merchStoreTrack: true</strong>.
         </div>
       </div>
     </div>
   </section>
+
+  <div id="dataNote" class="data-note">
+    <strong>Cloudflare status:</strong> Loading live Twitch data and recent games from the FaithForge Worker.
+  </div>
 
   <section class="summary-grid" aria-label="Dashboard summary">
     <div class="summary-card">
@@ -641,21 +798,33 @@
     </div>
 
     <div class="summary-card">
-      <span>Creators Complete</span>
-      <strong id="summaryComplete">0</strong>
-      <small>Creators who have met the current requirement.</small>
+      <span>Base Complete</span>
+      <strong id="summaryBaseComplete">0</strong>
+      <small>Creators who met 1 long + 3 shorts.</small>
     </div>
 
     <div class="summary-card">
-      <span>Still In Progress</span>
-      <strong id="summaryProgress">0</strong>
-      <small>Creators who still need content checked off.</small>
+      <span>Base In Progress</span>
+      <strong id="summaryBaseProgress">0</strong>
+      <small>Creators still working on base requirements.</small>
     </div>
 
     <div class="summary-card">
       <span>Merch Track</span>
-      <strong id="summaryMerch">0</strong>
-      <small>Creators using doubled requirements.</small>
+      <strong id="summaryMerchTrack">0</strong>
+      <small>Creators with doubled requirements active.</small>
+    </div>
+
+    <div class="summary-card">
+      <span>Merch Eligible</span>
+      <strong id="summaryMerchEligible">0</strong>
+      <small>Merch track creators who completed all 8 items.</small>
+    </div>
+
+    <div class="summary-card">
+      <span>Live Now</span>
+      <strong id="summaryLiveNow">0</strong>
+      <small>Auto-loaded from Cloudflare/Twitch.</small>
     </div>
   </section>
 
@@ -664,18 +833,21 @@
 
     <select id="statusFilter" aria-label="Filter by status">
       <option value="all">Show All Streamers</option>
-      <option value="complete">Complete Only</option>
-      <option value="progress">In Progress Only</option>
-      <option value="merch">Merch Track Only</option>
-      <option value="base">Base Requirement Only</option>
+      <option value="live">Live Now</option>
+      <option value="baseComplete">Base Complete</option>
+      <option value="baseNeeds">Base Needs Work</option>
+      <option value="merchActive">Merch Track Active</option>
+      <option value="merchEligible">Merch Eligible</option>
+      <option value="merchNeeds">Merch Needs Work</option>
     </select>
 
     <select id="sortSelect" aria-label="Sort streamers">
       <option value="name">Sort by Name</option>
       <option value="least">Least Complete First</option>
       <option value="most">Most Complete First</option>
-      <option value="complete">Complete First</option>
-      <option value="behind">Needs Work First</option>
+      <option value="live">Live First</option>
+      <option value="baseNeeds">Base Needs Work First</option>
+      <option value="merchNeeds">Merch Needs Work First</option>
     </select>
   </section>
 
@@ -731,440 +903,381 @@ document.addEventListener('DOMContentLoaded', () => {
 <script>
 /*
   ============================================================
-  FAITHFORGE CREATOR DASHBOARD SETTINGS
+  FAITHFORGE CREATOR DASHBOARD
   ============================================================
 
-  BASE REQUIREMENTS:
-  - 1 long-form video per quarter
-  - 3 Shorts/Reels/TikToks per quarter
-  - Tag FaithForge Gaming as collaborator when possible
+  WHAT AUTO-LOADS FROM CLOUDFLARE:
+  - Live / offline status
+  - Current viewers while live
+  - Current game/category
+  - Current stream title
+  - Stream start time
+  - Recent Twitch games/activity
 
-  MERCH STORE TRACK:
-  - Set merchStoreTrack: true
-  - Requirements double automatically:
-    2 long-form videos + 6 shorts
+  WHAT YOU MANUALLY UPDATE:
+  - Base long-form video requirement
+  - Base Shorts/Reels/TikToks requirements
+  - FaithForge collaborator tag status
+  - Merch store track active/inactive
+  - Merch store extra video/shorts progress
 
-  HOW TO UPDATE A CREATOR:
-  - posted: true means that video/short is complete
-  - posted: false means it still needs to be done
-  - taggedFaithForge: true means FaithForge was tagged/collabed
-  - taggedFaithForge: false means it was not tagged yet
-  - tagNotPossible: true means the platform did not allow collaborator tagging
+  BASE REQUIREMENT:
+  - 1 long-form video
+  - 3 shorts/reels/TikToks
+
+  MERCH STORE REQUIREMENT:
+  - Base requirement PLUS:
+  - 1 extra long-form video
+  - 3 extra shorts/reels/TikToks
+
+  TOTAL FOR MERCH STORE:
+  - 2 long-form videos
+  - 6 shorts/reels/TikToks
 */
 
 const CURRENT_QUARTER = 'Q3 2026';
 
-const BASE_LONG_FORM_REQUIRED = 1;
-const BASE_SHORTS_REQUIRED = 3;
+const STREAM_STATUS_ENDPOINT = 'https://faithforge-raidtrain-api.faithforgegaming.workers.dev/api/twitch-status';
+const RECENT_GAMES_ENDPOINT = 'https://faithforge-raidtrain-api.faithforgegaming.workers.dev/api/recent-games';
+
+/*
+  Optional future route:
+  If you later add a Cloudflare route for quarter stats, this page is ready.
+  Example route could return:
+  {
+    "stats": [
+      {
+        "login": "mooncalfmage",
+        "streamCount": 8,
+        "liveHours": 22.4,
+        "avgViewers": 7,
+        "peakViewers": 24
+      }
+    ]
+  }
+*/
+const QUARTER_STATS_ENDPOINT = 'https://faithforge-raidtrain-api.faithforgegaming.workers.dev/api/quarter-stats';
+
+const statusByLogin = new Map();
+const recentGamesByLogin = new Map();
+const quarterStatsByLogin = new Map();
+
+/*
+  ============================================================
+  MANUAL TRACKING SECTION
+  ============================================================
+
+  Edit this section every quarter.
+
+  For each requirement:
+  - done: true / false
+  - taggedFaithForge: true / false
+  - tagNotPossible: true / false
+  - link: 'https://...'
+
+  For merch:
+  - merchStoreTrack: true makes the merch section active.
+  - merchStoreApproved: true adds a Merch Approved badge after the requirements are done.
+*/
 
 const STREAMER_PROGRESS = [
   {
+    login: 'faithforgegaming',
     name: 'FaithForgeGaming',
-    handle: 'faithforgegaming',
-    image: '/Anvil.webp',
-    primaryPlatform: 'Twitch / YouTube / TikTok',
+    handle: 'FaithForgeGaming',
+    image: '/Streamers/G0dsblessing.webp',
+    fallbackImage: '/Anvil.webp',
+    platform: 'Twitch / YouTube / TikTok / Rumble / Kick',
     profileUrl: '/faithforgegaming/',
+    twitchUrl: 'https://www.twitch.tv/faithforgegaming',
     merchStoreTrack: false,
     merchStoreApproved: false,
-    notes: 'Main FaithForge channel. Update this if the main brand channel is being tracked separately.',
-    analytics: {
-      followers: '—',
-      avgViewers: '—',
-      postsThisQuarter: '—',
-      lastUpdated: '2026-06-23'
-    },
-    longFormVideos: [
-      {
-        title: 'Quarterly Long Form Video 1',
-        posted: false,
-        taggedFaithForge: false,
-        tagNotPossible: false,
-        link: ''
-      },
-      {
-        title: 'Merch Track Long Form Video 2',
-        posted: false,
-        taggedFaithForge: false,
-        tagNotPossible: false,
-        link: ''
-      }
+    notes: 'Main FaithForge channel. Use this if the main brand channel has its own quarterly content requirements.',
+    baseLongForm: [
+      { title: 'Base Long Form Video 1', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
     ],
-    shorts: [
-      { title: 'Short / Reel / TikTok 1', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Short / Reel / TikTok 2', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Short / Reel / TikTok 3', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Track Short 4', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Track Short 5', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Track Short 6', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+    baseShorts: [
+      { title: 'Base Short / Reel / TikTok 1', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
+      { title: 'Base Short / Reel / TikTok 2', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
+      { title: 'Base Short / Reel / TikTok 3', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+    ],
+    merchLongForm: [
+      { title: 'Merch Extra Long Form Video 2', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+    ],
+    merchShorts: [
+      { title: 'Merch Extra Short / Reel / TikTok 4', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
+      { title: 'Merch Extra Short / Reel / TikTok 5', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
+      { title: 'Merch Extra Short / Reel / TikTok 6', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
     ]
   },
 
   {
+    login: 'mooncalfmage',
     name: 'Mooncalfmage',
-    handle: 'mooncalfmage',
+    handle: 'Mooncalfmage',
     image: '/mooncalfmage/mooncalfmage.webp',
-    primaryPlatform: 'Twitch / YouTube / TikTok',
+    fallbackImage: '/Anvil.webp',
+    platform: 'Twitch / YouTube / TikTok',
     profileUrl: '/mooncalfmage/',
+    twitchUrl: 'https://www.twitch.tv/mooncalfmage',
     merchStoreTrack: false,
     merchStoreApproved: false,
     notes: '',
-    analytics: {
-      followers: '—',
-      avgViewers: '—',
-      postsThisQuarter: '—',
-      lastUpdated: '2026-06-23'
-    },
-    longFormVideos: [
-      {
-        title: 'Quarterly Long Form Video 1',
-        posted: false,
-        taggedFaithForge: false,
-        tagNotPossible: false,
-        link: ''
-      },
-      {
-        title: 'Merch Track Long Form Video 2',
-        posted: false,
-        taggedFaithForge: false,
-        tagNotPossible: false,
-        link: ''
-      }
+    baseLongForm: [
+      { title: 'Base Long Form Video 1', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
     ],
-    shorts: [
-      { title: 'Short / Reel / TikTok 1', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Short / Reel / TikTok 2', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Short / Reel / TikTok 3', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Track Short 4', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Track Short 5', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Track Short 6', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+    baseShorts: [
+      { title: 'Base Short / Reel / TikTok 1', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
+      { title: 'Base Short / Reel / TikTok 2', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
+      { title: 'Base Short / Reel / TikTok 3', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+    ],
+    merchLongForm: [
+      { title: 'Merch Extra Long Form Video 2', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+    ],
+    merchShorts: [
+      { title: 'Merch Extra Short / Reel / TikTok 4', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
+      { title: 'Merch Extra Short / Reel / TikTok 5', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
+      { title: 'Merch Extra Short / Reel / TikTok 6', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
     ]
   },
 
   {
+    login: 'romans1014xp',
     name: 'Romans1014XP',
-    handle: 'romans1014xp',
+    handle: 'Romans1014XP',
     image: '/romans1014XP/romans1014XP.webp',
-    primaryPlatform: 'Twitch / YouTube / TikTok',
-    profileUrl: '/romans1014XP/',
+    fallbackImage: '/Anvil.webp',
+    platform: 'Twitch / YouTube / TikTok / Instagram / Facebook',
+    profileUrl: '/Romans1014XP/',
+    twitchUrl: 'https://www.twitch.tv/romans1014xp',
     merchStoreTrack: false,
     merchStoreApproved: false,
     notes: '',
-    analytics: {
-      followers: '—',
-      avgViewers: '—',
-      postsThisQuarter: '—',
-      lastUpdated: '2026-06-23'
-    },
-    longFormVideos: [
-      {
-        title: 'Quarterly Long Form Video 1',
-        posted: false,
-        taggedFaithForge: false,
-        tagNotPossible: false,
-        link: ''
-      },
-      {
-        title: 'Merch Track Long Form Video 2',
-        posted: false,
-        taggedFaithForge: false,
-        tagNotPossible: false,
-        link: ''
-      }
+    baseLongForm: [
+      { title: 'Base Long Form Video 1', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
     ],
-    shorts: [
-      { title: 'Short / Reel / TikTok 1', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Short / Reel / TikTok 2', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Short / Reel / TikTok 3', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Track Short 4', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Track Short 5', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Track Short 6', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+    baseShorts: [
+      { title: 'Base Short / Reel / TikTok 1', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
+      { title: 'Base Short / Reel / TikTok 2', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
+      { title: 'Base Short / Reel / TikTok 3', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+    ],
+    merchLongForm: [
+      { title: 'Merch Extra Long Form Video 2', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+    ],
+    merchShorts: [
+      { title: 'Merch Extra Short / Reel / TikTok 4', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
+      { title: 'Merch Extra Short / Reel / TikTok 5', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
+      { title: 'Merch Extra Short / Reel / TikTok 6', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
     ]
   },
 
   {
+    login: 'doctorjsways',
     name: 'DoctorJSWAYS',
-    handle: 'doctorjsways',
+    handle: 'DoctorJSWAYS',
     image: '/DoctorJSWAYS/DoctorJSWAYS1.webp',
-    primaryPlatform: 'Twitch / YouTube / TikTok',
+    fallbackImage: '/Anvil.webp',
+    platform: 'Twitch / YouTube / TikTok',
     profileUrl: '/DoctorJSWAYS/',
+    twitchUrl: 'https://www.twitch.tv/doctorjsways',
     merchStoreTrack: false,
     merchStoreApproved: false,
     notes: '',
-    analytics: {
-      followers: '—',
-      avgViewers: '—',
-      postsThisQuarter: '—',
-      lastUpdated: '2026-06-23'
-    },
-    longFormVideos: [
-      {
-        title: 'Quarterly Long Form Video 1',
-        posted: false,
-        taggedFaithForge: false,
-        tagNotPossible: false,
-        link: ''
-      },
-      {
-        title: 'Merch Track Long Form Video 2',
-        posted: false,
-        taggedFaithForge: false,
-        tagNotPossible: false,
-        link: ''
-      }
+    baseLongForm: [
+      { title: 'Base Long Form Video 1', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
     ],
-    shorts: [
-      { title: 'Short / Reel / TikTok 1', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Short / Reel / TikTok 2', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Short / Reel / TikTok 3', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Track Short 4', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Track Short 5', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Track Short 6', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+    baseShorts: [
+      { title: 'Base Short / Reel / TikTok 1', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
+      { title: 'Base Short / Reel / TikTok 2', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
+      { title: 'Base Short / Reel / TikTok 3', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+    ],
+    merchLongForm: [
+      { title: 'Merch Extra Long Form Video 2', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+    ],
+    merchShorts: [
+      { title: 'Merch Extra Short / Reel / TikTok 4', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
+      { title: 'Merch Extra Short / Reel / TikTok 5', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
+      { title: 'Merch Extra Short / Reel / TikTok 6', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
     ]
   },
 
   {
+    login: 'seawolf_30',
     name: 'Seawolf_30',
-    handle: 'seawolf_30',
+    handle: 'Seawolf_30',
     image: '/Seawolf_30/Seawolf.webp',
-    primaryPlatform: 'Twitch / YouTube',
+    fallbackImage: '/Anvil.webp',
+    platform: 'Twitch / YouTube',
     profileUrl: '/Seawolf_30/',
+    twitchUrl: 'https://www.twitch.tv/seawolf_30',
     merchStoreTrack: false,
     merchStoreApproved: false,
     notes: '',
-    analytics: {
-      followers: '—',
-      avgViewers: '—',
-      postsThisQuarter: '—',
-      lastUpdated: '2026-06-23'
-    },
-    longFormVideos: [
-      {
-        title: 'Quarterly Long Form Video 1',
-        posted: false,
-        taggedFaithForge: false,
-        tagNotPossible: false,
-        link: ''
-      },
-      {
-        title: 'Merch Track Long Form Video 2',
-        posted: false,
-        taggedFaithForge: false,
-        tagNotPossible: false,
-        link: ''
-      }
+    baseLongForm: [
+      { title: 'Base Long Form Video 1', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
     ],
-    shorts: [
-      { title: 'Short / Reel / TikTok 1', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Short / Reel / TikTok 2', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Short / Reel / TikTok 3', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Track Short 4', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Track Short 5', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Track Short 6', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+    baseShorts: [
+      { title: 'Base Short / Reel / TikTok 1', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
+      { title: 'Base Short / Reel / TikTok 2', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
+      { title: 'Base Short / Reel / TikTok 3', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+    ],
+    merchLongForm: [
+      { title: 'Merch Extra Long Form Video 2', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+    ],
+    merchShorts: [
+      { title: 'Merch Extra Short / Reel / TikTok 4', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
+      { title: 'Merch Extra Short / Reel / TikTok 5', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
+      { title: 'Merch Extra Short / Reel / TikTok 6', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
     ]
   },
 
   {
+    login: 'brn2bew1ld',
     name: 'Brn2bEw1Ld',
-    handle: 'brn2bew1ld',
+    handle: 'Brn2bEw1Ld',
     image: '/Brn2bEw1Ld/Brn2bEw1Ld.webp',
-    primaryPlatform: 'Twitch / YouTube',
+    fallbackImage: '/Anvil.webp',
+    platform: 'Twitch / YouTube',
     profileUrl: '/Brn2bEw1Ld/',
+    twitchUrl: 'https://www.twitch.tv/brn2bew1ld',
     merchStoreTrack: false,
     merchStoreApproved: false,
     notes: '',
-    analytics: {
-      followers: '—',
-      avgViewers: '—',
-      postsThisQuarter: '—',
-      lastUpdated: '2026-06-23'
-    },
-    longFormVideos: [
-      {
-        title: 'Quarterly Long Form Video 1',
-        posted: false,
-        taggedFaithForge: false,
-        tagNotPossible: false,
-        link: ''
-      },
-      {
-        title: 'Merch Track Long Form Video 2',
-        posted: false,
-        taggedFaithForge: false,
-        tagNotPossible: false,
-        link: ''
-      }
+    baseLongForm: [
+      { title: 'Base Long Form Video 1', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
     ],
-    shorts: [
-      { title: 'Short / Reel / TikTok 1', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Short / Reel / TikTok 2', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Short / Reel / TikTok 3', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Track Short 4', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Track Short 5', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Track Short 6', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+    baseShorts: [
+      { title: 'Base Short / Reel / TikTok 1', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
+      { title: 'Base Short / Reel / TikTok 2', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
+      { title: 'Base Short / Reel / TikTok 3', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+    ],
+    merchLongForm: [
+      { title: 'Merch Extra Long Form Video 2', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+    ],
+    merchShorts: [
+      { title: 'Merch Extra Short / Reel / TikTok 4', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
+      { title: 'Merch Extra Short / Reel / TikTok 5', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
+      { title: 'Merch Extra Short / Reel / TikTok 6', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
     ]
   },
 
   {
+    login: 'blessttim',
     name: 'blesstTim',
-    handle: 'blessttim',
+    handle: 'blesstTim',
     image: '/blesstTim/blesstTim.webp',
-    primaryPlatform: 'Twitch / YouTube',
+    fallbackImage: '/Anvil.webp',
+    platform: 'Twitch / YouTube',
     profileUrl: '/blesstTim/',
+    twitchUrl: 'https://www.twitch.tv/blesstTim',
     merchStoreTrack: false,
     merchStoreApproved: false,
     notes: '',
-    analytics: {
-      followers: '—',
-      avgViewers: '—',
-      postsThisQuarter: '—',
-      lastUpdated: '2026-06-23'
-    },
-    longFormVideos: [
-      {
-        title: 'Quarterly Long Form Video 1',
-        posted: false,
-        taggedFaithForge: false,
-        tagNotPossible: false,
-        link: ''
-      },
-      {
-        title: 'Merch Track Long Form Video 2',
-        posted: false,
-        taggedFaithForge: false,
-        tagNotPossible: false,
-        link: ''
-      }
+    baseLongForm: [
+      { title: 'Base Long Form Video 1', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
     ],
-    shorts: [
-      { title: 'Short / Reel / TikTok 1', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Short / Reel / TikTok 2', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Short / Reel / TikTok 3', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Track Short 4', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Track Short 5', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Track Short 6', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+    baseShorts: [
+      { title: 'Base Short / Reel / TikTok 1', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
+      { title: 'Base Short / Reel / TikTok 2', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
+      { title: 'Base Short / Reel / TikTok 3', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+    ],
+    merchLongForm: [
+      { title: 'Merch Extra Long Form Video 2', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+    ],
+    merchShorts: [
+      { title: 'Merch Extra Short / Reel / TikTok 4', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
+      { title: 'Merch Extra Short / Reel / TikTok 5', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
+      { title: 'Merch Extra Short / Reel / TikTok 6', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
     ]
   },
 
   {
+    login: 'faithfamilydad',
     name: 'FaithFamilyDad',
-    handle: 'faithfamilydad',
+    handle: 'FaithFamilyDad',
     image: '/FaithFamilyDad/FaithFamilyDad1.webp',
-    primaryPlatform: 'Twitch / YouTube / TikTok / Kick',
+    fallbackImage: '/Anvil.webp',
+    platform: 'Twitch / YouTube / TikTok / Kick',
     profileUrl: '/FaithFamilyDad/',
+    twitchUrl: 'https://www.twitch.tv/faithfamilydad',
     merchStoreTrack: false,
     merchStoreApproved: false,
     notes: '',
-    analytics: {
-      followers: '—',
-      avgViewers: '—',
-      postsThisQuarter: '—',
-      lastUpdated: '2026-06-23'
-    },
-    longFormVideos: [
-      {
-        title: 'Quarterly Long Form Video 1',
-        posted: false,
-        taggedFaithForge: false,
-        tagNotPossible: false,
-        link: ''
-      },
-      {
-        title: 'Merch Track Long Form Video 2',
-        posted: false,
-        taggedFaithForge: false,
-        tagNotPossible: false,
-        link: ''
-      }
+    baseLongForm: [
+      { title: 'Base Long Form Video 1', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
     ],
-    shorts: [
-      { title: 'Short / Reel / TikTok 1', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Short / Reel / TikTok 2', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Short / Reel / TikTok 3', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Track Short 4', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Track Short 5', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Track Short 6', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+    baseShorts: [
+      { title: 'Base Short / Reel / TikTok 1', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
+      { title: 'Base Short / Reel / TikTok 2', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
+      { title: 'Base Short / Reel / TikTok 3', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+    ],
+    merchLongForm: [
+      { title: 'Merch Extra Long Form Video 2', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+    ],
+    merchShorts: [
+      { title: 'Merch Extra Short / Reel / TikTok 4', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
+      { title: 'Merch Extra Short / Reel / TikTok 5', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
+      { title: 'Merch Extra Short / Reel / TikTok 6', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
     ]
   },
 
   {
+    login: 'ninjasaucex',
     name: 'NinjaSauceX',
-    handle: 'ninjasaucex',
+    handle: 'NinjaSauceX',
     image: '/NinjaSauceX/NinjaSauceX.webp',
-    primaryPlatform: 'Twitch / YouTube',
+    fallbackImage: '/Anvil.webp',
+    platform: 'Twitch / YouTube',
     profileUrl: '/NinjaSauceX/',
+    twitchUrl: 'https://www.twitch.tv/ninjasaucex',
     merchStoreTrack: false,
     merchStoreApproved: false,
     notes: '',
-    analytics: {
-      followers: '—',
-      avgViewers: '—',
-      postsThisQuarter: '—',
-      lastUpdated: '2026-06-23'
-    },
-    longFormVideos: [
-      {
-        title: 'Quarterly Long Form Video 1',
-        posted: false,
-        taggedFaithForge: false,
-        tagNotPossible: false,
-        link: ''
-      },
-      {
-        title: 'Merch Track Long Form Video 2',
-        posted: false,
-        taggedFaithForge: false,
-        tagNotPossible: false,
-        link: ''
-      }
+    baseLongForm: [
+      { title: 'Base Long Form Video 1', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
     ],
-    shorts: [
-      { title: 'Short / Reel / TikTok 1', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Short / Reel / TikTok 2', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Short / Reel / TikTok 3', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Track Short 4', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Track Short 5', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Track Short 6', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+    baseShorts: [
+      { title: 'Base Short / Reel / TikTok 1', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
+      { title: 'Base Short / Reel / TikTok 2', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
+      { title: 'Base Short / Reel / TikTok 3', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+    ],
+    merchLongForm: [
+      { title: 'Merch Extra Long Form Video 2', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+    ],
+    merchShorts: [
+      { title: 'Merch Extra Short / Reel / TikTok 4', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
+      { title: 'Merch Extra Short / Reel / TikTok 5', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
+      { title: 'Merch Extra Short / Reel / TikTok 6', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
     ]
   },
 
   {
+    login: 'warrior_of_light777',
     name: 'warrior_of_light777',
     handle: 'warrior_of_light777',
     image: '/Warrior_of_light777/warrior_of_light.webp',
-    primaryPlatform: 'Twitch / YouTube / TikTok',
+    fallbackImage: '/Anvil.webp',
+    platform: 'Twitch / YouTube / TikTok',
     profileUrl: '/Warrior_of_light777/',
+    twitchUrl: 'https://www.twitch.tv/warrior_of_light777',
     merchStoreTrack: false,
     merchStoreApproved: false,
     notes: '',
-    analytics: {
-      followers: '—',
-      avgViewers: '—',
-      postsThisQuarter: '—',
-      lastUpdated: '2026-06-23'
-    },
-    longFormVideos: [
-      {
-        title: 'Quarterly Long Form Video 1',
-        posted: false,
-        taggedFaithForge: false,
-        tagNotPossible: false,
-        link: ''
-      },
-      {
-        title: 'Merch Track Long Form Video 2',
-        posted: false,
-        taggedFaithForge: false,
-        tagNotPossible: false,
-        link: ''
-      }
+    baseLongForm: [
+      { title: 'Base Long Form Video 1', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
     ],
-    shorts: [
-      { title: 'Short / Reel / TikTok 1', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Short / Reel / TikTok 2', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Short / Reel / TikTok 3', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Track Short 4', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Track Short 5', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Track Short 6', posted: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+    baseShorts: [
+      { title: 'Base Short / Reel / TikTok 1', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
+      { title: 'Base Short / Reel / TikTok 2', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
+      { title: 'Base Short / Reel / TikTok 3', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+    ],
+    merchLongForm: [
+      { title: 'Merch Extra Long Form Video 2', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+    ],
+    merchShorts: [
+      { title: 'Merch Extra Short / Reel / TikTok 4', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
+      { title: 'Merch Extra Short / Reel / TikTok 5', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
+      { title: 'Merch Extra Short / Reel / TikTok 6', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
     ]
   }
 ];
@@ -1178,49 +1291,157 @@ function escapeHTML(value) {
     .replaceAll("'", '&#039;');
 }
 
-function getRequiredCounts(streamer) {
-  const multiplier = streamer.merchStoreTrack ? 2 : 1;
+function normalizeLogin(value) {
+  return String(value || '').trim().toLowerCase();
+}
 
-  return {
-    longRequired: BASE_LONG_FORM_REQUIRED * multiplier,
-    shortsRequired: BASE_SHORTS_REQUIRED * multiplier
+function safeDate(value) {
+  if (!value) return '—';
+
+  const date = new Date(value);
+
+  if (Number.isNaN(date.getTime())) {
+    return String(value);
+  }
+
+  return date.toLocaleString();
+}
+
+function formatViewers(count) {
+  const number = Number(count || 0);
+
+  if (!number) return '0';
+
+  return number.toLocaleString();
+}
+
+function getStreamerStatus(login) {
+  return statusByLogin.get(normalizeLogin(login)) || {
+    login: normalizeLogin(login),
+    live: false,
+    display_name: '',
+    game_name: '',
+    title: '',
+    viewer_count: 0,
+    started_at: '',
+    game_id: '',
+    box_art_url: ''
   };
 }
 
-function getCompletion(streamer) {
-  const { longRequired, shortsRequired } = getRequiredCounts(streamer);
+function getRecentGames(login) {
+  return recentGamesByLogin.get(normalizeLogin(login)) || [];
+}
 
-  const longCompleted = streamer.longFormVideos.filter(item => item.posted).length;
-  const shortsCompleted = streamer.shorts.filter(item => item.posted).length;
-
-  const completed = Math.min(longCompleted, longRequired) + Math.min(shortsCompleted, shortsRequired);
-  const required = longRequired + shortsRequired;
-
-  const percent = required > 0 ? Math.round((completed / required) * 100) : 0;
-  const isComplete = longCompleted >= longRequired && shortsCompleted >= shortsRequired;
-
-  return {
-    longCompleted,
-    shortsCompleted,
-    completed,
-    required,
-    percent,
-    isComplete
+function getQuarterStats(login) {
+  return quarterStatsByLogin.get(normalizeLogin(login)) || {
+    streamCount: '—',
+    liveHours: '—',
+    avgViewers: '—',
+    peakViewers: '—'
   };
 }
 
-function getStatusBadge(streamer) {
-  const completion = getCompletion(streamer);
+function getGameName(game) {
+  return game?.name || game?.game_name || game?.category || '—';
+}
 
-  if (completion.isComplete) {
-    return `<span class="badge complete">Complete</span>`;
+function getGameTitle(game) {
+  return game?.last_title || game?.title || game?.description || '';
+}
+
+function getGameLastPlayed(game) {
+  return game?.last_played || game?.lastLive || game?.last_live_at || game?.played_at || '';
+}
+
+function countDone(items) {
+  return items.filter(item => item.done).length;
+}
+
+function getBaseCompletion(streamer) {
+  const longDone = countDone(streamer.baseLongForm);
+  const shortsDone = countDone(streamer.baseShorts);
+  const totalDone = longDone + shortsDone;
+  const totalRequired = streamer.baseLongForm.length + streamer.baseShorts.length;
+  const complete = longDone >= streamer.baseLongForm.length && shortsDone >= streamer.baseShorts.length;
+  const percent = totalRequired ? Math.round((totalDone / totalRequired) * 100) : 0;
+
+  return {
+    longDone,
+    shortsDone,
+    totalDone,
+    totalRequired,
+    complete,
+    percent
+  };
+}
+
+function getMerchCompletion(streamer) {
+  const longDone = countDone(streamer.merchLongForm);
+  const shortsDone = countDone(streamer.merchShorts);
+  const extraDone = longDone + shortsDone;
+  const extraRequired = streamer.merchLongForm.length + streamer.merchShorts.length;
+  const extraComplete = longDone >= streamer.merchLongForm.length && shortsDone >= streamer.merchShorts.length;
+
+  const base = getBaseCompletion(streamer);
+
+  const totalDone = base.totalDone + extraDone;
+  const totalRequired = base.totalRequired + extraRequired;
+  const totalComplete = base.complete && extraComplete;
+  const percent = totalRequired ? Math.round((totalDone / totalRequired) * 100) : 0;
+
+  return {
+    longDone,
+    shortsDone,
+    extraDone,
+    extraRequired,
+    extraComplete,
+    totalDone,
+    totalRequired,
+    totalComplete,
+    percent
+  };
+}
+
+function getOverallCompletion(streamer) {
+  return streamer.merchStoreTrack ? getMerchCompletion(streamer) : getBaseCompletion(streamer);
+}
+
+function getMainBadges(streamer) {
+  const base = getBaseCompletion(streamer);
+  const merch = getMerchCompletion(streamer);
+  const status = getStreamerStatus(streamer.login);
+
+  const badges = [];
+
+  badges.push(status.live
+    ? `<span class="badge live">Live Now</span>`
+    : `<span class="badge offline">Offline</span>`
+  );
+
+  badges.push(base.complete
+    ? `<span class="badge complete">Base Complete</span>`
+    : base.totalDone > 0
+      ? `<span class="badge progress">Base In Progress</span>`
+      : `<span class="badge behind">Base Needs Work</span>`
+  );
+
+  if (streamer.merchStoreTrack) {
+    badges.push(`<span class="badge merch">Merch Track Active</span>`);
+
+    badges.push(merch.totalComplete
+      ? `<span class="badge complete">Merch Eligible</span>`
+      : `<span class="badge progress">Merch In Progress</span>`
+    );
+  } else {
+    badges.push(`<span class="badge soft">Merch Track Off</span>`);
   }
 
-  if (completion.completed === 0) {
-    return `<span class="badge behind">Needs Work</span>`;
+  if (streamer.merchStoreApproved) {
+    badges.push(`<span class="badge complete">Merch Approved</span>`);
   }
 
-  return `<span class="badge progress">In Progress</span>`;
+  return badges.join('');
 }
 
 function getCollabBadge(item) {
@@ -1235,111 +1456,238 @@ function getCollabBadge(item) {
   return `<span class="collab-tag no">FaithForge Not Tagged</span>`;
 }
 
-function renderRequirementItems(items, requiredCount) {
-  return items.slice(0, requiredCount).map((item, index) => {
-    const postedClass = item.posted ? 'done' : '';
-    const linkHTML = item.link
-      ? ` • <a href="${escapeHTML(item.link)}" target="_blank" rel="noopener noreferrer">Open Post</a>`
-      : '';
+function renderRequirementItem(item, inactive = false) {
+  const doneClass = item.done ? 'done' : '';
+  const linkHTML = item.link
+    ? ` • <a href="${escapeHTML(item.link)}" target="_blank" rel="noopener noreferrer">Open Post</a>`
+    : '';
+
+  return `
+    <div class="requirement-item ${doneClass}">
+      <span class="check-icon">${item.done ? '✓' : ''}</span>
+
+      <div>
+        <div class="requirement-title">${escapeHTML(item.title)}</div>
+        <div class="requirement-meta">
+          ${inactive ? 'Optional until merch track is active' : item.done ? 'Completed' : 'Not completed yet'}${linkHTML}
+          <br>
+          ${getCollabBadge(item)}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderRequirementList(title, items, inactive = false) {
+  return `
+    <div class="requirement-list">
+      <h5>${escapeHTML(title)}</h5>
+      ${items.map(item => renderRequirementItem(item, inactive)).join('')}
+    </div>
+  `;
+}
+
+function renderRecentGames(streamer) {
+  const games = getRecentGames(streamer.login);
+
+  if (!games.length) {
+    return `
+      <div class="recent-item">
+        <strong>No recent game data yet</strong>
+        Recent Twitch activity will show here when the Cloudflare recent-games route returns data.
+      </div>
+    `;
+  }
+
+  return games.slice(0, 4).map(game => {
+    const name = getGameName(game);
+    const title = getGameTitle(game);
+    const lastPlayed = getGameLastPlayed(game);
 
     return `
-      <div class="requirement-item ${postedClass}">
-        <span class="check-icon">${item.posted ? '✓' : ''}</span>
-
-        <div>
-          <div class="requirement-title">
-            ${escapeHTML(item.title || `Requirement ${index + 1}`)}
-          </div>
-
-          <div class="requirement-meta">
-            ${item.posted ? 'Posted / Completed' : 'Not completed yet'}${linkHTML}
-            <br>
-            ${getCollabBadge(item)}
-          </div>
-        </div>
+      <div class="recent-item">
+        <strong>${escapeHTML(name)}</strong>
+        ${title ? `${escapeHTML(title)}<br>` : ''}
+        ${lastPlayed ? `Last played: ${escapeHTML(lastPlayed)}` : 'Recent Twitch activity'}
       </div>
     `;
   }).join('');
 }
 
 function renderStreamerCard(streamer) {
-  const { longRequired, shortsRequired } = getRequiredCounts(streamer);
-  const completion = getCompletion(streamer);
+  const status = getStreamerStatus(streamer.login);
+  const stats = getQuarterStats(streamer.login);
+  const base = getBaseCompletion(streamer);
+  const merch = getMerchCompletion(streamer);
+  const overall = getOverallCompletion(streamer);
 
-  const merchBadge = streamer.merchStoreTrack
-    ? `<span class="badge merch">Merch Track</span>`
-    : `<span class="badge soft">Base Track</span>`;
+  const liveStatus = status.live ? 'Live' : 'Offline';
+  const currentViewers = status.live ? formatViewers(status.viewer_count) : '—';
+  const currentGame = status.live ? status.game_name || 'Live on Twitch' : '—';
+  const streamTitle = status.live ? status.title || 'Currently live' : '—';
+  const startedAt = status.live ? safeDate(status.started_at) : '—';
 
-  const approvedBadge = streamer.merchStoreApproved
-    ? `<span class="badge complete">Merch Approved</span>`
-    : '';
+  const merchTrackClass = streamer.merchStoreTrack ? '' : 'inactive';
+  const merchTrackLabel = streamer.merchStoreTrack
+    ? 'Active — double requirements required'
+    : 'Not active — shown here so the streamer can see what merch access would require';
 
   return `
-    <article class="streamer-card" data-name="${escapeHTML(streamer.name.toLowerCase())}">
+    <article class="streamer-card" data-login="${escapeHTML(streamer.login)}">
       <div class="streamer-top">
-        <img class="streamer-avatar" src="${escapeHTML(streamer.image)}" alt="${escapeHTML(streamer.name)} avatar">
+        <img
+          class="streamer-avatar"
+          src="${escapeHTML(streamer.image)}"
+          alt="${escapeHTML(streamer.name)} avatar"
+          onerror="this.src='${escapeHTML(streamer.fallbackImage || '/Anvil.webp')}'"
+        >
 
         <div>
           <div class="streamer-name-row">
             <h2 class="streamer-name">${escapeHTML(streamer.name)}</h2>
-            ${getStatusBadge(streamer)}
-            ${merchBadge}
-            ${approvedBadge}
+            ${getMainBadges(streamer)}
           </div>
 
           <p class="streamer-meta">
-            @${escapeHTML(streamer.handle)} • ${escapeHTML(streamer.primaryPlatform)}
+            @${escapeHTML(streamer.handle)} • ${escapeHTML(streamer.platform)}
             ${streamer.profileUrl ? ` • <a href="${escapeHTML(streamer.profileUrl)}">Creator Page</a>` : ''}
+            ${streamer.twitchUrl ? ` • <a href="${escapeHTML(streamer.twitchUrl)}" target="_blank" rel="noopener noreferrer">Twitch</a>` : ''}
           </p>
         </div>
       </div>
 
-      <div class="progress-area">
-        <div class="progress-header">
-          <h3>Quarterly Progress</h3>
-          <span>${completion.completed}/${completion.required} complete • ${completion.percent}%</span>
+      <div class="auto-strip">
+        <div class="metric ${status.live ? 'live-metric' : ''}">
+          <span>Live Status</span>
+          <strong>${escapeHTML(liveStatus)}</strong>
         </div>
 
-        <div class="progress-bar" aria-label="${escapeHTML(streamer.name)} progress">
-          <div class="progress-fill" style="width:${completion.percent}%"></div>
+        <div class="metric">
+          <span>Current Viewers</span>
+          <strong>${escapeHTML(currentViewers)}</strong>
         </div>
 
-        <div class="requirement-grid">
-          <section class="requirement-section">
-            <h4>Long Form Videos: ${completion.longCompleted}/${longRequired}</h4>
-            <div class="requirement-list">
-              ${renderRequirementItems(streamer.longFormVideos, longRequired)}
+        <div class="metric">
+          <span>Current Game</span>
+          <strong>${escapeHTML(currentGame)}</strong>
+        </div>
+
+        <div class="metric">
+          <span>Started At</span>
+          <strong>${escapeHTML(startedAt)}</strong>
+        </div>
+
+        <div class="metric">
+          <span>Quarter Streams</span>
+          <strong>${escapeHTML(stats.streamCount)}</strong>
+        </div>
+
+        <div class="metric">
+          <span>Live Hours</span>
+          <strong>${escapeHTML(stats.liveHours)}</strong>
+        </div>
+
+        <div class="metric">
+          <span>Avg Viewers</span>
+          <strong>${escapeHTML(stats.avgViewers)}</strong>
+        </div>
+
+        <div class="metric">
+          <span>Peak Viewers</span>
+          <strong>${escapeHTML(stats.peakViewers)}</strong>
+        </div>
+      </div>
+
+      <div class="requirement-wrap">
+        <div class="progress-group">
+          <div class="progress-header">
+            <h3>Active Requirement Progress</h3>
+            <span>${overall.totalDone}/${overall.totalRequired} complete • ${overall.percent}%</span>
+          </div>
+
+          <div class="progress-bar">
+            <div class="progress-fill" style="width:${overall.percent}%"></div>
+          </div>
+        </div>
+
+        <div class="requirement-layout">
+          <section class="track-section">
+            <div class="track-head">
+              <h4>Base Quarterly Requirement</h4>
+              ${base.complete
+                ? '<span class="badge complete">Complete</span>'
+                : '<span class="badge progress">Required</span>'
+              }
+            </div>
+
+            <p class="track-subtitle">
+              Required for every FaithForge creator: 1 long-form video and 3 Shorts/Reels/TikToks.
+            </p>
+
+            <div class="mini-progress">
+              <div class="mini-progress-card">
+                <span>Long Form</span>
+                <strong>${base.longDone}/${streamer.baseLongForm.length}</strong>
+              </div>
+
+              <div class="mini-progress-card">
+                <span>Shorts/Reels/TikToks</span>
+                <strong>${base.shortsDone}/${streamer.baseShorts.length}</strong>
+              </div>
+            </div>
+
+            <div class="requirement-grid">
+              ${renderRequirementList('Long Form Video', streamer.baseLongForm)}
+              ${renderRequirementList('Shorts / Reels / TikToks', streamer.baseShorts)}
             </div>
           </section>
 
-          <section class="requirement-section">
-            <h4>Shorts / Reels / TikToks: ${completion.shortsCompleted}/${shortsRequired}</h4>
-            <div class="requirement-list">
-              ${renderRequirementItems(streamer.shorts, shortsRequired)}
+          <section class="track-section ${merchTrackClass}">
+            <div class="track-head">
+              <h4>Merch Store Requirement</h4>
+              ${streamer.merchStoreTrack
+                ? merch.totalComplete
+                  ? '<span class="badge complete">Merch Eligible</span>'
+                  : '<span class="badge merch">Active</span>'
+                : '<span class="badge soft">Not Active</span>'
+              }
+            </div>
+
+            <p class="track-subtitle">
+              Merch store access doubles the requirement: 2 long-form videos and 6 Shorts/Reels/TikToks total.
+              Current merch status: <strong>${escapeHTML(merchTrackLabel)}</strong>.
+            </p>
+
+            <div class="mini-progress">
+              <div class="mini-progress-card">
+                <span>Extra Long Form</span>
+                <strong>${merch.longDone}/${streamer.merchLongForm.length}</strong>
+              </div>
+
+              <div class="mini-progress-card">
+                <span>Extra Shorts</span>
+                <strong>${merch.shortsDone}/${streamer.merchShorts.length}</strong>
+              </div>
+            </div>
+
+            <div class="requirement-grid">
+              ${renderRequirementList('Extra Long Form Video', streamer.merchLongForm, !streamer.merchStoreTrack)}
+              ${renderRequirementList('Extra Shorts / Reels / TikToks', streamer.merchShorts, !streamer.merchStoreTrack)}
             </div>
           </section>
         </div>
       </div>
 
-      <div class="analytics-strip">
-        <div class="metric">
-          <span>Followers</span>
-          <strong>${escapeHTML(streamer.analytics.followers)}</strong>
-        </div>
+      <div class="recent-box">
+        <h4>Cloudflare / Twitch Activity</h4>
 
-        <div class="metric">
-          <span>Avg Viewers</span>
-          <strong>${escapeHTML(streamer.analytics.avgViewers)}</strong>
-        </div>
+        <div class="recent-list">
+          <div class="recent-item">
+            <strong>Current Stream Title</strong>
+            ${escapeHTML(streamTitle)}
+          </div>
 
-        <div class="metric">
-          <span>Posts</span>
-          <strong>${escapeHTML(streamer.analytics.postsThisQuarter)}</strong>
-        </div>
-
-        <div class="metric">
-          <span>Updated</span>
-          <strong>${escapeHTML(streamer.analytics.lastUpdated)}</strong>
+          ${renderRecentGames(streamer)}
         </div>
       </div>
 
@@ -1352,45 +1700,198 @@ function renderStreamerCard(streamer) {
   `;
 }
 
+function normalizeStatusChannel(rawChannel) {
+  const login = normalizeLogin(
+    rawChannel.login ||
+    rawChannel.user_login ||
+    rawChannel.channel_login ||
+    rawChannel.channel ||
+    rawChannel.name
+  );
+
+  return {
+    login,
+    display_name: rawChannel.display_name || rawChannel.user_name || login,
+    live: Boolean(rawChannel.live || rawChannel.type === 'live' || rawChannel.is_live),
+    game_name: rawChannel.game_name || rawChannel.game || rawChannel.category || '',
+    title: rawChannel.title || rawChannel.stream_title || '',
+    viewer_count: Number(rawChannel.viewer_count || rawChannel.viewers || 0) || 0,
+    started_at: rawChannel.started_at || '',
+    game_id: rawChannel.game_id || '',
+    box_art_url: rawChannel.box_art_url || rawChannel.game_box_art_url || ''
+  };
+}
+
+function applyStatusPayload(payload) {
+  const rawChannels = Array.isArray(payload.channels)
+    ? payload.channels
+    : Array.isArray(payload.data)
+      ? payload.data
+      : [];
+
+  rawChannels.forEach(rawChannel => {
+    const status = normalizeStatusChannel(rawChannel);
+
+    if (status.login) {
+      statusByLogin.set(status.login, status);
+    }
+  });
+}
+
+async function refreshStatuses() {
+  try {
+    const response = await fetch(STREAM_STATUS_ENDPOINT, { cache: 'no-store' });
+    const payload = await response.json();
+
+    if (!response.ok) {
+      throw new Error(payload.details || payload.error || 'Unable to load Twitch status.');
+    }
+
+    applyStatusPayload(payload);
+
+    const liveCount = STREAMER_PROGRESS.filter(streamer => getStreamerStatus(streamer.login).live).length;
+
+    document.getElementById('dataNote').innerHTML = `
+      <strong>Cloudflare status:</strong>
+      Live Twitch status loaded successfully. ${liveCount} FaithForge ${liveCount === 1 ? 'creator is' : 'creators are'} live right now.
+      Recent games are loading from the existing recent-games endpoint.
+    `;
+  } catch (error) {
+    console.error('Twitch status error:', error);
+
+    document.getElementById('dataNote').innerHTML = `
+      <strong>Cloudflare status:</strong>
+      Live Twitch status could not be loaded right now. Manual requirements still work.
+    `;
+  }
+}
+
+async function fetchRecentGamesForStreamer(streamer) {
+  try {
+    const response = await fetch(
+      `${RECENT_GAMES_ENDPOINT}?login=${encodeURIComponent(streamer.login)}&limit=4`,
+      { cache: 'no-store' }
+    );
+
+    const payload = await response.json();
+
+    if (!response.ok) {
+      throw new Error(payload.details || payload.error || 'Unable to load recent games.');
+    }
+
+    const rawGames = payload.games || payload.recentGames || [];
+
+    recentGamesByLogin.set(streamer.login, rawGames.slice(0, 4));
+  } catch (error) {
+    console.error(`Recent games error for ${streamer.login}:`, error);
+    recentGamesByLogin.set(streamer.login, []);
+  }
+}
+
+async function refreshRecentGames() {
+  await Promise.allSettled(
+    STREAMER_PROGRESS.map(streamer => fetchRecentGamesForStreamer(streamer))
+  );
+}
+
+async function refreshQuarterStats() {
+  try {
+    const response = await fetch(QUARTER_STATS_ENDPOINT, { cache: 'no-store' });
+    const payload = await response.json();
+
+    if (!response.ok) {
+      throw new Error(payload.details || payload.error || 'Quarter stats route not available yet.');
+    }
+
+    const stats = Array.isArray(payload.stats)
+      ? payload.stats
+      : Array.isArray(payload.data)
+        ? payload.data
+        : [];
+
+    stats.forEach(item => {
+      const login = normalizeLogin(item.login || item.user_login || item.channel_login || item.name);
+
+      if (!login) return;
+
+      quarterStatsByLogin.set(login, {
+        streamCount: item.streamCount ?? item.stream_count ?? '—',
+        liveHours: item.liveHours ?? item.live_hours ?? '—',
+        avgViewers: item.avgViewers ?? item.avg_viewers ?? '—',
+        peakViewers: item.peakViewers ?? item.peak_viewers ?? '—'
+      });
+    });
+  } catch (error) {
+    console.info('Quarter stats route is optional and not loaded:', error.message);
+
+    STREAMER_PROGRESS.forEach(streamer => {
+      if (!quarterStatsByLogin.has(streamer.login)) {
+        quarterStatsByLogin.set(streamer.login, {
+          streamCount: 'Add route',
+          liveHours: 'Add route',
+          avgViewers: 'Add route',
+          peakViewers: 'Add route'
+        });
+      }
+    });
+  }
+}
+
 function getFilteredStreamers() {
   const search = document.getElementById('searchInput').value.trim().toLowerCase();
   const statusFilter = document.getElementById('statusFilter').value;
   const sortValue = document.getElementById('sortSelect').value;
 
   let streamers = STREAMER_PROGRESS.filter(streamer => {
-    const completion = getCompletion(streamer);
+    const base = getBaseCompletion(streamer);
+    const merch = getMerchCompletion(streamer);
+    const status = getStreamerStatus(streamer.login);
+
     const matchesSearch =
       streamer.name.toLowerCase().includes(search) ||
-      streamer.handle.toLowerCase().includes(search);
+      streamer.handle.toLowerCase().includes(search) ||
+      streamer.login.toLowerCase().includes(search);
 
     if (!matchesSearch) return false;
 
-    if (statusFilter === 'complete') return completion.isComplete;
-    if (statusFilter === 'progress') return !completion.isComplete;
-    if (statusFilter === 'merch') return streamer.merchStoreTrack;
-    if (statusFilter === 'base') return !streamer.merchStoreTrack;
+    if (statusFilter === 'live') return status.live;
+    if (statusFilter === 'baseComplete') return base.complete;
+    if (statusFilter === 'baseNeeds') return !base.complete;
+    if (statusFilter === 'merchActive') return streamer.merchStoreTrack;
+    if (statusFilter === 'merchEligible') return streamer.merchStoreTrack && merch.totalComplete;
+    if (statusFilter === 'merchNeeds') return streamer.merchStoreTrack && !merch.totalComplete;
 
     return true;
   });
 
   streamers.sort((a, b) => {
-    const aCompletion = getCompletion(a);
-    const bCompletion = getCompletion(b);
+    const aOverall = getOverallCompletion(a);
+    const bOverall = getOverallCompletion(b);
+    const aBase = getBaseCompletion(a);
+    const bBase = getBaseCompletion(b);
+    const aMerch = getMerchCompletion(a);
+    const bMerch = getMerchCompletion(b);
+    const aStatus = getStreamerStatus(a.login);
+    const bStatus = getStreamerStatus(b.login);
 
     if (sortValue === 'least') {
-      return aCompletion.percent - bCompletion.percent || a.name.localeCompare(b.name);
+      return aOverall.percent - bOverall.percent || a.name.localeCompare(b.name);
     }
 
     if (sortValue === 'most') {
-      return bCompletion.percent - aCompletion.percent || a.name.localeCompare(b.name);
+      return bOverall.percent - aOverall.percent || a.name.localeCompare(b.name);
     }
 
-    if (sortValue === 'complete') {
-      return Number(bCompletion.isComplete) - Number(aCompletion.isComplete) || a.name.localeCompare(b.name);
+    if (sortValue === 'live') {
+      return Number(bStatus.live) - Number(aStatus.live) || Number(bStatus.viewer_count || 0) - Number(aStatus.viewer_count || 0);
     }
 
-    if (sortValue === 'behind') {
-      return Number(aCompletion.isComplete) - Number(bCompletion.isComplete) || aCompletion.percent - bCompletion.percent;
+    if (sortValue === 'baseNeeds') {
+      return Number(aBase.complete) - Number(bBase.complete) || aBase.percent - bBase.percent;
+    }
+
+    if (sortValue === 'merchNeeds') {
+      return Number(b.merchStoreTrack) - Number(a.merchStoreTrack) || Number(aMerch.totalComplete) - Number(bMerch.totalComplete) || aMerch.percent - bMerch.percent;
     }
 
     return a.name.localeCompare(b.name);
@@ -1400,14 +1901,18 @@ function getFilteredStreamers() {
 }
 
 function updateSummary() {
-  const completeCount = STREAMER_PROGRESS.filter(streamer => getCompletion(streamer).isComplete).length;
-  const inProgressCount = STREAMER_PROGRESS.length - completeCount;
-  const merchCount = STREAMER_PROGRESS.filter(streamer => streamer.merchStoreTrack).length;
+  const baseComplete = STREAMER_PROGRESS.filter(streamer => getBaseCompletion(streamer).complete).length;
+  const baseProgress = STREAMER_PROGRESS.length - baseComplete;
+  const merchTrack = STREAMER_PROGRESS.filter(streamer => streamer.merchStoreTrack).length;
+  const merchEligible = STREAMER_PROGRESS.filter(streamer => streamer.merchStoreTrack && getMerchCompletion(streamer).totalComplete).length;
+  const liveNow = STREAMER_PROGRESS.filter(streamer => getStreamerStatus(streamer.login).live).length;
 
   document.getElementById('summaryQuarter').textContent = CURRENT_QUARTER;
-  document.getElementById('summaryComplete').textContent = completeCount;
-  document.getElementById('summaryProgress').textContent = inProgressCount;
-  document.getElementById('summaryMerch').textContent = merchCount;
+  document.getElementById('summaryBaseComplete').textContent = baseComplete;
+  document.getElementById('summaryBaseProgress').textContent = baseProgress;
+  document.getElementById('summaryMerchTrack').textContent = merchTrack;
+  document.getElementById('summaryMerchEligible').textContent = merchEligible;
+  document.getElementById('summaryLiveNow').textContent = liveNow;
 }
 
 function renderDashboard() {
@@ -1432,11 +1937,47 @@ document.getElementById('searchInput').addEventListener('input', renderDashboard
 document.getElementById('statusFilter').addEventListener('change', renderDashboard);
 document.getElementById('sortSelect').addEventListener('change', renderDashboard);
 
+STREAMER_PROGRESS.forEach(streamer => {
+  statusByLogin.set(streamer.login, {
+    login: streamer.login,
+    live: false,
+    display_name: streamer.name,
+    game_name: '',
+    title: '',
+    viewer_count: 0,
+    started_at: '',
+    game_id: '',
+    box_art_url: ''
+  });
+});
+
 renderDashboard();
+
+(async function hydrateDashboard() {
+  await refreshStatuses();
+  renderDashboard();
+
+  await Promise.allSettled([
+    refreshRecentGames(),
+    refreshQuarterStats()
+  ]);
+
+  renderDashboard();
+
+  setInterval(async () => {
+    await refreshStatuses();
+    renderDashboard();
+  }, 90000);
+
+  setInterval(async () => {
+    await refreshRecentGames();
+    renderDashboard();
+  }, 300000);
+})();
 </script>
 
 <script src="https://faithforgegaming.com/embers.js"></script>
 
 </body>
 </html>
-
+```

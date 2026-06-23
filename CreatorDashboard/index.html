@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,11 +5,9 @@
 
   <title>FaithForge Creator Dashboard | Streamer Requirements & Analytics</title>
 
-  <meta name="description" content="FaithForge Gaming creator dashboard for quarterly streamer requirements, merch store eligibility, Twitch live status, and creator progress tracking.">
+  <meta name="description" content="FaithForge Gaming creator dashboard for quarterly streamer requirements, merch store eligibility, Twitch live status, creator progress, and Cloudflare-powered stream analytics.">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- Keep this dashboard out of search engines unless you choose to make it public -->
   <meta name="robots" content="noindex, nofollow">
 
   <link rel="canonical" href="https://faithforgegaming.com/CreatorDashboard/">
@@ -23,27 +20,33 @@
     :root {
       --ffg-black: #050505;
       --ffg-panel: rgba(0, 0, 0, 0.76);
-      --ffg-panel-soft: rgba(255, 255, 255, 0.045);
+      --ffg-panel-strong: rgba(0, 0, 0, 0.9);
+      --ffg-soft: rgba(255, 255, 255, 0.045);
       --ffg-gold: #f5c518;
       --ffg-gold-soft: #f0df9b;
       --ffg-gold-light: #ffe27a;
       --ffg-border: rgba(245, 197, 24, 0.25);
-      --ffg-muted: rgba(255,255,255,.72);
+      --ffg-muted: rgba(255, 255, 255, .72);
       --ffg-white: #fff8d8;
       --ffg-green: #36d77d;
       --ffg-red: #ff6868;
       --ffg-orange: #ffbf4d;
       --ffg-blue: #74b9ff;
+      --ffg-purple: #b794ff;
     }
 
     * {
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       background:
-        radial-gradient(circle at 20% 10%, rgba(245, 197, 24, 0.12), transparent 30%),
-        radial-gradient(circle at 80% 0%, rgba(148, 101, 13, 0.16), transparent 28%),
+        radial-gradient(circle at 15% 10%, rgba(245, 197, 24, 0.13), transparent 32%),
+        radial-gradient(circle at 82% 4%, rgba(183, 148, 255, 0.10), transparent 28%),
         radial-gradient(circle at center, #101010 0%, #050505 50%, #000 100%);
       color: var(--ffg-gold);
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -61,39 +64,47 @@
     }
 
     .dashboard-page {
-      width: min(1360px, 94%);
+      width: min(1420px, 94%);
       margin: 0 auto 60px;
       position: relative;
       z-index: 2;
     }
 
-    .dashboard-hero {
-      margin: 34px auto 24px;
-      padding: 30px 24px;
+    .dashboard-hero,
+    .data-note,
+    .summary-card,
+    .controls,
+    .streamer-card {
       border: 1px solid var(--ffg-border);
-      border-radius: 22px;
-      background:
-        linear-gradient(135deg, rgba(245, 197, 24, 0.10), transparent 36%),
-        rgba(0, 0, 0, 0.66);
-      box-shadow: 0 0 32px rgba(245, 197, 24, 0.16);
+      background: var(--ffg-panel);
+      box-shadow: 0 0 24px rgba(245, 197, 24, .12);
+    }
+
+    .dashboard-hero {
+      margin: 34px auto 22px;
+      padding: 30px 24px;
+      border-radius: 24px;
       text-align: left;
+      background:
+        linear-gradient(135deg, rgba(245, 197, 24, 0.12), transparent 36%),
+        rgba(0, 0, 0, 0.72);
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 110px 1fr;
+      grid-template-columns: 112px 1fr;
       gap: 20px;
       align-items: center;
     }
 
     .hero-logo {
-      width: 110px;
-      height: 110px;
+      width: 112px;
+      height: 112px;
       object-fit: contain;
       border-radius: 20px;
-      background: rgba(0,0,0,.5);
-      border: 1px solid rgba(245,197,24,.28);
-      box-shadow: 0 0 28px rgba(245,197,24,.26);
+      background: rgba(0, 0, 0, .55);
+      border: 1px solid rgba(245, 197, 24, .32);
+      box-shadow: 0 0 28px rgba(245, 197, 24, .26);
       padding: 8px;
     }
 
@@ -108,16 +119,16 @@
 
     .dashboard-hero h2 {
       color: var(--ffg-gold);
-      font-size: clamp(2rem, 4vw, 3.3rem);
+      font-size: clamp(2rem, 4vw, 3.35rem);
       margin: 0 0 10px;
-      text-shadow: 0 0 18px rgba(245,197,24,.28);
+      text-shadow: 0 0 18px rgba(245, 197, 24, .30);
       line-height: 1.05;
     }
 
     .dashboard-hero p {
       color: var(--ffg-gold-soft);
       line-height: 1.65;
-      max-width: 1000px;
+      max-width: 1040px;
       margin: 0;
       font-size: 1.02rem;
     }
@@ -125,9 +136,9 @@
     .quick-help {
       margin-top: 18px;
       padding: 14px 16px;
-      border: 1px solid rgba(245,197,24,.16);
+      border: 1px solid rgba(245, 197, 24, .18);
       border-radius: 14px;
-      background: rgba(255,255,255,.035);
+      background: rgba(255, 255, 255, .035);
       color: var(--ffg-muted);
       line-height: 1.55;
       font-size: .95rem;
@@ -140,10 +151,10 @@
     .data-note {
       margin: 0 0 18px;
       padding: 14px 16px;
-      border: 1px solid rgba(116,185,255,.25);
+      border-color: rgba(116, 185, 255, .28);
       border-radius: 16px;
-      background: rgba(116,185,255,.08);
-      color: rgba(255,255,255,.86);
+      background: rgba(116, 185, 255, .08);
+      color: rgba(255, 255, 255, .88);
       line-height: 1.5;
       text-align: left;
     }
@@ -154,17 +165,14 @@
 
     .summary-grid {
       display: grid;
-      grid-template-columns: repeat(6, minmax(0, 1fr));
+      grid-template-columns: repeat(8, minmax(0, 1fr));
       gap: 14px;
-      margin: 0 0 22px;
+      margin: 0 0 20px;
     }
 
     .summary-card {
-      border: 1px solid var(--ffg-border);
       border-radius: 18px;
-      background: var(--ffg-panel);
-      box-shadow: 0 0 22px rgba(245,197,24,.10);
-      padding: 18px;
+      padding: 17px;
       text-align: left;
     }
 
@@ -172,7 +180,7 @@
       display: block;
       color: var(--ffg-gold-soft);
       text-transform: uppercase;
-      font-size: .74rem;
+      font-size: .7rem;
       font-weight: 900;
       letter-spacing: .08em;
       margin-bottom: 6px;
@@ -181,8 +189,9 @@
     .summary-card strong {
       display: block;
       color: var(--ffg-white);
-      font-size: 1.85rem;
-      line-height: 1;
+      font-size: 1.65rem;
+      line-height: 1.05;
+      word-break: break-word;
     }
 
     .summary-card small {
@@ -190,26 +199,25 @@
       display: block;
       margin-top: 8px;
       line-height: 1.35;
+      font-size: .78rem;
     }
 
     .controls {
       display: grid;
-      grid-template-columns: minmax(220px, 1fr) minmax(180px, 240px) minmax(180px, 240px);
+      grid-template-columns: minmax(220px, 1fr) minmax(180px, 230px) minmax(180px, 230px) auto;
       gap: 12px;
       margin: 0 0 20px;
-      border: 1px solid var(--ffg-border);
       border-radius: 18px;
-      background: var(--ffg-panel);
       padding: 14px;
-      box-shadow: 0 0 22px rgba(245,197,24,.09);
     }
 
     .controls input,
-    .controls select {
+    .controls select,
+    .refresh-btn {
       width: 100%;
-      border: 1px solid rgba(245,197,24,.34);
+      border: 1px solid rgba(245, 197, 24, .34);
       border-radius: 12px;
-      background: rgba(0,0,0,.74);
+      background: rgba(0, 0, 0, .74);
       color: var(--ffg-gold);
       padding: 12px 14px;
       font-size: 1rem;
@@ -217,7 +225,22 @@
     }
 
     .controls input::placeholder {
-      color: rgba(255,255,255,.48);
+      color: rgba(255, 255, 255, .48);
+    }
+
+    .refresh-btn {
+      cursor: pointer;
+      font-weight: 900;
+      text-transform: uppercase;
+      background: linear-gradient(90deg, var(--ffg-gold), #cfa214);
+      color: #050505;
+      border-color: rgba(245, 197, 24, .6);
+      min-width: 145px;
+    }
+
+    .refresh-btn:hover {
+      filter: brightness(1.1);
+      box-shadow: 0 0 18px rgba(245, 197, 24, .45);
     }
 
     .dashboard-grid {
@@ -227,38 +250,35 @@
     }
 
     .streamer-card {
-      border: 1px solid var(--ffg-border);
-      border-radius: 20px;
-      background: var(--ffg-panel);
-      box-shadow: 0 0 24px rgba(245,197,24,.10);
+      border-radius: 22px;
       overflow: hidden;
       text-align: left;
     }
 
     .streamer-top {
       display: grid;
-      grid-template-columns: 82px 1fr;
+      grid-template-columns: 86px 1fr;
       gap: 14px;
       align-items: center;
       padding: 18px;
-      border-bottom: 1px solid rgba(245,197,24,.16);
+      border-bottom: 1px solid rgba(245, 197, 24, .16);
       background:
-        linear-gradient(135deg, rgba(245,197,24,.09), transparent 45%),
-        rgba(0,0,0,.35);
+        linear-gradient(135deg, rgba(245, 197, 24, .09), transparent 45%),
+        rgba(0, 0, 0, .38);
     }
 
     .streamer-avatar {
-      width: 82px;
-      height: 82px;
+      width: 86px;
+      height: 86px;
       border-radius: 18px;
       object-fit: cover;
-      border: 2px solid rgba(245,197,24,.55);
+      border: 2px solid rgba(245, 197, 24, .55);
       background: #000;
     }
 
     .streamer-name-row {
       display: flex;
-      gap: 10px;
+      gap: 9px;
       align-items: center;
       flex-wrap: wrap;
       margin-bottom: 6px;
@@ -272,58 +292,6 @@
       line-height: 1.1;
     }
 
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 24px;
-      padding: 4px 9px;
-      border-radius: 999px;
-      font-size: .72rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: .04em;
-      border: 1px solid rgba(255,255,255,.12);
-      white-space: nowrap;
-    }
-
-    .badge.complete {
-      color: #02170b;
-      background: var(--ffg-green);
-      border-color: rgba(54,215,125,.45);
-    }
-
-    .badge.behind {
-      color: #210000;
-      background: var(--ffg-red);
-      border-color: rgba(255,104,104,.5);
-    }
-
-    .badge.progress {
-      color: #1d1300;
-      background: var(--ffg-orange);
-      border-color: rgba(255,191,77,.5);
-    }
-
-    .badge.merch {
-      color: #000;
-      background: var(--ffg-gold);
-      border-color: rgba(245,197,24,.7);
-    }
-
-    .badge.live {
-      color: #001707;
-      background: var(--ffg-green);
-      border-color: rgba(54,215,125,.7);
-    }
-
-    .badge.offline,
-    .badge.soft {
-      color: var(--ffg-gold);
-      background: rgba(0,0,0,.45);
-      border-color: rgba(245,197,24,.28);
-    }
-
     .streamer-meta {
       color: var(--ffg-gold-soft);
       line-height: 1.45;
@@ -333,10 +301,68 @@
 
     .streamer-meta a {
       color: var(--ffg-gold-light);
-      font-weight: 800;
+      font-weight: 850;
     }
 
-    .auto-strip {
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 24px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      font-size: .7rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      border: 1px solid rgba(255, 255, 255, .12);
+      white-space: nowrap;
+    }
+
+    .badge.complete {
+      color: #02170b;
+      background: var(--ffg-green);
+      border-color: rgba(54, 215, 125, .45);
+    }
+
+    .badge.behind {
+      color: #210000;
+      background: var(--ffg-red);
+      border-color: rgba(255, 104, 104, .5);
+    }
+
+    .badge.progress {
+      color: #1d1300;
+      background: var(--ffg-orange);
+      border-color: rgba(255, 191, 77, .5);
+    }
+
+    .badge.merch {
+      color: #000;
+      background: var(--ffg-gold);
+      border-color: rgba(245, 197, 24, .7);
+    }
+
+    .badge.live {
+      color: #001707;
+      background: var(--ffg-green);
+      border-color: rgba(54, 215, 125, .7);
+    }
+
+    .badge.offline,
+    .badge.soft {
+      color: var(--ffg-gold);
+      background: rgba(0, 0, 0, .45);
+      border-color: rgba(245, 197, 24, .28);
+    }
+
+    .badge.analytics {
+      color: #03132b;
+      background: var(--ffg-blue);
+      border-color: rgba(116, 185, 255, .7);
+    }
+
+    .analytics-strip {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 10px;
@@ -344,17 +370,17 @@
     }
 
     .metric {
-      border: 1px solid rgba(245,197,24,.16);
+      border: 1px solid rgba(245, 197, 24, .16);
       border-radius: 14px;
-      background: rgba(0,0,0,.35);
+      background: rgba(0, 0, 0, .35);
       padding: 10px;
-      min-height: 74px;
+      min-height: 78px;
     }
 
     .metric span {
       display: block;
       color: var(--ffg-muted);
-      font-size: .72rem;
+      font-size: .7rem;
       text-transform: uppercase;
       font-weight: 900;
       letter-spacing: .06em;
@@ -368,8 +394,20 @@
       word-break: break-word;
     }
 
+    .metric small {
+      display: block;
+      color: rgba(255, 255, 255, .55);
+      margin-top: 4px;
+      line-height: 1.25;
+      font-size: .75rem;
+    }
+
     .metric.live-metric strong {
       color: var(--ffg-green);
+    }
+
+    .metric.warning strong {
+      color: var(--ffg-orange);
     }
 
     .requirement-wrap {
@@ -405,18 +443,17 @@
 
     .progress-bar {
       height: 12px;
-      border: 1px solid rgba(245,197,24,.24);
+      border: 1px solid rgba(245, 197, 24, .24);
       border-radius: 999px;
-      background: rgba(0,0,0,.5);
+      background: rgba(0, 0, 0, .5);
       overflow: hidden;
     }
 
     .progress-fill {
       height: 100%;
-      width: 0%;
       border-radius: 999px;
       background: linear-gradient(90deg, var(--ffg-gold), var(--ffg-gold-light));
-      box-shadow: 0 0 14px rgba(245,197,24,.55);
+      box-shadow: 0 0 14px rgba(245, 197, 24, .55);
     }
 
     .requirement-layout {
@@ -426,14 +463,14 @@
     }
 
     .track-section {
-      border: 1px solid rgba(245,197,24,.18);
+      border: 1px solid rgba(245, 197, 24, .18);
       border-radius: 18px;
-      background: rgba(255,255,255,.035);
+      background: rgba(255, 255, 255, .035);
       padding: 14px;
     }
 
     .track-section.inactive {
-      opacity: .78;
+      opacity: .75;
       border-style: dashed;
     }
 
@@ -463,22 +500,22 @@
 
     .mini-progress {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
       gap: 12px;
       margin-bottom: 12px;
     }
 
     .mini-progress-card {
-      border: 1px solid rgba(245,197,24,.15);
+      border: 1px solid rgba(245, 197, 24, .15);
       border-radius: 14px;
-      background: rgba(0,0,0,.32);
+      background: rgba(0, 0, 0, .32);
       padding: 10px;
     }
 
     .mini-progress-card span {
       color: var(--ffg-muted);
       display: block;
-      font-size: .78rem;
+      font-size: .74rem;
       text-transform: uppercase;
       font-weight: 900;
       letter-spacing: .06em;
@@ -487,7 +524,7 @@
 
     .mini-progress-card strong {
       color: var(--ffg-white);
-      font-size: 1.1rem;
+      font-size: 1.05rem;
     }
 
     .requirement-grid {
@@ -499,6 +536,7 @@
     .requirement-list {
       display: grid;
       gap: 9px;
+      align-content: start;
     }
 
     .requirement-list h5 {
@@ -511,37 +549,37 @@
 
     .requirement-item {
       display: grid;
-      grid-template-columns: 28px 1fr;
+      grid-template-columns: 30px 1fr;
       gap: 10px;
       align-items: start;
-      border: 1px solid rgba(245,197,24,.12);
-      background: rgba(0,0,0,.35);
+      border: 1px solid rgba(245, 197, 24, .12);
+      background: rgba(0, 0, 0, .35);
       border-radius: 12px;
       padding: 10px;
     }
 
     .track-section.inactive .requirement-item {
-      background: rgba(0,0,0,.22);
+      background: rgba(0, 0, 0, .22);
     }
 
     .check-icon {
-      width: 28px;
-      height: 28px;
+      width: 30px;
+      height: 30px;
       border-radius: 8px;
-      border: 1px solid rgba(245,197,24,.35);
+      border: 1px solid rgba(245, 197, 24, .35);
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      color: rgba(255,255,255,.35);
-      background: rgba(0,0,0,.45);
+      color: rgba(255, 255, 255, .35);
+      background: rgba(0, 0, 0, .45);
       font-weight: 900;
     }
 
     .requirement-item.done .check-icon {
       color: #001707;
       background: var(--ffg-green);
-      border-color: rgba(54,215,125,.8);
-      box-shadow: 0 0 14px rgba(54,215,125,.28);
+      border-color: rgba(54, 215, 125, .8);
+      box-shadow: 0 0 14px rgba(54, 215, 125, .28);
     }
 
     .requirement-title {
@@ -570,35 +608,35 @@
       margin-top: 6px;
       padding: 3px 7px;
       border-radius: 999px;
-      font-size: .7rem;
+      font-size: .68rem;
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: .04em;
-      border: 1px solid rgba(245,197,24,.22);
+      border: 1px solid rgba(245, 197, 24, .22);
       color: var(--ffg-gold-soft);
-      background: rgba(0,0,0,.34);
+      background: rgba(0, 0, 0, .34);
     }
 
     .collab-tag.yes {
       color: #001707;
       background: var(--ffg-green);
-      border-color: rgba(54,215,125,.7);
+      border-color: rgba(54, 215, 125, .7);
     }
 
     .collab-tag.no {
       color: #260000;
       background: var(--ffg-red);
-      border-color: rgba(255,104,104,.7);
+      border-color: rgba(255, 104, 104, .7);
     }
 
     .collab-tag.na {
       color: #111;
       background: #ccc;
-      border-color: rgba(255,255,255,.6);
+      border-color: rgba(255, 255, 255, .6);
     }
 
     .recent-box {
-      border-top: 1px solid rgba(245,197,24,.14);
+      border-top: 1px solid rgba(245, 197, 24, .14);
       padding: 0 18px 18px;
     }
 
@@ -617,9 +655,9 @@
     }
 
     .recent-item {
-      border: 1px solid rgba(245,197,24,.12);
+      border: 1px solid rgba(245, 197, 24, .12);
       border-radius: 12px;
-      background: rgba(0,0,0,.28);
+      background: rgba(0, 0, 0, .28);
       padding: 10px;
       color: var(--ffg-muted);
       line-height: 1.35;
@@ -662,22 +700,22 @@
       border-radius: 14px;
       text-decoration: none;
       color: var(--ffg-gold);
-      background: rgba(0,0,0,.75);
+      background: rgba(0, 0, 0, .75);
       border: 2px solid var(--ffg-gold);
-      box-shadow: 0 0 18px rgba(245,197,24,.45);
+      box-shadow: 0 0 18px rgba(245, 197, 24, .45);
       transition: all .2s ease-in-out;
     }
 
     .discord-button:hover {
       background: linear-gradient(90deg, var(--ffg-gold), #cfa214);
       color: #000;
-      box-shadow: 0 0 26px rgba(245,197,24,.9);
+      box-shadow: 0 0 26px rgba(245, 197, 24, .9);
       transform: translateY(-2px);
     }
 
-    @media (max-width: 1200px) {
+    @media (max-width: 1280px) {
       .summary-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(4, minmax(0, 1fr));
       }
 
       .dashboard-grid {
@@ -685,12 +723,12 @@
       }
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 920px) {
       .controls {
         grid-template-columns: 1fr;
       }
 
-      .auto-strip,
+      .analytics-strip,
       .requirement-grid,
       .recent-list {
         grid-template-columns: 1fr;
@@ -770,24 +808,25 @@
 
       <div>
         <p class="eyebrow">FaithForge Gaming Creator Partnership Program</p>
-        <h2>Quarterly Requirements & Streamer Dashboard</h2>
+        <h2>Quarterly Requirements & Creator Analytics</h2>
         <p>
-          Track FaithForge streamer requirements, merch store eligibility, live Twitch status, current viewers, recent streamed games, and manual content progress.
+          Official FaithForge creator partner dashboard for quarterly content requirements, merch eligibility,
+          live Twitch status, recent activity, and Cloudflare D1-powered stream stats.
         </p>
 
         <div class="quick-help">
-          <strong>How to update requirements:</strong>
-          scroll to the <strong>STREAMER_PROGRESS</strong> section in this file.
-          Change <strong>done: false</strong> to <strong>done: true</strong> when a video or short is completed.
-          Change <strong>taggedFaithForge: true</strong> when FaithForge was tagged as a collaborator.
-          Turn on the merch requirement by changing <strong>merchStoreTrack: false</strong> to <strong>merchStoreTrack: true</strong>.
+          <strong>Manual requirement updates:</strong>
+          In the <strong>STREAMER_PROGRESS</strong> section, change <strong>done: false</strong> to
+          <strong>done: true</strong>. Change <strong>taggedFaithForge: true</strong> when FaithForge was tagged
+          or <strong>tagNotPossible: true</strong> when a platform does not allow collaborator tagging.
+          Turn merch tracking on with <strong>merchStoreTrack: true</strong>.
         </div>
       </div>
     </div>
   </section>
 
   <div id="dataNote" class="data-note">
-    <strong>Cloudflare status:</strong> Loading live Twitch data and recent games from the FaithForge Worker.
+    <strong>Cloudflare status:</strong> Loading Twitch status, recent games, and quarterly D1 analytics.
   </div>
 
   <section class="summary-grid" aria-label="Dashboard summary">
@@ -798,33 +837,45 @@
     </div>
 
     <div class="summary-card">
-      <span>Base Complete</span>
-      <strong id="summaryBaseComplete">0</strong>
-      <small>Creators who met 1 long + 3 shorts.</small>
+      <span>Live Now</span>
+      <strong id="summaryLiveNow">0</strong>
+      <small>From Cloudflare/Twitch.</small>
     </div>
 
     <div class="summary-card">
-      <span>Base In Progress</span>
-      <strong id="summaryBaseProgress">0</strong>
-      <small>Creators still working on base requirements.</small>
+      <span>Total Streams</span>
+      <strong id="summaryStreams">0</strong>
+      <small>Estimated from D1 snapshots.</small>
+    </div>
+
+    <div class="summary-card">
+      <span>Total Hours</span>
+      <strong id="summaryHours">0</strong>
+      <small>Estimated from 15-min checks.</small>
+    </div>
+
+    <div class="summary-card">
+      <span>Peak Viewer</span>
+      <strong id="summaryPeak">0</strong>
+      <small id="summaryPeakWho">Highest live snapshot.</small>
+    </div>
+
+    <div class="summary-card">
+      <span>Base Complete</span>
+      <strong id="summaryBaseComplete">0</strong>
+      <small>Creators at 1 long + 3 shorts.</small>
     </div>
 
     <div class="summary-card">
       <span>Merch Track</span>
       <strong id="summaryMerchTrack">0</strong>
-      <small>Creators with doubled requirements active.</small>
+      <small>Creators with doubled requirements.</small>
     </div>
 
     <div class="summary-card">
       <span>Merch Eligible</span>
       <strong id="summaryMerchEligible">0</strong>
-      <small>Merch track creators who completed all 8 items.</small>
-    </div>
-
-    <div class="summary-card">
-      <span>Live Now</span>
-      <strong id="summaryLiveNow">0</strong>
-      <small>Auto-loaded from Cloudflare/Twitch.</small>
+      <small>Completed merch-level requirements.</small>
     </div>
   </section>
 
@@ -832,23 +883,30 @@
     <input id="searchInput" type="search" placeholder="Search streamer name...">
 
     <select id="statusFilter" aria-label="Filter by status">
-      <option value="all">Show All Streamers</option>
+      <option value="all">Show All Official Creators</option>
       <option value="live">Live Now</option>
       <option value="baseComplete">Base Complete</option>
       <option value="baseNeeds">Base Needs Work</option>
       <option value="merchActive">Merch Track Active</option>
       <option value="merchEligible">Merch Eligible</option>
       <option value="merchNeeds">Merch Needs Work</option>
+      <option value="hasStats">Has Quarter Stats</option>
+      <option value="noStats">No Quarter Stats Yet</option>
     </select>
 
     <select id="sortSelect" aria-label="Sort streamers">
       <option value="name">Sort by Name</option>
+      <option value="live">Live First</option>
       <option value="least">Least Complete First</option>
       <option value="most">Most Complete First</option>
-      <option value="live">Live First</option>
+      <option value="hours">Most Live Hours</option>
+      <option value="streams">Most Streams</option>
+      <option value="peak">Highest Peak Viewers</option>
       <option value="baseNeeds">Base Needs Work First</option>
       <option value="merchNeeds">Merch Needs Work First</option>
     </select>
+
+    <button id="refreshButton" class="refresh-btn" type="button">Refresh</button>
   </section>
 
   <section id="dashboardGrid" class="dashboard-grid" aria-live="polite"></section>
@@ -906,78 +964,55 @@ document.addEventListener('DOMContentLoaded', () => {
   FAITHFORGE CREATOR DASHBOARD
   ============================================================
 
-  WHAT AUTO-LOADS FROM CLOUDFLARE:
-  - Live / offline status
-  - Current viewers while live
-  - Current game/category
-  - Current stream title
-  - Stream start time
-  - Recent Twitch games/activity
+  AUTO-LOADED FROM CLOUDFLARE:
+  - /api/twitch-status
+  - /api/recent-games
+  - /api/quarter-stats from D1 CREATOR_DB
 
-  WHAT YOU MANUALLY UPDATE:
-  - Base long-form video requirement
-  - Base Shorts/Reels/TikToks requirements
-  - FaithForge collaborator tag status
-  - Merch store track active/inactive
-  - Merch store extra video/shorts progress
-
-  BASE REQUIREMENT:
-  - 1 long-form video
-  - 3 shorts/reels/TikToks
-
-  MERCH STORE REQUIREMENT:
-  - Base requirement PLUS:
-  - 1 extra long-form video
-  - 3 extra shorts/reels/TikToks
-
-  TOTAL FOR MERCH STORE:
-  - 2 long-form videos
-  - 6 shorts/reels/TikToks
+  MANUAL REQUIREMENTS:
+  - Base: 1 long-form video + 3 Shorts/Reels/TikToks
+  - Merch: Base + 1 extra long-form video + 3 extra Shorts/Reels/TikToks
+  - Total merch level: 2 long-form videos + 6 Shorts/Reels/TikToks
 */
 
 const CURRENT_QUARTER = 'Q3 2026';
 
 const STREAM_STATUS_ENDPOINT = 'https://faithforge-raidtrain-api.faithforgegaming.workers.dev/api/twitch-status';
 const RECENT_GAMES_ENDPOINT = 'https://faithforge-raidtrain-api.faithforgegaming.workers.dev/api/recent-games';
-
-/*
-  Optional future route:
-  If you later add a Cloudflare route for quarter stats, this page is ready.
-  Example route could return:
-  {
-    "stats": [
-      {
-        "login": "mooncalfmage",
-        "streamCount": 8,
-        "liveHours": 22.4,
-        "avgViewers": 7,
-        "peakViewers": 24
-      }
-    ]
-  }
-*/
 const QUARTER_STATS_ENDPOINT = 'https://faithforge-raidtrain-api.faithforgegaming.workers.dev/api/quarter-stats';
 
 const statusByLogin = new Map();
 const recentGamesByLogin = new Map();
 const quarterStatsByLogin = new Map();
 
+let lastStatusLoadedAt = null;
+let lastRecentLoadedAt = null;
+let lastStatsLoadedAt = null;
+let lastRefreshStartedAt = null;
+
+function requirement(title, done = false, taggedFaithForge = false, link = '', tagNotPossible = false) {
+  return {
+    title,
+    done,
+    taggedFaithForge,
+    tagNotPossible,
+    link
+  };
+}
+
 /*
   ============================================================
   MANUAL TRACKING SECTION
+
+  Edit this section each quarter.
+  Change done: false to done: true by editing the second value in requirement(...).
+
+  requirement('Title', done, taggedFaithForge, 'link', tagNotPossible)
+
+  Examples:
+  requirement('Base Long Form Video 1', true, true, 'https://post-link.com')
+  requirement('Base Short / Reel / TikTok 1', true, false, 'https://post-link.com', true)
   ============================================================
-
-  Edit this section every quarter.
-
-  For each requirement:
-  - done: true / false
-  - taggedFaithForge: true / false
-  - tagNotPossible: true / false
-  - link: 'https://...'
-
-  For merch:
-  - merchStoreTrack: true makes the merch section active.
-  - merchStoreApproved: true adds a Merch Approved badge after the requirements are done.
 */
 
 const STREAMER_PROGRESS = [
@@ -985,29 +1020,29 @@ const STREAMER_PROGRESS = [
     login: 'faithforgegaming',
     name: 'FaithForgeGaming',
     handle: 'FaithForgeGaming',
-    image: '/Streamers/G0dsblessing.webp',
+    image: '/Anvil.webp',
     fallbackImage: '/Anvil.webp',
     platform: 'Twitch / YouTube / TikTok / Rumble / Kick',
     profileUrl: '/faithforgegaming/',
     twitchUrl: 'https://www.twitch.tv/faithforgegaming',
     merchStoreTrack: false,
     merchStoreApproved: false,
-    notes: 'Main FaithForge channel. Use this if the main brand channel has its own quarterly content requirements.',
+    notes: 'Main FaithForge channel. Use this if the main brand channel has its own quarterly requirements.',
     baseLongForm: [
-      { title: 'Base Long Form Video 1', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+      requirement('Base Long Form Video 1')
     ],
     baseShorts: [
-      { title: 'Base Short / Reel / TikTok 1', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Base Short / Reel / TikTok 2', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Base Short / Reel / TikTok 3', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+      requirement('Base Short / Reel / TikTok 1'),
+      requirement('Base Short / Reel / TikTok 2'),
+      requirement('Base Short / Reel / TikTok 3')
     ],
     merchLongForm: [
-      { title: 'Merch Extra Long Form Video 2', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+      requirement('Merch Extra Long Form Video 2')
     ],
     merchShorts: [
-      { title: 'Merch Extra Short / Reel / TikTok 4', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Extra Short / Reel / TikTok 5', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Extra Short / Reel / TikTok 6', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+      requirement('Merch Extra Short / Reel / TikTok 4'),
+      requirement('Merch Extra Short / Reel / TikTok 5'),
+      requirement('Merch Extra Short / Reel / TikTok 6')
     ]
   },
 
@@ -1024,20 +1059,20 @@ const STREAMER_PROGRESS = [
     merchStoreApproved: false,
     notes: '',
     baseLongForm: [
-      { title: 'Base Long Form Video 1', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+      requirement('Base Long Form Video 1')
     ],
     baseShorts: [
-      { title: 'Base Short / Reel / TikTok 1', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Base Short / Reel / TikTok 2', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Base Short / Reel / TikTok 3', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+      requirement('Base Short / Reel / TikTok 1'),
+      requirement('Base Short / Reel / TikTok 2'),
+      requirement('Base Short / Reel / TikTok 3')
     ],
     merchLongForm: [
-      { title: 'Merch Extra Long Form Video 2', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+      requirement('Merch Extra Long Form Video 2')
     ],
     merchShorts: [
-      { title: 'Merch Extra Short / Reel / TikTok 4', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Extra Short / Reel / TikTok 5', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Extra Short / Reel / TikTok 6', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+      requirement('Merch Extra Short / Reel / TikTok 4'),
+      requirement('Merch Extra Short / Reel / TikTok 5'),
+      requirement('Merch Extra Short / Reel / TikTok 6')
     ]
   },
 
@@ -1054,20 +1089,20 @@ const STREAMER_PROGRESS = [
     merchStoreApproved: false,
     notes: '',
     baseLongForm: [
-      { title: 'Base Long Form Video 1', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+      requirement('Base Long Form Video 1')
     ],
     baseShorts: [
-      { title: 'Base Short / Reel / TikTok 1', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Base Short / Reel / TikTok 2', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Base Short / Reel / TikTok 3', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+      requirement('Base Short / Reel / TikTok 1'),
+      requirement('Base Short / Reel / TikTok 2'),
+      requirement('Base Short / Reel / TikTok 3')
     ],
     merchLongForm: [
-      { title: 'Merch Extra Long Form Video 2', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+      requirement('Merch Extra Long Form Video 2')
     ],
     merchShorts: [
-      { title: 'Merch Extra Short / Reel / TikTok 4', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Extra Short / Reel / TikTok 5', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Extra Short / Reel / TikTok 6', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+      requirement('Merch Extra Short / Reel / TikTok 4'),
+      requirement('Merch Extra Short / Reel / TikTok 5'),
+      requirement('Merch Extra Short / Reel / TikTok 6')
     ]
   },
 
@@ -1084,20 +1119,20 @@ const STREAMER_PROGRESS = [
     merchStoreApproved: false,
     notes: '',
     baseLongForm: [
-      { title: 'Base Long Form Video 1', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+      requirement('Base Long Form Video 1')
     ],
     baseShorts: [
-      { title: 'Base Short / Reel / TikTok 1', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Base Short / Reel / TikTok 2', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Base Short / Reel / TikTok 3', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+      requirement('Base Short / Reel / TikTok 1'),
+      requirement('Base Short / Reel / TikTok 2'),
+      requirement('Base Short / Reel / TikTok 3')
     ],
     merchLongForm: [
-      { title: 'Merch Extra Long Form Video 2', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+      requirement('Merch Extra Long Form Video 2')
     ],
     merchShorts: [
-      { title: 'Merch Extra Short / Reel / TikTok 4', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Extra Short / Reel / TikTok 5', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Extra Short / Reel / TikTok 6', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+      requirement('Merch Extra Short / Reel / TikTok 4'),
+      requirement('Merch Extra Short / Reel / TikTok 5'),
+      requirement('Merch Extra Short / Reel / TikTok 6')
     ]
   },
 
@@ -1114,20 +1149,20 @@ const STREAMER_PROGRESS = [
     merchStoreApproved: false,
     notes: '',
     baseLongForm: [
-      { title: 'Base Long Form Video 1', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+      requirement('Base Long Form Video 1')
     ],
     baseShorts: [
-      { title: 'Base Short / Reel / TikTok 1', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Base Short / Reel / TikTok 2', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Base Short / Reel / TikTok 3', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+      requirement('Base Short / Reel / TikTok 1'),
+      requirement('Base Short / Reel / TikTok 2'),
+      requirement('Base Short / Reel / TikTok 3')
     ],
     merchLongForm: [
-      { title: 'Merch Extra Long Form Video 2', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+      requirement('Merch Extra Long Form Video 2')
     ],
     merchShorts: [
-      { title: 'Merch Extra Short / Reel / TikTok 4', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Extra Short / Reel / TikTok 5', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Extra Short / Reel / TikTok 6', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+      requirement('Merch Extra Short / Reel / TikTok 4'),
+      requirement('Merch Extra Short / Reel / TikTok 5'),
+      requirement('Merch Extra Short / Reel / TikTok 6')
     ]
   },
 
@@ -1144,20 +1179,20 @@ const STREAMER_PROGRESS = [
     merchStoreApproved: false,
     notes: '',
     baseLongForm: [
-      { title: 'Base Long Form Video 1', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+      requirement('Base Long Form Video 1')
     ],
     baseShorts: [
-      { title: 'Base Short / Reel / TikTok 1', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Base Short / Reel / TikTok 2', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Base Short / Reel / TikTok 3', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+      requirement('Base Short / Reel / TikTok 1'),
+      requirement('Base Short / Reel / TikTok 2'),
+      requirement('Base Short / Reel / TikTok 3')
     ],
     merchLongForm: [
-      { title: 'Merch Extra Long Form Video 2', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+      requirement('Merch Extra Long Form Video 2')
     ],
     merchShorts: [
-      { title: 'Merch Extra Short / Reel / TikTok 4', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Extra Short / Reel / TikTok 5', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Extra Short / Reel / TikTok 6', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+      requirement('Merch Extra Short / Reel / TikTok 4'),
+      requirement('Merch Extra Short / Reel / TikTok 5'),
+      requirement('Merch Extra Short / Reel / TikTok 6')
     ]
   },
 
@@ -1174,20 +1209,20 @@ const STREAMER_PROGRESS = [
     merchStoreApproved: false,
     notes: '',
     baseLongForm: [
-      { title: 'Base Long Form Video 1', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+      requirement('Base Long Form Video 1')
     ],
     baseShorts: [
-      { title: 'Base Short / Reel / TikTok 1', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Base Short / Reel / TikTok 2', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Base Short / Reel / TikTok 3', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+      requirement('Base Short / Reel / TikTok 1'),
+      requirement('Base Short / Reel / TikTok 2'),
+      requirement('Base Short / Reel / TikTok 3')
     ],
     merchLongForm: [
-      { title: 'Merch Extra Long Form Video 2', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+      requirement('Merch Extra Long Form Video 2')
     ],
     merchShorts: [
-      { title: 'Merch Extra Short / Reel / TikTok 4', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Extra Short / Reel / TikTok 5', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Extra Short / Reel / TikTok 6', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+      requirement('Merch Extra Short / Reel / TikTok 4'),
+      requirement('Merch Extra Short / Reel / TikTok 5'),
+      requirement('Merch Extra Short / Reel / TikTok 6')
     ]
   },
 
@@ -1204,20 +1239,20 @@ const STREAMER_PROGRESS = [
     merchStoreApproved: false,
     notes: '',
     baseLongForm: [
-      { title: 'Base Long Form Video 1', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+      requirement('Base Long Form Video 1')
     ],
     baseShorts: [
-      { title: 'Base Short / Reel / TikTok 1', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Base Short / Reel / TikTok 2', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Base Short / Reel / TikTok 3', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+      requirement('Base Short / Reel / TikTok 1'),
+      requirement('Base Short / Reel / TikTok 2'),
+      requirement('Base Short / Reel / TikTok 3')
     ],
     merchLongForm: [
-      { title: 'Merch Extra Long Form Video 2', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+      requirement('Merch Extra Long Form Video 2')
     ],
     merchShorts: [
-      { title: 'Merch Extra Short / Reel / TikTok 4', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Extra Short / Reel / TikTok 5', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Extra Short / Reel / TikTok 6', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+      requirement('Merch Extra Short / Reel / TikTok 4'),
+      requirement('Merch Extra Short / Reel / TikTok 5'),
+      requirement('Merch Extra Short / Reel / TikTok 6')
     ]
   },
 
@@ -1234,20 +1269,20 @@ const STREAMER_PROGRESS = [
     merchStoreApproved: false,
     notes: '',
     baseLongForm: [
-      { title: 'Base Long Form Video 1', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+      requirement('Base Long Form Video 1')
     ],
     baseShorts: [
-      { title: 'Base Short / Reel / TikTok 1', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Base Short / Reel / TikTok 2', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Base Short / Reel / TikTok 3', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+      requirement('Base Short / Reel / TikTok 1'),
+      requirement('Base Short / Reel / TikTok 2'),
+      requirement('Base Short / Reel / TikTok 3')
     ],
     merchLongForm: [
-      { title: 'Merch Extra Long Form Video 2', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+      requirement('Merch Extra Long Form Video 2')
     ],
     merchShorts: [
-      { title: 'Merch Extra Short / Reel / TikTok 4', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Extra Short / Reel / TikTok 5', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Extra Short / Reel / TikTok 6', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+      requirement('Merch Extra Short / Reel / TikTok 4'),
+      requirement('Merch Extra Short / Reel / TikTok 5'),
+      requirement('Merch Extra Short / Reel / TikTok 6')
     ]
   },
 
@@ -1264,20 +1299,20 @@ const STREAMER_PROGRESS = [
     merchStoreApproved: false,
     notes: '',
     baseLongForm: [
-      { title: 'Base Long Form Video 1', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+      requirement('Base Long Form Video 1')
     ],
     baseShorts: [
-      { title: 'Base Short / Reel / TikTok 1', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Base Short / Reel / TikTok 2', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Base Short / Reel / TikTok 3', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+      requirement('Base Short / Reel / TikTok 1'),
+      requirement('Base Short / Reel / TikTok 2'),
+      requirement('Base Short / Reel / TikTok 3')
     ],
     merchLongForm: [
-      { title: 'Merch Extra Long Form Video 2', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+      requirement('Merch Extra Long Form Video 2')
     ],
     merchShorts: [
-      { title: 'Merch Extra Short / Reel / TikTok 4', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Extra Short / Reel / TikTok 5', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' },
-      { title: 'Merch Extra Short / Reel / TikTok 6', done: false, taggedFaithForge: false, tagNotPossible: false, link: '' }
+      requirement('Merch Extra Short / Reel / TikTok 4'),
+      requirement('Merch Extra Short / Reel / TikTok 5'),
+      requirement('Merch Extra Short / Reel / TikTok 6')
     ]
   }
 ];
@@ -1295,7 +1330,18 @@ function normalizeLogin(value) {
   return String(value || '').trim().toLowerCase();
 }
 
-function safeDate(value) {
+function formatNumber(value) {
+  const number = Number(value || 0);
+  return Number.isFinite(number) ? number.toLocaleString() : '0';
+}
+
+function formatHours(value) {
+  const number = Number(value || 0);
+  if (!Number.isFinite(number) || number <= 0) return '0';
+  return Number.isInteger(number) ? String(number) : number.toFixed(1);
+}
+
+function formatDateTime(value) {
   if (!value) return '—';
 
   const date = new Date(value);
@@ -1307,12 +1353,20 @@ function safeDate(value) {
   return date.toLocaleString();
 }
 
-function formatViewers(count) {
-  const number = Number(count || 0);
+function formatShortDate(value) {
+  if (!value) return '—';
 
-  if (!number) return '0';
+  const date = new Date(value);
 
-  return number.toLocaleString();
+  if (Number.isNaN(date.getTime())) {
+    return String(value);
+  }
+
+  return date.toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric'
+  });
 }
 
 function getStreamerStatus(login) {
@@ -1335,11 +1389,24 @@ function getRecentGames(login) {
 
 function getQuarterStats(login) {
   return quarterStatsByLogin.get(normalizeLogin(login)) || {
-    streamCount: '—',
-    liveHours: '—',
-    avgViewers: '—',
-    peakViewers: '—'
+    login: normalizeLogin(login),
+    streamCount: 0,
+    liveHours: 0,
+    avgViewers: 0,
+    peakViewers: 0,
+    snapshotCount: 0,
+    lastLiveAt: '',
+    topGame: '',
+    latestTitle: '',
+    latestGame: '',
+    latestViewerCount: 0,
+    latestCheckedAt: '',
+    latestStartedAt: ''
   };
+}
+
+function hasRealStats(stats) {
+  return Number(stats.snapshotCount || 0) > 0 || Number(stats.streamCount || 0) > 0 || Number(stats.liveHours || 0) > 0;
 }
 
 function getGameName(game) {
@@ -1351,11 +1418,15 @@ function getGameTitle(game) {
 }
 
 function getGameLastPlayed(game) {
-  return game?.last_played || game?.lastLive || game?.last_live_at || game?.played_at || '';
+  return game?.last_played || game?.lastLive || game?.last_live_at || game?.played_at || game?.last_streamed_at || '';
 }
 
 function countDone(items) {
   return items.filter(item => item.done).length;
+}
+
+function countTaggedOrNA(items) {
+  return items.filter(item => item.done && (item.taggedFaithForge || item.tagNotPossible)).length;
 }
 
 function getBaseCompletion(streamer) {
@@ -1366,13 +1437,22 @@ function getBaseCompletion(streamer) {
   const complete = longDone >= streamer.baseLongForm.length && shortsDone >= streamer.baseShorts.length;
   const percent = totalRequired ? Math.round((totalDone / totalRequired) * 100) : 0;
 
+  const allBaseItems = [...streamer.baseLongForm, ...streamer.baseShorts];
+  const completedItems = allBaseItems.filter(item => item.done);
+  const tagComplete = completedItems.length === 0
+    ? false
+    : completedItems.every(item => item.taggedFaithForge || item.tagNotPossible);
+
   return {
     longDone,
     shortsDone,
     totalDone,
     totalRequired,
     complete,
-    percent
+    percent,
+    tagComplete,
+    taggedCount: countTaggedOrNA(allBaseItems),
+    completedItems: completedItems.length
   };
 }
 
@@ -1390,6 +1470,12 @@ function getMerchCompletion(streamer) {
   const totalComplete = base.complete && extraComplete;
   const percent = totalRequired ? Math.round((totalDone / totalRequired) * 100) : 0;
 
+  const allMerchItems = [...streamer.merchLongForm, ...streamer.merchShorts];
+  const completedItems = allMerchItems.filter(item => item.done);
+  const tagComplete = completedItems.length === 0
+    ? false
+    : completedItems.every(item => item.taggedFaithForge || item.tagNotPossible);
+
   return {
     longDone,
     shortsDone,
@@ -1399,7 +1485,10 @@ function getMerchCompletion(streamer) {
     totalDone,
     totalRequired,
     totalComplete,
-    percent
+    percent,
+    tagComplete,
+    taggedCount: countTaggedOrNA(allMerchItems),
+    completedItems: completedItems.length
   };
 }
 
@@ -1411,6 +1500,7 @@ function getMainBadges(streamer) {
   const base = getBaseCompletion(streamer);
   const merch = getMerchCompletion(streamer);
   const status = getStreamerStatus(streamer.login);
+  const stats = getQuarterStats(streamer.login);
 
   const badges = [];
 
@@ -1437,6 +1527,10 @@ function getMainBadges(streamer) {
     badges.push(`<span class="badge soft">Merch Track Off</span>`);
   }
 
+  if (hasRealStats(stats)) {
+    badges.push(`<span class="badge analytics">D1 Stats</span>`);
+  }
+
   if (streamer.merchStoreApproved) {
     badges.push(`<span class="badge complete">Merch Approved</span>`);
   }
@@ -1445,6 +1539,10 @@ function getMainBadges(streamer) {
 }
 
 function getCollabBadge(item) {
+  if (!item.done) {
+    return `<span class="collab-tag">Waiting on Post</span>`;
+  }
+
   if (item.tagNotPossible) {
     return `<span class="collab-tag na">Collab Tag N/A</span>`;
   }
@@ -1494,7 +1592,7 @@ function renderRecentGames(streamer) {
     return `
       <div class="recent-item">
         <strong>No recent game data yet</strong>
-        Recent Twitch activity will show here when the Cloudflare recent-games route returns data.
+        Recent Twitch activity will appear after the Worker saves game history.
       </div>
     `;
   }
@@ -1522,15 +1620,19 @@ function renderStreamerCard(streamer) {
   const overall = getOverallCompletion(streamer);
 
   const liveStatus = status.live ? 'Live' : 'Offline';
-  const currentViewers = status.live ? formatViewers(status.viewer_count) : '—';
-  const currentGame = status.live ? status.game_name || 'Live on Twitch' : '—';
-  const streamTitle = status.live ? status.title || 'Currently live' : '—';
-  const startedAt = status.live ? safeDate(status.started_at) : '—';
+  const currentViewers = status.live ? formatNumber(status.viewer_count) : '—';
+  const currentGame = status.live ? status.game_name || 'Live on Twitch' : stats.latestGame || '—';
+  const streamTitle = status.live ? status.title || 'Currently live' : stats.latestTitle || '—';
+  const startedAt = status.live ? formatDateTime(status.started_at) : '—';
 
   const merchTrackClass = streamer.merchStoreTrack ? '' : 'inactive';
   const merchTrackLabel = streamer.merchStoreTrack
     ? 'Active — double requirements required'
-    : 'Not active — shown here so the streamer can see what merch access would require';
+    : 'Not active — preview of what merch access would require';
+
+  const dataStatus = hasRealStats(stats)
+    ? `D1 snapshots: ${formatNumber(stats.snapshotCount)}`
+    : 'Waiting for live snapshot';
 
   return `
     <article class="streamer-card" data-login="${escapeHTML(streamer.login)}">
@@ -1556,45 +1658,53 @@ function renderStreamerCard(streamer) {
         </div>
       </div>
 
-      <div class="auto-strip">
+      <div class="analytics-strip">
         <div class="metric ${status.live ? 'live-metric' : ''}">
           <span>Live Status</span>
           <strong>${escapeHTML(liveStatus)}</strong>
+          <small>${status.live ? 'Currently streaming' : 'Not live right now'}</small>
         </div>
 
         <div class="metric">
           <span>Current Viewers</span>
           <strong>${escapeHTML(currentViewers)}</strong>
-        </div>
-
-        <div class="metric">
-          <span>Current Game</span>
-          <strong>${escapeHTML(currentGame)}</strong>
-        </div>
-
-        <div class="metric">
-          <span>Started At</span>
-          <strong>${escapeHTML(startedAt)}</strong>
+          <small>${status.live ? 'From Twitch status' : 'Only visible while live'}</small>
         </div>
 
         <div class="metric">
           <span>Quarter Streams</span>
-          <strong>${escapeHTML(stats.streamCount)}</strong>
+          <strong>${formatNumber(stats.streamCount)}</strong>
+          <small>${escapeHTML(dataStatus)}</small>
         </div>
 
         <div class="metric">
           <span>Live Hours</span>
-          <strong>${escapeHTML(stats.liveHours)}</strong>
+          <strong>${formatHours(stats.liveHours)}</strong>
+          <small>Estimated by 15-min checks</small>
         </div>
 
         <div class="metric">
-          <span>Avg Viewers</span>
-          <strong>${escapeHTML(stats.avgViewers)}</strong>
+          <span>Average Viewers</span>
+          <strong>${formatNumber(stats.avgViewers)}</strong>
+          <small>Average of live snapshots</small>
         </div>
 
         <div class="metric">
           <span>Peak Viewers</span>
-          <strong>${escapeHTML(stats.peakViewers)}</strong>
+          <strong>${formatNumber(stats.peakViewers)}</strong>
+          <small>Highest live snapshot</small>
+        </div>
+
+        <div class="metric">
+          <span>Top Game</span>
+          <strong>${escapeHTML(stats.topGame || currentGame || '—')}</strong>
+          <small>Most frequent live category</small>
+        </div>
+
+        <div class="metric ${hasRealStats(stats) ? '' : 'warning'}">
+          <span>Last Live</span>
+          <strong>${escapeHTML(formatShortDate(stats.lastLiveAt))}</strong>
+          <small>${hasRealStats(stats) ? 'From D1 quarter stats' : 'No live snapshot yet'}</small>
         </div>
       </div>
 
@@ -1631,8 +1741,13 @@ function renderStreamerCard(streamer) {
               </div>
 
               <div class="mini-progress-card">
-                <span>Shorts/Reels/TikToks</span>
+                <span>Shorts</span>
                 <strong>${base.shortsDone}/${streamer.baseShorts.length}</strong>
+              </div>
+
+              <div class="mini-progress-card">
+                <span>Tagged / N/A</span>
+                <strong>${base.taggedCount}/${base.completedItems || 0}</strong>
               </div>
             </div>
 
@@ -1660,13 +1775,18 @@ function renderStreamerCard(streamer) {
 
             <div class="mini-progress">
               <div class="mini-progress-card">
-                <span>Extra Long Form</span>
+                <span>Extra Long</span>
                 <strong>${merch.longDone}/${streamer.merchLongForm.length}</strong>
               </div>
 
               <div class="mini-progress-card">
                 <span>Extra Shorts</span>
                 <strong>${merch.shortsDone}/${streamer.merchShorts.length}</strong>
+              </div>
+
+              <div class="mini-progress-card">
+                <span>Tagged / N/A</span>
+                <strong>${merch.taggedCount}/${merch.completedItems || 0}</strong>
               </div>
             </div>
 
@@ -1683,8 +1803,9 @@ function renderStreamerCard(streamer) {
 
         <div class="recent-list">
           <div class="recent-item">
-            <strong>Current Stream Title</strong>
+            <strong>Current / Latest Stream Title</strong>
             ${escapeHTML(streamTitle)}
+            ${startedAt !== '—' ? `<br>Started: ${escapeHTML(startedAt)}` : ''}
           </div>
 
           ${renderRecentGames(streamer)}
@@ -1718,7 +1839,8 @@ function normalizeStatusChannel(rawChannel) {
     viewer_count: Number(rawChannel.viewer_count || rawChannel.viewers || 0) || 0,
     started_at: rawChannel.started_at || '',
     game_id: rawChannel.game_id || '',
-    box_art_url: rawChannel.box_art_url || rawChannel.game_box_art_url || ''
+    box_art_url: rawChannel.box_art_url || rawChannel.game_box_art_url || '',
+    thumbnail_url: rawChannel.thumbnail_url || ''
   };
 }
 
@@ -1736,105 +1858,141 @@ function applyStatusPayload(payload) {
       statusByLogin.set(status.login, status);
     }
   });
+
+  lastStatusLoadedAt = payload.cached_at || new Date().toISOString();
+}
+
+function applyQuarterStatsPayload(payload) {
+  const stats = Array.isArray(payload.stats)
+    ? payload.stats
+    : Array.isArray(payload.data)
+      ? payload.data
+      : [];
+
+  stats.forEach(item => {
+    const login = normalizeLogin(item.login || item.user_login || item.channel_login || item.name);
+
+    if (!login) return;
+
+    quarterStatsByLogin.set(login, {
+      login,
+      quarter: item.quarter || payload.quarter || CURRENT_QUARTER,
+      snapshotCount: Number(item.snapshotCount ?? item.snapshot_count ?? 0),
+      streamCount: Number(item.streamCount ?? item.stream_count ?? 0),
+      liveHours: Number(item.liveHours ?? item.live_hours ?? 0),
+      avgViewers: Number(item.avgViewers ?? item.avg_viewers ?? 0),
+      peakViewers: Number(item.peakViewers ?? item.peak_viewers ?? 0),
+      lastLiveAt: item.lastLiveAt || item.last_live_at || '',
+      topGame: item.topGame || item.top_game || '',
+      topGameSnapshots: Number(item.topGameSnapshots ?? item.top_game_snapshots ?? 0),
+      latestTitle: item.latestTitle || item.latest_title || '',
+      latestGame: item.latestGame || item.latest_game || '',
+      latestViewerCount: Number(item.latestViewerCount ?? item.latest_viewer_count ?? 0),
+      latestCheckedAt: item.latestCheckedAt || item.latest_checked_at || '',
+      latestStartedAt: item.latestStartedAt || item.latest_started_at || '',
+      latestThumbnailUrl: item.latestThumbnailUrl || item.latest_thumbnail_url || ''
+    });
+  });
+
+  lastStatsLoadedAt = payload.cached_at || new Date().toISOString();
+}
+
+function applyRecentGamesPayload(payload) {
+  if (payload.channels && typeof payload.channels === 'object') {
+    Object.entries(payload.channels).forEach(([login, games]) => {
+      recentGamesByLogin.set(normalizeLogin(login), Array.isArray(games) ? games.slice(0, 4) : []);
+    });
+  }
+
+  if (payload.login && Array.isArray(payload.games)) {
+    recentGamesByLogin.set(normalizeLogin(payload.login), payload.games.slice(0, 4));
+  }
+
+  lastRecentLoadedAt = payload.cached_at || new Date().toISOString();
+}
+
+async function fetchJson(url) {
+  const response = await fetch(url, { cache: 'no-store' });
+  const payload = await response.json();
+
+  if (!response.ok) {
+    throw new Error(payload.details || payload.error || `Request failed: ${response.status}`);
+  }
+
+  return payload;
 }
 
 async function refreshStatuses() {
-  try {
-    const response = await fetch(STREAM_STATUS_ENDPOINT, { cache: 'no-store' });
-    const payload = await response.json();
-
-    if (!response.ok) {
-      throw new Error(payload.details || payload.error || 'Unable to load Twitch status.');
-    }
-
-    applyStatusPayload(payload);
-
-    const liveCount = STREAMER_PROGRESS.filter(streamer => getStreamerStatus(streamer.login).live).length;
-
-    document.getElementById('dataNote').innerHTML = `
-      <strong>Cloudflare status:</strong>
-      Live Twitch status loaded successfully. ${liveCount} FaithForge ${liveCount === 1 ? 'creator is' : 'creators are'} live right now.
-      Recent games are loading from the existing recent-games endpoint.
-    `;
-  } catch (error) {
-    console.error('Twitch status error:', error);
-
-    document.getElementById('dataNote').innerHTML = `
-      <strong>Cloudflare status:</strong>
-      Live Twitch status could not be loaded right now. Manual requirements still work.
-    `;
-  }
-}
-
-async function fetchRecentGamesForStreamer(streamer) {
-  try {
-    const response = await fetch(
-      `${RECENT_GAMES_ENDPOINT}?login=${encodeURIComponent(streamer.login)}&limit=4`,
-      { cache: 'no-store' }
-    );
-
-    const payload = await response.json();
-
-    if (!response.ok) {
-      throw new Error(payload.details || payload.error || 'Unable to load recent games.');
-    }
-
-    const rawGames = payload.games || payload.recentGames || [];
-
-    recentGamesByLogin.set(streamer.login, rawGames.slice(0, 4));
-  } catch (error) {
-    console.error(`Recent games error for ${streamer.login}:`, error);
-    recentGamesByLogin.set(streamer.login, []);
-  }
+  const payload = await fetchJson(STREAM_STATUS_ENDPOINT);
+  applyStatusPayload(payload);
 }
 
 async function refreshRecentGames() {
-  await Promise.allSettled(
-    STREAMER_PROGRESS.map(streamer => fetchRecentGamesForStreamer(streamer))
-  );
+  try {
+    const payload = await fetchJson(`${RECENT_GAMES_ENDPOINT}?limit=4`);
+    applyRecentGamesPayload(payload);
+  } catch (error) {
+    console.warn('All recent-games request failed. Falling back to per-streamer requests.', error);
+
+    await Promise.allSettled(
+      STREAMER_PROGRESS.map(async streamer => {
+        const payload = await fetchJson(`${RECENT_GAMES_ENDPOINT}?login=${encodeURIComponent(streamer.login)}&limit=4`);
+        applyRecentGamesPayload(payload);
+      })
+    );
+  }
 }
 
 async function refreshQuarterStats() {
-  try {
-    const response = await fetch(QUARTER_STATS_ENDPOINT, { cache: 'no-store' });
-    const payload = await response.json();
+  const payload = await fetchJson(`${QUARTER_STATS_ENDPOINT}?quarter=${encodeURIComponent(CURRENT_QUARTER)}`);
+  applyQuarterStatsPayload(payload);
+}
 
-    if (!response.ok) {
-      throw new Error(payload.details || payload.error || 'Quarter stats route not available yet.');
-    }
+function updateDataNote(state, message) {
+  const dataNote = document.getElementById('dataNote');
 
-    const stats = Array.isArray(payload.stats)
-      ? payload.stats
-      : Array.isArray(payload.data)
-        ? payload.data
-        : [];
+  const statusTime = lastStatusLoadedAt ? formatDateTime(lastStatusLoadedAt) : 'not loaded';
+  const recentTime = lastRecentLoadedAt ? formatDateTime(lastRecentLoadedAt) : 'not loaded';
+  const statsTime = lastStatsLoadedAt ? formatDateTime(lastStatsLoadedAt) : 'not loaded';
 
-    stats.forEach(item => {
-      const login = normalizeLogin(item.login || item.user_login || item.channel_login || item.name);
+  dataNote.innerHTML = `
+    <strong>Cloudflare status:</strong> ${escapeHTML(message)}
+    <br>
+    <span>
+      Status: ${escapeHTML(statusTime)} • Recent games: ${escapeHTML(recentTime)} • Quarter stats: ${escapeHTML(statsTime)}
+    </span>
+  `;
 
-      if (!login) return;
-
-      quarterStatsByLogin.set(login, {
-        streamCount: item.streamCount ?? item.stream_count ?? '—',
-        liveHours: item.liveHours ?? item.live_hours ?? '—',
-        avgViewers: item.avgViewers ?? item.avg_viewers ?? '—',
-        peakViewers: item.peakViewers ?? item.peak_viewers ?? '—'
-      });
-    });
-  } catch (error) {
-    console.info('Quarter stats route is optional and not loaded:', error.message);
-
-    STREAMER_PROGRESS.forEach(streamer => {
-      if (!quarterStatsByLogin.has(streamer.login)) {
-        quarterStatsByLogin.set(streamer.login, {
-          streamCount: 'Add route',
-          liveHours: 'Add route',
-          avgViewers: 'Add route',
-          peakViewers: 'Add route'
-        });
-      }
-    });
+  if (state === 'error') {
+    dataNote.style.borderColor = 'rgba(255,104,104,.45)';
+    dataNote.style.background = 'rgba(255,104,104,.08)';
+  } else {
+    dataNote.style.borderColor = 'rgba(116,185,255,.28)';
+    dataNote.style.background = 'rgba(116,185,255,.08)';
   }
+}
+
+async function refreshAll() {
+  lastRefreshStartedAt = new Date().toISOString();
+  updateDataNote('loading', 'Refreshing Twitch status, recent games, and D1 quarter stats...');
+
+  const results = await Promise.allSettled([
+    refreshStatuses(),
+    refreshRecentGames(),
+    refreshQuarterStats()
+  ]);
+
+  const failed = results.filter(result => result.status === 'rejected');
+
+  if (failed.length) {
+    console.error('Some dashboard data failed to refresh:', failed);
+    updateDataNote('error', 'Some Cloudflare data could not load. Manual requirements still work.');
+  } else {
+    const liveCount = STREAMER_PROGRESS.filter(streamer => getStreamerStatus(streamer.login).live).length;
+    updateDataNote('success', `All Cloudflare data loaded. ${liveCount} official FaithForge ${liveCount === 1 ? 'creator is' : 'creators are'} live right now.`);
+  }
+
+  renderDashboard();
 }
 
 function getFilteredStreamers() {
@@ -1846,6 +2004,7 @@ function getFilteredStreamers() {
     const base = getBaseCompletion(streamer);
     const merch = getMerchCompletion(streamer);
     const status = getStreamerStatus(streamer.login);
+    const stats = getQuarterStats(streamer.login);
 
     const matchesSearch =
       streamer.name.toLowerCase().includes(search) ||
@@ -1860,6 +2019,8 @@ function getFilteredStreamers() {
     if (statusFilter === 'merchActive') return streamer.merchStoreTrack;
     if (statusFilter === 'merchEligible') return streamer.merchStoreTrack && merch.totalComplete;
     if (statusFilter === 'merchNeeds') return streamer.merchStoreTrack && !merch.totalComplete;
+    if (statusFilter === 'hasStats') return hasRealStats(stats);
+    if (statusFilter === 'noStats') return !hasRealStats(stats);
 
     return true;
   });
@@ -1873,6 +2034,12 @@ function getFilteredStreamers() {
     const bMerch = getMerchCompletion(b);
     const aStatus = getStreamerStatus(a.login);
     const bStatus = getStreamerStatus(b.login);
+    const aStats = getQuarterStats(a.login);
+    const bStats = getQuarterStats(b.login);
+
+    if (sortValue === 'live') {
+      return Number(bStatus.live) - Number(aStatus.live) || Number(bStatus.viewer_count || 0) - Number(aStatus.viewer_count || 0);
+    }
 
     if (sortValue === 'least') {
       return aOverall.percent - bOverall.percent || a.name.localeCompare(b.name);
@@ -1882,8 +2049,16 @@ function getFilteredStreamers() {
       return bOverall.percent - aOverall.percent || a.name.localeCompare(b.name);
     }
 
-    if (sortValue === 'live') {
-      return Number(bStatus.live) - Number(aStatus.live) || Number(bStatus.viewer_count || 0) - Number(aStatus.viewer_count || 0);
+    if (sortValue === 'hours') {
+      return Number(bStats.liveHours || 0) - Number(aStats.liveHours || 0) || a.name.localeCompare(b.name);
+    }
+
+    if (sortValue === 'streams') {
+      return Number(bStats.streamCount || 0) - Number(aStats.streamCount || 0) || a.name.localeCompare(b.name);
+    }
+
+    if (sortValue === 'peak') {
+      return Number(bStats.peakViewers || 0) - Number(aStats.peakViewers || 0) || a.name.localeCompare(b.name);
     }
 
     if (sortValue === 'baseNeeds') {
@@ -1902,17 +2077,40 @@ function getFilteredStreamers() {
 
 function updateSummary() {
   const baseComplete = STREAMER_PROGRESS.filter(streamer => getBaseCompletion(streamer).complete).length;
-  const baseProgress = STREAMER_PROGRESS.length - baseComplete;
   const merchTrack = STREAMER_PROGRESS.filter(streamer => streamer.merchStoreTrack).length;
   const merchEligible = STREAMER_PROGRESS.filter(streamer => streamer.merchStoreTrack && getMerchCompletion(streamer).totalComplete).length;
   const liveNow = STREAMER_PROGRESS.filter(streamer => getStreamerStatus(streamer.login).live).length;
 
+  const totalStreams = STREAMER_PROGRESS.reduce((sum, streamer) => {
+    return sum + Number(getQuarterStats(streamer.login).streamCount || 0);
+  }, 0);
+
+  const totalHours = STREAMER_PROGRESS.reduce((sum, streamer) => {
+    return sum + Number(getQuarterStats(streamer.login).liveHours || 0);
+  }, 0);
+
+  let peakViewer = 0;
+  let peakWho = 'Highest live snapshot';
+
+  STREAMER_PROGRESS.forEach(streamer => {
+    const stats = getQuarterStats(streamer.login);
+    const peak = Number(stats.peakViewers || 0);
+
+    if (peak > peakViewer) {
+      peakViewer = peak;
+      peakWho = streamer.name;
+    }
+  });
+
   document.getElementById('summaryQuarter').textContent = CURRENT_QUARTER;
-  document.getElementById('summaryBaseComplete').textContent = baseComplete;
-  document.getElementById('summaryBaseProgress').textContent = baseProgress;
+  document.getElementById('summaryLiveNow').textContent = liveNow;
+  document.getElementById('summaryStreams').textContent = formatNumber(totalStreams);
+  document.getElementById('summaryHours').textContent = formatHours(totalHours);
+  document.getElementById('summaryPeak').textContent = formatNumber(peakViewer);
+  document.getElementById('summaryPeakWho').textContent = peakViewer ? peakWho : 'Highest live snapshot.';
+  document.getElementById('summaryBaseComplete').textContent = `${baseComplete}/${STREAMER_PROGRESS.length}`;
   document.getElementById('summaryMerchTrack').textContent = merchTrack;
   document.getElementById('summaryMerchEligible').textContent = merchEligible;
-  document.getElementById('summaryLiveNow').textContent = liveNow;
 }
 
 function renderDashboard() {
@@ -1924,7 +2122,7 @@ function renderDashboard() {
   if (!streamers.length) {
     grid.innerHTML = `
       <div class="no-results">
-        No streamers match that search or filter.
+        No official creators match that search or filter.
       </div>
     `;
     return;
@@ -1936,6 +2134,7 @@ function renderDashboard() {
 document.getElementById('searchInput').addEventListener('input', renderDashboard);
 document.getElementById('statusFilter').addEventListener('change', renderDashboard);
 document.getElementById('sortSelect').addEventListener('change', renderDashboard);
+document.getElementById('refreshButton').addEventListener('click', refreshAll);
 
 STREAMER_PROGRESS.forEach(streamer => {
   statusByLogin.set(streamer.login, {
@@ -1949,35 +2148,40 @@ STREAMER_PROGRESS.forEach(streamer => {
     game_id: '',
     box_art_url: ''
   });
+
+  quarterStatsByLogin.set(streamer.login, {
+    login: streamer.login,
+    streamCount: 0,
+    liveHours: 0,
+    avgViewers: 0,
+    peakViewers: 0,
+    snapshotCount: 0,
+    lastLiveAt: '',
+    topGame: '',
+    latestTitle: '',
+    latestGame: '',
+    latestViewerCount: 0,
+    latestCheckedAt: '',
+    latestStartedAt: ''
+  });
 });
 
 renderDashboard();
+refreshAll();
 
-(async function hydrateDashboard() {
-  await refreshStatuses();
-  renderDashboard();
+setInterval(refreshStatuses, 90000);
 
+setInterval(async () => {
   await Promise.allSettled([
     refreshRecentGames(),
     refreshQuarterStats()
   ]);
 
   renderDashboard();
-
-  setInterval(async () => {
-    await refreshStatuses();
-    renderDashboard();
-  }, 90000);
-
-  setInterval(async () => {
-    await refreshRecentGames();
-    renderDashboard();
-  }, 300000);
-})();
+}, 300000);
 </script>
 
 <script src="https://faithforgegaming.com/embers.js"></script>
 
 </body>
 </html>
-```

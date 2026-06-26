@@ -9,10 +9,16 @@
 
   <meta property="og:title" content="The Common Forge Confession | FaithForge Gaming">
   <meta property="og:description" content="FaithForge Gaming's statement of faith and doctrine with interactive Bible verse lookup.">
-  <meta property="og:image" content="https://faithforgegaming.com/Anvil.webp">
+  <meta property="og:image" content="https://faithforgegaming.com/Doctrine/logo.webp">
   <meta property="og:url" content="https://faithforgegaming.com/Doctrine/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="FaithForge Gaming">
+
+  <!-- Twitter / X Preview -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="FaithForge Doctrine | FaithForge Gaming Statement of Faith">
+  <meta name="twitter:description" content="Read FaithForge Gaming's statement of faith and doctrine with interactive Bible verse lookup.">
+  <meta name="twitter:image" content="https://faithforgegaming.com/Doctrine/logo.webp">
 
   <meta name="theme-color" content="#000000">
   <link rel="icon" href="https://faithforgegaming.com/Anvil.webp">
@@ -347,6 +353,20 @@
       color: #f5c518;
     }
 
+    .chapter-heading {
+      color: #f5c518;
+      margin: 18px 0 8px;
+      font-size: 1.05rem;
+      font-weight: 800;
+    }
+
+    .verse-highlight {
+      border-left: 3px solid #f5c518;
+      background: rgba(245,197,24,.08);
+      padding: 8px 10px;
+      border-radius: 10px;
+    }
+
     .modal-actions {
       display: flex;
       gap: 10px;
@@ -675,8 +695,9 @@
     </div>
     <div class="verse-body" id="verseBody"></div>
     <div class="modal-actions">
-      <a id="openEsvLink" class="esv-link-button" href="https://www.esv.org/" target="_blank" rel="noopener noreferrer">Open on ESV.org</a>
+      <button class="esv-link-button" id="viewChapterBtn" type="button">View Whole Chapter</button>
       <button class="esv-link-button" id="copyRefBtn" type="button">Copy Reference</button>
+      <button class="esv-link-button" id="copyVerseBtn" type="button">Copy Verse + Reference</button>
     </div>
   </div>
 </div>
@@ -800,11 +821,14 @@ const chapterCache = new Map();
 const backdrop = document.getElementById("verseBackdrop");
 const modalTitle = document.getElementById("verseModalTitle");
 const verseBody = document.getElementById("verseBody");
-const openEsvLink = document.getElementById("openEsvLink");
+const viewChapterBtn = document.getElementById("viewChapterBtn");
 const copyRefBtn = document.getElementById("copyRefBtn");
-let activeRef = "";
+const copyVerseBtn = document.getElementById("copyVerseBtn");
 
-openEsvLink.textContent = "Open Bible API Chapter";
+let activeRef = "";
+let activeParsed = null;
+let activeChapterData = null;
+let activeVerseCopyText = "";
 
 function escapeHtml(value) {
   return String(value)
@@ -879,6 +903,87 @@ function flattenVerseContent(content) {
   }).join("");
 }
 
+function flattenVersePlainText(content) {
+  return content.map(piece => {
+    if (typeof piece === "string") return piece;
+    if (piece && typeof piece.text === "string") return piece.text;
+    if (piece && piece.lineBreak) return "\n";
+    if (piece && piece.heading) return `${piece.heading} `;
+    return "";
+  }).join("").replace(/\s+\n/g, "\n").replace(/\s+/g, " ").trim();
+}
+
+function getChapterTitle(parsed) {
+  return `${CANONICAL_BOOK_NAMES[parsed.bookId]} ${parsed.chapter}`;
+}
+
+function getVerseNumbersText(verses) {
+  return verses.map(v => Number(v.number)).join(", ");
+}
+
+function renderPassage(parsed, chapterData, verses) {
+  activeVerseCopyText = `${parsed.canonical} BSB\n` +
+    verses.map(v => `${v.number} ${flattenVersePlainText(v.content)}`).join("\n");
+
+  modalTitle.textContent = `${parsed.canonical} BSB`;
+  viewChapterBtn.textContent = `View ${getChapterTitle(parsed)}`;
+  copyVerseBtn.textContent = "Copy Verse + Reference";
+  copyVerseBtn.disabled = false;
+
+  verseBody.innerHTML = `
+    <div class="bsb-passage">
+      ${verses.map(v => `
+        <p>
+          <sup>${v.number}</sup>
+          ${flattenVerseContent(v.content)}
+        </p>
+      `).join("")}
+    </div>
+    <p style="font-size:.9rem;color:#d8c786;margin-top:18px;">
+      Berean Standard Bible, public domain.
+    </p>
+  `;
+}
+
+function renderWholeChapter(parsed, chapterData) {
+  const chapterTitle = getChapterTitle(parsed);
+  activeVerseCopyText = `${chapterTitle} BSB\n` +
+    chapterData.chapter.content
+      .filter(item => item.type === "verse")
+      .map(v => `${v.number} ${flattenVersePlainText(v.content)}`)
+      .join("\n");
+
+  modalTitle.textContent = `${chapterTitle} BSB`;
+  viewChapterBtn.textContent = "Back to Selected Verse";
+  copyVerseBtn.textContent = "Copy Chapter + Reference";
+  copyVerseBtn.disabled = false;
+
+  verseBody.innerHTML = `
+    <div class="bsb-passage">
+      ${chapterData.chapter.content.map(item => {
+        if (item.type === "heading" && item.content) {
+          return `<div class="chapter-heading">${escapeHtml(item.content)}</div>`;
+        }
+
+        if (item.type === "verse") {
+          const isSelected = parsed.selected.has(Number(item.number));
+          return `
+            <p class="${isSelected ? "verse-highlight" : ""}">
+              <sup>${item.number}</sup>
+              ${flattenVerseContent(item.content)}
+            </p>
+          `;
+        }
+
+        return "";
+      }).join("")}
+    </div>
+    <p style="font-size:.9rem;color:#d8c786;margin-top:18px;">
+      Berean Standard Bible, public domain.
+    </p>
+  `;
+}
+
 async function fetchChapter(bookId, chapter) {
   const key = `${bookId}-${chapter}`;
 
@@ -913,9 +1018,15 @@ async function lookupVerse(reference) {
   if (!ref) return;
 
   activeRef = ref;
+  activeParsed = null;
+  activeChapterData = null;
+  activeVerseCopyText = "";
+
   modalTitle.textContent = ref;
   verseBody.innerHTML = '<p class="loading">Loading BSB passage...</p>';
-  openEsvLink.href = "https://bible.helloao.org/api/BSB/books.json";
+  viewChapterBtn.textContent = "View Whole Chapter";
+  viewChapterBtn.disabled = true;
+  copyVerseBtn.disabled = true;
   openModal();
 
   try {
@@ -929,22 +1040,12 @@ async function lookupVerse(reference) {
       throw new Error("No matching verses were found in that chapter.");
     }
 
-    modalTitle.textContent = `${parsed.canonical} BSB`;
-    openEsvLink.href = `${BSB_API_BASE}/${parsed.bookId}/${parsed.chapter}.json`;
+    activeRef = parsed.canonical;
+    activeParsed = parsed;
+    activeChapterData = chapterData;
 
-    verseBody.innerHTML = `
-      <div class="bsb-passage">
-        ${verses.map(v => `
-          <p>
-            <sup>${v.number}</sup>
-            ${flattenVerseContent(v.content)}
-          </p>
-        `).join("")}
-      </div>
-      <p style="font-size:.9rem;color:#d8c786;margin-top:18px;">
-        Berean Standard Bible, public domain.
-      </p>
-    `;
+    viewChapterBtn.disabled = false;
+    renderPassage(parsed, chapterData, verses);
   } catch (error) {
     verseBody.innerHTML = `
       <p class="error-message">I could not load that BSB passage.</p>
@@ -976,6 +1077,18 @@ document.getElementById("verseSearch").addEventListener("keydown", event => {
   if (event.key === "Enter") lookupVerse(event.target.value);
 });
 
+viewChapterBtn.addEventListener("click", () => {
+  if (!activeParsed || !activeChapterData) return;
+
+  if (viewChapterBtn.textContent.startsWith("Back")) {
+    const verses = activeChapterData.chapter.content
+      .filter(item => item.type === "verse" && activeParsed.selected.has(Number(item.number)));
+    renderPassage(activeParsed, activeChapterData, verses);
+  } else {
+    renderWholeChapter(activeParsed, activeChapterData);
+  }
+});
+
 copyRefBtn.addEventListener("click", async () => {
   try {
     await navigator.clipboard.writeText(activeRef);
@@ -984,6 +1097,25 @@ copyRefBtn.addEventListener("click", async () => {
   } catch {
     copyRefBtn.textContent = "Copy Failed";
     setTimeout(() => copyRefBtn.textContent = "Copy Reference", 1200);
+  }
+});
+
+function currentCopyVerseButtonLabel() {
+  return viewChapterBtn.textContent.startsWith("Back")
+    ? "Copy Chapter + Reference"
+    : "Copy Verse + Reference";
+}
+
+copyVerseBtn.addEventListener("click", async () => {
+  const label = currentCopyVerseButtonLabel();
+
+  try {
+    await navigator.clipboard.writeText(activeVerseCopyText || activeRef);
+    copyVerseBtn.textContent = "Copied!";
+    setTimeout(() => copyVerseBtn.textContent = label, 1200);
+  } catch {
+    copyVerseBtn.textContent = "Copy Failed";
+    setTimeout(() => copyVerseBtn.textContent = label, 1200);
   }
 });
 

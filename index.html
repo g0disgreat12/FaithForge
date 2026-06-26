@@ -623,6 +623,212 @@ footer a{
 .homepage-featured-card .link-buttons {
   margin-top: 18px;
 }
+
+/* HOME BIBLE LOOKUP */
+.home-bible-lookup{
+  padding:0 50px 10px;
+}
+
+.home-bible-lookup-card{
+  width:100%;
+  background:rgba(0,0,0,.82);
+  border:1px solid rgba(245,197,24,.28);
+  border-radius:15px;
+  padding:24px 28px;
+  box-shadow:0 0 24px rgba(245,197,24,.14);
+  text-align:center;
+}
+
+.home-bible-lookup-card h2{
+  color:#f5c518;
+  margin-bottom:8px;
+  text-shadow:0 0 12px rgba(245,197,24,.35);
+}
+
+.home-bible-lookup-card p{
+  max-width:760px;
+  margin:0 auto 16px;
+  color:#e0d08a;
+  line-height:1.55;
+}
+
+.home-bible-lookup-row{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:12px;
+  max-width:780px;
+  margin:0 auto;
+}
+
+.home-bible-lookup-row input{
+  width:100%;
+  border:1px solid rgba(245,197,24,.35);
+  border-radius:12px;
+  padding:14px 16px;
+  background:rgba(255,255,255,.06);
+  color:#fff;
+  font-size:1rem;
+  outline:none;
+}
+
+.home-bible-lookup-row input::placeholder{
+  color:rgba(255,255,255,.55);
+}
+
+.home-bible-lookup-row button,
+.ffg-bible-button,
+.ffg-sample-verse{
+  border:1px solid rgba(245,197,24,.65);
+  background:rgba(245,197,24,.12);
+  color:#f5c518;
+  border-radius:999px;
+  padding:10px 15px;
+  font-weight:800;
+  cursor:pointer;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  transition:.18s ease;
+  font-size:.92rem;
+}
+
+.home-bible-lookup-row button{
+  border-radius:12px;
+  padding:0 24px;
+  background:linear-gradient(45deg,#f5c518,#cfa214);
+  color:#000;
+  border:none;
+  box-shadow:0 0 14px rgba(245,197,24,.38);
+}
+
+.home-bible-lookup-row button:hover,
+.ffg-bible-button:hover,
+.ffg-sample-verse:hover{
+  background:#f5c518;
+  color:#000;
+  transform:translateY(-1px);
+  box-shadow:0 0 16px rgba(245,197,24,.55);
+}
+
+.home-bible-samples{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:9px;
+  margin-top:14px;
+}
+
+.ffg-bible-modal-backdrop{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:9998;
+  background:rgba(0,0,0,.76);
+  backdrop-filter:blur(5px);
+  padding:18px;
+}
+
+.ffg-bible-modal-backdrop.show{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.ffg-bible-modal{
+  width:min(820px,100%);
+  max-height:86vh;
+  overflow:auto;
+  background:#070707;
+  color:#f2e6b1;
+  border:1px solid rgba(245,197,24,.45);
+  border-radius:20px;
+  box-shadow:0 0 42px rgba(245,197,24,.28);
+  padding:22px;
+  position:relative;
+  text-align:left;
+}
+
+.ffg-bible-modal-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:12px;
+  border-bottom:1px solid rgba(245,197,24,.18);
+  padding-bottom:12px;
+  margin-bottom:14px;
+}
+
+.ffg-bible-modal-top h3{
+  margin:0;
+  color:#f5c518;
+  font-size:1.45rem;
+}
+
+.ffg-bible-close{
+  border:1px solid rgba(245,197,24,.45);
+  background:rgba(255,255,255,.05);
+  color:#f5c518;
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  font-size:1.25rem;
+  cursor:pointer;
+  flex:0 0 auto;
+}
+
+.ffg-bible-body{
+  line-height:1.75;
+  color:#f8edbd;
+  font-size:1.05rem;
+}
+
+.ffg-bible-body p{
+  margin:0 0 12px;
+  color:#f8edbd;
+}
+
+.ffg-bible-body sup{
+  color:#f5c518;
+  font-weight:800;
+  margin-right:4px;
+}
+
+.ffg-bible-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:18px;
+  padding-top:14px;
+  border-top:1px solid rgba(245,197,24,.18);
+}
+
+.ffg-bible-loading,
+.ffg-bible-error{
+  color:#f5c518 !important;
+  font-weight:700;
+}
+
+@media(max-width:900px){
+  .home-bible-lookup{
+    padding:0 18px 10px;
+  }
+
+  .home-bible-lookup-row{
+    grid-template-columns:1fr;
+  }
+
+  .home-bible-lookup-row button{
+    padding:13px;
+  }
+
+  .ffg-bible-button,
+  .ffg-sample-verse{
+    width:100%;
+  }
+}
+
 </style>
 </head>
 
@@ -640,6 +846,7 @@ footer a{
   </div>
   <nav>
     <a href="/Aboutus/">About Us</a>
+    <a href="/Doctrine/">Faith Statement</a>
     <a href="/Staff/">Our Team</a>
     <a href="/Streamers/">Streamers</a>
     <a href="/raidtrain/">Raid Train</a>
@@ -920,6 +1127,29 @@ Proverbs 27:17
 </section>
 </section>
 
+
+<section class="home-bible-lookup" aria-labelledby="homeBibleLookupTitle">
+  <div class="home-bible-lookup-card">
+    <h2 id="homeBibleLookupTitle">Bible Verse Lookup</h2>
+    <p>
+      Search a Bible passage in the Berean Standard Bible. You can view the verse, copy the verse with its reference,
+      or open the full chapter without leaving this page.
+    </p>
+
+    <div class="home-bible-lookup-row">
+      <input id="homeVerseSearch" type="text" placeholder="Example: Romans 10:9-10">
+      <button id="homeLookupBtn" type="button">Look Up</button>
+    </div>
+
+    <div class="home-bible-samples" aria-label="Popular Bible passages">
+      <button class="ffg-sample-verse" type="button" data-ref="Proverbs 27:17">Proverbs 27:17</button>
+      <button class="ffg-sample-verse" type="button" data-ref="Romans 10:9-10">Romans 10:9–10</button>
+      <button class="ffg-sample-verse" type="button" data-ref="John 3:16">John 3:16</button>
+      <button class="ffg-sample-verse" type="button" data-ref="Ephesians 2:8-9">Ephesians 2:8–9</button>
+    </div>
+  </div>
+</section>
+
 <section class="split">
   <div class="box video-box">
     <h2>FaithForge Highlight Stream</h2>
@@ -944,9 +1174,28 @@ Proverbs 27:17
 
 </main>
 
+
+<div class="ffg-bible-modal-backdrop" id="ffgBibleBackdrop" aria-hidden="true">
+  <div class="ffg-bible-modal" role="dialog" aria-modal="true" aria-labelledby="ffgBibleModalTitle">
+    <div class="ffg-bible-modal-top">
+      <h3 id="ffgBibleModalTitle">Bible Passage</h3>
+      <button class="ffg-bible-close" id="ffgBibleCloseBtn" type="button" aria-label="Close passage">&times;</button>
+    </div>
+
+    <div class="ffg-bible-body" id="ffgBibleBody"></div>
+
+    <div class="ffg-bible-actions">
+      <button class="ffg-bible-button" id="ffgViewChapterBtn" type="button">View Whole Chapter</button>
+      <button class="ffg-bible-button" id="ffgCopyRefBtn" type="button">Copy Reference</button>
+      <button class="ffg-bible-button" id="ffgCopyPassageBtn" type="button">Copy Verse + Reference</button>
+    </div>
+  </div>
+</div>
+
 <footer>
   <a href="/index.html">Home</a>
   <a href="/Aboutus/">About Us</a>
+  <a href="/Doctrine/">Faith Statement</a>
   <a href="/Staff/">Our Team</a>
   <a href="/Streamers/">Streamers</a>
   <a href="/raidtrain/">Raid Train</a>
@@ -1013,6 +1262,366 @@ if (!prefersReducedMotion) {
 }
 </script>
   
+
+<script>
+(() => {
+  /*
+    Homepage BSB Bible lookup.
+    Uses public-domain Berean Standard Bible chapter JSON from:
+    https://bible.helloao.org/api/BSB/JHN/3.json
+  */
+
+  const BSB_API_BASE = "https://bible.helloao.org/api/BSB";
+
+  const BOOK_ALIASES = {
+    "genesis":"GEN","gen":"GEN",
+    "exodus":"EXO","exod":"EXO","exo":"EXO",
+    "leviticus":"LEV","lev":"LEV",
+    "numbers":"NUM","num":"NUM",
+    "deuteronomy":"DEU","deut":"DEU","deu":"DEU",
+    "joshua":"JOS","josh":"JOS","jos":"JOS",
+    "judges":"JDG","judg":"JDG","jdg":"JDG",
+    "ruth":"RUT","rut":"RUT",
+    "1 samuel":"1SA","1samuel":"1SA","1 sam":"1SA","1sam":"1SA",
+    "2 samuel":"2SA","2samuel":"2SA","2 sam":"2SA","2sam":"2SA",
+    "1 kings":"1KI","1kings":"1KI","1 kgs":"1KI","1kgs":"1KI",
+    "2 kings":"2KI","2kings":"2KI","2 kgs":"2KI","2kgs":"2KI",
+    "1 chronicles":"1CH","1chronicles":"1CH","1 chron":"1CH","1chron":"1CH","1 chr":"1CH","1chr":"1CH",
+    "2 chronicles":"2CH","2chronicles":"2CH","2 chron":"2CH","2chron":"2CH","2 chr":"2CH","2chr":"2CH",
+    "ezra":"EZR","ezr":"EZR",
+    "nehemiah":"NEH","neh":"NEH",
+    "esther":"EST","est":"EST",
+    "job":"JOB",
+    "psalms":"PSA","psalm":"PSA","ps":"PSA","psa":"PSA",
+    "proverbs":"PRO","prov":"PRO","pro":"PRO",
+    "ecclesiastes":"ECC","eccl":"ECC","ecc":"ECC",
+    "song of songs":"SNG","song of solomon":"SNG","song":"SNG","sos":"SNG","sng":"SNG",
+    "isaiah":"ISA","isa":"ISA",
+    "jeremiah":"JER","jer":"JER",
+    "lamentations":"LAM","lam":"LAM",
+    "ezekiel":"EZK","ezek":"EZK","ezk":"EZK",
+    "daniel":"DAN","dan":"DAN",
+    "hosea":"HOS","hos":"HOS",
+    "joel":"JOL","jol":"JOL",
+    "amos":"AMO","amo":"AMO",
+    "obadiah":"OBA","obad":"OBA","oba":"OBA",
+    "jonah":"JON","jon":"JON",
+    "micah":"MIC","mic":"MIC",
+    "nahum":"NAM","nah":"NAM","nam":"NAM",
+    "habakkuk":"HAB","hab":"HAB",
+    "zephaniah":"ZEP","zeph":"ZEP","zep":"ZEP",
+    "haggai":"HAG","hag":"HAG",
+    "zechariah":"ZEC","zech":"ZEC","zec":"ZEC",
+    "malachi":"MAL","mal":"MAL",
+    "matthew":"MAT","matt":"MAT","mat":"MAT","mt":"MAT",
+    "mark":"MRK","mrk":"MRK","mk":"MRK",
+    "luke":"LUK","luk":"LUK","lk":"LUK",
+    "john":"JHN","jhn":"JHN","jn":"JHN",
+    "acts":"ACT","act":"ACT",
+    "romans":"ROM","rom":"ROM",
+    "1 corinthians":"1CO","1corinthians":"1CO","1 cor":"1CO","1cor":"1CO",
+    "2 corinthians":"2CO","2corinthians":"2CO","2 cor":"2CO","2cor":"2CO",
+    "galatians":"GAL","gal":"GAL",
+    "ephesians":"EPH","eph":"EPH",
+    "philippians":"PHP","phil":"PHP","php":"PHP",
+    "colossians":"COL","col":"COL",
+    "1 thessalonians":"1TH","1thessalonians":"1TH","1 thess":"1TH","1thess":"1TH",
+    "2 thessalonians":"2TH","2thessalonians":"2TH","2 thess":"2TH","2thess":"2TH",
+    "1 timothy":"1TI","1timothy":"1TI","1 tim":"1TI","1tim":"1TI",
+    "2 timothy":"2TI","2timothy":"2TI","2 tim":"2TI","2tim":"2TI",
+    "titus":"TIT","tit":"TIT",
+    "philemon":"PHM","phlm":"PHM","phm":"PHM",
+    "hebrews":"HEB","heb":"HEB",
+    "james":"JAS","jas":"JAS","jam":"JAS",
+    "1 peter":"1PE","1peter":"1PE","1 pet":"1PE","1pet":"1PE",
+    "2 peter":"2PE","2peter":"2PE","2 pet":"2PE","2pet":"2PE",
+    "1 john":"1JN","1john":"1JN","1 jn":"1JN",
+    "2 john":"2JN","2john":"2JN","2 jn":"2JN",
+    "3 john":"3JN","3john":"3JN","3 jn":"3JN",
+    "jude":"JUD","jud":"JUD",
+    "revelation":"REV","rev":"REV"
+  };
+
+  const CANONICAL_BOOK_NAMES = {
+    "GEN":"Genesis","EXO":"Exodus","LEV":"Leviticus","NUM":"Numbers","DEU":"Deuteronomy",
+    "JOS":"Joshua","JDG":"Judges","RUT":"Ruth","1SA":"1 Samuel","2SA":"2 Samuel",
+    "1KI":"1 Kings","2KI":"2 Kings","1CH":"1 Chronicles","2CH":"2 Chronicles",
+    "EZR":"Ezra","NEH":"Nehemiah","EST":"Esther","JOB":"Job","PSA":"Psalm",
+    "PRO":"Proverbs","ECC":"Ecclesiastes","SNG":"Song of Songs","ISA":"Isaiah",
+    "JER":"Jeremiah","LAM":"Lamentations","EZK":"Ezekiel","DAN":"Daniel","HOS":"Hosea",
+    "JOL":"Joel","AMO":"Amos","OBA":"Obadiah","JON":"Jonah","MIC":"Micah","NAM":"Nahum",
+    "HAB":"Habakkuk","ZEP":"Zephaniah","HAG":"Haggai","ZEC":"Zechariah","MAL":"Malachi",
+    "MAT":"Matthew","MRK":"Mark","LUK":"Luke","JHN":"John","ACT":"Acts","ROM":"Romans",
+    "1CO":"1 Corinthians","2CO":"2 Corinthians","GAL":"Galatians","EPH":"Ephesians",
+    "PHP":"Philippians","COL":"Colossians","1TH":"1 Thessalonians","2TH":"2 Thessalonians",
+    "1TI":"1 Timothy","2TI":"2 Timothy","TIT":"Titus","PHM":"Philemon","HEB":"Hebrews",
+    "JAS":"James","1PE":"1 Peter","2PE":"2 Peter","1JN":"1 John","2JN":"2 John",
+    "3JN":"3 John","JUD":"Jude","REV":"Revelation"
+  };
+
+  const chapterCache = new Map();
+
+  const searchInput = document.getElementById("homeVerseSearch");
+  const lookupBtn = document.getElementById("homeLookupBtn");
+  const backdrop = document.getElementById("ffgBibleBackdrop");
+  const modalTitle = document.getElementById("ffgBibleModalTitle");
+  const verseBody = document.getElementById("ffgBibleBody");
+  const closeBtn = document.getElementById("ffgBibleCloseBtn");
+  const viewChapterBtn = document.getElementById("ffgViewChapterBtn");
+  const copyRefBtn = document.getElementById("ffgCopyRefBtn");
+  const copyPassageBtn = document.getElementById("ffgCopyPassageBtn");
+
+  let activeParsed = null;
+  let activeReferenceText = "";
+  let activePassageText = "";
+
+  function escapeHtml(value) {
+    return String(value)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+  function normalizeInput(input) {
+    return String(input || "")
+      .replace(/[–—]/g, "-")
+      .replace(/\./g, "")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  function parseReference(input) {
+    const normalized = normalizeInput(input);
+    const lower = normalized.toLowerCase();
+
+    const aliases = Object.keys(BOOK_ALIASES).sort((a, b) => b.length - a.length);
+    const alias = aliases.find(name => lower === name || lower.startsWith(name + " "));
+
+    if (!alias) {
+      throw new Error("Could not recognize the Bible book. Try something like Romans 10:9-10.");
+    }
+
+    const bookId = BOOK_ALIASES[alias];
+    const rest = normalized.slice(alias.length).trim();
+    const match = rest.match(/^(\d+)\s*:\s*(.+)$/);
+
+    if (!match) {
+      throw new Error("Use a chapter and verse, like John 3:16.");
+    }
+
+    const chapter = Number(match[1]);
+    const verseSpec = match[2].replace(/\s+/g, "");
+    const selected = new Set();
+
+    verseSpec.split(",").forEach(part => {
+      if (!part) return;
+
+      if (part.includes("-")) {
+        const [start, end] = part.split("-").map(Number);
+        if (!start || !end || end < start) throw new Error("Verse range is not valid.");
+        for (let v = start; v <= end; v++) selected.add(v);
+      } else {
+        const verse = Number(part);
+        if (!verse) throw new Error("Verse number is not valid.");
+        selected.add(verse);
+      }
+    });
+
+    if (!selected.size) {
+      throw new Error("No verses were found in that reference.");
+    }
+
+    const canonical = `${CANONICAL_BOOK_NAMES[bookId]} ${chapter}:${verseSpec}`;
+    const chapterReference = `${CANONICAL_BOOK_NAMES[bookId]} ${chapter}`;
+
+    return { bookId, chapter, selected, canonical, chapterReference };
+  }
+
+  function flattenVerseContent(content, plainText = false) {
+    return content.map(piece => {
+      if (typeof piece === "string") return plainText ? piece : escapeHtml(piece);
+      if (piece && typeof piece.text === "string") return plainText ? piece.text : escapeHtml(piece.text);
+      if (piece && piece.lineBreak) return plainText ? "\n" : "<br>";
+      if (piece && piece.heading) return plainText ? `${piece.heading} ` : `<strong>${escapeHtml(piece.heading)}</strong> `;
+      return "";
+    }).join("").replace(/\s+/g, " ").trim();
+  }
+
+  async function fetchChapter(bookId, chapter) {
+    const key = `${bookId}-${chapter}`;
+
+    if (chapterCache.has(key)) {
+      return chapterCache.get(key);
+    }
+
+    const url = `${BSB_API_BASE}/${bookId}/${chapter}.json`;
+    const response = await fetch(url, { cache: "force-cache" });
+
+    if (!response.ok) {
+      throw new Error("Could not load that chapter.");
+    }
+
+    const data = await response.json();
+    chapterCache.set(key, data);
+    return data;
+  }
+
+  function openModal() {
+    backdrop.classList.add("show");
+    backdrop.setAttribute("aria-hidden", "false");
+  }
+
+  function closeModal() {
+    backdrop.classList.remove("show");
+    backdrop.setAttribute("aria-hidden", "true");
+  }
+
+  function setButtonText(button, text, resetText = text) {
+    button.textContent = text;
+    setTimeout(() => {
+      button.textContent = resetText;
+    }, 1200);
+  }
+
+  async function copyText(text, button, successText, resetText) {
+    try {
+      await navigator.clipboard.writeText(text);
+      setButtonText(button, successText, resetText);
+    } catch {
+      setButtonText(button, "Copy Failed", resetText);
+    }
+  }
+
+  function buildVerseHtml(verses) {
+    return verses.map(v => `
+      <p>
+        <sup>${escapeHtml(v.number)}</sup>
+        ${flattenVerseContent(v.content)}
+      </p>
+    `).join("");
+  }
+
+  function buildPlainPassage(reference, verses) {
+    const lines = verses.map(v => `${v.number} ${flattenVerseContent(v.content, true)}`);
+    return `${lines.join("\n")}\n\n${reference} BSB`;
+  }
+
+  async function lookupVerse(reference) {
+    const ref = String(reference || "").trim();
+    if (!ref) return;
+
+    modalTitle.textContent = ref;
+    verseBody.innerHTML = '<p class="ffg-bible-loading">Loading BSB passage...</p>';
+    copyPassageBtn.textContent = "Copy Verse + Reference";
+    openModal();
+
+    try {
+      const parsed = parseReference(ref);
+      const chapterData = await fetchChapter(parsed.bookId, parsed.chapter);
+
+      const verses = chapterData.chapter.content
+        .filter(item => item.type === "verse" && parsed.selected.has(Number(item.number)));
+
+      if (!verses.length) {
+        throw new Error("No matching verses were found in that chapter.");
+      }
+
+      activeParsed = parsed;
+      activeReferenceText = `${parsed.canonical} BSB`;
+      activePassageText = buildPlainPassage(parsed.canonical, verses);
+
+      modalTitle.textContent = activeReferenceText;
+
+      verseBody.innerHTML = `
+        <div class="ffg-bible-passage">
+          ${buildVerseHtml(verses)}
+        </div>
+        <p style="font-size:.9rem;color:#d8c786;margin-top:18px;">
+          Berean Standard Bible, public domain.
+        </p>
+      `;
+    } catch (error) {
+      activeParsed = null;
+      activeReferenceText = "";
+      activePassageText = "";
+
+      verseBody.innerHTML = `
+        <p class="ffg-bible-error">I could not load that BSB passage.</p>
+        <p>${escapeHtml(error.message)}</p>
+        <p>Tip: use one chapter at a time, like <strong>John 1:1,14</strong> or <strong>Romans 14:1-13,19</strong>.</p>
+      `;
+    }
+  }
+
+  async function showWholeChapter() {
+    if (!activeParsed) return;
+
+    modalTitle.textContent = `${activeParsed.chapterReference} BSB`;
+    verseBody.innerHTML = '<p class="ffg-bible-loading">Loading full BSB chapter...</p>';
+    copyPassageBtn.textContent = "Copy Chapter + Reference";
+
+    try {
+      const chapterData = await fetchChapter(activeParsed.bookId, activeParsed.chapter);
+      const verses = chapterData.chapter.content.filter(item => item.type === "verse");
+
+      activeReferenceText = `${activeParsed.chapterReference} BSB`;
+      activePassageText = buildPlainPassage(activeParsed.chapterReference, verses);
+
+      verseBody.innerHTML = `
+        <div class="ffg-bible-passage">
+          ${buildVerseHtml(verses)}
+        </div>
+        <p style="font-size:.9rem;color:#d8c786;margin-top:18px;">
+          Berean Standard Bible, public domain.
+        </p>
+      `;
+    } catch (error) {
+      verseBody.innerHTML = `
+        <p class="ffg-bible-error">I could not load the full chapter.</p>
+        <p>${escapeHtml(error.message)}</p>
+      `;
+    }
+  }
+
+  document.querySelectorAll(".ffg-sample-verse").forEach(button => {
+    button.addEventListener("click", () => lookupVerse(button.dataset.ref));
+  });
+
+  lookupBtn.addEventListener("click", () => lookupVerse(searchInput.value));
+
+  searchInput.addEventListener("keydown", event => {
+    if (event.key === "Enter") lookupVerse(event.target.value);
+  });
+
+  viewChapterBtn.addEventListener("click", showWholeChapter);
+
+  copyRefBtn.addEventListener("click", () => {
+    if (!activeReferenceText) return;
+    copyText(activeReferenceText, copyRefBtn, "Copied!", "Copy Reference");
+  });
+
+  copyPassageBtn.addEventListener("click", () => {
+    if (!activePassageText) return;
+    const resetText = copyPassageBtn.textContent.includes("Chapter")
+      ? "Copy Chapter + Reference"
+      : "Copy Verse + Reference";
+    copyText(activePassageText, copyPassageBtn, "Copied!", resetText);
+  });
+
+  closeBtn.addEventListener("click", closeModal);
+
+  backdrop.addEventListener("click", event => {
+    if (event.target === backdrop) closeModal();
+  });
+
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape") closeModal();
+  });
+})();
+</script>
+
 <script src="https://embed.twitch.tv/embed/v1.js"></script>
 
 <script>

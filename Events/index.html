@@ -199,14 +199,10 @@
       top: -80px;
       left: 16px;
       z-index: 10000;
-
       padding: 12px 18px;
-
       border-radius: 8px;
-
       background: var(--events-gold);
       color: #000;
-
       font-weight: 900;
       text-decoration: none;
     }
@@ -218,24 +214,18 @@
     .events-page {
       position: relative;
       z-index: 2;
-
       width: min(1180px, 94%);
       margin: 0 auto;
       padding-bottom: 46px;
     }
 
-    /*
-     * HERO
-     */
+    /* HERO */
 
     .events-hero {
       position: relative;
-
       margin: 36px auto 30px;
       padding: 42px 28px;
-
       overflow: hidden;
-
       border: 1px solid var(--events-border);
       border-radius: 22px;
 
@@ -258,14 +248,11 @@
 
     .events-hero::after {
       content: "";
-
       position: absolute;
       right: -90px;
       bottom: -130px;
-
       width: 360px;
       height: 360px;
-
       border-radius: 50%;
 
       background:
@@ -280,24 +267,18 @@
 
     .events-eyebrow {
       margin: 0 0 9px;
-
       color: var(--events-gold-soft);
-
       font-size: 0.8rem;
       font-weight: 900;
       letter-spacing: 0.15em;
-
       text-transform: uppercase;
     }
 
     .events-hero h1 {
       display: inline-block;
-
       margin: 0;
       padding-bottom: 0.12em;
-
       overflow: visible;
-
       font-size: clamp(2.5rem, 6vw, 4.4rem);
       line-height: 1.08;
 
@@ -318,11 +299,8 @@
 
     .events-hero-description {
       max-width: 840px;
-
       margin: 16px auto 0;
-
       color: var(--events-gold-soft);
-
       font-size: 1.07rem;
       line-height: 1.7;
     }
@@ -333,7 +311,6 @@
       justify-content: center;
       align-items: center;
       gap: 16px;
-
       margin-top: 27px;
     }
 
@@ -344,12 +321,9 @@
       align-items: center;
       justify-content: center;
       gap: 7px;
-
       min-height: 44px;
       padding: 11px 20px;
-
       border-radius: 10px;
-
       font-weight: 900;
       text-decoration: none;
 
@@ -378,7 +352,6 @@
 
     .events-secondary-button {
       border: 2px solid var(--events-gold);
-
       background: rgba(0, 0, 0, 0.46);
       color: var(--events-gold);
     }
@@ -390,10 +363,7 @@
     .event-action-button:hover,
     .event-action-button:focus-visible {
       transform: translateY(-2px);
-
-      box-shadow:
-        0 0 26px rgba(245, 197, 24, 0.72);
-
+      box-shadow: 0 0 26px rgba(245, 197, 24, 0.72);
       outline: none;
     }
 
@@ -403,16 +373,13 @@
       color: #000;
     }
 
-    /*
-     * Larger and more visible full-calendar button.
-     */
-
     .events-calendar-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       min-height: 60px;
       padding: 16px 35px;
-
       border: 2px solid var(--events-gold-light);
-
       border-radius: 14px;
 
       background:
@@ -423,14 +390,18 @@
         );
 
       color: #000;
-
       font-size: 1.12rem;
       font-weight: 950;
       letter-spacing: 0.02em;
+      text-decoration: none;
 
       box-shadow:
         0 0 28px rgba(245, 197, 24, 0.68),
         inset 0 0 11px rgba(255, 255, 255, 0.16);
+
+      transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease;
     }
 
     .events-calendar-button:hover,
@@ -448,44 +419,33 @@
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 13px;
-
       max-width: 700px;
-
       margin: 28px auto 0;
     }
 
     .events-summary-card {
       padding: 14px 10px;
-
       border: 1px solid rgba(245, 197, 24, 0.17);
       border-radius: 12px;
-
       background: rgba(255, 255, 255, 0.025);
     }
 
     .events-summary-value {
       display: block;
-
       color: var(--events-gold-light);
-
       font-size: 1.35rem;
       font-weight: 900;
     }
 
     .events-summary-label {
       display: block;
-
       margin-top: 3px;
-
       color: var(--events-muted);
-
       font-size: 0.79rem;
       font-weight: 700;
     }
 
-    /*
-     * NEXT EVENT
-     */
+    /* NEXT EVENT */
 
     .next-event-section {
       margin-bottom: 30px;
@@ -496,9 +456,7 @@
       grid-template-columns: 150px minmax(0, 1fr);
       gap: 25px;
       align-items: center;
-
       padding: 26px;
-
       border: 1px solid var(--events-border-strong);
       border-radius: 20px;
 
@@ -518,12 +476,9 @@
 
     .next-event-date {
       overflow: hidden;
-
       border: 1px solid rgba(245, 197, 24, 0.38);
       border-radius: 17px;
-
       background: #050505;
-
       text-align: center;
 
       box-shadow:
@@ -532,26 +487,19 @@
 
     .next-event-month {
       display: block;
-
       padding: 9px 8px;
-
       background: var(--events-gold);
       color: #000;
-
       font-size: 0.86rem;
       font-weight: 950;
       letter-spacing: 0.09em;
-
       text-transform: uppercase;
     }
 
     .next-event-day {
       display: block;
-
       padding: 13px 8px 7px;
-
       color: var(--events-gold-light);
-
       font-size: 2.8rem;
       font-weight: 950;
       line-height: 1;
@@ -559,11 +507,8 @@
 
     .next-event-weekday {
       display: block;
-
       padding: 0 8px 12px;
-
       color: var(--events-gold-soft);
-
       font-size: 0.83rem;
       font-weight: 750;
     }
@@ -571,20 +516,15 @@
     .next-event-label {
       display: inline-flex;
       align-items: center;
-
       margin-bottom: 8px;
       padding: 6px 11px;
-
       border: 1px solid rgba(245, 197, 24, 0.35);
       border-radius: 999px;
-
       background: rgba(245, 197, 24, 0.08);
       color: var(--events-gold-light);
-
       font-size: 0.76rem;
       font-weight: 900;
       letter-spacing: 0.06em;
-
       text-transform: uppercase;
     }
 
@@ -650,9 +590,7 @@
 
     .next-event-content h2 {
       margin: 0 0 7px;
-
       color: var(--events-gold);
-
       font-size: clamp(1.7rem, 3vw, 2.35rem);
       line-height: 1.2;
     }
@@ -660,28 +598,21 @@
     .next-event-time,
     .next-event-location {
       margin: 5px 0;
-
       color: var(--events-gold-soft);
-
       font-size: 0.96rem;
       line-height: 1.5;
     }
 
     .next-event-description {
       max-width: 800px;
-
       margin: 12px 0 0;
-
       color: var(--events-muted);
-
       line-height: 1.65;
     }
 
     .next-event-countdown {
       margin-top: 14px;
-
       color: #80f0ab;
-
       font-size: 1rem;
       font-weight: 900;
     }
@@ -690,34 +621,25 @@
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-
       margin-top: 17px;
     }
 
     .next-event-empty {
       padding: 30px;
-
       border: 1px solid var(--events-border);
       border-radius: 18px;
-
       background: rgba(0, 0, 0, 0.7);
-
       color: var(--events-gold-soft);
-
       line-height: 1.6;
     }
 
-    /*
-     * TOOLBAR
-     */
+    /* TOOLBAR */
 
     .events-toolbar {
       margin-bottom: 22px;
       padding: 21px;
-
       border: 1px solid var(--events-border);
       border-radius: 17px;
-
       background: var(--events-panel);
 
       box-shadow:
@@ -730,31 +652,24 @@
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 14px;
-
       margin-bottom: 16px;
-
       text-align: left;
     }
 
     .events-toolbar-header h2 {
       margin: 0;
-
       color: var(--events-gold);
-
       font-size: clamp(1.6rem, 3vw, 2.1rem);
     }
 
     .events-toolbar-header p {
       margin: 5px 0 0;
-
       color: var(--events-gold-soft);
-
       line-height: 1.5;
     }
 
     .events-result-count {
       color: var(--events-muted);
-
       font-size: 0.9rem;
       font-weight: 700;
     }
@@ -767,17 +682,12 @@
 
     .events-search-input {
       width: 100%;
-
       padding: 13px 15px;
-
       border: 1px solid rgba(245, 197, 24, 0.32);
       border-radius: 11px;
-
       outline: none;
-
       background: rgba(255, 255, 255, 0.045);
       color: #fff;
-
       font-size: 1rem;
     }
 
@@ -794,13 +704,10 @@
 
     .events-clear-button {
       padding: 11px 18px;
-
       border: 1px solid rgba(245, 197, 24, 0.32);
       border-radius: 10px;
-
       background: rgba(0, 0, 0, 0.6);
       color: var(--events-gold);
-
       font-weight: 850;
       cursor: pointer;
     }
@@ -809,7 +716,6 @@
     .events-clear-button:focus-visible {
       background: var(--events-gold);
       color: #000;
-
       outline: none;
     }
 
@@ -817,22 +723,17 @@
       display: flex;
       flex-wrap: wrap;
       gap: 9px;
-
       margin-top: 15px;
     }
 
     .events-filter-button {
       padding: 8px 13px;
-
       border: 1px solid rgba(245, 197, 24, 0.25);
       border-radius: 999px;
-
       background: rgba(255, 255, 255, 0.035);
       color: var(--events-gold-soft);
-
       font-size: 0.84rem;
       font-weight: 850;
-
       cursor: pointer;
 
       transition:
@@ -912,26 +813,20 @@
         0 0 15px rgba(245, 197, 24, 0.32);
     }
 
-    /*
-     * EVENT GRID
-     */
+    /* EVENT GRID */
 
     .events-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 19px;
-
       text-align: left;
     }
 
     .event-card {
       display: flex;
       flex-direction: column;
-
       min-width: 0;
-
       overflow: hidden;
-
       border: 1px solid var(--events-border);
       border-radius: 17px;
 
@@ -954,7 +849,6 @@
 
     .event-card:hover {
       transform: translateY(-3px);
-
       border-color: var(--events-border-strong);
 
       box-shadow:
@@ -965,45 +859,33 @@
       display: grid;
       grid-template-columns: 82px minmax(0, 1fr);
       gap: 15px;
-
       padding: 18px;
     }
 
     .event-card-date {
       align-self: start;
-
       overflow: hidden;
-
       border: 1px solid rgba(245, 197, 24, 0.26);
       border-radius: 11px;
-
       background: #050505;
-
       text-align: center;
     }
 
     .event-card-month {
       display: block;
-
       padding: 5px;
-
       background: var(--events-gold);
       color: #000;
-
       font-size: 0.72rem;
       font-weight: 950;
       letter-spacing: 0.07em;
-
       text-transform: uppercase;
     }
 
     .event-card-day {
       display: block;
-
       padding: 9px 5px 3px;
-
       color: var(--events-gold-light);
-
       font-size: 1.8rem;
       font-weight: 950;
       line-height: 1;
@@ -1011,98 +893,80 @@
 
     .event-card-weekday {
       display: block;
-
       padding: 3px 5px 8px;
-
       color: var(--events-gold-soft);
-
       font-size: 0.72rem;
       font-weight: 700;
     }
 
     .event-category {
       display: inline-flex;
-
       margin-bottom: 7px;
       padding: 5px 9px;
-
       border: 1px solid rgba(245, 197, 24, 0.25);
       border-radius: 999px;
-
       background: rgba(245, 197, 24, 0.07);
       color: var(--events-gold-light);
-
       font-size: 0.7rem;
       font-weight: 900;
       letter-spacing: 0.04em;
-
       text-transform: uppercase;
     }
 
-    /* Bible & Faith — Purple */
     .event-category.faith {
       border-color: rgba(190, 120, 255, 0.55);
       background: rgba(155, 75, 220, 0.15);
       color: var(--category-purple);
     }
 
-    /* Raid Train — Orange */
     .event-category.raid-train {
       border-color: rgba(255, 145, 45, 0.58);
       background: rgba(255, 120, 20, 0.14);
       color: var(--category-orange);
     }
 
-    /* Podcast — Blue */
     .event-category.podcast {
       border-color: rgba(64, 145, 255, 0.58);
       background: rgba(40, 115, 220, 0.14);
       color: var(--category-blue);
     }
 
-    /* Gaming — Green */
     .event-category.gaming {
       border-color: rgba(75, 220, 125, 0.55);
       background: rgba(50, 180, 100, 0.13);
       color: var(--category-green);
     }
 
-    /* Tournament — Gold */
     .event-category.tournament {
       border-color: rgba(245, 197, 24, 0.68);
       background: rgba(245, 197, 24, 0.14);
       color: var(--category-gold);
     }
 
-    /* D&D — Pink */
     .event-category.dnd {
       border-color: rgba(255, 105, 180, 0.58);
       background: rgba(220, 70, 145, 0.14);
       color: var(--category-pink);
     }
 
-    /* Partnership — Light Blue */
     .event-category.partnership {
       border-color: rgba(130, 220, 255, 0.58);
       background: rgba(90, 190, 230, 0.13);
       color: var(--category-light-blue);
     }
 
-    /* Live — Red */
     .event-category.live {
       border-color: rgba(255, 75, 75, 0.62);
       background: rgba(220, 40, 40, 0.14);
       color: var(--category-red);
     }
 
-    /* Men's/Women's — Tan */
     .event-category.men-women {
       border-color: rgba(210, 175, 125, 0.58);
       background: rgba(180, 140, 90, 0.14);
       color: var(--category-tan);
     }
 
-    /* Community — Gray */
     .event-category.community {
       border-color: rgba(190, 190, 190, 0.4);
       background: rgba(170, 170, 170, 0.09);
@@ -1111,9 +975,7 @@
 
     .event-card h3 {
       margin: 0;
-
       color: var(--events-gold);
-
       font-size: 1.22rem;
       line-height: 1.3;
     }
@@ -1121,21 +983,16 @@
     .event-card-time,
     .event-card-location {
       margin: 6px 0 0;
-
       color: var(--events-gold-soft);
-
       font-size: 0.88rem;
       line-height: 1.45;
     }
 
     .event-card-description {
       flex: 1;
-
       margin: 0;
       padding: 0 18px 18px;
-
       color: var(--events-muted);
-
       font-size: 0.94rem;
       line-height: 1.6;
     }
@@ -1144,26 +1001,21 @@
       display: flex;
       flex-wrap: wrap;
       gap: 9px;
-
       margin-top: auto;
       padding: 14px 18px 18px;
-
       border-top: 1px solid rgba(245, 197, 24, 0.11);
     }
 
     .event-action-button {
       min-height: 38px;
       padding: 8px 13px;
-
       font-size: 0.86rem;
     }
 
     .event-action-button.secondary {
       border: 1px solid rgba(245, 197, 24, 0.32);
-
       background: rgba(0, 0, 0, 0.58);
       color: var(--events-gold);
-
       box-shadow: none;
     }
 
@@ -1177,16 +1029,11 @@
     .events-error-state,
     .events-loading-state {
       grid-column: 1 / -1;
-
       padding: 35px 22px;
-
       border: 1px solid var(--events-border);
       border-radius: 17px;
-
       background: rgba(0, 0, 0, 0.72);
-
       color: var(--events-gold-soft);
-
       line-height: 1.7;
       text-align: center;
     }
@@ -1194,16 +1041,13 @@
     .events-loading-dots {
       display: inline-flex;
       gap: 7px;
-
       margin-top: 12px;
     }
 
     .events-loading-dots span {
       width: 8px;
       height: 8px;
-
       border-radius: 50%;
-
       background: var(--events-gold);
 
       animation:
@@ -1232,30 +1076,22 @@
       }
     }
 
-    /*
-     * ABOUT EVENTS
-     */
+    /* ABOUT EVENTS */
 
     .events-about {
       margin-top: 32px;
       padding: 28px;
-
       border: 1px solid var(--events-border);
       border-radius: 18px;
-
       background: var(--events-panel);
-
       color: var(--events-gold-soft);
-
       line-height: 1.7;
       text-align: left;
     }
 
     .events-about h2 {
       margin: 0 0 12px;
-
       color: var(--events-gold);
-
       font-size: 1.7rem;
     }
 
@@ -1268,7 +1104,6 @@
     .events-about ul {
       margin: 14px 0 0;
       padding-left: 22px;
-
       color: var(--events-gold-soft);
     }
 
@@ -1279,18 +1114,13 @@
     .events-update-status {
       margin-top: 18px;
       padding-top: 16px;
-
       border-top: 1px solid rgba(245, 197, 24, 0.12);
-
       color: #aaa;
-
       font-size: 0.84rem;
       text-align: center;
     }
 
-    /*
-     * FOOTER
-     */
+    /* FOOTER */
 
     footer {
       position: relative;
@@ -1302,9 +1132,7 @@
       text-align: center;
     }
 
-    /*
-     * RESPONSIVE
-     */
+    /* RESPONSIVE */
 
     @media (max-width: 860px) {
       .events-grid {
@@ -1350,9 +1178,7 @@
 
       .next-event-card {
         grid-template-columns: 1fr;
-
         padding: 21px;
-
         text-align: center;
       }
 
@@ -1385,7 +1211,6 @@
       .event-card-top {
         grid-template-columns: 72px minmax(0, 1fr);
         gap: 12px;
-
         padding: 15px;
       }
 
@@ -1481,9 +1306,9 @@
     <h1>FaithForge Gaming Events</h1>
 
     <p class="events-hero-description">
-      Join FaithForge Gaming for Christian fellowship, Bible study's,
-      Community game nights, Raid Trains, Podcasts, Livestreams,
-      Tournaments, D&amp;D, Partnership Events, Prayer time, Special gatherings, and more.
+      Join FaithForge Gaming for Christian fellowship, Bible study,
+      community game nights, Raid Trains, podcasts, livestreams,
+      tournaments, D&amp;D, partnerships, prayer, and special gatherings.
     </p>
 
     <div class="events-hero-actions">
@@ -1725,7 +1550,7 @@
 
         <p>
           FaithForge Gaming events are designed to build fellowship,
-          strengthen faith, disciple believers, support Christian creators, and create
+          strengthen faith, support Christian creators, and create
           meaningful moments through gaming and online community.
         </p>
 
@@ -1803,15 +1628,11 @@
 </footer>
 
 <script>
-  /*
-   * FaithForge Community API
-   */
-
   const COMMUNITY_API =
     "https://faithforge-community-api.faithforgegaming.workers.dev/community";
 
   const EVENTS_CACHE_KEY =
-    "faithforge_events_page_cache_v2";
+    "faithforge_events_page_cache_v3";
 
   const EVENTS_CACHE_DURATION =
     5 * 60 * 1000;
@@ -1829,10 +1650,6 @@
   let activeEventFilter = "all";
   let activeSearchTerm = "";
   let nextEventCountdownTimer = null;
-
-  /*
-   * Safety and formatting helpers
-   */
 
   function escapeHtml(value) {
     return String(value ?? "")
@@ -2159,21 +1976,15 @@
   }
 
   /*
-   * Event category matching
-   *
-   * The title, description, and location are combined.
+   * Event categories are determined ONLY from event.title.
+   * Description and location do not affect categorization.
    * The first matching category wins.
    */
 
   function getEventCategory(event) {
-    const searchableText =
-      [
-        event?.title,
-        event?.description,
-        event?.location
-      ]
-        .filter(Boolean)
-        .join(" ")
+    const eventTitle =
+      String(event?.title || "")
+        .trim()
         .toLowerCase();
 
     /*
@@ -2181,7 +1992,7 @@
      */
     if (
       /bible|scripture|devotion|prayer|worship|faith study|bible study|church|study/i.test(
-        searchableText
+        eventTitle
       )
     ) {
       return {
@@ -2195,7 +2006,7 @@
      */
     if (
       /raid\s*train|raidtrain/i.test(
-        searchableText
+        eventTitle
       )
     ) {
       return {
@@ -2209,7 +2020,7 @@
      */
     if (
       /podcast/i.test(
-        searchableText
+        eventTitle
       )
     ) {
       return {
@@ -2223,7 +2034,7 @@
      */
     if (
       /game night|gaming night|game event/i.test(
-        searchableText
+        eventTitle
       )
     ) {
       return {
@@ -2237,7 +2048,7 @@
      */
     if (
       /tournament|championship|competition|contest/i.test(
-        searchableText
+        eventTitle
       )
     ) {
       return {
@@ -2251,7 +2062,7 @@
      */
     if (
       /d\s*&\s*d|\bdnd\b/i.test(
-        searchableText
+        eventTitle
       )
     ) {
       return {
@@ -2265,7 +2076,7 @@
      */
     if (
       /partnership|blessing boat|backcountryhope|partner/i.test(
-        searchableText
+        eventTitle
       )
     ) {
       return {
@@ -2279,7 +2090,7 @@
      */
     if (
       /\brumble\b|\bstreamer\b|\bstreaming\b|\blivestream\b|\blive stream\b|\bcreator\b|\bstream\b|\btwitch\b|\byoutube\b/i.test(
-        searchableText
+        eventTitle
       )
     ) {
       return {
@@ -2293,7 +2104,7 @@
      */
     if (
       /\bmen\b|\bwomen\b|\bmens\b|\bmen's\b|\bwomens\b|\bwomen's\b|\bladies\b|\bguys\b/i.test(
-        searchableText
+        eventTitle
       )
     ) {
       return {
@@ -2310,10 +2121,6 @@
       label: "Community"
     };
   }
-
-  /*
-   * Local browser cache
-   */
 
   function getCachedEventsData() {
     try {
@@ -2361,10 +2168,6 @@
        */
     }
   }
-
-  /*
-   * Next event
-   */
 
   function renderNextEvent(event) {
     const container =
@@ -2619,7 +2422,11 @@
   }
 
   /*
-   * Event cards and filters
+   * The category filter uses getEventCategory(), which only
+   * reads event.title.
+   *
+   * The normal text search below still searches the event title,
+   * description, location, and category label.
    */
 
   function eventMatchesFilters(event) {
@@ -2791,10 +2598,6 @@
         .join("");
   }
 
-  /*
-   * Structured event data
-   */
-
   function updateEventStructuredData(events) {
     const existingSchema =
       document.getElementById(
@@ -2896,10 +2699,6 @@
     );
   }
 
-  /*
-   * Display API data
-   */
-
   function displayEventsData(data) {
     const calendar =
       data?.calendar || {};
@@ -2910,11 +2709,6 @@
       )
         ? calendar.upcomingEvents
         : [];
-
-    /*
-     * Sort events by date, remove invalid entries,
-     * and display no more than 24 events.
-     */
 
     allEvents =
       rawEvents
@@ -3022,10 +2816,6 @@
       "The live calendar feed is temporarily unavailable.";
   }
 
-  /*
-   * Load cached data, then request fresh data.
-   */
-
   async function loadFaithForgeEvents() {
     const cachedData =
       getCachedEventsData();
@@ -3075,10 +2865,6 @@
       }
     }
   }
-
-  /*
-   * Search and category filters
-   */
 
   const searchInput =
     document.getElementById(
@@ -3173,10 +2959,6 @@
 </script>
 
 <script>
-  /*
-   * Mobile navigation
-   */
-
   document.addEventListener(
     "DOMContentLoaded",
     () => {

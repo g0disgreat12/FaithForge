@@ -4,156 +4,1230 @@
   <meta charset="UTF-8">
 
   <title>FaithForge Gaming Events | Christian Gaming Community Calendar</title>
-  <meta name="description" content="View upcoming FaithForge Gaming events, server activities, community nights, tournaments, and Bible studies. Join us for Christ-centered fun, christian gaming, and fellowship.">
+
+  <meta
+    name="description"
+    content="View upcoming FaithForge Gaming Bible studies, Christian gaming nights, community events, tournaments, livestreams, podcasts, prayer gatherings, and server activities."
+  >
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="canonical" href="https://faithforgegaming.com/Events">
+
+  <meta
+    name="robots"
+    content="index, follow, max-image-preview:large"
+  >
+
+  <link
+    rel="canonical"
+    href="https://faithforgegaming.com/Events/"
+  >
 
   <!-- Open Graph -->
-  <meta property="og:title" content="FaithForge Gaming Events | Community Calendar">
-  <meta property="og:description" content="Join upcoming FaithForge Gaming events including Bible studies, game nights, tournaments, and community gatherings.">
-  <meta property="og:image" content="https://faithforgegaming.com/Events/Events.webp">
-  <meta property="og:url" content="https://faithforgegaming.com/Events">
+  <meta
+    property="og:title"
+    content="FaithForge Gaming Events | Christian Gaming Community Calendar"
+  >
+
+  <meta
+    property="og:description"
+    content="Join upcoming FaithForge Gaming Bible studies, community game nights, tournaments, livestreams, podcasts, and Christian fellowship events."
+  >
+
+  <meta
+    property="og:image"
+    content="https://faithforgegaming.com/Events/Events.webp"
+  >
+
+  <meta
+    property="og:url"
+    content="https://faithforgegaming.com/Events/"
+  >
+
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="FaithForge Gaming">
 
-  <!-- Twitter Preview -->
+  <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="FaithForge Gaming Events">
-  <meta name="twitter:description" content="See FaithForge Gaming’s upcoming events and calendar.">
-  <meta name="twitter:image" content="https://faithforgegaming.com/Events/Events.webp">
 
-  <!-- Icons / CSS -->
-  <link rel="stylesheet" href="https://faithforgegaming.com/style.css">
+  <meta
+    name="twitter:title"
+    content="FaithForge Gaming Events"
+  >
 
-  <!-- Theme & Icons -->
+  <meta
+    name="twitter:description"
+    content="See upcoming FaithForge Gaming Bible studies, community nights, tournaments, streams, and fellowship events."
+  >
+
+  <meta
+    name="twitter:image"
+    content="https://faithforgegaming.com/Events/Events.webp"
+  >
+
+  <!-- Theme / Shared Assets -->
   <meta name="theme-color" content="#000000">
-  <link rel="icon" href="https://faithforgegaming.com/Anvil.webp">
+
+  <link
+    rel="icon"
+    href="https://faithforgegaming.com/Anvil.webp"
+  >
+
+  <link
+    rel="stylesheet"
+    href="https://faithforgegaming.com/style.css"
+  >
+
+  <!-- Static Organization Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "FaithForge Gaming Events",
+    "url": "https://faithforgegaming.com/Events/",
+    "description": "Upcoming Christian gaming events, Bible studies, community game nights, livestreams, tournaments, prayer gatherings, and fellowship opportunities hosted by FaithForge Gaming.",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "FaithForge Gaming",
+      "url": "https://faithforgegaming.com/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "FaithForge Gaming",
+      "url": "https://faithforgegaming.com/",
+      "logo": "https://faithforgegaming.com/Anvil.webp",
+      "sameAs": [
+        "https://www.facebook.com/profile.php?id=100070219355952",
+        "https://www.instagram.com/faithforgegaming",
+        "https://www.reddit.com/r/FaithForgeGaming/",
+        "https://www.youtube.com/@FaithForgeGaming",
+        "https://www.twitch.tv/faithforgegaming",
+        "https://www.tiktok.com/@faithforge.gaming",
+        "https://rumble.com/user/FaithForgeGaming"
+      ]
+    }
+  }
+  </script>
 
   <style>
+    :root {
+      --events-black: #000;
+      --events-panel: rgba(0, 0, 0, 0.78);
+      --events-panel-light: rgba(255, 255, 255, 0.035);
+
+      --events-gold: #f5c518;
+      --events-gold-dark: #cfa214;
+      --events-gold-light: #ffe58d;
+      --events-gold-soft: #d8c786;
+
+      --events-border: rgba(245, 197, 24, 0.24);
+      --events-border-strong: rgba(245, 197, 24, 0.48);
+
+      --events-text: #f4f4f4;
+      --events-muted: #cfcfcf;
+
+      --events-green: #80f0ab;
+      --events-blue: #8fd3ff;
+      --events-purple: #d5a6ff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      background: radial-gradient(circle at center, #0d0d0d 40%, #000 100%);
-      color: #f5c518;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
       margin: 0;
       padding: 0;
-      text-align: center;
       overflow-x: hidden;
-      min-height: 100vh;
+
+      background:
+        radial-gradient(
+          circle at 18% 0%,
+          rgba(245, 197, 24, 0.11),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 85% 10%,
+          rgba(126, 83, 7, 0.16),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at center,
+          #101010 0%,
+          #050505 48%,
+          #000 100%
+        );
+
+      color: var(--events-gold);
+
+      font-family:
+        "Segoe UI",
+        Tahoma,
+        Geneva,
+        Verdana,
+        sans-serif;
+
+      text-align: center;
       position: relative;
     }
 
-    .navbar a { white-space: nowrap; }
-
-    .events-container {
-      max-width: 1000px;
-      margin: 40px auto;
-      padding: 25px;
-      background: rgba(0,0,0,0.6);
-      border-radius: 14px;
-      box-shadow: 0 0 25px rgba(245,197,24,0.25);
+    button,
+    input {
+      font: inherit;
     }
 
-    h1 {
-      font-size: 2.8em;
-      background: linear-gradient(90deg, #f5c518, #cfa214);
+    a {
+      color: inherit;
+    }
+
+    .navbar a,
+    .footer-links a {
+      white-space: nowrap;
+    }
+
+    .events-skip-link {
+      position: fixed;
+      top: -80px;
+      left: 16px;
+      z-index: 10000;
+
+      padding: 12px 18px;
+
+      border-radius: 8px;
+
+      background: var(--events-gold);
+      color: #000;
+
+      font-weight: 900;
+      text-decoration: none;
+    }
+
+    .events-skip-link:focus {
+      top: 16px;
+    }
+
+    .events-page {
+      position: relative;
+      z-index: 2;
+
+      width: min(1180px, 94%);
+      margin: 0 auto;
+      padding-bottom: 46px;
+    }
+
+    /*
+     * HERO
+     */
+
+    .events-hero {
+      position: relative;
+
+      margin: 36px auto 30px;
+      padding: 42px 28px;
+
+      overflow: hidden;
+
+      border: 1px solid var(--events-border);
+      border-radius: 22px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(245, 197, 24, 0.13),
+          transparent 42%
+        ),
+        linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.68),
+          rgba(0, 0, 0, 0.88)
+        );
+
+      box-shadow:
+        0 0 34px rgba(245, 197, 24, 0.16),
+        inset 0 0 0 1px rgba(245, 197, 24, 0.04);
+    }
+
+    .events-hero::after {
+      content: "";
+
+      position: absolute;
+      right: -90px;
+      bottom: -130px;
+
+      width: 360px;
+      height: 360px;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(245, 197, 24, 0.13),
+          transparent 66%
+        );
+
+      pointer-events: none;
+    }
+
+    .events-eyebrow {
+      margin: 0 0 9px;
+
+      color: var(--events-gold-soft);
+
+      font-size: 0.8rem;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+
+      text-transform: uppercase;
+    }
+
+    .events-hero h1 {
+      display: inline-block;
+
+      margin: 0;
+      padding-bottom: 0.12em;
+
+      overflow: visible;
+
+      font-size: clamp(2.5rem, 6vw, 4.4rem);
+      line-height: 1.08;
+
+      background:
+        linear-gradient(
+          90deg,
+          var(--events-gold),
+          var(--events-gold-dark)
+        );
+
+      background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 22px rgba(245,197,24,.4);
-      margin-bottom: 10px;
+
+      text-shadow:
+        0 0 24px rgba(245, 197, 24, 0.3);
     }
 
-    h2 {
-      font-size: 1.7em;
-      margin-top: 30px;
-      margin-bottom: 15px;
-      color: #f5c518;
-      text-shadow: 0 0 12px rgba(245,197,24,.3);
+    .events-hero-description {
+      max-width: 840px;
+
+      margin: 16px auto 0;
+
+      color: var(--events-gold-soft);
+
+      font-size: 1.07rem;
+      line-height: 1.7;
     }
 
-    .calendar-box {
-      border: 1px solid rgba(245,197,24,.35);
-      border-radius: 14px;
+    .events-hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+
+      margin-top: 24px;
+    }
+
+    .events-primary-button,
+    .events-secondary-button,
+    .event-action-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+
+      min-height: 44px;
+      padding: 11px 20px;
+
+      border-radius: 10px;
+
+      font-weight: 900;
+      text-decoration: none;
+
+      transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease,
+        background 0.18s ease;
+    }
+
+    .events-primary-button,
+    .event-action-button {
+      border: 0;
+
+      background:
+        linear-gradient(
+          45deg,
+          var(--events-gold),
+          var(--events-gold-dark)
+        );
+
+      color: #000;
+
+      box-shadow:
+        0 0 18px rgba(245, 197, 24, 0.42);
+    }
+
+    .events-secondary-button {
+      border: 2px solid var(--events-gold);
+
+      background: rgba(0, 0, 0, 0.46);
+      color: var(--events-gold);
+    }
+
+    .events-primary-button:hover,
+    .events-primary-button:focus-visible,
+    .events-secondary-button:hover,
+    .events-secondary-button:focus-visible,
+    .event-action-button:hover,
+    .event-action-button:focus-visible {
+      transform: translateY(-2px);
+
+      box-shadow:
+        0 0 26px rgba(245, 197, 24, 0.72);
+
+      outline: none;
+    }
+
+    .events-secondary-button:hover,
+    .events-secondary-button:focus-visible {
+      background: var(--events-gold);
+      color: #000;
+    }
+
+    .events-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 13px;
+
+      max-width: 700px;
+
+      margin: 28px auto 0;
+    }
+
+    .events-summary-card {
+      padding: 14px 10px;
+
+      border: 1px solid rgba(245, 197, 24, 0.17);
+      border-radius: 12px;
+
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+    .events-summary-value {
+      display: block;
+
+      color: var(--events-gold-light);
+
+      font-size: 1.35rem;
+      font-weight: 900;
+    }
+
+    .events-summary-label {
+      display: block;
+
+      margin-top: 3px;
+
+      color: var(--events-muted);
+
+      font-size: 0.79rem;
+      font-weight: 700;
+    }
+
+    /*
+     * NEXT EVENT
+     */
+
+    .next-event-section {
+      margin-bottom: 30px;
+    }
+
+    .next-event-card {
+      display: grid;
+      grid-template-columns: 150px minmax(0, 1fr);
+      gap: 25px;
+      align-items: center;
+
+      padding: 26px;
+
+      border: 1px solid var(--events-border-strong);
+      border-radius: 20px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(245, 197, 24, 0.11),
+          transparent 46%
+        ),
+        rgba(0, 0, 0, 0.8);
+
+      box-shadow:
+        0 0 30px rgba(245, 197, 24, 0.17);
+
+      text-align: left;
+    }
+
+    .next-event-date {
       overflow: hidden;
-      box-shadow: 0 0 18px rgba(245,197,24,.25);
+
+      border: 1px solid rgba(245, 197, 24, 0.38);
+      border-radius: 17px;
+
+      background: #050505;
+
+      text-align: center;
+
+      box-shadow:
+        0 0 18px rgba(245, 197, 24, 0.14);
+    }
+
+    .next-event-month {
+      display: block;
+
+      padding: 9px 8px;
+
+      background: var(--events-gold);
+      color: #000;
+
+      font-size: 0.86rem;
+      font-weight: 950;
+      letter-spacing: 0.09em;
+
+      text-transform: uppercase;
+    }
+
+    .next-event-day {
+      display: block;
+
+      padding: 13px 8px 7px;
+
+      color: var(--events-gold-light);
+
+      font-size: 2.8rem;
+      font-weight: 950;
+      line-height: 1;
+    }
+
+    .next-event-weekday {
+      display: block;
+
+      padding: 0 8px 12px;
+
+      color: var(--events-gold-soft);
+
+      font-size: 0.83rem;
+      font-weight: 750;
+    }
+
+    .next-event-label {
+      display: inline-flex;
+      align-items: center;
+
+      margin-bottom: 8px;
+      padding: 6px 11px;
+
+      border: 1px solid rgba(245, 197, 24, 0.35);
+      border-radius: 999px;
+
+      background: rgba(245, 197, 24, 0.08);
+      color: var(--events-gold-light);
+
+      font-size: 0.76rem;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+
+      text-transform: uppercase;
+    }
+
+    .next-event-content h2 {
+      margin: 0 0 7px;
+
+      color: var(--events-gold);
+
+      font-size: clamp(1.7rem, 3vw, 2.35rem);
+      line-height: 1.2;
+    }
+
+    .next-event-time,
+    .next-event-location {
+      margin: 5px 0;
+
+      color: var(--events-gold-soft);
+
+      font-size: 0.96rem;
+      line-height: 1.5;
+    }
+
+    .next-event-description {
+      max-width: 800px;
+
+      margin: 12px 0 0;
+
+      color: var(--events-muted);
+
+      line-height: 1.65;
+    }
+
+    .next-event-countdown {
+      margin-top: 14px;
+
+      color: var(--events-green);
+
+      font-size: 1rem;
+      font-weight: 900;
+    }
+
+    .next-event-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+
+      margin-top: 17px;
+    }
+
+    .next-event-empty {
+      padding: 30px;
+
+      border: 1px solid var(--events-border);
+      border-radius: 18px;
+
+      background: rgba(0, 0, 0, 0.7);
+
+      color: var(--events-gold-soft);
+
+      line-height: 1.6;
+    }
+
+    /*
+     * TOOLBAR
+     */
+
+    .events-toolbar {
+      margin-bottom: 22px;
+      padding: 21px;
+
+      border: 1px solid var(--events-border);
+      border-radius: 17px;
+
+      background: var(--events-panel);
+
+      box-shadow:
+        0 0 22px rgba(245, 197, 24, 0.1);
+    }
+
+    .events-toolbar-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 14px;
+
+      margin-bottom: 16px;
+
+      text-align: left;
+    }
+
+    .events-toolbar-header h2 {
+      margin: 0;
+
+      color: var(--events-gold);
+
+      font-size: clamp(1.6rem, 3vw, 2.1rem);
+    }
+
+    .events-toolbar-header p {
+      margin: 5px 0 0;
+
+      color: var(--events-gold-soft);
+
+      line-height: 1.5;
+    }
+
+    .events-result-count {
+      color: var(--events-muted);
+
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .events-search-row {
+      display: grid;
+      grid-template-columns: minmax(240px, 1fr) auto;
+      gap: 12px;
+    }
+
+    .events-search-input {
+      width: 100%;
+
+      padding: 13px 15px;
+
+      border: 1px solid rgba(245, 197, 24, 0.32);
+      border-radius: 11px;
+
+      outline: none;
+
+      background: rgba(255, 255, 255, 0.045);
+      color: #fff;
+
+      font-size: 1rem;
+    }
+
+    .events-search-input::placeholder {
+      color: rgba(255, 255, 255, 0.48);
+    }
+
+    .events-search-input:focus {
+      border-color: rgba(245, 197, 24, 0.7);
+
+      box-shadow:
+        0 0 0 3px rgba(245, 197, 24, 0.1);
+    }
+
+    .events-clear-button {
+      padding: 11px 18px;
+
+      border: 1px solid rgba(245, 197, 24, 0.32);
+      border-radius: 10px;
+
+      background: rgba(0, 0, 0, 0.6);
+      color: var(--events-gold);
+
+      font-weight: 850;
+      cursor: pointer;
+    }
+
+    .events-clear-button:hover,
+    .events-clear-button:focus-visible {
+      background: var(--events-gold);
+      color: #000;
+
+      outline: none;
+    }
+
+    .events-filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+
       margin-top: 15px;
     }
 
-    iframe {
-      width: 100%;
-      height: 500px;
-      border: 0;
+    .events-filter-button {
+      padding: 8px 13px;
+
+      border: 1px solid rgba(245, 197, 24, 0.25);
+      border-radius: 999px;
+
+      background: rgba(255, 255, 255, 0.035);
+      color: var(--events-gold-soft);
+
+      font-size: 0.84rem;
+      font-weight: 850;
+
+      cursor: pointer;
+
+      transition:
+        background 0.16s ease,
+        color 0.16s ease,
+        border-color 0.16s ease;
     }
 
-    .events-text {
-      margin-top: 25px;
-      line-height: 1.8;
-      font-size: 1.1em;
-    }
+    .events-filter-button:hover,
+    .events-filter-button:focus-visible,
+    .events-filter-button.active {
+      border-color: rgba(245, 197, 24, 0.65);
 
-    ul {
-      text-align: left;
-      max-width: 640px;
-      margin: 20px auto;
-      line-height: 1.8;
-      color: #f5c518;
-    }
-
-    @media (max-width: 800px) {
-      iframe { height: 380px; }
-      h1 { font-size: 2.2em; }
-      h2 { font-size: 1.4em; }
-      .events-text { font-size: 1em }
-    }
-    .discord-button {
-      display: inline-block;
-      margin: 18px auto 10px;
-      padding: 16px 34px;
-      font-size: 1.4rem;
-      font-weight: bold;
-      border-radius: 14px;
-      text-decoration: none;
-      color: #f5c518;
-      background: rgba(0,0,0,.75);
-      border: 2px solid #f5c518;
-      box-shadow: 0 0 18px rgba(245,197,24,.55);
-      transition: all .2s ease-in-out;
-    }
-
-    .discord-button:hover {
-      background: linear-gradient(90deg,#f5c518,#cfa214);
+      background: var(--events-gold);
       color: #000;
-      box-shadow: 0 0 26px rgba(245,197,24,.9);
-      transform: scale(1.06);
+
+      outline: none;
+    }
+
+    /*
+     * EVENT GRID
+     */
+
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 19px;
+
+      text-align: left;
+    }
+
+    .event-card {
+      display: flex;
+      flex-direction: column;
+
+      min-width: 0;
+
+      overflow: hidden;
+
+      border: 1px solid var(--events-border);
+      border-radius: 17px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(245, 197, 24, 0.055),
+          transparent 35%
+        ),
+        rgba(0, 0, 0, 0.78);
+
+      box-shadow:
+        0 0 20px rgba(245, 197, 24, 0.09);
+
+      transition:
+        transform 0.18s ease,
+        border-color 0.18s ease,
+        box-shadow 0.18s ease;
+    }
+
+    .event-card:hover {
+      transform: translateY(-3px);
+
+      border-color: var(--events-border-strong);
+
+      box-shadow:
+        0 0 27px rgba(245, 197, 24, 0.18);
+    }
+
+    .event-card-top {
+      display: grid;
+      grid-template-columns: 82px minmax(0, 1fr);
+      gap: 15px;
+
+      padding: 18px;
+    }
+
+    .event-card-date {
+      align-self: start;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(245, 197, 24, 0.26);
+      border-radius: 11px;
+
+      background: #050505;
+
+      text-align: center;
+    }
+
+    .event-card-month {
+      display: block;
+
+      padding: 5px;
+
+      background: var(--events-gold);
+      color: #000;
+
+      font-size: 0.72rem;
+      font-weight: 950;
+      letter-spacing: 0.07em;
+
+      text-transform: uppercase;
+    }
+
+    .event-card-day {
+      display: block;
+
+      padding: 9px 5px 3px;
+
+      color: var(--events-gold-light);
+
+      font-size: 1.8rem;
+      font-weight: 950;
+      line-height: 1;
+    }
+
+    .event-card-weekday {
+      display: block;
+
+      padding: 3px 5px 8px;
+
+      color: var(--events-gold-soft);
+
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    .event-category {
+      display: inline-flex;
+
+      margin-bottom: 7px;
+      padding: 5px 9px;
+
+      border: 1px solid rgba(245, 197, 24, 0.25);
+      border-radius: 999px;
+
+      background: rgba(245, 197, 24, 0.07);
+      color: var(--events-gold-light);
+
+      font-size: 0.7rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+
+      text-transform: uppercase;
+    }
+
+    .event-category.faith {
+      border-color: rgba(213, 166, 255, 0.4);
+      background: rgba(213, 166, 255, 0.09);
+      color: var(--events-purple);
+    }
+
+    .event-category.gaming {
+      border-color: rgba(143, 211, 255, 0.4);
+      background: rgba(143, 211, 255, 0.08);
+      color: var(--events-blue);
+    }
+
+    .event-category.creator {
+      border-color: rgba(128, 240, 171, 0.4);
+      background: rgba(128, 240, 171, 0.08);
+      color: var(--events-green);
+    }
+
+    .event-card h3 {
+      margin: 0;
+
+      color: var(--events-gold);
+
+      font-size: 1.22rem;
+      line-height: 1.3;
+    }
+
+    .event-card-time,
+    .event-card-location {
+      margin: 6px 0 0;
+
+      color: var(--events-gold-soft);
+
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+
+    .event-card-description {
+      flex: 1;
+
+      margin: 0;
+      padding: 0 18px 18px;
+
+      color: var(--events-muted);
+
+      font-size: 0.94rem;
+      line-height: 1.6;
+    }
+
+    .event-card-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+
+      margin-top: auto;
+      padding: 14px 18px 18px;
+
+      border-top: 1px solid rgba(245, 197, 24, 0.11);
+    }
+
+    .event-action-button {
+      min-height: 38px;
+      padding: 8px 13px;
+
+      font-size: 0.86rem;
+    }
+
+    .event-action-button.secondary {
+      border: 1px solid rgba(245, 197, 24, 0.32);
+
+      background: rgba(0, 0, 0, 0.58);
+      color: var(--events-gold);
+
+      box-shadow: none;
+    }
+
+    .event-action-button.secondary:hover,
+    .event-action-button.secondary:focus-visible {
+      background: var(--events-gold);
+      color: #000;
+    }
+
+    .events-empty-state,
+    .events-error-state,
+    .events-loading-state {
+      grid-column: 1 / -1;
+
+      padding: 35px 22px;
+
+      border: 1px solid var(--events-border);
+      border-radius: 17px;
+
+      background: rgba(0, 0, 0, 0.72);
+
+      color: var(--events-gold-soft);
+
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    .events-loading-dots {
+      display: inline-flex;
+      gap: 7px;
+
+      margin-top: 12px;
+    }
+
+    .events-loading-dots span {
+      width: 8px;
+      height: 8px;
+
+      border-radius: 50%;
+
+      background: var(--events-gold);
+
+      animation:
+        event-loading-pulse 1.1s infinite ease-in-out;
+    }
+
+    .events-loading-dots span:nth-child(2) {
+      animation-delay: 0.15s;
+    }
+
+    .events-loading-dots span:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    @keyframes event-loading-pulse {
+      0%,
+      80%,
+      100% {
+        opacity: 0.3;
+        transform: scale(0.8);
+      }
+
+      40% {
+        opacity: 1;
+        transform: scale(1.1);
+      }
+    }
+
+    /*
+     * ABOUT EVENTS
+     */
+
+    .events-about {
+      margin-top: 32px;
+      padding: 28px;
+
+      border: 1px solid var(--events-border);
+      border-radius: 18px;
+
+      background: var(--events-panel);
+
+      color: var(--events-gold-soft);
+
+      line-height: 1.7;
+      text-align: left;
+    }
+
+    .events-about h2 {
+      margin: 0 0 12px;
+
+      color: var(--events-gold);
+
+      font-size: 1.7rem;
+    }
+
+    .events-about-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .events-about ul {
+      margin: 14px 0 0;
+      padding-left: 22px;
+
+      color: var(--events-gold-soft);
+    }
+
+    .events-about li {
+      margin-bottom: 7px;
+    }
+
+    .events-update-status {
+      margin-top: 18px;
+      padding-top: 16px;
+
+      border-top: 1px solid rgba(245, 197, 24, 0.12);
+
+      color: #aaa;
+
+      font-size: 0.84rem;
+      text-align: center;
+    }
+
+    /*
+     * FOOTER
+     */
+
+    footer {
+      position: relative;
+      z-index: 2;
+    }
+
+    .events-footer-discord {
+      margin-bottom: 17px;
+      text-align: center;
+    }
+
+    /*
+     * RESPONSIVE
+     */
+
+    @media (max-width: 860px) {
+      .events-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .next-event-card {
+        grid-template-columns: 120px minmax(0, 1fr);
+      }
+
+      .events-about-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 660px) {
+      .events-page {
+        width: min(94%, 100%);
+      }
+
+      .events-hero {
+        padding: 32px 18px;
+      }
+
+      .events-summary-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .next-event-card {
+        grid-template-columns: 1fr;
+
+        padding: 21px;
+
+        text-align: center;
+      }
+
+      .next-event-date {
+        width: 130px;
+        margin: 0 auto;
+      }
+
+      .next-event-actions {
+        justify-content: center;
+      }
+
+      .events-toolbar {
+        padding: 18px;
+      }
+
+      .events-toolbar-header {
+        text-align: center;
+        justify-content: center;
+      }
+
+      .events-search-row {
+        grid-template-columns: 1fr;
+      }
+
+      .events-filter-row {
+        justify-content: center;
+      }
+
+      .event-card-top {
+        grid-template-columns: 72px minmax(0, 1fr);
+        gap: 12px;
+
+        padding: 15px;
+      }
+
+      .event-card-description {
+        padding: 0 15px 15px;
+      }
+
+      .event-card-actions {
+        padding: 13px 15px 16px;
+      }
+
+      .event-action-button {
+        flex: 1;
+      }
+
+      .events-about {
+        padding: 22px 18px;
+        text-align: center;
+      }
+
+      .events-about ul {
+        display: inline-block;
+        text-align: left;
+      }
     }
   </style>
 </head>
 
 <body>
-<img class="emblem" src="/watermark.png" alt="FaithForge Emblem">
+
+<a class="events-skip-link" href="#eventsMain">
+  Skip to events
+</a>
+
+<img
+  class="emblem"
+  src="/watermark.png"
+  alt="FaithForge Gaming Emblem"
+>
+
 <canvas id="embers"></canvas>
 
 <header>
-  <!-- Desktop title -->
   <h1>FaithForge Events</h1>
 
-  <!-- Mobile header bar -->
   <div class="mobile-header">
-    <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+    <button
+      class="menu-toggle"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="eventsNavigation"
+    >
       ☰
     </button>
-    <span class="page-title">FaithForge Events</span>
+
+    <span class="page-title">
+      FaithForge Events
+    </span>
   </div>
 
-  <!-- Navigation dropdown -->
-  <nav class="navbar">
+  <nav
+    class="navbar"
+    id="eventsNavigation"
+    aria-label="Main navigation"
+  >
     <div class="menu-links">
       <a href="/index.html">Home</a>
       <a href="/Aboutus/">About Us</a>
       <a href="/Staff/">Our Team</a>
       <a href="/Streamers/">Streamers</a>
       <a href="/raidtrain/">Raid Train</a>
-      <a href="https://shop.faithforgegaming.com/">Merch Store</a>
+
+      <a href="https://shop.faithforgegaming.com/">
+        Merch Store
+      </a>
+
       <a href="/Devotions/">Devotions</a>
       <a href="/Prayers/">Prayers</a>
       <a href="/Servers/">Servers</a>
@@ -163,53 +1237,273 @@
   </nav>
 </header>
 
-<a class="discord-button" href="https://discord.gg/bAQrudk5a9" target="_blank">
-  Join Our Discord
-</a>
+<main class="events-page" id="eventsMain">
 
-<div class="events-container">
+  <section class="events-hero">
+    <p class="events-eyebrow">
+      Faith • Fellowship • Community
+    </p>
 
-  <h2>Upcoming Community Events</h2>
-  <p>Timezone: Eastern Time</p>
-  
-  <div class="calendar-box">
-    <iframe 
-      src="https://calendar.google.com/calendar/embed?src=3ca24c7d932a2bdb0aa72b09710f915c6e3ca12bd13d30235b35f41ded97c522%40group.calendar.google.com&ctz=America%2FNew_York"
-      scrolling="no">
-    </iframe>
-  </div>
+    <h1>FaithForge Gaming Events</h1>
 
-  <div class="events-text">
-    <p><strong>FaithForge Gaming events</strong> are designed to build fellowship, strengthen faith, and create meaningful moments through gaming and community.</p>
+    <p class="events-hero-description">
+      Join FaithForge Gaming for Christian fellowship, Bible study,
+      community game nights, server events, podcasts, livestreams,
+      tournaments, prayer, and special seasonal gatherings.
+    </p>
 
-    <p>Our calendar includes faith-based events and gaming experiences such as:</p>
+    <div class="events-hero-actions">
+      <a
+        class="events-primary-button"
+        href="https://discord.gg/bAQrudk5a9"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Join Our Discord
+      </a>
 
-    <ul>
-      <li>Weekly Bible studies & devotions</li>
-      <li>Minecraft & ARK community nights</li>
-      <li>Special tournaments & custom events</li>
-      <li>Prayer gatherings</li>
-      <li>Special seasonal events</li>
-    </ul>
+      <a
+        class="events-secondary-button"
+        id="openFullCalendarButton"
+        href="https://calendar.google.com/calendar/embed?src=3ca24c7d932a2bdb0aa72b09710f915c6e3ca12bd13d30235b35f41ded97c522%40group.calendar.google.com&ctz=America%2FNew_York"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Open Full Calendar
+      </a>
+    </div>
 
-    <p>All times listed are based on Eastern Time (ET). Join us through Discord to participate in live events and receive reminders.</p>
-  </div>
+    <div class="events-summary-grid">
+      <div class="events-summary-card">
+        <span
+          class="events-summary-value"
+          id="eventsLoadedCount"
+        >
+          —
+        </span>
 
-</div>
+        <span class="events-summary-label">
+          Events Loaded
+        </span>
+      </div>
+
+      <div class="events-summary-card">
+        <span class="events-summary-value">
+          ET
+        </span>
+
+        <span class="events-summary-label">
+          Eastern Time
+        </span>
+      </div>
+
+      <div class="events-summary-card">
+        <span class="events-summary-value">
+          Hourly
+        </span>
+
+        <span class="events-summary-label">
+          Calendar Updates
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <section
+    class="next-event-section"
+    aria-labelledby="nextEventHeading"
+  >
+    <div id="nextEventContainer">
+      <div class="next-event-empty">
+        Loading the next FaithForge Gaming event...
+      </div>
+    </div>
+  </section>
+
+  <section
+    class="events-toolbar"
+    aria-labelledby="allEventsHeading"
+  >
+    <div class="events-toolbar-header">
+      <div>
+        <h2 id="allEventsHeading">
+          Upcoming Community Events
+        </h2>
+
+        <p>
+          Search or filter the events currently listed on our calendar.
+        </p>
+      </div>
+
+      <div
+        class="events-result-count"
+        id="eventsResultCount"
+        aria-live="polite"
+      >
+        Loading events...
+      </div>
+    </div>
+
+    <div class="events-search-row">
+      <input
+        class="events-search-input"
+        id="eventsSearchInput"
+        type="search"
+        placeholder="Search events, games, Bible studies, podcasts..."
+        aria-label="Search FaithForge events"
+      >
+
+      <button
+        class="events-clear-button"
+        id="eventsClearButton"
+        type="button"
+      >
+        Clear
+      </button>
+    </div>
+
+    <div
+      class="events-filter-row"
+      aria-label="Filter events by category"
+    >
+      <button
+        class="events-filter-button active"
+        type="button"
+        data-filter="all"
+      >
+        All Events
+      </button>
+
+      <button
+        class="events-filter-button"
+        type="button"
+        data-filter="faith"
+      >
+        Bible & Faith
+      </button>
+
+      <button
+        class="events-filter-button"
+        type="button"
+        data-filter="gaming"
+      >
+        Gaming Events
+      </button>
+
+      <button
+        class="events-filter-button"
+        type="button"
+        data-filter="creator"
+      >
+        Streams & Creators
+      </button>
+
+      <button
+        class="events-filter-button"
+        type="button"
+        data-filter="community"
+      >
+        Community
+      </button>
+    </div>
+  </section>
+
+  <section
+    class="events-grid"
+    id="eventsGrid"
+    aria-live="polite"
+  >
+    <div class="events-loading-state">
+      Loading upcoming FaithForge Gaming events...
+
+      <div
+        class="events-loading-dots"
+        aria-hidden="true"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </section>
+
+  <noscript>
+    <div class="events-error-state">
+      JavaScript is required to load the current FaithForge Gaming
+      calendar. Use the Open Full Calendar button above to view the
+      Google Calendar directly.
+    </div>
+  </noscript>
+
+  <section class="events-about">
+    <div class="events-about-grid">
+
+      <div>
+        <h2>FaithForge Community Events</h2>
+
+        <p>
+          FaithForge Gaming events are designed to build fellowship,
+          strengthen faith, support Christian creators, and create
+          meaningful moments through gaming and online community.
+        </p>
+
+        <p>
+          Events may take place through Discord, Twitch, YouTube,
+          community game servers, or another platform listed in the
+          individual event details.
+        </p>
+      </div>
+
+      <div>
+        <h2>Events May Include</h2>
+
+        <ul>
+          <li>Weekly Bible studies and devotions</li>
+          <li>Minecraft, Valheim, and ARK server events</li>
+          <li>Among Us and community gaming nights</li>
+          <li>FaithForge podcasts and livestreams</li>
+          <li>Quarterly Raid Train events</li>
+          <li>Prayer gatherings and fellowship</li>
+          <li>Special tournaments and seasonal events</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div
+      class="events-update-status"
+      id="eventsUpdateStatus"
+    >
+      Calendar information updates automatically every hour.
+    </div>
+  </section>
+
+</main>
 
 <footer>
-<div style="text-align:center; margin-bottom:15px;">
-  <a class="discord-button" href="https://discord.gg/bAQrudk5a9" target="_blank">
-    Join Our Discord
-  </a>
-</div>
+
+  <div class="events-footer-discord">
+    <a
+      class="events-primary-button"
+      href="https://discord.gg/bAQrudk5a9"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Join Our Discord
+    </a>
+  </div>
+
   <div class="footer-links">
     <a href="/index.html">Home</a>
     <a href="/Aboutus/">About Us</a>
     <a href="/Staff/">Our Team</a>
     <a href="/Streamers/">Streamers</a>
     <a href="/raidtrain/">Raid Train</a>
-    <a href="https://shop.faithforgegaming.com/">Merch Store</a>
+
+    <a href="https://shop.faithforgegaming.com/">
+      Merch Store
+    </a>
+
     <a href="/Devotions/">Devotions</a>
     <a href="/Prayers/">Prayers</a>
     <a href="/Servers/">Servers</a>
@@ -220,27 +1514,1220 @@
   <div class="footer-copy">
     © 2026 FaithForge Gaming
   </div>
+
 </footer>
-  
+
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const toggle = document.querySelector('.menu-toggle');
-  const menu = document.querySelector('.menu-links');
+  /*
+   * FaithForge Community API
+   *
+   * The Worker retrieves current Google Calendar information,
+   * updates it hourly, and exposes it through /community.
+   */
+  const COMMUNITY_API =
+    "https://faithforge-community-api.faithforgegaming.workers.dev/community";
 
-  if (!toggle || !menu) return;
+  const EVENTS_CACHE_KEY =
+    "faithforge_events_page_cache";
 
-  toggle.addEventListener('click', () => {
-    const isOpen = menu.classList.toggle('show');
-    toggle.setAttribute('aria-expanded', isOpen);
-  });
+  const EVENTS_CACHE_DURATION =
+    5 * 60 * 1000;
 
-  menu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      menu.classList.remove('show');
-      toggle.setAttribute('aria-expanded', 'false');
+  const DISCORD_URL =
+    "https://discord.gg/bAQrudk5a9";
+
+  const DEFAULT_CALENDAR_URL =
+    "https://calendar.google.com/calendar/embed?src=3ca24c7d932a2bdb0aa72b09710f915c6e3ca12bd13d30235b35f41ded97c522%40group.calendar.google.com&ctz=America%2FNew_York";
+
+  let allEvents = [];
+  let activeEventFilter = "all";
+  let activeSearchTerm = "";
+  let nextEventCountdownTimer = null;
+
+  /*
+   * General safety and formatting helpers
+   */
+
+  function escapeHtml(value) {
+    return String(value ?? "")
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+  function stripHtml(value) {
+    return String(value ?? "")
+      .replace(/<[^>]*>/g, " ")
+      .replace(/&nbsp;/gi, " ")
+      .replace(/&amp;/gi, "&")
+      .replace(/&quot;/gi, '"')
+      .replace(/&#39;/gi, "'")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  function truncateText(value, maximumLength = 220) {
+    const text = stripHtml(value);
+
+    if (text.length <= maximumLength) {
+      return text;
+    }
+
+    return `${text.slice(0, maximumLength).trim()}…`;
+  }
+
+  function safeExternalUrl(value, fallback = "#") {
+    try {
+      const url =
+        new URL(value, window.location.origin);
+
+      if (
+        url.protocol === "https:" ||
+        url.protocol === "http:"
+      ) {
+        return url.href;
+      }
+
+      return fallback;
+    } catch {
+      return fallback;
+    }
+  }
+
+  function formatNumber(value) {
+    const number = Number(value);
+
+    return Number.isFinite(number)
+      ? new Intl.NumberFormat("en-US").format(number)
+      : "—";
+  }
+
+  function getEventStartValue(event) {
+    return (
+      event?.startDateTime ||
+      event?.start ||
+      event?.startDate ||
+      null
+    );
+  }
+
+  function getEventEndValue(event) {
+    return (
+      event?.endDateTime ||
+      event?.end ||
+      event?.endDate ||
+      null
+    );
+  }
+
+  function getEventDate(event) {
+    const rawStart =
+      getEventStartValue(event);
+
+    if (!rawStart) {
+      return null;
+    }
+
+    /*
+     * All-day Google Calendar dates contain no time.
+     * Noon prevents timezone conversion from shifting the date.
+     */
+    const value =
+      event?.allDay &&
+      /^\d{4}-\d{2}-\d{2}$/.test(rawStart)
+        ? `${rawStart}T12:00:00`
+        : rawStart;
+
+    const date =
+      new Date(value);
+
+    return Number.isNaN(date.getTime())
+      ? null
+      : date;
+  }
+
+  function getEventEndDate(event) {
+    const rawEnd =
+      getEventEndValue(event);
+
+    if (!rawEnd) {
+      return null;
+    }
+
+    const value =
+      event?.allDay &&
+      /^\d{4}-\d{2}-\d{2}$/.test(rawEnd)
+        ? `${rawEnd}T12:00:00`
+        : rawEnd;
+
+    const date =
+      new Date(value);
+
+    return Number.isNaN(date.getTime())
+      ? null
+      : date;
+  }
+
+  function formatEventDateParts(event) {
+    const date =
+      getEventDate(event);
+
+    if (!date) {
+      return {
+        month: "TBD",
+        day: "—",
+        weekday: "Date TBD"
+      };
+    }
+
+    return {
+      month:
+        new Intl.DateTimeFormat(
+          "en-US",
+          {
+            month: "short",
+            timeZone: "America/New_York"
+          }
+        ).format(date),
+
+      day:
+        new Intl.DateTimeFormat(
+          "en-US",
+          {
+            day: "numeric",
+            timeZone: "America/New_York"
+          }
+        ).format(date),
+
+      weekday:
+        new Intl.DateTimeFormat(
+          "en-US",
+          {
+            weekday: "short",
+            timeZone: "America/New_York"
+          }
+        ).format(date)
+    };
+  }
+
+  function formatEventTime(event) {
+    const startDate =
+      getEventDate(event);
+
+    if (!startDate) {
+      return "Date and time to be announced";
+    }
+
+    if (event?.allDay) {
+      return new Intl.DateTimeFormat(
+        "en-US",
+        {
+          weekday: "long",
+          month: "long",
+          day: "numeric",
+          year: "numeric",
+          timeZone: "America/New_York"
+        }
+      ).format(startDate);
+    }
+
+    const endDate =
+      getEventEndDate(event);
+
+    const dateText =
+      new Intl.DateTimeFormat(
+        "en-US",
+        {
+          weekday: "short",
+          month: "short",
+          day: "numeric",
+          year: "numeric",
+          timeZone: "America/New_York"
+        }
+      ).format(startDate);
+
+    const startTime =
+      new Intl.DateTimeFormat(
+        "en-US",
+        {
+          hour: "numeric",
+          minute: "2-digit",
+          timeZone: "America/New_York"
+        }
+      ).format(startDate);
+
+    if (!endDate) {
+      return `${dateText} • ${startTime} ET`;
+    }
+
+    const sameDate =
+      new Intl.DateTimeFormat(
+        "en-CA",
+        {
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+          timeZone: "America/New_York"
+        }
+      ).format(startDate) ===
+      new Intl.DateTimeFormat(
+        "en-CA",
+        {
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+          timeZone: "America/New_York"
+        }
+      ).format(endDate);
+
+    if (!sameDate) {
+      return `${dateText} • ${startTime} ET`;
+    }
+
+    const endTime =
+      new Intl.DateTimeFormat(
+        "en-US",
+        {
+          hour: "numeric",
+          minute: "2-digit",
+          timeZone: "America/New_York"
+        }
+      ).format(endDate);
+
+    return `${dateText} • ${startTime}–${endTime} ET`;
+  }
+
+  function formatApiUpdateDate(value) {
+    if (!value) {
+      return "";
+    }
+
+    const date =
+      new Date(value);
+
+    if (Number.isNaN(date.getTime())) {
+      return "";
+    }
+
+    return new Intl.DateTimeFormat(
+      "en-US",
+      {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+        hour: "numeric",
+        minute: "2-digit",
+        timeZone: "America/New_York",
+        timeZoneName: "short"
+      }
+    ).format(date);
+  }
+
+  /*
+   * Event categories
+   */
+
+  function getEventCategory(event) {
+    const searchableText =
+      [
+        event?.title,
+        event?.description,
+        event?.location
+      ]
+      .filter(Boolean)
+      .join(" ")
+      .toLowerCase();
+
+    if (
+      /bible|scripture|devotion|prayer|worship|faith study|bible study|church/.test(
+        searchableText
+      )
+    ) {
+      return {
+        key: "faith",
+        label: "Bible & Faith"
+      };
+    }
+
+    if (
+      /raid train|streamer|streaming|livestream|live stream|creator|podcast|twitch|youtube/.test(
+        searchableText
+      )
+    ) {
+      return {
+        key: "creator",
+        label: "Streams & Creators"
+      };
+    }
+
+    if (
+      /minecraft|valheim|ark|among us|fortnite|call of duty|battlefield|halo|game night|gaming night|community night|tournament|server event|game event/.test(
+        searchableText
+      )
+    ) {
+      return {
+        key: "gaming",
+        label: "Gaming Event"
+      };
+    }
+
+    return {
+      key: "community",
+      label: "Community Event"
+    };
+  }
+
+  /*
+   * Local browser cache
+   */
+
+  function getCachedEventsData() {
+    try {
+      const cached =
+        JSON.parse(
+          localStorage.getItem(
+            EVENTS_CACHE_KEY
+          )
+        );
+
+      if (
+        !cached ||
+        !cached.savedAt ||
+        !cached.data
+      ) {
+        return null;
+      }
+
+      if (
+        Date.now() - cached.savedAt >
+        EVENTS_CACHE_DURATION
+      ) {
+        return null;
+      }
+
+      return cached.data;
+    } catch {
+      return null;
+    }
+  }
+
+  function saveEventsData(data) {
+    try {
+      localStorage.setItem(
+        EVENTS_CACHE_KEY,
+        JSON.stringify({
+          savedAt: Date.now(),
+          data
+        })
+      );
+    } catch {
+      /*
+       * Local storage may be unavailable or disabled.
+       */
+    }
+  }
+
+  /*
+   * Next event feature
+   */
+
+  function renderNextEvent(event) {
+    const container =
+      document.getElementById(
+        "nextEventContainer"
+      );
+
+    clearInterval(
+      nextEventCountdownTimer
+    );
+
+    if (!event) {
+      container.innerHTML = `
+        <div class="next-event-empty">
+          No upcoming events are currently listed.
+          Join the Discord for new event announcements and reminders.
+        </div>
+      `;
+
+      return;
+    }
+
+    const dateParts =
+      formatEventDateParts(event);
+
+    const category =
+      getEventCategory(event);
+
+    const eventUrl =
+      safeExternalUrl(
+        event.eventUrl,
+        "/Events/"
+      );
+
+    const location =
+      stripHtml(event.location) ||
+      "Online through the FaithForge Gaming community";
+
+    const description =
+      truncateText(
+        event.description,
+        400
+      ) ||
+      "Join FaithForge Gaming for this upcoming community event.";
+
+    container.innerHTML = `
+      <article class="next-event-card">
+        <div class="next-event-date">
+          <span class="next-event-month">
+            ${escapeHtml(dateParts.month)}
+          </span>
+
+          <span class="next-event-day">
+            ${escapeHtml(dateParts.day)}
+          </span>
+
+          <span class="next-event-weekday">
+            ${escapeHtml(dateParts.weekday)}
+          </span>
+        </div>
+
+        <div class="next-event-content">
+          <span class="next-event-label">
+            Next Event • ${escapeHtml(category.label)}
+          </span>
+
+          <h2 id="nextEventHeading">
+            ${escapeHtml(
+              event.title ||
+              "FaithForge Gaming Event"
+            )}
+          </h2>
+
+          <p class="next-event-time">
+            ${escapeHtml(formatEventTime(event))}
+          </p>
+
+          <p class="next-event-location">
+            ${escapeHtml(location)}
+          </p>
+
+          <p class="next-event-description">
+            ${escapeHtml(description)}
+          </p>
+
+          <div
+            class="next-event-countdown"
+            id="nextEventCountdown"
+            aria-live="polite"
+          ></div>
+
+          <div class="next-event-actions">
+            <a
+              class="event-action-button"
+              href="${escapeHtml(eventUrl)}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View Calendar Event
+            </a>
+
+            <a
+              class="event-action-button secondary"
+              href="${escapeHtml(DISCORD_URL)}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Join the Discord
+            </a>
+          </div>
+        </div>
+      </article>
+    `;
+
+    startNextEventCountdown(event);
+  }
+
+  function startNextEventCountdown(event) {
+    const countdownElement =
+      document.getElementById(
+        "nextEventCountdown"
+      );
+
+    const startDate =
+      getEventDate(event);
+
+    const endDate =
+      getEventEndDate(event);
+
+    if (
+      !countdownElement ||
+      !startDate
+    ) {
+      return;
+    }
+
+    function updateCountdown() {
+      const now =
+        Date.now();
+
+      const startTime =
+        startDate.getTime();
+
+      const endTime =
+        endDate?.getTime() || null;
+
+      if (
+        now >= startTime &&
+        (
+          !endTime ||
+          now < endTime
+        )
+      ) {
+        countdownElement.textContent =
+          "This event is happening now.";
+
+        return;
+      }
+
+      if (
+        endTime &&
+        now >= endTime
+      ) {
+        countdownElement.textContent =
+          "This event has ended.";
+
+        return;
+      }
+
+      const difference =
+        startTime - now;
+
+      if (difference <= 0) {
+        countdownElement.textContent =
+          "Starting soon.";
+
+        return;
+      }
+
+      const totalMinutes =
+        Math.floor(
+          difference / 60000
+        );
+
+      const days =
+        Math.floor(
+          totalMinutes / 1440
+        );
+
+      const hours =
+        Math.floor(
+          (totalMinutes % 1440) / 60
+        );
+
+      const minutes =
+        totalMinutes % 60;
+
+      const pieces = [];
+
+      if (days > 0) {
+        pieces.push(
+          `${days} ${days === 1 ? "day" : "days"}`
+        );
+      }
+
+      if (
+        hours > 0 ||
+        days > 0
+      ) {
+        pieces.push(
+          `${hours} ${hours === 1 ? "hour" : "hours"}`
+        );
+      }
+
+      if (days === 0) {
+        pieces.push(
+          `${minutes} ${minutes === 1 ? "minute" : "minutes"}`
+        );
+      }
+
+      countdownElement.textContent =
+        `Starts in ${pieces.join(", ")}.`;
+    }
+
+    updateCountdown();
+
+    nextEventCountdownTimer =
+      setInterval(
+        updateCountdown,
+        30000
+      );
+  }
+
+  /*
+   * Event cards
+   */
+
+  function eventMatchesFilters(event) {
+    const category =
+      getEventCategory(event);
+
+    const matchesCategory =
+      activeEventFilter === "all" ||
+      category.key === activeEventFilter;
+
+    if (!matchesCategory) {
+      return false;
+    }
+
+    if (!activeSearchTerm) {
+      return true;
+    }
+
+    const searchableText =
+      [
+        event.title,
+        event.description,
+        event.location,
+        category.label
+      ]
+      .filter(Boolean)
+      .join(" ")
+      .toLowerCase();
+
+    return searchableText.includes(
+      activeSearchTerm
+    );
+  }
+
+  function renderEventCards() {
+    const grid =
+      document.getElementById(
+        "eventsGrid"
+      );
+
+    const resultCount =
+      document.getElementById(
+        "eventsResultCount"
+      );
+
+    const filteredEvents =
+      allEvents.filter(
+        eventMatchesFilters
+      );
+
+    resultCount.textContent =
+      `${formatNumber(filteredEvents.length)} ` +
+      `${filteredEvents.length === 1 ? "event" : "events"} shown`;
+
+    if (!filteredEvents.length) {
+      grid.innerHTML = `
+        <div class="events-empty-state">
+          No events matched the selected category or search.
+          Try clearing the search or selecting All Events.
+        </div>
+      `;
+
+      return;
+    }
+
+    grid.innerHTML =
+      filteredEvents.map(event => {
+        const dateParts =
+          formatEventDateParts(event);
+
+        const category =
+          getEventCategory(event);
+
+        const eventUrl =
+          safeExternalUrl(
+            event.eventUrl,
+            "/Events/"
+          );
+
+        const location =
+          stripHtml(event.location) ||
+          "Online through FaithForge Gaming";
+
+        const description =
+          truncateText(
+            event.description,
+            230
+          ) ||
+          "Join FaithForge Gaming for this upcoming community event.";
+
+        return `
+          <article class="event-card">
+            <div class="event-card-top">
+              <div class="event-card-date">
+                <span class="event-card-month">
+                  ${escapeHtml(dateParts.month)}
+                </span>
+
+                <span class="event-card-day">
+                  ${escapeHtml(dateParts.day)}
+                </span>
+
+                <span class="event-card-weekday">
+                  ${escapeHtml(dateParts.weekday)}
+                </span>
+              </div>
+
+              <div>
+                <span
+                  class="event-category ${escapeHtml(category.key)}"
+                >
+                  ${escapeHtml(category.label)}
+                </span>
+
+                <h3>
+                  ${escapeHtml(
+                    event.title ||
+                    "FaithForge Gaming Event"
+                  )}
+                </h3>
+
+                <p class="event-card-time">
+                  ${escapeHtml(formatEventTime(event))}
+                </p>
+
+                <p class="event-card-location">
+                  ${escapeHtml(location)}
+                </p>
+              </div>
+            </div>
+
+            <p class="event-card-description">
+              ${escapeHtml(description)}
+            </p>
+
+            <div class="event-card-actions">
+              <a
+                class="event-action-button"
+                href="${escapeHtml(eventUrl)}"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View Details
+              </a>
+
+              <a
+                class="event-action-button secondary"
+                href="${escapeHtml(DISCORD_URL)}"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Join Discord
+              </a>
+            </div>
+          </article>
+        `;
+      }).join("");
+  }
+
+  /*
+   * Structured event data
+   */
+
+  function updateEventStructuredData(events) {
+    const existingSchema =
+      document.getElementById(
+        "dynamicEventsSchema"
+      );
+
+    if (existingSchema) {
+      existingSchema.remove();
+    }
+
+    const eventGraph =
+      events
+        .slice(0, 20)
+        .map(event => {
+          const startValue =
+            getEventStartValue(event);
+
+          const endValue =
+            getEventEndValue(event);
+
+          const eventUrl =
+            safeExternalUrl(
+              event.eventUrl,
+              "https://faithforgegaming.com/Events/"
+            );
+
+          return {
+            "@type": "Event",
+
+            "name":
+              event.title ||
+              "FaithForge Gaming Event",
+
+            "startDate":
+              startValue,
+
+            "endDate":
+              endValue || undefined,
+
+            "description":
+              stripHtml(event.description) ||
+              "FaithForge Gaming community event.",
+
+            "eventStatus":
+              "https://schema.org/EventScheduled",
+
+            "eventAttendanceMode":
+              "https://schema.org/OnlineEventAttendanceMode",
+
+            "location": {
+              "@type": "VirtualLocation",
+              "url": eventUrl
+            },
+
+            "organizer": {
+              "@type": "Organization",
+              "name": "FaithForge Gaming",
+              "url": "https://faithforgegaming.com/"
+            },
+
+            "url":
+              eventUrl
+          };
+        });
+
+    const schema =
+      document.createElement("script");
+
+    schema.type =
+      "application/ld+json";
+
+    schema.id =
+      "dynamicEventsSchema";
+
+    schema.textContent =
+      JSON.stringify({
+        "@context": "https://schema.org",
+        "@graph": eventGraph
+      });
+
+    document.head.appendChild(schema);
+  }
+
+  /*
+   * Display API response
+   */
+
+  function displayEventsData(data) {
+    const calendar =
+      data?.calendar || {};
+
+    const rawEvents =
+      Array.isArray(
+        calendar.upcomingEvents
+      )
+        ? calendar.upcomingEvents
+        : [];
+
+    /*
+     * Sort by start date and remove entries without
+     * a recognizable date.
+     */
+    allEvents =
+      rawEvents
+        .filter(event =>
+          Boolean(getEventDate(event))
+        )
+        .sort((left, right) =>
+          getEventDate(left) -
+          getEventDate(right)
+        );
+
+    document.getElementById(
+      "eventsLoadedCount"
+    ).textContent =
+      formatNumber(allEvents.length);
+
+    const fullCalendarButton =
+      document.getElementById(
+        "openFullCalendarButton"
+      );
+
+    fullCalendarButton.href =
+      safeExternalUrl(
+        calendar.calendarUrl,
+        DEFAULT_CALENDAR_URL
+      );
+
+    renderNextEvent(
+      allEvents[0] || null
+    );
+
+    renderEventCards();
+
+    updateEventStructuredData(
+      allEvents
+    );
+
+    const updateStatus =
+      document.getElementById(
+        "eventsUpdateStatus"
+      );
+
+    if (data.updatedAt) {
+      updateStatus.textContent =
+        `Calendar information updates automatically every hour. ` +
+        `Last checked ${formatApiUpdateDate(data.updatedAt)}.`;
+    } else {
+      updateStatus.textContent =
+        "Calendar information updates automatically every hour.";
+    }
+  }
+
+  function displayEventsError(error) {
+    console.error(
+      "FaithForge events API error:",
+      error
+    );
+
+    document.getElementById(
+      "eventsLoadedCount"
+    ).textContent =
+      "—";
+
+    document.getElementById(
+      "eventsResultCount"
+    ).textContent =
+      "Events unavailable";
+
+    document.getElementById(
+      "nextEventContainer"
+    ).innerHTML = `
+      <div class="next-event-empty">
+        The next event could not be loaded right now.
+        Open the full Google Calendar or join Discord for current announcements.
+      </div>
+    `;
+
+    document.getElementById(
+      "eventsGrid"
+    ).innerHTML = `
+      <div class="events-error-state">
+        We could not reach the FaithForge calendar feed.
+        Please try again shortly or use the Open Full Calendar button.
+      </div>
+    `;
+
+    document.getElementById(
+      "eventsUpdateStatus"
+    ).textContent =
+      "The live calendar feed is temporarily unavailable.";
+  }
+
+  /*
+   * Load cached data immediately, then request fresh data.
+   */
+
+  async function loadFaithForgeEvents() {
+    const cachedData =
+      getCachedEventsData();
+
+    if (cachedData) {
+      displayEventsData(
+        cachedData
+      );
+    }
+
+    try {
+      const response =
+        await fetch(
+          COMMUNITY_API,
+          {
+            cache: "no-store"
+          }
+        );
+
+      const data =
+        await response.json();
+
+      if (
+        !response.ok ||
+        data.success === false
+      ) {
+        throw new Error(
+          data.error ||
+          data.message ||
+          "Unable to load the FaithForge calendar."
+        );
+      }
+
+      saveEventsData(data);
+      displayEventsData(data);
+    } catch (error) {
+      /*
+       * Keep valid cached information visible if available.
+       */
+      if (!cachedData) {
+        displayEventsError(error);
+      } else {
+        console.error(
+          "Fresh events request failed; cached data remains visible:",
+          error
+        );
+      }
+    }
+  }
+
+  /*
+   * Search and filtering
+   */
+
+  const searchInput =
+    document.getElementById(
+      "eventsSearchInput"
+    );
+
+  const clearButton =
+    document.getElementById(
+      "eventsClearButton"
+    );
+
+  searchInput.addEventListener(
+    "input",
+    event => {
+      activeSearchTerm =
+        String(event.target.value || "")
+          .trim()
+          .toLowerCase();
+
+      renderEventCards();
+    }
+  );
+
+  clearButton.addEventListener(
+    "click",
+    () => {
+      searchInput.value =
+        "";
+
+      activeSearchTerm =
+        "";
+
+      activeEventFilter =
+        "all";
+
+      document
+        .querySelectorAll(
+          ".events-filter-button"
+        )
+        .forEach(button => {
+          button.classList.toggle(
+            "active",
+            button.dataset.filter === "all"
+          );
+        });
+
+      renderEventCards();
+
+      searchInput.focus();
+    }
+  );
+
+  document
+    .querySelectorAll(
+      ".events-filter-button"
+    )
+    .forEach(button => {
+      button.addEventListener(
+        "click",
+        () => {
+          activeEventFilter =
+            button.dataset.filter ||
+            "all";
+
+          document
+            .querySelectorAll(
+              ".events-filter-button"
+            )
+            .forEach(otherButton => {
+              otherButton.classList.toggle(
+                "active",
+                otherButton === button
+              );
+            });
+
+          renderEventCards();
+        }
+      );
     });
-  });
-});
+
+  document.addEventListener(
+    "DOMContentLoaded",
+    loadFaithForgeEvents
+  );
+</script>
+
+<script>
+  /*
+   * Mobile navigation
+   */
+
+  document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+      const toggle =
+        document.querySelector(
+          ".menu-toggle"
+        );
+
+      const menu =
+        document.querySelector(
+          ".menu-links"
+        );
+
+      if (!toggle || !menu) {
+        return;
+      }
+
+      toggle.addEventListener(
+        "click",
+        () => {
+          const isOpen =
+            menu.classList.toggle(
+              "show"
+            );
+
+          toggle.setAttribute(
+            "aria-expanded",
+            String(isOpen)
+          );
+
+          toggle.textContent =
+            isOpen ? "✕" : "☰";
+        }
+      );
+
+      menu
+        .querySelectorAll("a")
+        .forEach(link => {
+          link.addEventListener(
+            "click",
+            () => {
+              menu.classList.remove(
+                "show"
+              );
+
+              toggle.setAttribute(
+                "aria-expanded",
+                "false"
+              );
+
+              toggle.textContent =
+                "☰";
+            }
+          );
+        });
+    }
+  );
 </script>
 
 <script src="https://faithforgegaming.com/embers.js"></script>

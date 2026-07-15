@@ -7,7 +7,7 @@
 
   <meta
     name="description"
-    content="View upcoming FaithForge Gaming Bible studies, Christian gaming nights, community events, tournaments, livestreams, podcasts, prayer gatherings, and server activities."
+    content="View upcoming FaithForge Gaming Bible studies, Christian gaming nights, Raid Trains, podcasts, tournaments, livestreams, partnership events, D&D sessions, prayer gatherings, and community events."
   >
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,7 +30,7 @@
 
   <meta
     property="og:description"
-    content="Join upcoming FaithForge Gaming Bible studies, community game nights, tournaments, livestreams, podcasts, and Christian fellowship events."
+    content="Join upcoming FaithForge Gaming Bible studies, community game nights, Raid Trains, podcasts, tournaments, livestreams, and Christian fellowship events."
   >
 
   <meta
@@ -56,7 +56,7 @@
 
   <meta
     name="twitter:description"
-    content="See upcoming FaithForge Gaming Bible studies, community nights, tournaments, streams, and fellowship events."
+    content="See upcoming FaithForge Gaming Bible studies, community nights, Raid Trains, podcasts, tournaments, streams, and fellowship events."
   >
 
   <meta
@@ -64,7 +64,6 @@
     content="https://faithforgegaming.com/Events/Events.webp"
   >
 
-  <!-- Theme / Shared Assets -->
   <meta name="theme-color" content="#000000">
 
   <link
@@ -77,14 +76,13 @@
     href="https://faithforgegaming.com/style.css"
   >
 
-  <!-- Static Organization Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     "name": "FaithForge Gaming Events",
     "url": "https://faithforgegaming.com/Events/",
-    "description": "Upcoming Christian gaming events, Bible studies, community game nights, livestreams, tournaments, prayer gatherings, and fellowship opportunities hosted by FaithForge Gaming.",
+    "description": "Upcoming Christian gaming events, Bible studies, community game nights, Raid Trains, podcasts, livestreams, tournaments, prayer gatherings, partnerships, and fellowship opportunities hosted by FaithForge Gaming.",
     "isPartOf": {
       "@type": "WebSite",
       "name": "FaithForge Gaming",
@@ -125,9 +123,16 @@
       --events-text: #f4f4f4;
       --events-muted: #cfcfcf;
 
-      --events-green: #80f0ab;
-      --events-blue: #8fd3ff;
-      --events-purple: #d5a6ff;
+      --category-purple: #d5a6ff;
+      --category-orange: #ffad5c;
+      --category-blue: #89bdff;
+      --category-green: #80f0ab;
+      --category-gold: #ffe58d;
+      --category-pink: #ff9dce;
+      --category-light-blue: #a8e8ff;
+      --category-red: #ff8b8b;
+      --category-tan: #e7c99d;
+      --category-gray: #d0d0d0;
     }
 
     * {
@@ -326,9 +331,10 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 12px;
+      align-items: center;
+      gap: 16px;
 
-      margin-top: 24px;
+      margin-top: 27px;
     }
 
     .events-primary-button,
@@ -395,6 +401,47 @@
     .events-secondary-button:focus-visible {
       background: var(--events-gold);
       color: #000;
+    }
+
+    /*
+     * Larger and more visible full-calendar button.
+     */
+
+    .events-calendar-button {
+      min-height: 60px;
+      padding: 16px 35px;
+
+      border: 2px solid var(--events-gold-light);
+
+      border-radius: 14px;
+
+      background:
+        linear-gradient(
+          45deg,
+          var(--events-gold),
+          var(--events-gold-dark)
+        );
+
+      color: #000;
+
+      font-size: 1.12rem;
+      font-weight: 950;
+      letter-spacing: 0.02em;
+
+      box-shadow:
+        0 0 28px rgba(245, 197, 24, 0.68),
+        inset 0 0 11px rgba(255, 255, 255, 0.16);
+    }
+
+    .events-calendar-button:hover,
+    .events-calendar-button:focus-visible {
+      transform: translateY(-3px) scale(1.035);
+
+      box-shadow:
+        0 0 38px rgba(245, 197, 24, 0.94),
+        inset 0 0 13px rgba(255, 255, 255, 0.2);
+
+      outline: none;
     }
 
     .events-summary-grid {
@@ -541,6 +588,66 @@
       text-transform: uppercase;
     }
 
+    .next-event-label.faith {
+      border-color: rgba(190, 120, 255, 0.55);
+      background: rgba(155, 75, 220, 0.15);
+      color: var(--category-purple);
+    }
+
+    .next-event-label.raid-train {
+      border-color: rgba(255, 145, 45, 0.58);
+      background: rgba(255, 120, 20, 0.14);
+      color: var(--category-orange);
+    }
+
+    .next-event-label.podcast {
+      border-color: rgba(64, 145, 255, 0.58);
+      background: rgba(40, 115, 220, 0.14);
+      color: var(--category-blue);
+    }
+
+    .next-event-label.gaming {
+      border-color: rgba(75, 220, 125, 0.55);
+      background: rgba(50, 180, 100, 0.13);
+      color: var(--category-green);
+    }
+
+    .next-event-label.tournament {
+      border-color: rgba(245, 197, 24, 0.68);
+      background: rgba(245, 197, 24, 0.14);
+      color: var(--category-gold);
+    }
+
+    .next-event-label.dnd {
+      border-color: rgba(255, 105, 180, 0.58);
+      background: rgba(220, 70, 145, 0.14);
+      color: var(--category-pink);
+    }
+
+    .next-event-label.partnership {
+      border-color: rgba(130, 220, 255, 0.58);
+      background: rgba(90, 190, 230, 0.13);
+      color: var(--category-light-blue);
+    }
+
+    .next-event-label.live {
+      border-color: rgba(255, 75, 75, 0.62);
+      background: rgba(220, 40, 40, 0.14);
+      color: var(--category-red);
+    }
+
+    .next-event-label.men-women {
+      border-color: rgba(210, 175, 125, 0.58);
+      background: rgba(180, 140, 90, 0.14);
+      color: var(--category-tan);
+    }
+
+    .next-event-label.community {
+      border-color: rgba(190, 190, 190, 0.4);
+      background: rgba(170, 170, 170, 0.09);
+      color: var(--category-gray);
+    }
+
     .next-event-content h2 {
       margin: 0 0 7px;
 
@@ -573,7 +680,7 @@
     .next-event-countdown {
       margin-top: 14px;
 
-      color: var(--events-green);
+      color: #80f0ab;
 
       font-size: 1rem;
       font-weight: 900;
@@ -731,18 +838,78 @@
       transition:
         background 0.16s ease,
         color 0.16s ease,
-        border-color 0.16s ease;
+        border-color 0.16s ease,
+        transform 0.16s ease;
     }
 
     .events-filter-button:hover,
-    .events-filter-button:focus-visible,
-    .events-filter-button.active {
-      border-color: rgba(245, 197, 24, 0.65);
+    .events-filter-button:focus-visible {
+      transform: translateY(-1px);
+      outline: none;
+    }
 
+    .events-filter-button[data-filter="faith"] {
+      border-color: rgba(190, 120, 255, 0.45);
+      color: var(--category-purple);
+    }
+
+    .events-filter-button[data-filter="raid-train"] {
+      border-color: rgba(255, 145, 45, 0.48);
+      color: var(--category-orange);
+    }
+
+    .events-filter-button[data-filter="podcast"] {
+      border-color: rgba(64, 145, 255, 0.48);
+      color: var(--category-blue);
+    }
+
+    .events-filter-button[data-filter="gaming"] {
+      border-color: rgba(75, 220, 125, 0.45);
+      color: var(--category-green);
+    }
+
+    .events-filter-button[data-filter="tournament"] {
+      border-color: rgba(245, 197, 24, 0.58);
+      color: var(--category-gold);
+    }
+
+    .events-filter-button[data-filter="dnd"] {
+      border-color: rgba(255, 105, 180, 0.48);
+      color: var(--category-pink);
+    }
+
+    .events-filter-button[data-filter="partnership"] {
+      border-color: rgba(130, 220, 255, 0.48);
+      color: var(--category-light-blue);
+    }
+
+    .events-filter-button[data-filter="live"] {
+      border-color: rgba(255, 75, 75, 0.52);
+      color: var(--category-red);
+    }
+
+    .events-filter-button[data-filter="men-women"] {
+      border-color: rgba(210, 175, 125, 0.48);
+      color: var(--category-tan);
+    }
+
+    .events-filter-button[data-filter="community"] {
+      border-color: rgba(190, 190, 190, 0.35);
+      color: var(--category-gray);
+    }
+
+    .events-filter-button[data-filter="all"] {
+      border-color: rgba(245, 197, 24, 0.45);
+      color: var(--events-gold-light);
+    }
+
+    .events-filter-button.active {
+      border-color: var(--events-gold);
       background: var(--events-gold);
       color: #000;
 
-      outline: none;
+      box-shadow:
+        0 0 15px rgba(245, 197, 24, 0.32);
     }
 
     /*
@@ -872,22 +1039,74 @@
       text-transform: uppercase;
     }
 
+    /* Bible & Faith — Purple */
     .event-category.faith {
-      border-color: rgba(213, 166, 255, 0.4);
-      background: rgba(213, 166, 255, 0.09);
-      color: var(--events-purple);
+      border-color: rgba(190, 120, 255, 0.55);
+      background: rgba(155, 75, 220, 0.15);
+      color: var(--category-purple);
     }
 
+    /* Raid Train — Orange */
+    .event-category.raid-train {
+      border-color: rgba(255, 145, 45, 0.58);
+      background: rgba(255, 120, 20, 0.14);
+      color: var(--category-orange);
+    }
+
+    /* Podcast — Blue */
+    .event-category.podcast {
+      border-color: rgba(64, 145, 255, 0.58);
+      background: rgba(40, 115, 220, 0.14);
+      color: var(--category-blue);
+    }
+
+    /* Gaming — Green */
     .event-category.gaming {
-      border-color: rgba(143, 211, 255, 0.4);
-      background: rgba(143, 211, 255, 0.08);
-      color: var(--events-blue);
+      border-color: rgba(75, 220, 125, 0.55);
+      background: rgba(50, 180, 100, 0.13);
+      color: var(--category-green);
     }
 
-    .event-category.creator {
-      border-color: rgba(128, 240, 171, 0.4);
-      background: rgba(128, 240, 171, 0.08);
-      color: var(--events-green);
+    /* Tournament — Gold */
+    .event-category.tournament {
+      border-color: rgba(245, 197, 24, 0.68);
+      background: rgba(245, 197, 24, 0.14);
+      color: var(--category-gold);
+    }
+
+    /* D&D — Pink */
+    .event-category.dnd {
+      border-color: rgba(255, 105, 180, 0.58);
+      background: rgba(220, 70, 145, 0.14);
+      color: var(--category-pink);
+    }
+
+    /* Partnership — Light Blue */
+    .event-category.partnership {
+      border-color: rgba(130, 220, 255, 0.58);
+      background: rgba(90, 190, 230, 0.13);
+      color: var(--category-light-blue);
+    }
+
+    /* Live — Red */
+    .event-category.live {
+      border-color: rgba(255, 75, 75, 0.62);
+      background: rgba(220, 40, 40, 0.14);
+      color: var(--category-red);
+    }
+
+    /* Men's/Women's — Tan */
+    .event-category.men-women {
+      border-color: rgba(210, 175, 125, 0.58);
+      background: rgba(180, 140, 90, 0.14);
+      color: var(--category-tan);
+    }
+
+    /* Community — Gray */
+    .event-category.community {
+      border-color: rgba(190, 190, 190, 0.4);
+      background: rgba(170, 170, 170, 0.09);
+      color: var(--category-gray);
     }
 
     .event-card h3 {
@@ -1114,6 +1333,21 @@
         grid-template-columns: 1fr;
       }
 
+      .events-hero-actions {
+        flex-direction: column;
+      }
+
+      .events-primary-button,
+      .events-secondary-button,
+      .events-calendar-button {
+        width: min(100%, 360px);
+      }
+
+      .events-calendar-button {
+        min-height: 62px;
+        font-size: 1.1rem;
+      }
+
       .next-event-card {
         grid-template-columns: 1fr;
 
@@ -1247,9 +1481,9 @@
     <h1>FaithForge Gaming Events</h1>
 
     <p class="events-hero-description">
-      Join FaithForge Gaming for Christian fellowship, Bible study,
-      community game nights, server events, podcasts, livestreams,
-      tournaments, prayer, and special seasonal gatherings.
+      Join FaithForge Gaming for Christian fellowship, Bible study's,
+      Community game nights, Raid Trains, Podcasts, Livestreams,
+      Tournaments, D&amp;D, Partnership Events, Prayer time, Special gatherings, and more.
     </p>
 
     <div class="events-hero-actions">
@@ -1263,7 +1497,7 @@
       </a>
 
       <a
-        class="events-secondary-button"
+        class="events-calendar-button"
         id="openFullCalendarButton"
         href="https://calendar.google.com/calendar/embed?src=3ca24c7d932a2bdb0aa72b09710f915c6e3ca12bd13d30235b35f41ded97c522%40group.calendar.google.com&ctz=America%2FNew_York"
         target="_blank"
@@ -1289,21 +1523,21 @@
 
       <div class="events-summary-card">
         <span class="events-summary-value">
-          ET
+          24
         </span>
 
         <span class="events-summary-label">
-          Eastern Time
+          Maximum Displayed
         </span>
       </div>
 
       <div class="events-summary-card">
         <span class="events-summary-value">
-          Hourly
+          ET
         </span>
 
         <span class="events-summary-label">
-          Calendar Updates
+          Eastern Time
         </span>
       </div>
     </div>
@@ -1331,7 +1565,7 @@
         </h2>
 
         <p>
-          Search or filter the events currently listed on our calendar.
+          Search or filter up to 24 upcoming FaithForge events.
         </p>
       </div>
 
@@ -1379,7 +1613,23 @@
         type="button"
         data-filter="faith"
       >
-        Bible & Faith
+        Bible &amp; Faith
+      </button>
+
+      <button
+        class="events-filter-button"
+        type="button"
+        data-filter="raid-train"
+      >
+        Raid Train
+      </button>
+
+      <button
+        class="events-filter-button"
+        type="button"
+        data-filter="podcast"
+      >
+        Podcast
       </button>
 
       <button
@@ -1387,15 +1637,47 @@
         type="button"
         data-filter="gaming"
       >
-        Gaming Events
+        Gaming
       </button>
 
       <button
         class="events-filter-button"
         type="button"
-        data-filter="creator"
+        data-filter="tournament"
       >
-        Streams & Creators
+        Tournament
+      </button>
+
+      <button
+        class="events-filter-button"
+        type="button"
+        data-filter="dnd"
+      >
+        D&amp;D
+      </button>
+
+      <button
+        class="events-filter-button"
+        type="button"
+        data-filter="partnership"
+      >
+        Partnership
+      </button>
+
+      <button
+        class="events-filter-button"
+        type="button"
+        data-filter="live"
+      >
+        Live
+      </button>
+
+      <button
+        class="events-filter-button"
+        type="button"
+        data-filter="men-women"
+      >
+        Men's/Women's
       </button>
 
       <button
@@ -1443,28 +1725,31 @@
 
         <p>
           FaithForge Gaming events are designed to build fellowship,
-          strengthen faith, support Christian creators, and create
+          strengthen faith, disciple believers, support Christian creators, and create
           meaningful moments through gaming and online community.
         </p>
 
         <p>
           Events may take place through Discord, Twitch, YouTube,
-          community game servers, or another platform listed in the
-          individual event details.
+          Rumble, community game servers, or another platform listed
+          in the individual event details.
         </p>
       </div>
 
       <div>
-        <h2>Events May Include</h2>
+        <h2>Event Categories</h2>
 
         <ul>
-          <li>Weekly Bible studies and devotions</li>
-          <li>Minecraft, Valheim, and ARK server events</li>
-          <li>Among Us and community gaming nights</li>
-          <li>FaithForge podcasts and livestreams</li>
-          <li>Quarterly Raid Train events</li>
-          <li>Prayer gatherings and fellowship</li>
-          <li>Special tournaments and seasonal events</li>
+          <li>Bible studies, prayer, devotions, and worship</li>
+          <li>Raid Train events</li>
+          <li>FaithForge podcasts</li>
+          <li>Gaming nights and game events</li>
+          <li>Tournaments and competitions</li>
+          <li>D&amp;D sessions</li>
+          <li>Partnership and Blessing Boat events</li>
+          <li>Livestreams and creator events</li>
+          <li>Men's and women's gatherings</li>
+          <li>General community events</li>
         </ul>
       </div>
 
@@ -1520,18 +1805,19 @@
 <script>
   /*
    * FaithForge Community API
-   *
-   * The Worker retrieves current Google Calendar information,
-   * updates it hourly, and exposes it through /community.
    */
+
   const COMMUNITY_API =
     "https://faithforge-community-api.faithforgegaming.workers.dev/community";
 
   const EVENTS_CACHE_KEY =
-    "faithforge_events_page_cache";
+    "faithforge_events_page_cache_v2";
 
   const EVENTS_CACHE_DURATION =
     5 * 60 * 1000;
+
+  const MAX_EVENTS =
+    24;
 
   const DISCORD_URL =
     "https://discord.gg/bAQrudk5a9";
@@ -1545,7 +1831,7 @@
   let nextEventCountdownTimer = null;
 
   /*
-   * General safety and formatting helpers
+   * Safety and formatting helpers
    */
 
   function escapeHtml(value) {
@@ -1568,20 +1854,37 @@
       .trim();
   }
 
-  function truncateText(value, maximumLength = 220) {
-    const text = stripHtml(value);
+  function truncateText(
+    value,
+    maximumLength = 220
+  ) {
+    const text =
+      stripHtml(value);
 
-    if (text.length <= maximumLength) {
+    if (
+      text.length <=
+      maximumLength
+    ) {
       return text;
     }
 
-    return `${text.slice(0, maximumLength).trim()}…`;
+    return (
+      `${text
+        .slice(0, maximumLength)
+        .trim()}…`
+    );
   }
 
-  function safeExternalUrl(value, fallback = "#") {
+  function safeExternalUrl(
+    value,
+    fallback = "#"
+  ) {
     try {
       const url =
-        new URL(value, window.location.origin);
+        new URL(
+          value,
+          window.location.origin
+        );
 
       if (
         url.protocol === "https:" ||
@@ -1597,10 +1900,13 @@
   }
 
   function formatNumber(value) {
-    const number = Number(value);
+    const number =
+      Number(value);
 
     return Number.isFinite(number)
-      ? new Intl.NumberFormat("en-US").format(number)
+      ? new Intl.NumberFormat(
+          "en-US"
+        ).format(number)
       : "—";
   }
 
@@ -1630,20 +1936,20 @@
       return null;
     }
 
-    /*
-     * All-day Google Calendar dates contain no time.
-     * Noon prevents timezone conversion from shifting the date.
-     */
     const value =
       event?.allDay &&
-      /^\d{4}-\d{2}-\d{2}$/.test(rawStart)
+      /^\d{4}-\d{2}-\d{2}$/.test(
+        rawStart
+      )
         ? `${rawStart}T12:00:00`
         : rawStart;
 
     const date =
       new Date(value);
 
-    return Number.isNaN(date.getTime())
+    return Number.isNaN(
+      date.getTime()
+    )
       ? null
       : date;
   }
@@ -1658,14 +1964,18 @@
 
     const value =
       event?.allDay &&
-      /^\d{4}-\d{2}-\d{2}$/.test(rawEnd)
+      /^\d{4}-\d{2}-\d{2}$/.test(
+        rawEnd
+      )
         ? `${rawEnd}T12:00:00`
         : rawEnd;
 
     const date =
       new Date(value);
 
-    return Number.isNaN(date.getTime())
+    return Number.isNaN(
+      date.getTime()
+    )
       ? null
       : date;
   }
@@ -1688,7 +1998,8 @@
           "en-US",
           {
             month: "short",
-            timeZone: "America/New_York"
+            timeZone:
+              "America/New_York"
           }
         ).format(date),
 
@@ -1697,7 +2008,8 @@
           "en-US",
           {
             day: "numeric",
-            timeZone: "America/New_York"
+            timeZone:
+              "America/New_York"
           }
         ).format(date),
 
@@ -1706,7 +2018,8 @@
           "en-US",
           {
             weekday: "short",
-            timeZone: "America/New_York"
+            timeZone:
+              "America/New_York"
           }
         ).format(date)
     };
@@ -1717,7 +2030,9 @@
       getEventDate(event);
 
     if (!startDate) {
-      return "Date and time to be announced";
+      return (
+        "Date and time to be announced"
+      );
     }
 
     if (event?.allDay) {
@@ -1728,7 +2043,8 @@
           month: "long",
           day: "numeric",
           year: "numeric",
-          timeZone: "America/New_York"
+          timeZone:
+            "America/New_York"
         }
       ).format(startDate);
     }
@@ -1744,7 +2060,8 @@
           month: "short",
           day: "numeric",
           year: "numeric",
-          timeZone: "America/New_York"
+          timeZone:
+            "America/New_York"
         }
       ).format(startDate);
 
@@ -1754,12 +2071,15 @@
         {
           hour: "numeric",
           minute: "2-digit",
-          timeZone: "America/New_York"
+          timeZone:
+            "America/New_York"
         }
       ).format(startDate);
 
     if (!endDate) {
-      return `${dateText} • ${startTime} ET`;
+      return (
+        `${dateText} • ${startTime} ET`
+      );
     }
 
     const sameDate =
@@ -1769,7 +2089,8 @@
           year: "numeric",
           month: "2-digit",
           day: "2-digit",
-          timeZone: "America/New_York"
+          timeZone:
+            "America/New_York"
         }
       ).format(startDate) ===
       new Intl.DateTimeFormat(
@@ -1778,12 +2099,15 @@
           year: "numeric",
           month: "2-digit",
           day: "2-digit",
-          timeZone: "America/New_York"
+          timeZone:
+            "America/New_York"
         }
       ).format(endDate);
 
     if (!sameDate) {
-      return `${dateText} • ${startTime} ET`;
+      return (
+        `${dateText} • ${startTime} ET`
+      );
     }
 
     const endTime =
@@ -1792,11 +2116,15 @@
         {
           hour: "numeric",
           minute: "2-digit",
-          timeZone: "America/New_York"
+          timeZone:
+            "America/New_York"
         }
       ).format(endDate);
 
-    return `${dateText} • ${startTime}–${endTime} ET`;
+    return (
+      `${dateText} • ` +
+      `${startTime}–${endTime} ET`
+    );
   }
 
   function formatApiUpdateDate(value) {
@@ -1807,7 +2135,11 @@
     const date =
       new Date(value);
 
-    if (Number.isNaN(date.getTime())) {
+    if (
+      Number.isNaN(
+        date.getTime()
+      )
+    ) {
       return "";
     }
 
@@ -1819,14 +2151,18 @@
         year: "numeric",
         hour: "numeric",
         minute: "2-digit",
-        timeZone: "America/New_York",
+        timeZone:
+          "America/New_York",
         timeZoneName: "short"
       }
     ).format(date);
   }
 
   /*
-   * Event categories
+   * Event category matching
+   *
+   * The title, description, and location are combined.
+   * The first matching category wins.
    */
 
   function getEventCategory(event) {
@@ -1836,12 +2172,15 @@
         event?.description,
         event?.location
       ]
-      .filter(Boolean)
-      .join(" ")
-      .toLowerCase();
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase();
 
+    /*
+     * Bible & Faith — Purple
+     */
     if (
-      /bible|scripture|devotion|prayer|worship|faith study|bible study|church/.test(
+      /bible|scripture|devotion|prayer|worship|faith study|bible study|church|study/i.test(
         searchableText
       )
     ) {
@@ -1851,31 +2190,124 @@
       };
     }
 
+    /*
+     * Raid Train — Orange
+     */
     if (
-      /raid train|streamer|streaming|livestream|live stream|creator|podcast|twitch|youtube/.test(
+      /raid\s*train|raidtrain/i.test(
         searchableText
       )
     ) {
       return {
-        key: "creator",
-        label: "Streams & Creators"
+        key: "raid-train",
+        label: "Raid Train"
       };
     }
 
+    /*
+     * Podcast — Blue
+     */
     if (
-      /minecraft|valheim|ark|among us|fortnite|call of duty|battlefield|halo|game night|gaming night|community night|tournament|server event|game event/.test(
+      /podcast/i.test(
+        searchableText
+      )
+    ) {
+      return {
+        key: "podcast",
+        label: "Podcast"
+      };
+    }
+
+    /*
+     * Gaming — Green
+     */
+    if (
+      /game night|gaming night|game event/i.test(
         searchableText
       )
     ) {
       return {
         key: "gaming",
-        label: "Gaming Event"
+        label: "Gaming"
       };
     }
 
+    /*
+     * Tournament — Gold
+     */
+    if (
+      /tournament|championship|competition|contest/i.test(
+        searchableText
+      )
+    ) {
+      return {
+        key: "tournament",
+        label: "Tournament"
+      };
+    }
+
+    /*
+     * D&D — Pink
+     */
+    if (
+      /d\s*&\s*d|\bdnd\b/i.test(
+        searchableText
+      )
+    ) {
+      return {
+        key: "dnd",
+        label: "D&D"
+      };
+    }
+
+    /*
+     * Partnership — Light Blue
+     */
+    if (
+      /partnership|blessing boat|backcountryhope|partner/i.test(
+        searchableText
+      )
+    ) {
+      return {
+        key: "partnership",
+        label: "Partnership"
+      };
+    }
+
+    /*
+     * Live — Red
+     */
+    if (
+      /\brumble\b|\bstreamer\b|\bstreaming\b|\blivestream\b|\blive stream\b|\bcreator\b|\bstream\b|\btwitch\b|\byoutube\b/i.test(
+        searchableText
+      )
+    ) {
+      return {
+        key: "live",
+        label: "Live"
+      };
+    }
+
+    /*
+     * Men's/Women's — Tan
+     */
+    if (
+      /\bmen\b|\bwomen\b|\bmens\b|\bmen's\b|\bwomens\b|\bwomen's\b|\bladies\b|\bguys\b/i.test(
+        searchableText
+      )
+    ) {
+      return {
+        key: "men-women",
+        label: "Men's/Women's"
+      };
+    }
+
+    /*
+     * Community — Gray
+     */
     return {
       key: "community",
-      label: "Community Event"
+      label: "Community"
     };
   }
 
@@ -1901,7 +2333,8 @@
       }
 
       if (
-        Date.now() - cached.savedAt >
+        Date.now() -
+        cached.savedAt >
         EVENTS_CACHE_DURATION
       ) {
         return null;
@@ -1924,13 +2357,13 @@
       );
     } catch {
       /*
-       * Local storage may be unavailable or disabled.
+       * Local storage may be unavailable.
        */
     }
   }
 
   /*
-   * Next event feature
+   * Next event
    */
 
   function renderNextEvent(event) {
@@ -1994,7 +2427,9 @@
         </div>
 
         <div class="next-event-content">
-          <span class="next-event-label">
+          <span
+            class="next-event-label ${escapeHtml(category.key)}"
+          >
             Next Event • ${escapeHtml(category.label)}
           </span>
 
@@ -2006,7 +2441,9 @@
           </h2>
 
           <p class="next-event-time">
-            ${escapeHtml(formatEventTime(event))}
+            ${escapeHtml(
+              formatEventTime(event)
+            )}
           </p>
 
           <p class="next-event-location">
@@ -2076,7 +2513,8 @@
         startDate.getTime();
 
       const endTime =
-        endDate?.getTime() || null;
+        endDate?.getTime() ||
+        null;
 
       if (
         now >= startTime &&
@@ -2123,7 +2561,10 @@
 
       const hours =
         Math.floor(
-          (totalMinutes % 1440) / 60
+          (
+            totalMinutes %
+            1440
+          ) / 60
         );
 
       const minutes =
@@ -2133,7 +2574,11 @@
 
       if (days > 0) {
         pieces.push(
-          `${days} ${days === 1 ? "day" : "days"}`
+          `${days} ${
+            days === 1
+              ? "day"
+              : "days"
+          }`
         );
       }
 
@@ -2142,13 +2587,21 @@
         days > 0
       ) {
         pieces.push(
-          `${hours} ${hours === 1 ? "hour" : "hours"}`
+          `${hours} ${
+            hours === 1
+              ? "hour"
+              : "hours"
+          }`
         );
       }
 
       if (days === 0) {
         pieces.push(
-          `${minutes} ${minutes === 1 ? "minute" : "minutes"}`
+          `${minutes} ${
+            minutes === 1
+              ? "minute"
+              : "minutes"
+          }`
         );
       }
 
@@ -2166,7 +2619,7 @@
   }
 
   /*
-   * Event cards
+   * Event cards and filters
    */
 
   function eventMatchesFilters(event) {
@@ -2175,7 +2628,8 @@
 
     const matchesCategory =
       activeEventFilter === "all" ||
-      category.key === activeEventFilter;
+      category.key ===
+      activeEventFilter;
 
     if (!matchesCategory) {
       return false;
@@ -2192,9 +2646,9 @@
         event.location,
         category.label
       ]
-      .filter(Boolean)
-      .join(" ")
-      .toLowerCase();
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase();
 
     return searchableText.includes(
       activeSearchTerm
@@ -2218,8 +2672,13 @@
       );
 
     resultCount.textContent =
-      `${formatNumber(filteredEvents.length)} ` +
-      `${filteredEvents.length === 1 ? "event" : "events"} shown`;
+      `${formatNumber(
+        filteredEvents.length
+      )} ${
+        filteredEvents.length === 1
+          ? "event"
+          : "events"
+      } shown`;
 
     if (!filteredEvents.length) {
       grid.innerHTML = `
@@ -2233,97 +2692,103 @@
     }
 
     grid.innerHTML =
-      filteredEvents.map(event => {
-        const dateParts =
-          formatEventDateParts(event);
+      filteredEvents
+        .map(event => {
+          const dateParts =
+            formatEventDateParts(event);
 
-        const category =
-          getEventCategory(event);
+          const category =
+            getEventCategory(event);
 
-        const eventUrl =
-          safeExternalUrl(
-            event.eventUrl,
-            "/Events/"
-          );
+          const eventUrl =
+            safeExternalUrl(
+              event.eventUrl,
+              "/Events/"
+            );
 
-        const location =
-          stripHtml(event.location) ||
-          "Online through FaithForge Gaming";
+          const location =
+            stripHtml(
+              event.location
+            ) ||
+            "Online through FaithForge Gaming";
 
-        const description =
-          truncateText(
-            event.description,
-            230
-          ) ||
-          "Join FaithForge Gaming for this upcoming community event.";
+          const description =
+            truncateText(
+              event.description,
+              230
+            ) ||
+            "Join FaithForge Gaming for this upcoming community event.";
 
-        return `
-          <article class="event-card">
-            <div class="event-card-top">
-              <div class="event-card-date">
-                <span class="event-card-month">
-                  ${escapeHtml(dateParts.month)}
-                </span>
+          return `
+            <article class="event-card">
+              <div class="event-card-top">
+                <div class="event-card-date">
+                  <span class="event-card-month">
+                    ${escapeHtml(dateParts.month)}
+                  </span>
 
-                <span class="event-card-day">
-                  ${escapeHtml(dateParts.day)}
-                </span>
+                  <span class="event-card-day">
+                    ${escapeHtml(dateParts.day)}
+                  </span>
 
-                <span class="event-card-weekday">
-                  ${escapeHtml(dateParts.weekday)}
-                </span>
+                  <span class="event-card-weekday">
+                    ${escapeHtml(dateParts.weekday)}
+                  </span>
+                </div>
+
+                <div>
+                  <span
+                    class="event-category ${escapeHtml(category.key)}"
+                  >
+                    ${escapeHtml(category.label)}
+                  </span>
+
+                  <h3>
+                    ${escapeHtml(
+                      event.title ||
+                      "FaithForge Gaming Event"
+                    )}
+                  </h3>
+
+                  <p class="event-card-time">
+                    ${escapeHtml(
+                      formatEventTime(event)
+                    )}
+                  </p>
+
+                  <p class="event-card-location">
+                    ${escapeHtml(location)}
+                  </p>
+                </div>
               </div>
 
-              <div>
-                <span
-                  class="event-category ${escapeHtml(category.key)}"
+              <p class="event-card-description">
+                ${escapeHtml(description)}
+              </p>
+
+              <div class="event-card-actions">
+                <a
+                  class="event-action-button"
+                  href="${escapeHtml(eventUrl)}"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  ${escapeHtml(category.label)}
-                </span>
+                  View Details
+                </a>
 
-                <h3>
-                  ${escapeHtml(
-                    event.title ||
-                    "FaithForge Gaming Event"
-                  )}
-                </h3>
-
-                <p class="event-card-time">
-                  ${escapeHtml(formatEventTime(event))}
-                </p>
-
-                <p class="event-card-location">
-                  ${escapeHtml(location)}
-                </p>
+                <a
+                  class="event-action-button secondary"
+                  href="${escapeHtml(DISCORD_URL)}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Join Discord
+                </a>
               </div>
-            </div>
-
-            <p class="event-card-description">
-              ${escapeHtml(description)}
-            </p>
-
-            <div class="event-card-actions">
-              <a
-                class="event-action-button"
-                href="${escapeHtml(eventUrl)}"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                View Details
-              </a>
-
-              <a
-                class="event-action-button secondary"
-                href="${escapeHtml(DISCORD_URL)}"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Join Discord
-              </a>
-            </div>
-          </article>
-        `;
-      }).join("");
+            </article>
+          `;
+        })
+        .join("");
   }
 
   /*
@@ -2342,7 +2807,7 @@
 
     const eventGraph =
       events
-        .slice(0, 20)
+        .slice(0, MAX_EVENTS)
         .map(event => {
           const startValue =
             getEventStartValue(event);
@@ -2367,10 +2832,13 @@
               startValue,
 
             "endDate":
-              endValue || undefined,
+              endValue ||
+              undefined,
 
             "description":
-              stripHtml(event.description) ||
+              stripHtml(
+                event.description
+              ) ||
               "FaithForge Gaming community event.",
 
             "eventStatus":
@@ -2380,14 +2848,22 @@
               "https://schema.org/OnlineEventAttendanceMode",
 
             "location": {
-              "@type": "VirtualLocation",
-              "url": eventUrl
+              "@type":
+                "VirtualLocation",
+
+              "url":
+                eventUrl
             },
 
             "organizer": {
-              "@type": "Organization",
-              "name": "FaithForge Gaming",
-              "url": "https://faithforgegaming.com/"
+              "@type":
+                "Organization",
+
+              "name":
+                "FaithForge Gaming",
+
+              "url":
+                "https://faithforgegaming.com/"
             },
 
             "url":
@@ -2396,7 +2872,9 @@
         });
 
     const schema =
-      document.createElement("script");
+      document.createElement(
+        "script"
+      );
 
     schema.type =
       "application/ld+json";
@@ -2406,15 +2884,20 @@
 
     schema.textContent =
       JSON.stringify({
-        "@context": "https://schema.org",
-        "@graph": eventGraph
+        "@context":
+          "https://schema.org",
+
+        "@graph":
+          eventGraph
       });
 
-    document.head.appendChild(schema);
+    document.head.appendChild(
+      schema
+    );
   }
 
   /*
-   * Display API response
+   * Display API data
    */
 
   function displayEventsData(data) {
@@ -2429,23 +2912,36 @@
         : [];
 
     /*
-     * Sort by start date and remove entries without
-     * a recognizable date.
+     * Sort events by date, remove invalid entries,
+     * and display no more than 24 events.
      */
+
     allEvents =
       rawEvents
         .filter(event =>
-          Boolean(getEventDate(event))
+          Boolean(
+            getEventDate(event)
+          )
         )
-        .sort((left, right) =>
-          getEventDate(left) -
-          getEventDate(right)
+        .sort(
+          (
+            left,
+            right
+          ) =>
+            getEventDate(left) -
+            getEventDate(right)
+        )
+        .slice(
+          0,
+          MAX_EVENTS
         );
 
     document.getElementById(
       "eventsLoadedCount"
     ).textContent =
-      formatNumber(allEvents.length);
+      formatNumber(
+        allEvents.length
+      );
 
     const fullCalendarButton =
       document.getElementById(
@@ -2459,7 +2955,8 @@
       );
 
     renderNextEvent(
-      allEvents[0] || null
+      allEvents[0] ||
+      null
     );
 
     renderEventCards();
@@ -2475,8 +2972,10 @@
 
     if (data.updatedAt) {
       updateStatus.textContent =
-        `Calendar information updates automatically every hour. ` +
-        `Last checked ${formatApiUpdateDate(data.updatedAt)}.`;
+        "Calendar information updates automatically every hour. " +
+        `Last checked ${formatApiUpdateDate(
+          data.updatedAt
+        )}.`;
     } else {
       updateStatus.textContent =
         "Calendar information updates automatically every hour.";
@@ -2524,7 +3023,7 @@
   }
 
   /*
-   * Load cached data immediately, then request fresh data.
+   * Load cached data, then request fresh data.
    */
 
   async function loadFaithForgeEvents() {
@@ -2561,13 +3060,13 @@
       }
 
       saveEventsData(data);
+
       displayEventsData(data);
     } catch (error) {
-      /*
-       * Keep valid cached information visible if available.
-       */
       if (!cachedData) {
-        displayEventsError(error);
+        displayEventsError(
+          error
+        );
       } else {
         console.error(
           "Fresh events request failed; cached data remains visible:",
@@ -2578,7 +3077,7 @@
   }
 
   /*
-   * Search and filtering
+   * Search and category filters
    */
 
   const searchInput =
@@ -2595,7 +3094,10 @@
     "input",
     event => {
       activeSearchTerm =
-        String(event.target.value || "")
+        String(
+          event.target.value ||
+          ""
+        )
           .trim()
           .toLowerCase();
 
@@ -2622,7 +3124,8 @@
         .forEach(button => {
           button.classList.toggle(
             "active",
-            button.dataset.filter === "all"
+            button.dataset.filter ===
+            "all"
           );
         });
 
@@ -2648,12 +3151,15 @@
             .querySelectorAll(
               ".events-filter-button"
             )
-            .forEach(otherButton => {
-              otherButton.classList.toggle(
-                "active",
-                otherButton === button
-              );
-            });
+            .forEach(
+              otherButton => {
+                otherButton.classList.toggle(
+                  "active",
+                  otherButton ===
+                  button
+                );
+              }
+            );
 
           renderEventCards();
         }
@@ -2684,7 +3190,10 @@
           ".menu-links"
         );
 
-      if (!toggle || !menu) {
+      if (
+        !toggle ||
+        !menu
+      ) {
         return;
       }
 
@@ -2702,7 +3211,9 @@
           );
 
           toggle.textContent =
-            isOpen ? "✕" : "☰";
+            isOpen
+              ? "✕"
+              : "☰";
         }
       );
 

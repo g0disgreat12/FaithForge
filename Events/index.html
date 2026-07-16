@@ -22,6 +22,21 @@
     href="https://faithforgegaming.com/Events/"
   >
 
+  <!-- Server-rendered event feeds used by crawlers and AI systems -->
+  <link
+    rel="alternate"
+    type="text/html"
+    title="Server-rendered FaithForge Gaming events"
+    href="https://faithforge-community-api.faithforgegaming.workers.dev/events-html"
+  >
+
+  <link
+    rel="alternate"
+    type="application/ld+json"
+    title="FaithForge Gaming event structured data"
+    href="https://faithforge-community-api.faithforgegaming.workers.dev/events-schema"
+  >
+
   <!-- Open Graph -->
   <meta
     property="og:title"
@@ -76,7 +91,7 @@
     href="https://faithforgegaming.com/style.css"
   >
 
-  <script type="application/ld+json">
+  <script id="eventsCollectionSchema" type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
@@ -102,7 +117,23 @@
         "https://www.tiktok.com/@faithforge.gaming",
         "https://rumble.com/user/FaithForgeGaming"
       ]
+    },
+    "hasPart": {
+      "@type": "WebPage",
+      "name": "Live server-rendered FaithForge Gaming event listings",
+      "url": "https://faithforge-community-api.faithforgegaming.workers.dev/events-html"
     }
+  }
+  </script>
+
+  <!--
+    Cloudflare replaces this placeholder with the current Event graph
+    before the page is sent to visitors and search-engine crawlers.
+  -->
+  <script id="serverEventsSchema" type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": []
   }
   </script>
 
@@ -1120,6 +1151,27 @@
       text-align: center;
     }
 
+    .events-search-source {
+      margin: 10px 0 0;
+      color: #aaa;
+      font-size: 0.82rem;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    .events-search-source a {
+      color: var(--events-gold-soft);
+      font-weight: 800;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .events-search-source a:hover,
+    .events-search-source a:focus-visible {
+      color: var(--events-gold-light);
+      outline: none;
+    }
+
     /* FOOTER */
 
     footer {
@@ -1296,7 +1348,11 @@
   </nav>
 </header>
 
-<main class="events-page" id="eventsMain">
+<main
+  class="events-page"
+  id="eventsMain"
+  data-faithforge-server-render="events"
+>
 
   <section class="events-hero">
     <p class="events-eyebrow">
@@ -1536,9 +1592,19 @@
 
   <noscript>
     <div class="events-error-state">
-      JavaScript is required to load the current FaithForge Gaming
-      calendar. Use the Open Full Calendar button above to view the
-      Google Calendar directly.
+      <p>
+        The interactive filters require JavaScript, but the current
+        FaithForge Gaming event listings are still available.
+      </p>
+
+      <p>
+        <a
+          href="https://faithforge-community-api.faithforgegaming.workers.dev/events-html"
+        >
+          View the server-rendered upcoming event list
+        </a>
+        or use the Open Full Calendar button above.
+      </p>
     </div>
   </noscript>
 
@@ -1586,6 +1652,14 @@
     >
       Calendar information updates automatically every hour.
     </div>
+
+    <p class="events-search-source">
+      <a
+        href="https://faithforge-community-api.faithforgegaming.workers.dev/events-html"
+      >
+        Open the server-rendered searchable event list
+      </a>
+    </p>
   </section>
 
 </main>
@@ -1630,6 +1704,12 @@
 <script>
   const COMMUNITY_API =
     "https://faithforge-community-api.faithforgegaming.workers.dev/community";
+
+  const SERVER_RENDERED_EVENTS_URL =
+    "https://faithforge-community-api.faithforgegaming.workers.dev/events-html";
+
+  const SERVER_RENDERED_EVENTS_SCHEMA_URL =
+    "https://faithforge-community-api.faithforgegaming.workers.dev/events-schema";
 
   const EVENTS_CACHE_KEY =
     "faithforge_events_page_cache_v3";

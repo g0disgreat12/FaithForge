@@ -12,7 +12,41 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <meta
+    name="robots"
+    content="index, follow, max-image-preview:large"
+  >
+
   <link rel="canonical" href="https://faithforgegaming.com/">
+
+  <!-- Server-rendered community feeds for crawlers and AI systems -->
+  <link
+    rel="alternate"
+    type="text/html"
+    title="Server-rendered FaithForge Gaming community information"
+    href="https://faithforge-community-api.faithforgegaming.workers.dev/website-html"
+  >
+
+  <link
+    rel="alternate"
+    type="text/plain"
+    title="FaithForge Gaming community statistics and events"
+    href="https://faithforge-community-api.faithforgegaming.workers.dev/website-text"
+  >
+
+  <link
+    rel="alternate"
+    type="application/json"
+    title="FaithForge Gaming website data"
+    href="https://faithforge-community-api.faithforgegaming.workers.dev/website-data?raw=0"
+  >
+
+  <link
+    rel="alternate"
+    type="application/ld+json"
+    title="FaithForge Gaming structured data"
+    href="https://faithforge-community-api.faithforgegaming.workers.dev/website-schema"
+  >
 
   <meta property="og:title" content="FaithForge Gaming | Christian Gaming Community & Servers">
   <meta property="og:description" content="Join FaithForge Gaming for Christian fellowship, multiplayer servers, community events, Bible studies, streamers, and family-friendly gaming.">
@@ -33,7 +67,7 @@
   <link rel="icon" href="https://faithforgegaming.com/Anvil.webp">
   <link rel="preload" as="image" href="Knightlong.webp" type="image/webp">
 
-  <script type="application/ld+json">
+  <script id="organizationSchema" type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -50,6 +84,18 @@
       "https://www.tiktok.com/@faithforge.gaming",
       "https://rumble.com/user/FaithForgeGaming"
     ]
+  }
+  </script>
+
+  <!--
+    Cloudflare replaces this placeholder with current community,
+    social-platform, content, and event structured data before the
+    page is sent to visitors and search-engine crawlers.
+  -->
+  <script id="serverWebsiteSchema" type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": []
   }
   </script>
 
@@ -1412,7 +1458,10 @@
   </nav>
 </header>
 
-<main id="mainContent">
+<main
+  id="mainContent"
+  data-faithforge-server-render="homepage"
+>
 
   <section class="hero">
     <div class="hero-content">
@@ -1455,20 +1504,27 @@
     </div>
   </section>
 
-  <section class="community-stats" aria-labelledby="communityStatsTitle">
+  <section
+    class="community-stats"
+    aria-labelledby="communityStatsTitle"
+    data-faithforge-server-section="community-stats"
+  >
     <div class="section-shell">
       <div class="stats-label" id="communityStatsTitle">
         Our Growing Christian Gaming Community
       </div>
 
-      <div class="stats-grid">
+      <div
+        class="stats-grid"
+        data-faithforge-server-stats
+      >
         <a class="stat-card" href="https://discord.gg/bAQrudk5a9">
-          <span class="stat-value" id="statDiscordMembers">700+</span>
+          <span class="stat-value" id="statDiscordMembers" data-faithforge-value="discord.members">700+</span>
           <span class="stat-name">Discord Members</span>
         </a>
 
         <a class="stat-card" href="https://discord.gg/bAQrudk5a9">
-          <span class="stat-value" id="statDiscordOnline">—</span>
+          <span class="stat-value" id="statDiscordOnline" data-faithforge-value="discord.online">—</span>
           <span class="stat-name">Members Online</span>
         </a>
 
@@ -1476,39 +1532,51 @@
           class="stat-card"
           href="https://www.facebook.com/profile.php?id=100070219355952"
         >
-          <span class="stat-value" id="statFacebookFollowers">—</span>
+          <span class="stat-value" id="statFacebookFollowers" data-faithforge-value="facebook.followers">—</span>
           <span class="stat-name">Facebook Followers</span>
         </a>
 
         <a class="stat-card" href="https://www.tiktok.com/@faithforge.gaming">
-          <span class="stat-value" id="statTikTokFollowers">—</span>
+          <span class="stat-value" id="statTikTokFollowers" data-faithforge-value="tiktok.followers">—</span>
           <span class="stat-name">TikTok Followers</span>
         </a>
 
         <a class="stat-card" href="https://www.youtube.com/@FaithForgeGaming">
-          <span class="stat-value" id="statYouTubeSubscribers">—</span>
+          <span class="stat-value" id="statYouTubeSubscribers" data-faithforge-value="youtube.subscribers">—</span>
           <span class="stat-name">YouTube Subscribers</span>
         </a>
 
         <a class="stat-card" href="https://www.twitch.tv/faithforgegaming">
-          <span class="stat-value" id="statTwitchFollowers">—</span>
+          <span class="stat-value" id="statTwitchFollowers" data-faithforge-value="twitch.followers">—</span>
           <span class="stat-name">Twitch Followers</span>
         </a>
       </div>
 
-      <div class="stats-updated" id="statsUpdated">
+      <div
+        class="stats-updated"
+        id="statsUpdated"
+        data-faithforge-value="sourceUpdatedAt"
+      >
         Live community statistics update automatically every hour.
       </div>
 
-      <p class="crawlable-summary">
+      <p
+        class="crawlable-summary"
+        id="communityCrawlableSummary"
+        data-faithforge-server-summary
+      >
         FaithForge Gaming is a fast growing Christian gaming community with more Discord members every  day, family-friendly gaming servers, Christian streamers,
         Bible studies, community events, devotions, prayer, and online fellowship.
       </p>
 
       <noscript>
         <p class="crawlable-summary">
-          Enable JavaScript to view current community statistics, upcoming events,
-          Twitch live status, and the latest FaithForge Gaming YouTube upload.
+          The interactive features require JavaScript. Current FaithForge Gaming
+          community statistics, social-platform information, latest content, and
+          upcoming events remain available in the
+          <a href="https://faithforge-community-api.faithforgegaming.workers.dev/website-html">
+            server-rendered community snapshot
+          </a>.
         </p>
       </noscript>
     </div>
@@ -1536,7 +1604,11 @@
             See what is happening next across FaithForge Gaming.
           </p>
 
-          <div class="event-list" id="homepageEventList">
+          <div
+            class="event-list"
+            id="homepageEventList"
+            data-faithforge-server-events="3"
+          >
             <p class="loading-text">Loading upcoming events...</p>
           </div>
 
@@ -1781,6 +1853,7 @@
         >
           <img
             id="latestYouTubeThumbnail"
+            data-faithforge-value="youtube.latestVideo.thumbnailUrl"
             src="Homepage.webp"
             alt="Latest FaithForge Gaming YouTube video"
             loading="lazy"
@@ -1799,11 +1872,19 @@
         <div class="youtube-copy">
           <h2>Latest from FaithForge Gaming</h2>
 
-          <div class="latest-video-title" id="latestYouTubeTitle">
+          <div
+            class="latest-video-title"
+            id="latestYouTubeTitle"
+            data-faithforge-value="youtube.latestVideo.title"
+          >
             Loading our newest YouTube upload...
           </div>
 
-          <div class="latest-video-date" id="latestYouTubeDate"></div>
+          <div
+            class="latest-video-date"
+            id="latestYouTubeDate"
+            data-faithforge-value="youtube.latestVideo.publishedAt"
+          ></div>
 
           <p class="muted">
             Watch our newest faith-centered gaming content, Bible encouragement,
@@ -1814,6 +1895,7 @@
             <a
               class="gold-button"
               id="latestYouTubeButton"
+              data-faithforge-value="youtube.latestVideo.videoUrl"
               href="https://www.youtube.com/@FaithForgeGaming/shorts"
               target="_blank"
               rel="noopener noreferrer"
@@ -2038,6 +2120,15 @@
 <script>
   const COMMUNITY_API =
     "https://faithforge-community-api.faithforgegaming.workers.dev/community";
+
+  const SERVER_RENDERED_WEBSITE_URL =
+    "https://faithforge-community-api.faithforgegaming.workers.dev/website-html";
+
+  const SERVER_RENDERED_WEBSITE_SCHEMA_URL =
+    "https://faithforge-community-api.faithforgegaming.workers.dev/website-schema";
+
+  const SERVER_RENDERED_WEBSITE_DATA_URL =
+    "https://faithforge-community-api.faithforgegaming.workers.dev/website-data?raw=0";
 
   const COMMUNITY_CACHE_KEY =
     "faithforge_homepage_community_cache";

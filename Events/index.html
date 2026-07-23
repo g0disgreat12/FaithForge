@@ -1712,13 +1712,16 @@
     "https://faithforge-community-api.faithforgegaming.workers.dev/events-schema";
 
   const EVENTS_CACHE_KEY =
-    "faithforge_events_page_cache_v3";
+    "faithforge_events_page_cache_v4";
 
   const EVENTS_CACHE_DURATION =
     5 * 60 * 1000;
 
   const MAX_EVENTS =
     24;
+
+  const EVENT_EXPIRY_GRACE_MS =
+    5 * 60 * 1000;
 
   const DISCORD_URL =
     "https://discord.gg/bAQrudk5a9";
@@ -1875,6 +1878,73 @@
     )
       ? null
       : date;
+  }
+
+  function prepareUpcomingEvents(
+    events,
+    maximum
+  ) {
+    const now =
+      Date.now();
+
+    return (
+      Array.isArray(events)
+        ? events
+        : []
+    )
+      .filter(event => {
+        const start =
+          getEventDate(event);
+
+        const end =
+          getEventEndDate(event);
+
+        if (!start) {
+          return false;
+        }
+
+        /*
+         * Keep an event while it is upcoming or currently happening.
+         * The grace period prevents minor clock differences between
+         * Cloudflare, the API, and the browser from hiding an event early.
+         */
+        const comparisonTime =
+          end?.getTime() ||
+          start.getTime();
+
+        return (
+          comparisonTime >=
+          now -
+            EVENT_EXPIRY_GRACE_MS
+        );
+      })
+      .sort(
+        (left, right) =>
+          getEventDate(left) -
+          getEventDate(right)
+      )
+      .slice(
+        0,
+        maximum
+      );
+  }
+
+  function hasServerRenderedEvents() {
+    const eventsMain =
+      document.getElementById(
+        "eventsMain"
+      );
+
+    return (
+      eventsMain?.dataset
+        .faithforgeServerRender ===
+        "events-complete" &&
+      Boolean(
+        document.querySelector(
+          "#eventsGrid .event-card"
+        )
+      )
+    );
   }
 
   function formatEventDateParts(event) {
@@ -2679,15 +2749,6 @@
   }
 
   function updateEventStructuredData(events) {
-    const existingSchema =
-      document.getElementById(
-        "dynamicEventsSchema"
-      );
-
-    if (existingSchema) {
-      existingSchema.remove();
-    }
-
     const eventGraph =
       events
         .slice(0, MAX_EVENTS)
@@ -2754,16 +2815,27 @@
           };
         });
 
-    const schema =
-      document.createElement(
-        "script"
+    let schema =
+      document.getElementById(
+        "serverEventsSchema"
       );
 
-    schema.type =
-      "application/ld+json";
+    if (!schema) {
+      schema =
+        document.createElement(
+          "script"
+        );
 
-    schema.id =
-      "dynamicEventsSchema";
+      schema.type =
+        "application/ld+json";
+
+      schema.id =
+        "serverEventsSchema";
+
+      document.head.appendChild(
+        schema
+      );
+    }
 
     schema.textContent =
       JSON.stringify({
@@ -2773,10 +2845,6 @@
         "@graph":
           eventGraph
       });
-
-    document.head.appendChild(
-      schema
-    );
   }
 
   function displayEventsData(data) {
@@ -2791,24 +2859,10 @@
         : [];
 
     allEvents =
-      rawEvents
-        .filter(event =>
-          Boolean(
-            getEventDate(event)
-          )
-        )
-        .sort(
-          (
-            left,
-            right
-          ) =>
-            getEventDate(left) -
-            getEventDate(right)
-        )
-        .slice(
-          0,
-          MAX_EVENTS
-        );
+      prepareUpcomingEvents(
+        rawEvents,
+        MAX_EVENTS
+      );
 
     document.getElementById(
       "eventsLoadedCount"
@@ -2933,13 +2987,16 @@
 
       displayEventsData(data);
     } catch (error) {
-      if (!cachedData) {
+      if (
+        !cachedData &&
+        !hasServerRenderedEvents()
+      ) {
         displayEventsError(
           error
         );
       } else {
         console.error(
-          "Fresh events request failed; cached data remains visible:",
+          "Fresh events request failed; existing event content remains visible:",
           error
         );
       }

@@ -727,6 +727,14 @@
       text-underline-offset: 3px;
     }
 
+    .comparison-hint {
+      display: none;
+      margin: 0 0 10px;
+      color: var(--ff-muted);
+      font-size: .85rem;
+      text-align: center;
+    }
+
     .comparison-wrap {
       overflow-x: auto;
       margin-top: 24px;
@@ -967,12 +975,15 @@
       }
 
       .hero-art {
-        min-height: 240px;
+        min-height: 0;
       }
 
       .hero-art img {
-        min-height: 240px;
-        max-height: 440px;
+        width: 100%;
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        object-fit: contain;
       }
 
       .trust-row {
@@ -1001,9 +1012,17 @@
         order: 0;
       }
 
+      .server-media {
+        min-height: 0;
+      }
+
       .server-media img {
-        min-height: 260px;
-        max-height: 460px;
+        display: block;
+        width: 100%;
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        object-fit: contain;
       }
     }
 
@@ -1052,9 +1071,12 @@
         padding: 22px 18px 25px;
       }
 
-      .server-media img {
-        min-height: 215px;
-        max-height: 330px;
+      .comparison-hint {
+        display: block;
+      }
+
+      #embers {
+        display: none !important;
       }
 
       .feature-grid {
@@ -1089,6 +1111,10 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
+      #embers {
+        display: none !important;
+      }
+
       html {
         scroll-behavior: auto;
       }
@@ -1167,8 +1193,8 @@
           <img
             src="Servers.webp"
             alt="FaithForge Gaming Christian game servers and Dungeons &amp; Dragons community"
-            width="1200"
-            height="800"
+            width="1000"
+            height="667"
             fetchpriority="high"
             decoding="async">
           <div class="hero-badge">Multiple games. One Christ-centered community.</div>
@@ -1220,8 +1246,8 @@
               <img
                 src="minecraftknight.webp"
                 alt="FaithForge Minecraft Multiverse Christian family-friendly server"
-                width="900"
-                height="700"
+                width="512"
+                height="768"
                 loading="lazy"
                 decoding="async">
             </div>
@@ -1278,8 +1304,8 @@
               <img
                 src="ATM9.webp"
                 alt="FaithForge All The Mods 9 Minecraft modded server"
-                width="900"
-                height="700"
+                width="512"
+                height="768"
                 loading="lazy"
                 decoding="async">
             </div>
@@ -1456,8 +1482,8 @@
               <img
                 src="ark.webp"
                 alt="FaithForge ARK Survival Ascended and Survival Evolved PvE servers"
-                width="900"
-                height="700"
+                width="512"
+                height="484"
                 loading="lazy"
                 decoding="async">
             </div>
@@ -1546,6 +1572,7 @@
           </p>
         </div>
 
+        <p class="comparison-hint" aria-hidden="true">Swipe left to compare all server details →</p>
         <div class="comparison-wrap" role="region" aria-label="FaithForge server comparison" tabindex="0">
           <table class="comparison">
             <thead>
@@ -1561,7 +1588,7 @@
               <tr>
                 <td>Minecraft Multiverse</td>
                 <td>Java + Bedrock</td>
-                <td>Survival, RPG, creative, minigames & more</td>
+                <td>Survival, RPG, creative, minigames</td>
                 <td>Resource packs available; no client mods required</td>
                 <td>Players who want lots of ways to play.</td>
               </tr>

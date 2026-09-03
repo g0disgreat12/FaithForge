@@ -6,7 +6,7 @@
   <meta name="robots" content="noindex, nofollow">
 
   <title>FaithForge Stream Team Dashboard | Quarterly Progress & Analytics</title>
-  <meta name="description" content="FaithForge Gaming Stream Team dashboard for quarterly creator requirements, community participation, merch eligibility, live status, and stream analytics.">
+  <meta name="description" content="FaithForge Gaming Stream Team dashboard for quarterly content progress, live status, and stream analytics.">
   <link rel="canonical" href="https://faithforgegaming.com/CreatorDashboard/">
   <link rel="icon" href="https://faithforgegaming.com/Anvil.webp">
   <link rel="stylesheet" href="https://faithforgegaming.com/style.css">
@@ -477,8 +477,7 @@
       color: #ff9a9a;
     }
 
-    .badge.complete,
-    .badge.active {
+    .badge.complete {
       border-color: rgba(67, 219, 131, 0.46);
       background: rgba(67, 219, 131, 0.11);
       color: #83f2b1;
@@ -488,18 +487,6 @@
       border-color: rgba(255, 191, 77, 0.45);
       background: rgba(255, 191, 77, 0.11);
       color: #ffd482;
-    }
-
-    .badge.review {
-      border-color: rgba(121, 191, 255, 0.42);
-      background: rgba(121, 191, 255, 0.10);
-      color: #a8d4ff;
-    }
-
-    .badge.merch {
-      border-color: rgba(187, 154, 255, 0.48);
-      background: rgba(187, 154, 255, 0.11);
-      color: #d1bcff;
     }
 
     .analytics-strip {
@@ -601,7 +588,7 @@
 
     .requirements-layout {
       display: grid;
-      grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.65fr);
+      grid-template-columns: 1fr;
       gap: 14px;
     }
 
@@ -621,7 +608,7 @@
 
     .mini-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 9px;
       margin-bottom: 13px;
     }
@@ -694,36 +681,6 @@
       margin-left: auto;
       color: var(--ffg-gold-light);
       font-weight: 750;
-    }
-
-    .program-stack {
-      display: grid;
-      gap: 10px;
-    }
-
-    .program-card {
-      padding: 13px;
-      border: 1px solid rgba(245, 197, 24, 0.13);
-      border-radius: 12px;
-      background: rgba(0, 0, 0, 0.30);
-    }
-
-    .program-card h5 {
-      margin: 0 0 7px;
-      color: var(--ffg-gold-soft);
-      font-size: 0.84rem;
-    }
-
-    .program-card strong {
-      color: var(--ffg-white);
-      font-size: 0.98rem;
-    }
-
-    .program-card p {
-      margin: 6px 0 0;
-      color: var(--ffg-muted);
-      font-size: 0.81rem;
-      line-height: 1.42;
     }
 
     .migration-note,
@@ -1083,19 +1040,19 @@
       <article class="summary-card panel">
         <span>Content Complete</span>
         <strong id="summaryContentComplete">0</strong>
-        <small id="summaryContentDetail">1 long + 6 shorts each.</small>
+        <small id="summaryContentDetail">Creators who completed all 7 pieces.</small>
       </article>
 
       <article class="summary-card panel">
-        <span>Event Effort Met</span>
-        <strong id="summaryEventEffort">0</strong>
-        <small id="summaryEventDetail">Based on manual check-ins.</small>
+        <span>Long Form Posted</span>
+        <strong id="summaryLongForm">0</strong>
+        <small id="summaryLongFormDetail">Quality long-form videos completed.</small>
       </article>
 
       <article class="summary-card panel">
-        <span>Merch Stores</span>
-        <strong id="summaryMerchStores">0</strong>
-        <small id="summaryMerchDetail">Approved store access.</small>
+        <span>Short Form Posted</span>
+        <strong id="summaryShortForm">0</strong>
+        <small id="summaryShortFormDetail">Shorts, Reels, and TikToks completed.</small>
       </article>
 
       <article class="summary-card panel">
@@ -1137,11 +1094,6 @@
         <option value="live">Live Now</option>
         <option value="contentComplete">Content Complete</option>
         <option value="contentNeeds">Content Needs Work</option>
-        <option value="participationMeeting">Event Effort Met</option>
-        <option value="participationReview">Event Review Needed</option>
-        <option value="merchActive">Merch Store Active</option>
-        <option value="merchEligible">Merch Eligible for Approval</option>
-        <option value="firstQuarter">First Quarter Pending</option>
         <option value="hasStats">Has Quarter Analytics</option>
         <option value="noStats">No Quarter Analytics</option>
       </select>
@@ -1219,17 +1171,11 @@
 
          "2026-Q3": quarterProgress(1, 4)
 
-         Optional tracking:
+         Optional proof links:
          "2026-Q3": quarterProgress(1, 4, {
-           participation: "meeting",
-           eventsAttended: 2,
-           taggedOrNA: 5,
            longFormLinks: ["https://..."],
            shortLinks: ["https://...", "https://..."]
          })
-
-         Participation choices:
-         "not-reviewed", "strong", "meeting", "limited", "needs-check-in"
 
       2) ADD A NEW STREAMER
          Copy one creator({...}) block, paste it at the end of STREAMERS,
@@ -1242,10 +1188,9 @@
          Do not delete prior quarter entries. They remain searchable and
          viewable in the quarter selector.
 
-      Merch access is no longer tied to doubled content requirements.
-      "merchStoreApproved" means the creator already has an active store.
-      "firstFullQuarterCompleted" means they have completed at least one
-      full Stream Team quarter and may qualify once expectations are met.
+      Only content completion is entered manually. Community participation,
+      merch access, and Christ-honoring conduct remain team expectations for
+      personal conversation and are intentionally not scored here.
       ============================================================
     */
 
@@ -1281,9 +1226,6 @@
       return {
         longFormDone: Number(longFormDone || 0),
         shortsDone: Number(shortsDone || 0),
-        participation: extras.participation || "not-reviewed",
-        eventsAttended: extras.eventsAttended === 0 ? 0 : (extras.eventsAttended || null),
-        taggedOrNA: Number(extras.taggedOrNA || 0),
         bonusLongFormDone: Number(extras.bonusLongFormDone || 0),
         longFormLinks: Array.isArray(extras.longFormLinks) ? extras.longFormLinks : [],
         shortLinks: Array.isArray(extras.shortLinks) ? extras.shortLinks : [],
@@ -1302,9 +1244,6 @@
         profileUrl: "",
         twitchUrl: "",
         joinedDate: "",
-        firstFullQuarterCompleted: false,
-        merchStoreApproved: false,
-        legacyMerchTrack: false,
         notes: "",
         progress: {}
       }, details || {});
@@ -1319,13 +1258,9 @@
         platform: "Twitch / YouTube / TikTok / Rumble / Kick",
         profileUrl: "/faithforgegaming/",
         twitchUrl: "https://www.twitch.tv/faithforgegaming",
-        firstFullQuarterCompleted: true,
-        merchStoreApproved: true,
-        legacyMerchTrack: true,
         notes: "Main FaithForge channel. Use this if the main brand channel has its own quarterly requirements.",
         progress: {
           "2026-Q3": quarterProgress(1, 6, {
-            taggedOrNA: 8,
             bonusLongFormDone: 1
           })
         }
@@ -1339,11 +1274,8 @@
         platform: "Twitch / YouTube / TikTok",
         profileUrl: "/mooncalfmage/",
         twitchUrl: "https://www.twitch.tv/mooncalfmage",
-        firstFullQuarterCompleted: false,
-        merchStoreApproved: false,
-        legacyMerchTrack: true,
         progress: {
-          "2026-Q3": quarterProgress(1, 3, { taggedOrNA: 4 })
+          "2026-Q3": quarterProgress(1, 3)
         }
       }),
 
@@ -1355,11 +1287,8 @@
         platform: "Twitch / YouTube / TikTok / Instagram / Facebook",
         profileUrl: "/Romans1014XP/",
         twitchUrl: "https://www.twitch.tv/romans1014xp",
-        firstFullQuarterCompleted: false,
-        merchStoreApproved: false,
-        legacyMerchTrack: false,
         progress: {
-          "2026-Q3": quarterProgress(0, 5, { taggedOrNA: 5 })
+          "2026-Q3": quarterProgress(0, 5)
         }
       }),
 
@@ -1371,11 +1300,8 @@
         platform: "Twitch / YouTube / TikTok",
         profileUrl: "/DoctorJSWAYS/",
         twitchUrl: "https://www.twitch.tv/doctorjsways",
-        firstFullQuarterCompleted: false,
-        merchStoreApproved: false,
-        legacyMerchTrack: false,
         progress: {
-          "2026-Q3": quarterProgress(1, 3, { taggedOrNA: 4 })
+          "2026-Q3": quarterProgress(1, 3)
         }
       }),
 
@@ -1387,11 +1313,8 @@
         platform: "Twitch / YouTube",
         profileUrl: "/Seawolf_30/",
         twitchUrl: "https://www.twitch.tv/seawolf_30",
-        firstFullQuarterCompleted: false,
-        merchStoreApproved: false,
-        legacyMerchTrack: true,
         progress: {
-          "2026-Q3": quarterProgress(1, 4, { taggedOrNA: 5 })
+          "2026-Q3": quarterProgress(1, 4)
         }
       }),
 
@@ -1403,9 +1326,6 @@
         platform: "Twitch / YouTube",
         profileUrl: "/Brn2bEw1Ld/",
         twitchUrl: "https://www.twitch.tv/brn2bew1ld",
-        firstFullQuarterCompleted: false,
-        merchStoreApproved: false,
-        legacyMerchTrack: false,
         progress: {
           "2026-Q3": quarterProgress(0, 0)
         }
@@ -1419,11 +1339,8 @@
         platform: "Twitch / YouTube",
         profileUrl: "/NinjaSauceX/",
         twitchUrl: "https://www.twitch.tv/ninjasaucex",
-        firstFullQuarterCompleted: false,
-        merchStoreApproved: false,
-        legacyMerchTrack: false,
         progress: {
-          "2026-Q3": quarterProgress(1, 2, { taggedOrNA: 3 })
+          "2026-Q3": quarterProgress(1, 2)
         }
       }),
 
@@ -1435,11 +1352,8 @@
         platform: "Twitch / YouTube / TikTok",
         profileUrl: "/Warrior_of_light777/",
         twitchUrl: "https://www.twitch.tv/warrior_of_light777",
-        firstFullQuarterCompleted: false,
-        merchStoreApproved: false,
-        legacyMerchTrack: false,
         progress: {
-          "2026-Q3": quarterProgress(0, 3, { taggedOrNA: 3 })
+          "2026-Q3": quarterProgress(0, 3)
         }
       })
 
@@ -1455,8 +1369,6 @@
         profileUrl: "/CreatorFolder/",
         twitchUrl: "https://www.twitch.tv/twitch_login",
         joinedDate: "2026-09-01",
-        firstFullQuarterCompleted: false,
-        merchStoreApproved: false,
         progress: {
           "2026-Q3": quarterProgress(0, 0)
         }
@@ -1482,34 +1394,6 @@
     var lastStatusLoadedAt = null;
     var lastRecentLoadedAt = null;
     var lastStatsLoadedAt = null;
-
-    var PARTICIPATION = {
-      "not-reviewed": {
-        label: "Not reviewed",
-        detail: "Add a simple effort check-in when the quarter is reviewed.",
-        meets: false
-      },
-      "strong": {
-        label: "Highly active",
-        detail: "Consistently present and supporting multiple community events.",
-        meets: true
-      },
-      "meeting": {
-        label: "Meeting expectation",
-        detail: "Making a genuine, consistent effort to participate.",
-        meets: true
-      },
-      "limited": {
-        label: "Schedule-limited effort",
-        detail: "Participation is limited, but genuine effort is being made.",
-        meets: true
-      },
-      "needs-check-in": {
-        label: "Needs check-in",
-        detail: "Community participation should be reviewed with this creator.",
-        meets: false
-      }
-    };
 
     function escapeHTML(value) {
       return String(value === undefined || value === null ? "" : value)
@@ -1670,53 +1554,6 @@
       };
     }
 
-    function getParticipation(progress) {
-      return PARTICIPATION[progress.participation] || PARTICIPATION["not-reviewed"];
-    }
-
-    function getMerchStatus(streamer) {
-      var content = getContentCompletion(streamer);
-      var participation = getParticipation(getProgress(streamer));
-
-      if (streamer.merchStoreApproved) {
-        return {
-          key: "active",
-          label: "Merch store active",
-          detail: "This creator already has approved FFG merch store access."
-        };
-      }
-
-      if (!streamer.firstFullQuarterCompleted) {
-        return {
-          key: "first-quarter",
-          label: "First full quarter pending",
-          detail: "Merch eligibility begins after the first full quarter is successfully completed."
-        };
-      }
-
-      if (!content.complete) {
-        return {
-          key: "content",
-          label: "Content requirement pending",
-          detail: "Complete the current quarter content requirement before merch approval."
-        };
-      }
-
-      if (!participation.meets) {
-        return {
-          key: "participation",
-          label: "Event check-in pending",
-          detail: "Review community participation before approving merch store access."
-        };
-      }
-
-      return {
-        key: "eligible",
-        label: "Eligible for merch approval",
-        detail: "First-quarter and current expectations are complete. Store access can be approved."
-      };
-    }
-
     function renderBadge(label, className) {
       return '<span class="badge ' + escapeHTML(className || "") + '">' + escapeHTML(label) + "</span>";
     }
@@ -1724,23 +1561,12 @@
     function renderBadges(streamer) {
       var status = getStreamerStatus(streamer.login);
       var content = getContentCompletion(streamer);
-      var participation = getParticipation(getProgress(streamer));
-      var merch = getMerchStatus(streamer);
       var badges = [];
 
       if (status.live) badges.push(renderBadge("Live Now", "live"));
       badges.push(content.complete
         ? renderBadge("Content Complete", "complete")
         : renderBadge(content.percent + "% Content", "progress"));
-
-      if (participation.meets) {
-        badges.push(renderBadge(participation.label, "active"));
-      } else if (getProgress(streamer).participation !== "not-reviewed") {
-        badges.push(renderBadge(participation.label, "review"));
-      }
-
-      if (merch.key === "active") badges.push(renderBadge("Merch Store Active", "merch"));
-      if (merch.key === "eligible") badges.push(renderBadge("Merch Approval Ready", "merch"));
 
       return badges.join("");
     }
@@ -1800,23 +1626,14 @@
       var quarter = getQuarter();
       var progress = getProgress(streamer);
       var content = getContentCompletion(streamer);
-      var participation = getParticipation(progress);
-      var merch = getMerchStatus(streamer);
       var status = getStreamerStatus(streamer.login);
       var stats = getQuarterStats(streamer.login);
       var profileUrl = safeUrl(streamer.profileUrl);
       var twitchUrl = safeUrl(streamer.twitchUrl);
       var imageUrl = safeUrl(streamer.image) || "/Anvil.webp";
       var fallbackUrl = safeUrl(streamer.fallbackImage) || "/Anvil.webp";
-      var eventsText = progress.eventsAttended === null
-        ? "Attendance count not recorded"
-        : formatNumber(progress.eventsAttended) + (progress.eventsAttended === 1 ? " event recorded" : " events recorded");
       var currentGame = status.live ? (status.game_name || "Live on Twitch") : (stats.latestGame || "—");
       var streamTitle = status.live ? (status.title || "Currently live") : (stats.latestTitle || "—");
-      var tagTotal = content.totalDone + Number(progress.bonusLongFormDone || 0);
-      var tagText = tagTotal > 0
-        ? formatNumber(progress.taggedOrNA) + "/" + formatNumber(tagTotal) + " completed items tagged or marked N/A"
-        : "No completed content to review yet";
 
       var checklistHTML =
         renderChecklist(
@@ -1935,41 +1752,9 @@
                     content.longDone + "/" + quarter.longFormRequired + "</strong></div>" +
                   '<div class="mini-card"><span>Short Form</span><strong>' +
                     content.shortsDone + "/" + quarter.shortsRequired + "</strong></div>" +
-                  '<div class="mini-card"><span>FFG Tag / N/A</span><strong>' +
-                    formatNumber(progress.taggedOrNA) + "</strong></div>" +
                 "</div>" +
                 '<div class="checklist-grid">' + checklistHTML + "</div>" +
                 migrationNote +
-              "</section>" +
-
-              '<section class="track-section">' +
-                '<div class="track-head">' +
-                  "<h4>Team Expectations</h4>" +
-                  renderBadge(participation.label, participation.meets ? "active" : "review") +
-                "</div>" +
-                '<p class="track-subtitle">Content totals are measurable. Event participation is reviewed by genuine effort rather than a strict quota.</p>' +
-                '<div class="program-stack">' +
-                  '<div class="program-card">' +
-                    "<h5>Community Participation</h5>" +
-                    "<strong>" + escapeHTML(participation.label) + "</strong>" +
-                    "<p>" + escapeHTML(eventsText) + ". " + escapeHTML(participation.detail) + "</p>" +
-                  "</div>" +
-                  '<div class="program-card">' +
-                    "<h5>Merch Store</h5>" +
-                    "<strong>" + escapeHTML(merch.label) + "</strong>" +
-                    "<p>" + escapeHTML(merch.detail) + "</p>" +
-                  "</div>" +
-                  '<div class="program-card">' +
-                    "<h5>Christ-Honoring Standard</h5>" +
-                    "<strong>Applies on every platform</strong>" +
-                    "<p>Mature-audience content may be appropriate. The creator's speech, conduct, promotions, and interactions should still honor Christ.</p>" +
-                  "</div>" +
-                  '<div class="program-card">' +
-                    "<h5>FFG Tag Data</h5>" +
-                    "<strong>" + escapeHTML(tagText) + "</strong>" +
-                    "<p>Preserved for reference. Tagging is informational and does not increase the new 7-item requirement.</p>" +
-                  "</div>" +
-                "</div>" +
               "</section>" +
             "</div>" +
           "</div>" +
@@ -2207,8 +1992,6 @@
     function buildSearchText(streamer) {
       var progress = getProgress(streamer);
       var content = getContentCompletion(streamer);
-      var participation = getParticipation(progress);
-      var merch = getMerchStatus(streamer);
       var status = getStreamerStatus(streamer.login);
       var stats = getQuarterStats(streamer.login);
       var games = getRecentGames(streamer.login).map(function (game) {
@@ -2229,8 +2012,6 @@
         content.percent,
         progress.longFormDone,
         progress.shortsDone,
-        participation.label,
-        merch.label,
         stats.streamCount,
         stats.liveHours,
         stats.avgViewers,
@@ -2250,9 +2031,6 @@
 
       var streamers = STREAMERS.filter(function (streamer) {
         var content = getContentCompletion(streamer);
-        var progress = getProgress(streamer);
-        var participation = getParticipation(progress);
-        var merch = getMerchStatus(streamer);
         var status = getStreamerStatus(streamer.login);
         var stats = getQuarterStats(streamer.login);
         var haystack = buildSearchText(streamer);
@@ -2264,11 +2042,6 @@
         if (statusFilter === "live") return status.live;
         if (statusFilter === "contentComplete") return content.complete;
         if (statusFilter === "contentNeeds") return !content.complete;
-        if (statusFilter === "participationMeeting") return participation.meets;
-        if (statusFilter === "participationReview") return !participation.meets;
-        if (statusFilter === "merchActive") return merch.key === "active";
-        if (statusFilter === "merchEligible") return merch.key === "eligible";
-        if (statusFilter === "firstQuarter") return merch.key === "first-quarter";
         if (statusFilter === "hasStats") return hasRealStats(stats);
         if (statusFilter === "noStats") return !hasRealStats(stats);
         return true;
@@ -2345,10 +2118,6 @@
       var contentComplete = 0;
       var longFormDone = 0;
       var shortsDone = 0;
-      var participationMet = 0;
-      var participationReviewed = 0;
-      var merchStores = 0;
-      var merchEligible = 0;
       var liveNow = 0;
       var totalStreams = 0;
       var totalHours = 0;
@@ -2359,9 +2128,6 @@
 
       STREAMERS.forEach(function (streamer) {
         var content = getContentCompletion(streamer);
-        var progress = getProgress(streamer);
-        var participation = getParticipation(progress);
-        var merch = getMerchStatus(streamer);
         var status = getStreamerStatus(streamer.login);
         var stats = getQuarterStats(streamer.login);
         var weight = Number(stats.snapshotCount || 0);
@@ -2371,10 +2137,6 @@
         longFormDone += content.longDone;
         shortsDone += content.shortsDone;
 
-        if (progress.participation !== "not-reviewed") participationReviewed += 1;
-        if (participation.meets) participationMet += 1;
-        if (merch.key === "active") merchStores += 1;
-        if (merch.key === "eligible") merchEligible += 1;
         if (status.live) liveNow += 1;
 
         totalStreams += Number(stats.streamCount || 0);
@@ -2398,15 +2160,13 @@
       document.getElementById("summaryQuarterDetail").textContent = getQuarterTimingText();
       document.getElementById("summaryLiveNow").textContent = liveNow;
       document.getElementById("summaryContentComplete").textContent = contentComplete + "/" + STREAMERS.length;
-      document.getElementById("summaryContentDetail").textContent =
-        longFormDone + "/" + (STREAMERS.length * quarter.longFormRequired) + " long • " +
-        shortsDone + "/" + (STREAMERS.length * quarter.shortsRequired) + " shorts";
-      document.getElementById("summaryEventEffort").textContent = participationMet + "/" + participationReviewed;
-      document.getElementById("summaryEventDetail").textContent =
-        participationReviewed + "/" + STREAMERS.length + " creator check-ins reviewed.";
-      document.getElementById("summaryMerchStores").textContent = merchStores;
-      document.getElementById("summaryMerchDetail").textContent =
-        merchEligible + " additional creator" + (merchEligible === 1 ? "" : "s") + " ready for approval.";
+      document.getElementById("summaryContentDetail").textContent = "Creators who finished all 7 required pieces.";
+      document.getElementById("summaryLongForm").textContent =
+        longFormDone + "/" + (STREAMERS.length * quarter.longFormRequired);
+      document.getElementById("summaryLongFormDetail").textContent = "Quality long-form videos completed.";
+      document.getElementById("summaryShortForm").textContent =
+        shortsDone + "/" + (STREAMERS.length * quarter.shortsRequired);
+      document.getElementById("summaryShortFormDetail").textContent = "Shorts, Reels, and TikToks completed.";
       document.getElementById("summaryStreams").textContent = formatNumber(totalStreams);
       document.getElementById("summaryHours").textContent = formatHours(totalHours);
       document.getElementById("summaryAverage").textContent = formatNumber(teamAverage, 1);

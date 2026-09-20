@@ -627,17 +627,23 @@
     }
 
     .server-media {
-      min-height: 100%;
-      background: #000;
       position: relative;
+      align-self: start;
+      justify-self: center;
+      width: 100%;
+      max-width: 700px;
+      aspect-ratio: 2 / 3;
+      overflow: hidden;
+      background: #000;
     }
 
     .server-media img {
       display: block;
       width: 100%;
       height: 100%;
-      min-height: 380px;
+      min-height: 0;
       object-fit: cover;
+      object-position: center;
     }
 
     .server-media::after {
@@ -1031,16 +1037,19 @@
       }
 
       .server-media {
+        width: min(100%, 700px);
         min-height: 0;
+        margin-inline: auto;
+        aspect-ratio: 2 / 3;
       }
 
       .server-media img {
-        display: block;
         width: 100%;
-        height: auto;
+        height: 100%;
         min-height: 0;
         max-height: none;
-        object-fit: contain;
+        object-fit: cover;
+        object-position: center;
       }
     }
 

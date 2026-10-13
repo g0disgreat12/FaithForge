@@ -1,0 +1,85 @@
+FAITHFORGE ARENA — COPY-AND-PASTE ENTRY TEMPLATES
+
+These examples are NOT loaded by the website. Copy one whole block into the
+matching section of arena-data.js, replace the sample values, and commit.
+Keep the comma after the closing brace. New IDs must be unique.
+
+1. NEW COMMUNITY — paste inside communities: [ ... ]
+
+    {
+      "id": "new-community",
+      "name": "New Community",
+      "description": "Write a short description of the community here.",
+      "logo": "",
+      "website": "",
+      "discord": "",
+      "stream": "",
+      "page": ""
+    },
+
+2. NEW MATCH — paste inside matches: [ ... ]
+   Change the date, score, and opponent. Add the community above first.
+   Result is calculated from your score; do not add a separate result field.
+
+    {
+      "id": "2027-01-16-new-community",
+      "date": "2027-01-16",
+      "gameId": "fortnite",
+      "communityId": "new-community",
+      "format": "Custom Games Tournament",
+      "scoreType": "games",
+      "scoreDirection": "higher",
+      "ffgScore": 3,
+      "opponentScore": 2,
+      "tiedGames": 0,
+      "description": "Write the match recap here.",
+      "vodUrl": "",
+      "image": "",
+      "captainResults": [],
+      "page": ""
+    },
+
+   Optional captainResults example (replace [] with a complete list):
+   [{ "captainId": "doctorjsways", "wins": 3, "losses": 2, "ties": 0 }]
+   Use actual results. For game-win scoring, captain totals must match the score.
+
+3. NEW GAME — paste inside games: [ ... ]
+
+    {
+      "id": "new-game",
+      "name": "New Game",
+      "priority": 5,
+      "label": "Community challenge",
+      "status": "open",
+      "description": "Describe the challenge game here.",
+      "formats": ["Team vs Team", "Custom Format"],
+      "hosting": "State where and how the event will be played.",
+      "image": "",
+      "rulesUrl": "",
+      "page": ""
+    },
+
+4. NEW CAPTAIN — paste inside captains: [ ... ]
+
+    {
+      "id": "new-captain",
+      "name": "NewCaptain",
+      "description": "Write a short public introduction.",
+      "link": "",
+      "page": ""
+    },
+
+5. UPCOMING CHALLENGE — paste inside upcoming: [ ... ]
+   These are sample details only. Replace with a confirmed date and format.
+   Use the correct time-zone offset for the chosen date.
+
+    {
+      "id": "2027-01-16-community-challenge",
+      "title": "FaithForge Community Challenge",
+      "gameId": "fortnite",
+      "communityId": "new-community",
+      "startsAt": "2027-01-16T20:00:00-05:00",
+      "format": "Custom Games Tournament",
+      "description": "Add the agreed event details here.",
+      "eventUrl": ""
+    },

@@ -159,7 +159,7 @@ window.FFG_ARENA = {
       "tiedGames": 0,
       "description": "Nine games. Three FFG captains. Six victories. FaithForge Gaming faced Respawn Church in a Fortnite Custom Games tournament on October 3, 2026. Each FaithForge captain led a team through three games, and FFG finished with six wins and three losses.",
       "vodUrl": "",
-      "image": "",
+      "image": "https://faithforgegaming.com/arena/logos/respawn.webp",
       "captainResults": [
         {
           "captainId": "mcrevolation",

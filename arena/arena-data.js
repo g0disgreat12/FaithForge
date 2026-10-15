@@ -111,7 +111,7 @@ window.FFG_ARENA = {
       "id": "respawn-church",
       "name": "Respawn Church",
       "description": "Our opponent in the October 3, 2026 Fortnite Custom Games tournament. Three FaithForge teams competed, with FFG finishing 6–3.",
-      "logo": "",
+      "logo": "https://faithforgegaming.com/arena/logos/respawn.webp",
       "website": "",
       "discord": "",
       "stream": "",

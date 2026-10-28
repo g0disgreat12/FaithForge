@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="ffg-prayers ffg-shared-base">
 <head>
   <meta charset="UTF-8">
 
@@ -9,18 +9,20 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="canonical" href="https://faithforgegaming.com/Prayers">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+
+  <link rel="canonical" href="https://faithforgegaming.com/Prayers/">
 
   <!-- Open Graph / Facebook / Discord -->
   <meta property="og:title" content="Daily Christian Prayers for Gamers | FaithForge Gaming">
   <meta property="og:description" content="Daily Bible prayers for gamers — encouragement, scripture, and faith from FaithForge Gaming.">
   <meta property="og:image" content="https://faithforgegaming.com/Prayers/Prayers.webp">
-  <meta property="og:url" content="https://faithforgegaming.com/Prayers">
+  <meta property="og:url" content="https://faithforgegaming.com/Prayers/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="FaithForge Gaming">
 
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="1024">
 
   <!-- Twitter / X Preview -->
   <meta name="twitter:card" content="summary_large_image">
@@ -29,142 +31,12 @@
   <meta name="twitter:image" content="https://faithforgegaming.com/Prayers/Prayers.webp">
 
   <!-- Icons / CSS -->
-  <link rel="stylesheet" href="https://faithforgegaming.com/style.css">
+  <link rel="stylesheet" href="/main.css">
 
   <!-- Theme & Icons -->
   <meta name="theme-color" content="#000000">
   <link rel="icon" href="https://faithforgegaming.com/Anvil.webp">
 
-<style>
-
-body{
-  background:radial-gradient(circle at center,#0d0d0d 40%,#000 100%);
-  color:#f5c518;
-  margin:0;
-  font-family:Segoe UI,Tahoma,Verdana,sans-serif;
-  text-align:center;
-}
-
-/* HEADER */
-header{
-  padding:25px;
-  background:rgba(0,0,0,.75);
-  border-bottom:1px solid rgba(245,197,24,.3);
-}
-
-header h1{
-  font-size:2.6rem;
-  background:linear-gradient(90deg,#f5c518,#cfa214);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  text-shadow:0 0 18px rgba(245,197,24,.4);
-}
-
-.navbar{
-  margin-top:10px;
-}
-
-.navbar a{
-  color:#f5c518;
-  text-decoration:none;
-  margin:0 14px;
-  font-weight:600;
-}
-
-.navbar a:hover{color:white}
-
-/* SLIDER WRAP */
-.slider-container{
-  max-width:520px;
-  margin:45px auto;
-  position:relative;
-  box-shadow:0 0 25px rgba(245,197,24,.25);
-  border-radius:16px;
-  overflow:hidden;
-}
-
-/* SLIDES */
-.slide{
-  display:none;
-  width:100%;
-}
-
-.slide img{
-  width:100%;
-  height:auto;
-  display:block;
-  background:black;
-}
-
-/* ARROWS */
-.arrow{
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
-  font-size:2.5rem;
-  color:#f5c518;
-  background:rgba(0,0,0,.5);
-  border-radius:50%;
-  padding:8px 14px;
-  cursor:pointer;
-  user-select:none;
-  transition:.2s;
-}
-
-.arrow:hover{
-  background:#f5c518;
-  color:black;
-}
-
-.left{left:10px;}
-.right{right:10px;}
-
-/* CAPTION */
-.caption{
-  padding:14px;
-  font-size:.95rem;
-  color:#d8b85c;
-  background:rgba(0,0,0,.75);
-  border-top:1px solid rgba(245,197,24,.25);
-}
-
-/* FOOTER */
-footer{
-  margin-top:35px;
-  padding:22px;
-  border-top:1px solid rgba(245,197,24,.25);
-  font-size:.9rem;
-  color:#bfa145;
-}
-
-/* MOBILE */
-@media(max-width:600px){
-  header h1{font-size:2rem}
-  .arrow{font-size:2rem}
-}
-    .discord-button {
-      display: inline-block;
-      margin: 18px auto 10px;
-      padding: 16px 34px;
-      font-size: 1.4rem;
-      font-weight: bold;
-      border-radius: 14px;
-      text-decoration: none;
-      color: #f5c518;
-      background: rgba(0,0,0,.75);
-      border: 2px solid #f5c518;
-      box-shadow: 0 0 18px rgba(245,197,24,.55);
-      transition: all .2s ease-in-out;
-    }
-
-    .discord-button:hover {
-      background: linear-gradient(90deg,#f5c518,#cfa214);
-      color: #000;
-      box-shadow: 0 0 26px rgba(245,197,24,.9);
-      transform: scale(1.06);
-    }
-
-</style>
 </head>
 
 <body>
@@ -184,7 +56,7 @@ footer{
   <!-- Navigation dropdown -->
   <nav class="navbar">
     <div class="menu-links">
-      <a href="/index.html">Home</a>
+      <a href="/">Home</a>
       <a href="/Aboutus/">About Us</a>
       <a href="/Staff/">Our Team</a>
       <a href="/Streamers/">Streamers</a>
@@ -362,7 +234,7 @@ footer{
     </a>
   </div>
   <div class="footer-links">
-    <a href="/index.html">Home</a>
+    <a href="/">Home</a>
     <a href="/Aboutus/">About Us</a>
     <a href="/Staff/">Our Team</a>
     <a href="/Streamers/">Streamers</a>
@@ -380,65 +252,9 @@ footer{
   </div>
 </footer>
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-
-  /* =========================
-     MOBILE MENU TOGGLE
-  ========================= */
-  const toggle = document.querySelector('.menu-toggle');
-  const menu = document.querySelector('.menu-links');
-
-  if (toggle && menu) {
-    toggle.addEventListener('click', () => {
-      const isOpen = menu.classList.toggle('show');
-      toggle.setAttribute('aria-expanded', isOpen);
-    });
-
-    menu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        menu.classList.remove('show');
-        toggle.setAttribute('aria-expanded', 'false');
-      });
-    });
-  }
-
-  /* =========================
-     HERO / SLIDESHOW LOGIC
-  ========================= */
-  const slides = document.getElementsByClassName("slide");
-  if (slides.length === 0) return;
-
-  let slideIndex = Math.floor(Math.random() * slides.length);
-
-  function showSlides() {
-    for (let i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-    }
-
-    slideIndex++;
-    if (slideIndex > slides.length) {
-      slideIndex = 1;
-    }
-
-    slides[slideIndex - 1].style.display = "block";
-
-    setTimeout(showSlides, 10000); // 10 seconds
-  }
-
-  // Optional manual controls
-  window.plusSlides = function(n) {
-    slideIndex += n - 1;
-    showSlides();
-  };
-
-  showSlides();
-});
-</script>
+<script src="/assets/js/shared/daily-slideshow.js"></script>
 
 <!-- Embers always last -->
-<script src="https://faithforgegaming.com/embers.js"></script>
-
 
 </body>
 </html>

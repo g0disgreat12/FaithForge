@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="ffg-staff ffg-shared-base">
 <head>
   <meta charset="UTF-8">
 
@@ -9,13 +9,15 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="canonical" href="https://faithforgegaming.com/Staff">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+
+  <link rel="canonical" href="https://faithforgegaming.com/Staff/">
 
   <!-- Open Graph / Facebook / Discord -->
   <meta property="og:title" content="FaithForge Gaming Leadership Team | Christian Community Staff & Ministry Leaders">
   <meta property="og:description" content="Get to know the FaithForge Gaming staff and leadership team leading a Christian gaming community focused on ministry and fellowship.">
   <meta property="og:image" content="https://faithforgegaming.com/Staff/Ourteam.webp">
-  <meta property="og:url" content="https://faithforgegaming.com/Staff">
+  <meta property="og:url" content="https://faithforgegaming.com/Staff/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="FaithForge Gaming">
 
@@ -26,111 +28,14 @@
   <meta name="twitter:image" content="https://faithforgegaming.com/Staff/Ourteam.webp">
 
   <!-- Icons / CSS -->
-  <link rel="stylesheet" href="https://faithforgegaming.com/style.css">
+  <link rel="stylesheet" href="/main.css">
 
   <!-- Theme & Icons -->
   <meta name="theme-color" content="#000000">
   <link rel="icon" href="https://faithforgegaming.com/Anvil.webp">
   
-  <style>
-    /* Force black background on this page (Option B) */
-    body {
-      background: radial-gradient(circle at center, #0d0d0d 40%, #000 100%);
-      color: #f5c518;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-      overflow-x: hidden;
-      min-height: 100vh;
-      position: relative;
-    }
+    <!-- ✅ FIXED: this tag was missing -->
 
-    /* Prevent Contact Us (and other links) from wrapping */
-    .navbar a {
-      white-space: nowrap;
-    }
-  </style>  <!-- ✅ FIXED: this tag was missing -->
-
-  <style>
-    .team-section {
-      width: 90%;
-      max-width: 1100px;
-      margin: auto;
-      margin-top: 40px;
-    }
-
-    .member {
-      display: flex;
-      gap: 25px;
-      background: rgba(0, 0, 0, 0.4);
-      padding: 25px;
-      border-radius: 12px;
-      margin-bottom: 40px;
-      border: 1px solid rgba(245,197,24,0.15);
-      box-shadow: 0 0 25px rgba(245,197,24,0.15);
-    }
-
-    .member img {
-      width: 220px;
-      height: 220px;
-      object-fit: cover;
-      border-radius: 12px;
-      border: 2px solid #f5c518;
-      box-shadow: 0 0 20px rgba(245,197,24,0.4);
-    }
-
-    .member-info h2 {
-      margin: 0;
-      font-size: 1.8em;
-      color: #f5c518;
-    }
-
-    .role {
-      font-size: 1.1em;
-      font-weight: bold;
-      margin-top: 4px;
-      margin-bottom: 12px;
-      color: #e6b31c;
-    }
-
-    .bio {
-      line-height: 1.45em;
-      font-size: 1em;
-    }
-
-    @media (max-width: 768px) {
-      .member {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .member img {
-        margin: auto;
-      }
-    }
-      .discord-button {
-        display: inline-block;
-        margin: 18px auto 10px;
-        padding: 16px 34px;
-        font-size: 1.4rem;
-        font-weight: bold;
-        border-radius: 14px;
-        text-decoration: none;
-        color: #f5c518;
-        background: rgba(0,0,0,.75);
-        border: 2px solid #f5c518;
-        box-shadow: 0 0 18px rgba(245,197,24,.55);
-        transition: all .2s ease-in-out;
-      }
-
-      .discord-button:hover {
-        background: linear-gradient(90deg,#f5c518,#cfa214);
-        color: #000;
-        box-shadow: 0 0 26px rgba(245,197,24,.9);
-        transform: scale(1.06);
-      }
-  </style>
 </head>
 
 <body>
@@ -152,7 +57,7 @@
   <!-- Navigation dropdown -->
   <nav class="navbar">
     <div class="menu-links">
-      <a href="/index.html">Home</a>
+      <a href="/">Home</a>
       <a href="/Aboutus/">About Us</a>
       <a href="/Staff/">Our Team</a>
       <a href="/Streamers/">Streamers</a>
@@ -246,7 +151,7 @@
     </a>
   </div>
   <div class="footer-links">
-    <a href="/index.html">Home</a>
+    <a href="/">Home</a>
     <a href="/Aboutus/">About Us</a>
     <a href="/Staff/">Our Team</a>
     <a href="/Streamers/">Streamers</a>
@@ -264,26 +169,7 @@
   </div>
 </footer>
   
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const toggle = document.querySelector('.menu-toggle');
-  const menu = document.querySelector('.menu-links');
-
-  if (!toggle || !menu) return;
-
-  toggle.addEventListener('click', () => {
-    const isOpen = menu.classList.toggle('show');
-    toggle.setAttribute('aria-expanded', isOpen);
-  });
-
-  menu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      menu.classList.remove('show');
-      toggle.setAttribute('aria-expanded', 'false');
-    });
-  });
-});
-</script>
+<script src="/assets/js/shared/simple-navigation.js"></script>
 
 <script src="https://faithforgegaming.com/embers.js"></script>
 

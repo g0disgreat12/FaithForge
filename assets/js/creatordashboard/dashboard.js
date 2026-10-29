@@ -163,7 +163,7 @@
         profileUrl: "/NinjaSauceX/",
         twitchUrl: "https://www.twitch.tv/ninjasaucex",
         progress: {
-          "2026-Q4": quarterProgress(0, 0)
+          "2026-Q4": quarterProgress(0, 1)
         }
       }),
 

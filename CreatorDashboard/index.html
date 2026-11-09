@@ -1,0 +1,1695 @@
+<!DOCTYPE html>
+<html lang="en" class="ffg-creatordashboard ffg-shared-base">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+
+  <title>FaithForge Stream Team Dashboard | Community Participation & Quarterly Progress</title>
+  <meta name="description" content="FaithForge Gaming Stream Team dashboard for quarterly Discord participation, event involvement, content progress, and streaming analytics.">
+  <link rel="canonical" href="https://faithforgegaming.com/CreatorDashboard/">
+  <link rel="icon" href="https://faithforgegaming.com/Anvil.webp">
+  <link rel="stylesheet" href="/main.css">
+  <meta name="theme-color" content="#050505">
+  <meta name="referrer" content="no-referrer">
+  <style>
+.ffg-creatordashboard [hidden]{display:none!important}
+.ffg-creatordashboard .community-section{padding:20px;margin:0 0 16px;border:1px solid rgba(197,141,4,.52);border-radius:16px;background:linear-gradient(115deg,rgba(197,141,4,.10),rgba(0,0,0,.4));}
+.ffg-creatordashboard .community-section h3{font-size:1.15rem;margin:0;color:var(--ffg-gold-light,#f5d76e)}
+.ffg-creatordashboard .community-intro{margin:8px 0 16px;color:var(--ffg-muted,#bbb);font-size:.9rem;line-height:1.6}
+.ffg-creatordashboard .community-metrics{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+.ffg-creatordashboard .community-metrics .metric{background:rgba(0,0,0,.28)}
+.ffg-creatordashboard .community-metrics .metric strong{font-size:1.35rem;font-variant-numeric:tabular-nums}
+.ffg-creatordashboard .community-metrics .community-primary{border-color:rgba(197,141,4,.55);background:rgba(197,141,4,.08)}
+.ffg-creatordashboard .community-primary strong{color:#ffe79d}
+.ffg-creatordashboard .community-foot{display:flex;flex-wrap:wrap;gap:8px 24px;margin:15px 0 0;color:#ddd;font-size:.8rem;line-height:1.6;overflow-wrap:anywhere}
+.ffg-creatordashboard .community-foot strong{color:var(--ffg-gold-soft,#eadfae)}
+.ffg-creatordashboard .community-definition{margin:10px 0 0;color:#b8b6af;font-size:.76rem;line-height:1.6}
+.ffg-creatordashboard .community-summary{grid-template-columns:repeat(5,minmax(0,1fr))}
+.ffg-creatordashboard .community-summary .summary-card{border-color:rgba(197,141,4,.4)}
+.ffg-creatordashboard .secondary-summary{padding:15px;margin-bottom:18px}
+.ffg-creatordashboard .secondary-summary .summary-grid{grid-template-columns:repeat(4,minmax(0,1fr));margin-top:16px;margin-bottom:0}
+.ffg-creatordashboard .creator-secondary>summary,.ffg-creatordashboard .secondary-summary>summary{color:var(--ffg-gold-soft,#eadfae);cursor:pointer;font-weight:700;padding:4px 0}
+.ffg-creatordashboard .creator-secondary[open]>summary{margin-bottom:16px}
+.ffg-creatordashboard .community-access{padding:18px;margin-bottom:18px;text-align:left}
+.ffg-creatordashboard .community-access h2{margin:0;font-size:1.1rem;color:var(--ffg-gold-light,#f5d76e)}
+.ffg-creatordashboard .community-access p{margin:8px 0;color:#ccc;font-size:.88rem;line-height:1.6}
+.ffg-creatordashboard .community-access-form{display:flex;gap:10px;align-items:end;flex-wrap:wrap;margin-top:12px}
+.ffg-creatordashboard .community-access-form label{display:flex;flex-direction:column;gap:6px;flex:1;min-width:190px;color:#eadfae;font-size:.85rem}
+.ffg-creatordashboard .community-access-form input{min-height:46px;border:1px solid rgba(197,141,4,.5);border-radius:10px;padding:10px 12px;background:#090909;color:#fff;font:inherit}
+.ffg-creatordashboard .community-button{min-height:44px;border:1px solid rgba(197,141,4,.5);border-radius:10px;padding:10px 15px;background:rgba(197,141,4,.1);color:#f5d76e;font:inherit;font-size:.85rem;font-weight:700;cursor:pointer}
+.ffg-creatordashboard .community-button.primary{background:#c58d04;color:#050505}
+.ffg-creatordashboard .community-button:disabled{opacity:.5;cursor:not-allowed}
+.ffg-creatordashboard .community-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.ffg-creatordashboard #communityDataNote{font-size:.82rem;line-height:1.7;border-left:3px solid #c58d04;padding-left:12px}
+.ffg-creatordashboard #communityDataNote[data-state=error],.ffg-creatordashboard #communityDataNote[data-state=stale]{border-color:#e69b5a;color:#ffcf9d}
+.ffg-creatordashboard button:focus-visible,.ffg-creatordashboard input:focus-visible,.ffg-creatordashboard select:focus-visible,.ffg-creatordashboard summary:focus-visible{outline:2px solid #f5d76e;outline-offset:3px}
+@media(max-width:1100px){.ffg-creatordashboard .community-metrics{grid-template-columns:repeat(3,minmax(0,1fr))}.ffg-creatordashboard .community-summary{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:650px){.ffg-creatordashboard .community-section{padding:14px}.ffg-creatordashboard .community-metrics,.ffg-creatordashboard .community-summary,.ffg-creatordashboard .secondary-summary .summary-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ffg-creatordashboard .community-metrics .metric strong{font-size:1.12rem}.ffg-creatordashboard .community-access-form{align-items:stretch;flex-direction:column}.ffg-creatordashboard .community-section h3{font-size:1rem}}
+@media(prefers-reduced-motion:reduce){.ffg-creatordashboard #embers{display:none}.ffg-creatordashboard *{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+
+  </style>
+
+</head>
+
+<body>
+  <img class="emblem" src="/watermark.png" alt="" aria-hidden="true">
+  <canvas id="embers" aria-hidden="true"></canvas>
+
+  <header>
+    <h1>FaithForge Stream Team Dashboard</h1>
+
+    <div class="mobile-header">
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
+      <span class="page-title">Stream Team</span>
+    </div>
+
+    <nav class="navbar" aria-label="Main navigation">
+      <div class="menu-links">
+        <a href="/">Home</a>
+        <a href="/Aboutus/">About Us</a>
+        <a href="/Staff/">Our Team</a>
+        <a href="/Streamers/">Streamers</a>
+        <a href="/raidtrain/">Raid Train</a>
+        <a href="https://shop.faithforgegaming.com/">Merch Store</a>
+        <a href="/Devotions/">Devotions</a>
+        <a href="/Prayers/">Prayers</a>
+        <a href="/Servers/">Servers</a>
+        <a href="/Events/">Events</a>
+        <a href="/Contact/">Contact Us</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="dashboard-page">
+    <section class="dashboard-hero panel">
+      <div class="hero-grid">
+        <img class="hero-logo" src="/Anvil.webp" alt="FaithForge Gaming">
+
+        <div>
+          <p class="eyebrow">FaithForge Gaming Creator Partnership Program</p>
+          <h2>Community First. One Team.</h2>
+          <p>
+            Build friendships, show up in Discord, and take part in FaithForge events.
+            Follow each creator’s quarterly community participation alongside content progress and streaming analytics.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="standards-grid" aria-label="Stream Team expectations">
+<article class="standard-card panel">
+        <span class="standard-number">Community First</span>
+        <h3>Community Participation</h3>
+        <p>
+          Spend time with people in Discord, join conversations, and attend FFG events as reasonably possible.
+          Consistent involvement and meaningful relationships are the heart of the team.
+        </p>
+      </article>
+<article class="standard-card panel">
+        <span class="standard-number">6 + 1</span>
+        <h3>Quarterly Content</h3>
+        <p>
+          Six short-form videos and one <strong>quality long-form video</strong> every quarter.
+          Long-form work should be intentionally edited and structured, not a raw VOD or minimally edited clip.
+        </p>
+      </article>
+<article class="standard-card panel">
+        <span class="standard-number">1 Quarter</span>
+        <h3>Merch Store Access</h3>
+        <p>
+          Every streamer has the same opportunity. Merch store eligibility begins after
+          successfully completing the first full quarter and meeting Stream Team expectations.
+        </p>
+      </article>
+<article class="standard-card panel">
+        <span class="standard-number">Christ First</span>
+        <h3>Content & Conduct</h3>
+        <p>
+          Content does not have to be strictly family-friendly, but speech, behavior, interactions,
+          promotions, and presentation should always be <strong>Christ-honoring</strong>.
+        </p>
+      </article>
+    </section>
+
+    <details class="admin-guide panel">
+      <summary>Quarterly tracking &amp; site owner guide</summary>
+      <div class="admin-guide-content">
+        <p>Quarters follow Eastern time: Jan–Mar, Apr–Jun, Jul–Sep, and Oct–Dec. The current quarter changes automatically. Selecting a new quarter starts its figures fresh without deleting previous activity.</p>
+        <ol>
+          <li>Edit content progress in the creator’s <code>quarterProgress(longForm, shorts)</code> entry inside this HTML.</li>
+          <li>Record confirmed event attendance in <code>COMMUNITY_EVENTS</code>, using a separate <code>YYYY-QN</code> entry for each quarter. Unrecorded attendance is not treated as zero.</li>
+          <li>Keep creator-to-Discord links in <code>DISCORD_USERS</code>. Names can change; Discord IDs remain the same.</li>
+          <li>Discord history begins when the tracker starts. Earlier days and connection gaps are not assumed to be inactivity. Daily records are retained for 400 days; export completed quarters to CSV for longer-term records.</li>
+        </ol>
+      </div>
+    </details>
+
+    <section class="community-access panel" aria-label="Discord participation access">
+      <h2>Quarterly Discord Participation</h2>
+      <p>Messages, shared voice time, and consistency for each creator. Enter the team viewing code to see Discord figures.</p>
+      <form id="communityAccessForm" class="community-access-form">
+        <label for="communityKey">Creator viewing code<input id="communityKey" type="password" autocomplete="off" spellcheck="false" minlength="32" required placeholder="Enter your team viewing code"></label>
+        <button class="community-button primary" type="submit">Unlock Discord figures</button>
+      </form>
+      <p id="communityDataNote" role="status" aria-live="polite">Unlock Discord figures to see quarterly community participation.</p>
+      <div class="community-actions"><button id="communityExport" class="community-button" type="button" disabled>Export quarter CSV</button><button id="communityLock" class="community-button" type="button" hidden>Lock Discord figures</button></div>
+    </section>
+
+    <div id="dataNote" class="data-note panel" role="status">
+      <strong>Live data:</strong> Loading Twitch status, recent games, and quarterly analytics.
+    </div>
+
+    <section class="summary-grid community-summary" aria-label="Quarterly community summary"><article class="summary-card panel">
+        <span>Quarter</span>
+        <strong id="summaryQuarter">—</strong>
+        <small id="summaryQuarterDetail">Current tracking period.</small>
+      </article><article class="summary-card panel"><span>Discord Messages</span><strong id="summaryDiscordMessages">—</strong><small>Messages from the seven listed creators.</small></article><article class="summary-card panel"><span>Shared Voice Time</span><strong id="summarySharedVoice">—</strong><small>Sum of individual time, not unique event hours.</small></article><article class="summary-card panel"><span>Active Creators</span><strong id="summaryDiscordActive">—</strong><small id="summaryDiscordActiveDetail">Creators with recorded participation.</small></article><article class="summary-card panel"><span>Events Attended</span><strong id="summaryEvents">—</strong><small id="summaryEventsDetail">Manually confirmed attendance across creators.</small></article></section>
+<details class="secondary-summary panel"><summary>Content &amp; streaming overview</summary><section class="summary-grid" aria-label="Dashboard summary">
+      
+
+      <article class="summary-card panel">
+        <span>Live Now</span>
+        <strong id="summaryLiveNow">0</strong>
+        <small>Official creators currently live.</small>
+      </article>
+
+      <article class="summary-card panel">
+        <span>Content Complete</span>
+        <strong id="summaryContentComplete">0</strong>
+        <small id="summaryContentDetail">Creators who completed all 7 pieces.</small>
+      </article>
+
+      <article class="summary-card panel">
+        <span>Long Form Posted</span>
+        <strong id="summaryLongForm">0</strong>
+        <small id="summaryLongFormDetail">Quality long-form videos completed.</small>
+      </article>
+
+      <article class="summary-card panel">
+        <span>Short Form Posted</span>
+        <strong id="summaryShortForm">0</strong>
+        <small id="summaryShortFormDetail">Shorts, Reels, and TikToks completed.</small>
+      </article>
+
+      <article class="summary-card panel">
+        <span>Quarter Streams</span>
+        <strong id="summaryStreams">0</strong>
+        <small>Estimated from live snapshots.</small>
+      </article>
+
+      <article class="summary-card panel">
+        <span>Live Hours</span>
+        <strong id="summaryHours">0</strong>
+        <small>Estimated from 15-minute checks.</small>
+      </article>
+
+      <article class="summary-card panel">
+        <span>Avg Viewers</span>
+        <strong id="summaryAverage">0</strong>
+        <small>Snapshot-weighted team average.</small>
+      </article>
+
+      <article class="summary-card panel">
+        <span>Peak Viewer</span>
+        <strong id="summaryPeak">0</strong>
+        <small id="summaryPeakWho">Highest live snapshot.</small>
+      </article>
+    </section></details>
+
+    <section class="controls panel" aria-label="Dashboard controls">
+      <div class="search-wrap">
+        <label for="searchInput" class="sr-only" style="position:absolute;left:-9999px;">Search creators</label>
+        <input id="searchInput" type="search" placeholder="Search name, platform, game, status, or metric..." autocomplete="off">
+        <button id="clearSearch" class="clear-btn" type="button" aria-label="Clear search" title="Clear search">×</button>
+      </div>
+
+      <select id="quarterSelect" aria-label="Choose quarter"></select>
+
+      <select id="statusFilter" aria-label="Filter creators">
+        <option value="all">All Streamers</option>
+        <option value="discordActive">Has Discord Participation</option><option value="discordNone">No Discord Participation Recorded</option><option value="eventsRecorded">Event Attendance Reviewed</option>
+        <option value="live">Live Now</option>
+        <option value="contentComplete">Content Complete</option>
+        <option value="contentNeeds">Content Needs Work</option>
+        <option value="hasStats">Has Quarter Analytics</option>
+        <option value="noStats">No Quarter Analytics</option>
+      </select>
+
+      <select id="sortSelect" aria-label="Sort creators">
+        <option value="communityDays">Sort: Most Active Discord Days</option><option value="communityVoice">Sort: Most Shared Voice Time</option><option value="communityMessages">Sort: Most Discord Messages</option><option value="events">Sort: Most Events Attended</option>
+        <option value="name">Sort: Name</option>
+        <option value="live">Sort: Live First</option>
+        <option value="least">Sort: Least Complete</option>
+        <option value="most">Sort: Most Complete</option>
+        <option value="hours">Sort: Most Live Hours</option>
+        <option value="streams">Sort: Most Streams</option>
+        <option value="average">Sort: Highest Avg Viewers</option>
+        <option value="peak">Sort: Highest Peak Viewers</option>
+        <option value="lastLive">Sort: Most Recently Live</option>
+      </select>
+
+      <button id="refreshButton" class="refresh-btn" type="button">Refresh</button>
+    </section>
+
+    <p id="resultsLine" class="results-line" aria-live="polite"></p>
+    <section id="dashboardGrid" class="dashboard-grid" aria-live="polite"></section>
+
+    <a class="discord-button" href="https://discord.gg/bAQrudk5a9" target="_blank" rel="noopener noreferrer">
+      Join Our Discord
+    </a>
+  </main>
+
+  <footer>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/Aboutus/">About Us</a>
+      <a href="/Staff/">Our Team</a>
+      <a href="/Streamers/">Streamers</a>
+      <a href="/raidtrain/">Raid Train</a>
+      <a href="https://shop.faithforgegaming.com/">Merch Store</a>
+      <a href="/Devotions/">Devotions</a>
+      <a href="/Prayers/">Prayers</a>
+      <a href="/Servers/">Servers</a>
+      <a href="/Events/">Events</a>
+      <a href="/Contact/">Contact Us</a>
+    </div>
+    <div class="footer-copy">© 2026 FaithForge Gaming • Proverbs 27:17</div>
+  </footer>
+
+  <script src="/assets/js/creatordashboard/navigation.js"></script>
+
+  <script id="ffg-dashboard-app">
+(function () {
+"use strict";
+/*
+      ============================================================
+      FAITHFORGE STREAM TEAM DASHBOARD — UPDATE ONLY THIS SECTION
+      ============================================================
+
+      1) UPDATE A STREAMER
+         The first number is completed long-form videos.
+         The second number is completed short-form videos.
+
+         "2026-Q4": quarterProgress(1, 4)
+
+         Optional proof links:
+         "2026-Q4": quarterProgress(1, 4, {
+           longFormLinks: ["https://..."],
+           shortLinks: ["https://...", "https://..."]
+         })
+
+      2) ADD A NEW STREAMER
+         Copy one creator({...}) block, paste it at the end of STREAMERS,
+         add a comma after the prior block, and replace the profile details.
+         If a creator has no progress entry for a quarter, the site safely
+         shows 0 completed rather than breaking.
+
+      3) START A NEW QUARTER
+         Quarters roll over automatically in America/New_York. Discord counters
+         use the selected quarter's dates; no history is erased. Add manual
+         content progress and COMMUNITY_EVENTS under the new YYYY-QN key.
+         Keep earlier progress and event entries for past-quarter views.
+
+      Content completion and verified event attendance are entered manually.
+      Discord figures load from the read-only tracker endpoint. No arbitrary
+      message quota, voice quota, or automatic accountability grade is applied.
+      ============================================================
+    */
+
+    // The current quarter is selected automatically in America/New_York.
+
+    var QUARTERS = {
+      "2026-Q4": {
+        label: "Q4 2026",
+        apiValue: "Q4 2026",
+        start: "2026-10-01",
+        end: "2026-12-31",
+        longFormRequired: 1,
+        shortsRequired: 6
+      }
+
+      /*
+      EXAMPLE FOR THE NEXT QUARTER:
+
+      ,"2026-Q4": {
+        label: "Q4 2026",
+        apiValue: "Q4 2026",
+        start: "2026-10-01",
+        end: "2026-12-31",
+        longFormRequired: 1,
+        shortsRequired: 6
+      }
+      */
+    };
+
+    function quarterProgress(longFormDone, shortsDone, options) {
+      var extras = options || {};
+
+      return {
+        longFormDone: Number(longFormDone || 0),
+        shortsDone: Number(shortsDone || 0),
+        bonusLongFormDone: Number(extras.bonusLongFormDone || 0),
+        longFormLinks: Array.isArray(extras.longFormLinks) ? extras.longFormLinks : [],
+        shortLinks: Array.isArray(extras.shortLinks) ? extras.shortLinks : [],
+        note: extras.note || ""
+      };
+    }
+
+    function creator(details) {
+      return Object.assign({
+        login: "",
+        name: "",
+        handle: "",
+        image: "/Anvil.webp",
+        fallbackImage: "/Anvil.webp",
+        platform: "Twitch",
+        profileUrl: "",
+        twitchUrl: "",
+        joinedDate: "",
+        notes: "",
+        progress: {}
+      }, details || {});
+    }
+
+    var STREAMERS = [
+      creator({
+        login: "faithforgegaming",
+        name: "FaithForgeGaming",
+        handle: "FaithForgeGaming",
+        image: "/Anvil.webp",
+        platform: "Twitch / YouTube / TikTok / Rumble / Kick",
+        profileUrl: "/faithforgegaming/",
+        twitchUrl: "https://www.twitch.tv/faithforgegaming",
+        notes: "Main FaithForge channel. Use this if the main brand channel has its own quarterly requirements.",
+        progress: {
+          "2026-Q4": quarterProgress(1, 6)
+        }
+      }),
+
+      creator({
+        login: "mooncalfmage",
+        name: "Mooncalfmage",
+        handle: "Mooncalfmage",
+        image: "/mooncalfmage/mooncalfmage.webp",
+        platform: "Twitch / YouTube / TikTok",
+        profileUrl: "/mooncalfmage/",
+        twitchUrl: "https://www.twitch.tv/mooncalfmage",
+        progress: {
+          "2026-Q4": quarterProgress(0, 0)
+        }
+      }),
+
+      creator({
+        login: "romans1014xp",
+        name: "Romans1014XP",
+        handle: "Romans1014XP",
+        image: "/romans1014XP/romans1014XP.webp",
+        platform: "Twitch / YouTube / TikTok / Instagram / Facebook",
+        profileUrl: "/romans1014xp/",
+        twitchUrl: "https://www.twitch.tv/romans1014xp",
+        progress: {
+          "2026-Q4": quarterProgress(0, 4)
+        }
+      }),
+
+      creator({
+        login: "doctorjsways",
+        name: "DoctorJSWAYS",
+        handle: "DoctorJSWAYS",
+        image: "/DoctorJSWAYS/DoctorJSWAYS1.webp",
+        platform: "Twitch / YouTube / TikTok",
+        profileUrl: "/DoctorJSWAYS/",
+        twitchUrl: "https://www.twitch.tv/doctorjsways",
+        progress: {
+          "2026-Q4": quarterProgress(1, 0)
+        }
+      }),
+
+      creator({
+        login: "seawolf_30",
+        name: "Seawolf_30",
+        handle: "Seawolf_30",
+        image: "/Seawolf_30/Seawolf.webp",
+        platform: "Twitch / YouTube",
+        profileUrl: "/Seawolf_30/",
+        twitchUrl: "https://www.twitch.tv/seawolf_30",
+        progress: {
+          "2026-Q4": quarterProgress(0, 0)
+        }
+      }),
+
+      creator({
+        login: "ninjasaucex",
+        name: "NinjaSauceX",
+        handle: "NinjaSauceX",
+        image: "/NinjaSauceX/NinjaSauceX.webp",
+        platform: "Twitch / YouTube",
+        profileUrl: "/NinjaSauceX/",
+        twitchUrl: "https://www.twitch.tv/ninjasaucex",
+        progress: {
+          "2026-Q4": quarterProgress(0, 1)
+        }
+      }),
+
+      creator({
+        login: "warrior_of_light777",
+        name: "warrior_of_light777",
+        handle: "warrior_of_light777",
+        image: "/warrior_of_light777/warrior_of_light.webp",
+        platform: "Twitch / YouTube / TikTok",
+        profileUrl: "/warrior_of_light777/",
+        twitchUrl: "https://www.twitch.tv/warrior_of_light777",
+        progress: {
+          "2026-Q4": quarterProgress(1, 0)
+        }
+      })
+
+      /*
+      NEW STREAMER TEMPLATE:
+
+      ,creator({
+        login: "twitch_login",
+        name: "Display Name",
+        handle: "SocialHandle",
+        image: "/CreatorFolder/avatar.webp",
+        platform: "Twitch / YouTube / TikTok",
+        profileUrl: "/CreatorFolder/",
+        twitchUrl: "https://www.twitch.tv/twitch_login",
+        joinedDate: "2026-09-01",
+        progress: {
+          "2026-Q4": quarterProgress(0, 0)
+        }
+      })
+      */
+    ];
+
+    // Discord IDs are permanent identity links; do not match by display name.
+    var DISCORD_USERS = {
+      faithforgegaming: "1058146634309046292",
+      mooncalfmage: "797662343823097867", // Moonpie, confirmed by Matthew.
+      romans1014xp: "399283314558500884",
+      doctorjsways: "581586950130237443",
+      seawolf_30: "821383077275893801",
+      ninjasaucex: "971638228694212648",
+      warrior_of_light777: "1000130251692707881"
+    };
+
+    // MANUAL EVENT ATTENDANCE BY QUARTER. null means not recorded; 0 means reviewed, none attended.
+    // Example: "2026-Q4": { faithforgegaming: { attended: 3, note: "Two studies and a game night" } }
+    // Keep previous quarters. Do not put private notes or credentials in this public HTML.
+    var COMMUNITY_EVENTS = {};
+    var COMMUNITY_ENDPOINT = "https://ffg-activity-tracker.faithforgegaming.workers.dev/api/creator-activity";
+    var FIRST_QUARTER_ID = "2026-Q4";
+    var REPORT_TIMEZONE = "America/New_York";
+
+
+    /*
+      ============================================================
+      END OF MANUAL UPDATE SECTION
+      ============================================================
+    */
+
+    var communityKey = ""; // Filled interactively. Never put a real key in source code.
+    var communityReport = null;
+    var communityState = "locked";
+    var communityError = "";
+    var communityController = null;
+    var communityRequest = 0;
+    var communityByUser = new Map();
+
+    function easternDay(date) {
+      var parts = new Intl.DateTimeFormat("en-US", {timeZone: REPORT_TIMEZONE, year: "numeric", month: "2-digit", day: "2-digit"}).formatToParts(date || new Date());
+      var values = Object.fromEntries(parts.map(function (part) { return [part.type, part.value]; }));
+      return values.year + "-" + values.month + "-" + values.day;
+    }
+
+    function quarterIdForDay(day) {
+      return day.slice(0, 4) + "-Q" + Math.ceil(Number(day.slice(5, 7)) / 3);
+    }
+
+    function makeQuarter(id) {
+      var year = Number(id.slice(0, 4)), q = Number(id.slice(-1));
+      return {label: "Q" + q + " " + year, apiValue: "Q" + q + " " + year,
+        start: year + "-" + String((q - 1) * 3 + 1).padStart(2, "0") + "-01",
+        end: new Date(Date.UTC(year, q * 3, 0, 12)).toISOString().slice(0, 10),
+        longFormRequired: 1, shortsRequired: 6};
+    }
+
+    function ensureCalendarQuarters() {
+      var today = easternDay(), current = quarterIdForDay(today);
+      var firstYear = Number(FIRST_QUARTER_ID.slice(0, 4)), firstQ = Number(FIRST_QUARTER_ID.slice(-1));
+      var end = Number(current.slice(0, 4)) * 4 + Number(current.slice(-1));
+      for (var serial = firstYear * 4 + firstQ - 1; serial <= end; serial++) {
+        var id = Math.floor(serial / 4) + "-Q" + (serial % 4 + 1);
+        if (!Object.hasOwn(QUARTERS, id)) QUARTERS[id] = makeQuarter(id);
+      }
+      return current;
+    }
+
+    function calendarLabel(day) {
+      if (!day) return "—";
+      return new Date(day + "T12:00:00Z").toLocaleDateString("en-US", {timeZone: "UTC", month: "short", day: "numeric", year: "numeric"});
+    }
+
+    function communityDate(value) {
+      if (!value || !Number.isFinite(Date.parse(value))) return "None recorded";
+      return new Date(value).toLocaleString("en-US", {timeZone: REPORT_TIMEZONE, month: "short", day: "numeric", hour: "numeric", minute: "2-digit", timeZoneName: "short"});
+    }
+
+    function voiceLabel(ms) {
+      if (!Number.isFinite(Number(ms))) return "—";
+      var minutes = Number(ms) / 60000;
+      if (minutes === 0) return "0 min";
+      if (minutes < 0.1) return "<0.1 min";
+      if (minutes < 60) return formatNumber(minutes, 1) + " min";
+      var rounded = Math.round(minutes);
+      return Math.floor(rounded / 60) + "h " + (rounded % 60) + "m";
+    }
+
+    function eventRecord(streamer) {
+      var record = (COMMUNITY_EVENTS[activeQuarterId] || {})[streamer.login] || {};
+      return {attended: Number.isInteger(record.attended) && record.attended >= 0 ? record.attended : null,
+        note: String(record.note || "")};
+    }
+
+    function coverageState(report, quarter) {
+      if (!report || report.quarter !== activeQuarterId) return "unknown";
+      if (!report.tracking_started_at) return "not_started";
+      var started = easternDay(new Date(report.tracking_started_at));
+      if (quarter.end < started) return "before_tracking";
+      if (report.retained_from && quarter.end < report.retained_from) return "expired";
+      if (started > quarter.start || (report.retained_from && report.retained_from > quarter.start)) return "partial";
+      return "available";
+    }
+
+    function usableCommunity() {
+      return communityReport && communityReport.quarter === activeQuarterId && communityReport.roster_ready &&
+        ["available", "partial"].includes(coverageState(communityReport, getQuarter()));
+    }
+
+    function getCommunity(streamer) {
+      if (!usableCommunity()) return null;
+      return communityByUser.get(DISCORD_USERS[streamer.login]) || null;
+    }
+
+    function renderCommunity(streamer) {
+      var row = getCommunity(streamer), events = eventRecord(streamer);
+      var coverage = coverageState(communityReport, getQuarter());
+      var label = communityState === "locked" ? "Unlock Discord figures" : communityState === "loading" ? "Updating Discord figures" :
+        communityState === "future" ? "Quarter has not started" : coverage === "before_tracking" ? "Before tracking began" :
+        coverage === "expired" ? "Outside retained history" : coverage === "not_started" ? "Tracking has not started" :
+        communityReport && !communityReport.roster_ready ? "Member list is syncing" :
+        communityState === "error" ? "Discord figures unavailable" : !row ? "No matching tracked member" :
+        communityState === "stale" ? "Saved figures • refresh needed" : coverage === "partial" ? "Partial quarter" : "Quarter to date";
+      if (row && communityState === "ready" && activeQuarterId !== quarterIdForDay(easternDay()) && coverage === "available") label = "Selected quarter";
+      function metric(title, value, detail, primary) {
+        return '<div class="metric' + (primary ? ' community-primary' : '') + '"><span>' + escapeHTML(title) + '</span><strong>' + escapeHTML(value) + '</strong><small>' + escapeHTML(detail) + '</small></div>';
+      }
+      return '<section class="community-section" aria-label="' + escapeHTML(streamer.name) + ' quarterly community participation">' +
+        '<div class="section-head"><h3>Community First · ' + escapeHTML(getQuarter().label) + '</h3><span class="badge">' + escapeHTML(label) + '</span></div>' +
+        '<p class="community-intro">Show up, build friendships, and take part in the life of FaithForge.</p>' +
+        '<div class="community-metrics">' +
+          metric('Discord messages', row ? formatNumber(row.messages) : '—', 'New messages in included channels', true) +
+          metric('Shared voice time', row ? voiceLabel(row.shared_voice_ms) : '—', 'Time with another non-deafened human', true) +
+          metric('Active days', row ? formatNumber(row.active_days) : '—', 'Message or 1+ minute of shared voice', true) +
+          metric('Active weeks', row ? formatNumber(row.active_weeks) : '—', 'Weeks with an active day in this quarter') +
+          metric('Total voice time', row ? voiceLabel(row.voice_ms) : '—', 'Includes solo and deafened time') +
+          metric('Events attended', events.attended === null ? 'Not recorded' : formatNumber(events.attended), 'Manually confirmed for this quarter') +
+        '</div><div class="community-foot">' +
+          '<span><strong>Text days:</strong> ' + (row ? formatNumber(row.text_days) : '—') + ' &nbsp; <strong>Shared voice days:</strong> ' + (row ? formatNumber(row.voice_days) : '—') + '</span>' +
+          '<span><strong>Last participation this quarter:</strong> ' + escapeHTML(row ? communityDate(row.last_activity_at) : '—') + '</span>' +
+        '</div>' + (events.note ? '<p class="community-foot">Event note: ' + escapeHTML(events.note) + '</p>' : '') +
+        '<p class="community-definition">Voice time measures presence, not speaking or attention. Event attendance is reviewed separately; these figures support a conversation, not an automatic pass or fail.</p></section>';
+    }
+
+    function updateCommunitySummary() {
+      var rows = STREAMERS.map(getCommunity).filter(Boolean), available = usableCommunity();
+      var messages = rows.reduce(function (sum, r) { return sum + r.messages; }, 0);
+      var shared = rows.reduce(function (sum, r) { return sum + r.shared_voice_ms; }, 0);
+      var active = rows.filter(function (r) { return r.active_days > 0; }).length;
+      var events = STREAMERS.map(eventRecord), knownEvents = events.filter(function (e) { return e.attended !== null; });
+      document.getElementById('summaryDiscordMessages').textContent = available ? formatNumber(messages) : '—';
+      document.getElementById('summarySharedVoice').textContent = available ? voiceLabel(shared) : '—';
+      document.getElementById('summaryDiscordActive').textContent = available ? active + '/' + rows.length : '—';
+      document.getElementById('summaryDiscordActiveDetail').textContent = available ? rows.length + ' linked creators with report data.' : 'Unlock to view participation.';
+      document.getElementById('summaryEvents').textContent = knownEvents.length ? formatNumber(knownEvents.reduce(function (sum, e) { return sum + e.attended; }, 0)) : '—';
+      document.getElementById('summaryEventsDetail').textContent = knownEvents.length + '/' + STREAMERS.length + ' creators reviewed; attendance is manual.';
+      var text = 'Unlock Discord figures to see quarterly community participation.';
+      var report = communityReport, state = report ? coverageState(report, getQuarter()) : 'unknown';
+      if (communityState === 'loading') text = 'Loading Discord participation for ' + getQuarter().label + '…';
+      else if (communityState === 'future') text = getQuarter().label + ' has not started. Its counters begin fresh on ' + calendarLabel(getQuarter().start) + '.';
+      else if (communityState === 'error') text = communityError;
+      else if (report) {
+        if (state === 'before_tracking') text = 'Tracking began ' + communityDate(report.tracking_started_at) + ', after this quarter. Historical activity is unavailable.';
+        else if (state === 'expired') text = 'This quarter is outside the tracker’s 400-day retained history. Use a previously exported quarter CSV.';
+        else if (state === 'not_started') text = 'The tracker has not started collecting activity yet.';
+        else {
+          var start = [getQuarter().start, report.retained_from || '', report.tracking_started_at ? easternDay(new Date(report.tracking_started_at)) : ''].sort().at(-1);
+          text = (state === 'partial' ? 'Partial quarter. ' : '') + 'Recorded period: ' + calendarLabel(start) + '–' + calendarLabel(report.to) +
+            '. Tracking began ' + communityDate(report.tracking_started_at) + '. Updated ' + communityDate(report.generated_at) + '.';
+          if (state === 'partial') text += ' Earlier days are not counted as inactivity.';
+          if (!report.roster_ready) text += ' Member list is still syncing.';
+          if (rows.length !== STREAMERS.length) text += ' ' + rows.length + '/' + STREAMERS.length + ' creator identities matched.';
+          if (report.coverage_gaps && report.coverage_gaps.length) text += ' ' + report.coverage_gaps.length + (report.coverage_gaps_truncated ? '+' : '') + ' voice observation gap(s) excluded.';
+          if (report.voice_totals_through) text += ' Voice totals through ' + communityDate(report.voice_totals_through) + '.';
+          if (communityState === 'stale') text += ' Refresh failed; showing the last successful update. ' + communityError;
+        }
+      }
+      document.getElementById('communityDataNote').textContent = text;
+      document.getElementById('communityDataNote').dataset.state = communityState;
+      document.getElementById('communityExport').disabled = !available;
+      document.getElementById('communityLock').hidden = !communityKey;
+      document.getElementById('communityAccessForm').hidden = Boolean(communityKey);
+    }
+
+    function validCommunityPayload(payload, quarterId) {
+      if (!payload || payload.quarter !== quarterId || !Array.isArray(payload.rows) || !payload.timezone ||
+          !Number.isFinite(Date.parse(payload.generated_at))) throw new Error('The tracker returned an unexpected report.');
+      var ids = new Set();
+      payload.rows.forEach(function (row) {
+        if (!/^\d{16,22}$/.test(row.user_id) || ids.has(row.user_id)) throw new Error('The report has an invalid creator identity.');
+        ids.add(row.user_id);
+        ['messages','voice_ms','shared_voice_ms','active_days','active_weeks','text_days','voice_days'].forEach(function (key) {
+          if (!Number.isFinite(row[key]) || row[key] < 0) throw new Error('The report has an invalid activity count.');
+        });
+      });
+      return payload;
+    }
+
+    async function refreshCommunity() {
+      var requestId = ++communityRequest, quarterId = activeQuarterId;
+      if (communityController) communityController.abort();
+      if (!communityKey) { communityState = 'locked'; updateCommunitySummary(); return; }
+      if (getQuarter().start > easternDay()) { communityState = 'future'; communityReport = null; communityByUser.clear(); updateCommunitySummary(); return; }
+      communityState = 'loading'; communityError = ''; updateCommunitySummary();
+      var controller = new AbortController(); communityController = controller;
+      var timeout = setTimeout(function () { controller.abort(); }, 15000);
+      try {
+        var response = await fetch(COMMUNITY_ENDPOINT + '?quarter=' + encodeURIComponent(quarterId), {
+          headers: {Authorization: 'Bearer ' + communityKey}, cache: 'no-store', credentials: 'omit',
+          redirect: 'error', signal: controller.signal
+        });
+        if (requestId !== communityRequest || quarterId !== activeQuarterId) return;
+        if (response.status === 401) { communityKey = ''; communityReport = null; communityByUser.clear(); throw new Error('The viewing code was not accepted. Enter the creator viewing code and try again.'); }
+        if (response.status === 404) throw new Error('Discord reporting is not connected yet. The site owner needs to install the included tracker update.');
+        if (response.status === 503) throw new Error('Discord reporting is unavailable. The site owner should check the tracker and its creator viewing code.');
+        if (!response.ok) throw new Error('Discord reporting could not load (' + response.status + ').');
+        var payload = validCommunityPayload(await response.json(), quarterId);
+        if (requestId !== communityRequest || quarterId !== activeQuarterId) return;
+        communityReport = payload; communityByUser = new Map(payload.rows.map(function (row) { return [row.user_id, row]; }));
+        communityState = 'ready';
+      } catch (error) {
+        if (requestId !== communityRequest || quarterId !== activeQuarterId) return;
+        communityState = usableCommunity() ? 'stale' : 'error';
+        communityError = error.name === 'AbortError' ? 'The Discord request timed out. Try Refresh.' :
+          error instanceof TypeError ? 'Could not connect to Discord reporting. Check the tracker update and open this page on faithforgegaming.com.' : error.message;
+      } finally {
+        clearTimeout(timeout);
+        if (requestId === communityRequest) { communityController = null; updateCommunitySummary(); renderDashboard(); }
+      }
+    }
+
+    function clearCommunity() {
+      ++communityRequest;
+      if (communityController) communityController.abort();
+      communityController = null; communityKey = ''; communityReport = null; communityState = 'locked'; communityError = '';
+      communityByUser.clear(); document.getElementById('communityKey').value = ''; renderDashboard();
+    }
+
+    function csvCell(value) {
+      var text = String(value == null ? '' : value);
+      if (/^[=+@\-\t\r]/.test(text) || /^\d{16,22}$/.test(text)) text = "'" + text;
+      return '"' + text.replaceAll('"', '""') + '"';
+    }
+
+    function communityCSV() {
+      if (!usableCommunity()) return '';
+      var header = ['quarter','creator','discord_user_id','messages','shared_voice_minutes','total_voice_minutes','active_days','active_weeks','text_days','shared_voice_days','events_attended_manual','last_participation_in_quarter','recorded_through','tracking_started_at','retained_from','coverage_status','voice_gap_count','report_generated_at'];
+      var data = STREAMERS.map(function (streamer) {
+        var row = getCommunity(streamer), events = eventRecord(streamer);
+        return [activeQuarterId, streamer.name, DISCORD_USERS[streamer.login] || '', row ? row.messages : '',
+          row ? (row.shared_voice_ms / 60000).toFixed(2) : '', row ? (row.voice_ms / 60000).toFixed(2) : '',
+          row ? row.active_days : '', row ? row.active_weeks : '', row ? row.text_days : '', row ? row.voice_days : '',
+          events.attended, row ? row.last_activity_at : '', communityReport.to, communityReport.tracking_started_at,
+          communityReport.retained_from, coverageState(communityReport, getQuarter()), (communityReport.coverage_gaps || []).length, communityReport.generated_at];
+      });
+      return [header].concat(data).map(function (row) { return row.map(csvCell).join(','); }).join('\r\n');
+    }
+
+    function exportCommunityCSV() {
+      var csv = communityCSV(); if (!csv) return;
+      var url = URL.createObjectURL(new Blob(['\uFEFF', csv], {type: 'text/csv;charset=utf-8'}));
+      var link = document.createElement('a'); link.href = url; link.download = 'FFG-community-' + activeQuarterId + '.csv';
+      document.body.append(link); link.click(); link.remove(); setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+    }
+
+
+    var STREAM_STATUS_ENDPOINT = "https://faithforge-raidtrain-api.faithforgegaming.workers.dev/api/twitch-status";
+    var RECENT_GAMES_ENDPOINT = "https://faithforge-raidtrain-api.faithforgegaming.workers.dev/api/recent-games";
+    var QUARTER_STATS_ENDPOINT = "https://faithforge-raidtrain-api.faithforgegaming.workers.dev/api/quarter-stats";
+
+    var statusByLogin = new Map();
+    var recentGamesByLogin = new Map();
+    var quarterStatsByLogin = new Map();
+
+    var currentCalendarQuarter = ensureCalendarQuarters();
+    var activeQuarterId = currentCalendarQuarter;
+    var quarterStatsRequest = 0;
+    var lastStatusLoadedAt = null;
+    var lastRecentLoadedAt = null;
+    var lastStatsLoadedAt = null;
+
+    function escapeHTML(value) {
+      return String(value === undefined || value === null ? "" : value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function safeUrl(value) {
+      var url = String(value || "").trim();
+      if (!url) return "";
+      if (url.startsWith("/")) return url;
+
+      try {
+        var parsed = new URL(url);
+        return parsed.protocol === "http:" || parsed.protocol === "https:" ? parsed.href : "";
+      } catch (error) {
+        return "";
+      }
+    }
+
+    function normalizeLogin(value) {
+      return String(value || "").trim().toLowerCase();
+    }
+
+    function normalizeSearch(value) {
+      return String(value || "")
+        .normalize("NFKD")
+        .toLowerCase()
+        .replace(/[^\p{L}\p{N}]+/gu, " ")
+        .trim();
+    }
+
+    function clamp(value, min, max) {
+      return Math.min(Math.max(Number(value || 0), min), max);
+    }
+
+    function formatNumber(value, maximumFractionDigits) {
+      var number = Number(value || 0);
+      if (!Number.isFinite(number)) return "0";
+
+      return number.toLocaleString(undefined, {
+        maximumFractionDigits: maximumFractionDigits === undefined ? 0 : maximumFractionDigits
+      });
+    }
+
+    function formatHours(value) {
+      var number = Number(value || 0);
+      if (!Number.isFinite(number) || number <= 0) return "0";
+      return formatNumber(number, Number.isInteger(number) ? 0 : 1);
+    }
+
+    function formatDateTime(value) {
+      if (!value) return "—";
+      var date = new Date(value);
+      if (Number.isNaN(date.getTime())) return String(value);
+      return date.toLocaleString();
+    }
+
+    function formatShortDate(value) {
+      if (!value) return "—";
+      var date = new Date(value);
+      if (Number.isNaN(date.getTime())) return String(value);
+
+      return date.toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric"
+      });
+    }
+
+    function getQuarter() {
+      return QUARTERS[activeQuarterId] || QUARTERS[currentCalendarQuarter];
+    }
+
+    function getProgress(streamer) {
+      return streamer.progress[activeQuarterId] || quarterProgress(0, 0);
+    }
+
+    function getStreamerStatus(login) {
+      return statusByLogin.get(normalizeLogin(login)) || {
+        login: normalizeLogin(login),
+        live: false,
+        display_name: "",
+        game_name: "",
+        title: "",
+        viewer_count: 0,
+        started_at: "",
+        game_id: "",
+        box_art_url: "",
+        thumbnail_url: ""
+      };
+    }
+
+    function getRecentGames(login) {
+      return recentGamesByLogin.get(normalizeLogin(login)) || [];
+    }
+
+    function getQuarterStats(login) {
+      return quarterStatsByLogin.get(normalizeLogin(login)) || {
+        login: normalizeLogin(login),
+        streamCount: 0,
+        liveHours: 0,
+        avgViewers: 0,
+        peakViewers: 0,
+        snapshotCount: 0,
+        lastLiveAt: "",
+        topGame: "",
+        latestTitle: "",
+        latestGame: "",
+        latestViewerCount: 0,
+        latestCheckedAt: "",
+        latestStartedAt: ""
+      };
+    }
+
+    function hasRealStats(stats) {
+      return Number(stats.snapshotCount || 0) > 0 ||
+        Number(stats.streamCount || 0) > 0 ||
+        Number(stats.liveHours || 0) > 0;
+    }
+
+    function getGameName(game) {
+      return game && (game.name || game.game_name || game.category) || "—";
+    }
+
+    function getGameTitle(game) {
+      return game && (game.last_title || game.title || game.description) || "";
+    }
+
+    function getGameLastPlayed(game) {
+      return game && (
+        game.last_played ||
+        game.lastLive ||
+        game.last_live_at ||
+        game.played_at ||
+        game.last_streamed_at
+      ) || "";
+    }
+
+    function getContentCompletion(streamer) {
+      var quarter = getQuarter();
+      var progress = getProgress(streamer);
+      var longDone = clamp(progress.longFormDone, 0, quarter.longFormRequired);
+      var shortsDone = clamp(progress.shortsDone, 0, quarter.shortsRequired);
+      var totalDone = longDone + shortsDone;
+      var totalRequired = quarter.longFormRequired + quarter.shortsRequired;
+
+      return {
+        longDone: longDone,
+        shortsDone: shortsDone,
+        totalDone: totalDone,
+        totalRequired: totalRequired,
+        complete: longDone >= quarter.longFormRequired && shortsDone >= quarter.shortsRequired,
+        percent: totalRequired ? Math.round((totalDone / totalRequired) * 100) : 100
+      };
+    }
+
+    function renderBadge(label, className) {
+      return '<span class="badge ' + escapeHTML(className || "") + '">' + escapeHTML(label) + "</span>";
+    }
+
+    function renderBadges(streamer) {
+      var status = getStreamerStatus(streamer.login);
+      var content = getContentCompletion(streamer);
+      var badges = [];
+      var participation = getCommunity(streamer);
+      if (participation) badges.push(renderBadge(participation.active_days + " active day" + (participation.active_days === 1 ? "" : "s"), ""));
+
+      if (status.live) badges.push(renderBadge("Live Now", "live"));
+      badges.push(content.complete
+        ? renderBadge("Content Complete", "complete")
+        : renderBadge(content.percent + "% Content", "progress"));
+
+      return badges.join("");
+    }
+
+    function renderChecklist(title, doneCount, requiredCount, links, itemLabel) {
+      var items = [];
+
+      for (var index = 0; index < requiredCount; index += 1) {
+        var isDone = index < doneCount;
+        var link = safeUrl((links || [])[index]);
+        var label = itemLabel + " " + (index + 1);
+
+        items.push(
+          '<div class="check-item ' + (isDone ? "done" : "") + '">' +
+            '<span class="check-icon" aria-hidden="true">' + (isDone ? "✓" : "○") + "</span>" +
+            "<span>" + escapeHTML(label) + "</span>" +
+            (link ? '<a href="' + escapeHTML(link) + '" target="_blank" rel="noopener noreferrer">View</a>' : "") +
+          "</div>"
+        );
+      }
+
+      return (
+        '<section class="checklist">' +
+          "<h5>" + escapeHTML(title) + "</h5>" +
+          items.join("") +
+        "</section>"
+      );
+    }
+
+    function renderRecentGames(streamer) {
+      var games = getRecentGames(streamer.login);
+
+      if (!games.length) {
+        return (
+          '<div class="recent-item">' +
+            "<strong>Recent Games</strong>" +
+            "No recent game history is available yet." +
+          "</div>"
+        );
+      }
+
+      return games.slice(0, 3).map(function (game) {
+        var title = getGameTitle(game);
+        var lastPlayed = getGameLastPlayed(game);
+
+        return (
+          '<div class="recent-item">' +
+            "<strong>" + escapeHTML(getGameName(game)) + "</strong>" +
+            (title ? escapeHTML(title) : "No saved stream title") +
+            (lastPlayed ? "<br>Last played: " + escapeHTML(formatShortDate(lastPlayed)) : "") +
+          "</div>"
+        );
+      }).join("");
+    }
+
+    function renderStreamerCard(streamer) {
+      var quarter = getQuarter();
+      var progress = getProgress(streamer);
+      var content = getContentCompletion(streamer);
+      var status = getStreamerStatus(streamer.login);
+      var stats = getQuarterStats(streamer.login);
+      var profileUrl = safeUrl(streamer.profileUrl);
+      var twitchUrl = safeUrl(streamer.twitchUrl);
+      var imageUrl = safeUrl(streamer.image) || "/Anvil.webp";
+      var fallbackUrl = safeUrl(streamer.fallbackImage) || "/Anvil.webp";
+      var currentGame = status.live ? (status.game_name || "Live on Twitch") : (stats.latestGame || "—");
+      var streamTitle = status.live ? (status.title || "Currently live") : (stats.latestTitle || "—");
+
+      var checklistHTML =
+        renderChecklist(
+          "Quality Long-Form Video",
+          content.longDone,
+          quarter.longFormRequired,
+          progress.longFormLinks,
+          "Long-form video"
+        ) +
+        renderChecklist(
+          "Shorts / Reels / TikToks",
+          content.shortsDone,
+          quarter.shortsRequired,
+          progress.shortLinks,
+          "Short-form video"
+        );
+
+      var migrationNote = "";
+
+      if (progress.bonusLongFormDone > 0) {
+        migrationNote =
+          '<div class="migration-note">' +
+            "<strong>Preserved previous progress:</strong> " +
+            formatNumber(progress.bonusLongFormDone) +
+            " additional long-form completion from the former merch track remains recorded, " +
+            "but it is no longer required under the universal standard." +
+          "</div>";
+      }
+
+      return (
+        '<article class="streamer-card panel" data-login="' + escapeHTML(streamer.login) + '">' +
+          '<div class="streamer-top">' +
+            '<img class="streamer-avatar" src="' + escapeHTML(imageUrl) + '" alt="' + escapeHTML(streamer.name) +
+              ' avatar" onerror="this.onerror=null;this.src=\'' + escapeHTML(fallbackUrl) + '\';">' +
+            "<div>" +
+              '<div class="streamer-name-row">' +
+                '<h2 class="streamer-name">' + escapeHTML(streamer.name) + "</h2>" +
+                renderBadges(streamer) +
+              "</div>" +
+              '<p class="streamer-meta">' +
+                "@" + escapeHTML(streamer.handle) + " • " + escapeHTML(streamer.platform) +
+                (profileUrl ? ' • <a href="' + escapeHTML(profileUrl) + '">Creator Page</a>' : "") +
+                (twitchUrl ? ' • <a href="' + escapeHTML(twitchUrl) + '" target="_blank" rel="noopener noreferrer">Twitch</a>' : "") +
+              "</p>" +
+            "</div>" +
+          "</div>" +
+
+          renderCommunity(streamer) +
+          '<details class="creator-secondary"><summary>Content progress &amp; streaming analytics</summary>' +
+          '<div class="analytics-strip">' +
+            '<div class="metric ' + (status.live ? "live-metric" : "") + '">' +
+              "<span>Live Status</span>" +
+              "<strong>" + (status.live ? "Live" : "Offline") + "</strong>" +
+              "<small>" + (status.live ? "Currently streaming" : "Not live right now") + "</small>" +
+            "</div>" +
+            '<div class="metric">' +
+              "<span>Current Viewers</span>" +
+              "<strong>" + (status.live ? formatNumber(status.viewer_count) : "—") + "</strong>" +
+              "<small>Visible while live</small>" +
+            "</div>" +
+            '<div class="metric">' +
+              "<span>Quarter Streams</span>" +
+              "<strong>" + formatNumber(stats.streamCount) + "</strong>" +
+              "<small>" + (hasRealStats(stats) ? "From quarter snapshots" : "No live snapshot yet") + "</small>" +
+            "</div>" +
+            '<div class="metric">' +
+              "<span>Live Hours</span>" +
+              "<strong>" + formatHours(stats.liveHours) + "</strong>" +
+              "<small>Estimated by 15-min checks</small>" +
+            "</div>" +
+            '<div class="metric">' +
+              "<span>Average Viewers</span>" +
+              "<strong>" + formatNumber(stats.avgViewers, 1) + "</strong>" +
+              "<small>Average live snapshot</small>" +
+            "</div>" +
+            '<div class="metric">' +
+              "<span>Peak Viewers</span>" +
+              "<strong>" + formatNumber(stats.peakViewers) + "</strong>" +
+              "<small>Highest live snapshot</small>" +
+            "</div>" +
+            '<div class="metric">' +
+              "<span>Top Game</span>" +
+              "<strong>" + escapeHTML(stats.topGame || currentGame || "—") + "</strong>" +
+              "<small>Most frequent category</small>" +
+            "</div>" +
+            '<div class="metric ' + (hasRealStats(stats) ? "" : "warning") + '">' +
+              "<span>Last Live</span>" +
+              "<strong>" + escapeHTML(formatShortDate(stats.lastLiveAt)) + "</strong>" +
+              "<small>" + (hasRealStats(stats) ? "From quarter analytics" : "No live snapshot yet") + "</small>" +
+            "</div>" +
+          "</div>" +
+
+          '<div class="requirement-wrap">' +
+            '<div class="progress-header">' +
+              "<h3>" + escapeHTML(quarter.label) + " Content Progress</h3>" +
+              "<span>" + content.totalDone + "/" + content.totalRequired + " complete • " + content.percent + "%</span>" +
+            "</div>" +
+            '<div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' +
+              content.percent + '" aria-label="' + escapeHTML(streamer.name) + ' content completion">' +
+              '<div class="progress-fill" style="width:' + content.percent + '%"></div>' +
+            "</div>" +
+
+            '<div class="requirements-layout">' +
+              '<section class="track-section">' +
+                '<div class="track-head">' +
+                  "<h4>Universal Quarterly Requirement</h4>" +
+                  (content.complete
+                    ? renderBadge("Complete", "complete")
+                    : renderBadge("In Progress", "progress")) +
+                "</div>" +
+                '<p class="track-subtitle">' +
+                  "Required for every FFG streamer: " + quarter.longFormRequired +
+                  " quality long-form video and " + quarter.shortsRequired +
+                  " short-form videos. Content may build the creator's own channel and does not have to be about FFG." +
+                "</p>" +
+                '<div class="mini-grid">' +
+                  '<div class="mini-card"><span>Long Form</span><strong>' +
+                    content.longDone + "/" + quarter.longFormRequired + "</strong></div>" +
+                  '<div class="mini-card"><span>Short Form</span><strong>' +
+                    content.shortsDone + "/" + quarter.shortsRequired + "</strong></div>" +
+                "</div>" +
+                '<div class="checklist-grid">' + checklistHTML + "</div>" +
+                migrationNote +
+              "</section>" +
+            "</div>" +
+          "</div>" +
+
+          '<div class="recent-box">' +
+            "<h4>Cloudflare / Twitch Activity</h4>" +
+            '<div class="recent-list">' +
+              '<div class="recent-item">' +
+                "<strong>Current / Latest Stream</strong>" +
+                escapeHTML(streamTitle) +
+                (status.live && status.started_at ? "<br>Started: " + escapeHTML(formatDateTime(status.started_at)) : "") +
+              "</div>" +
+              renderRecentGames(streamer) +
+            "</div>" +
+          "</div>" +
+
+          (progress.note
+            ? '<div class="notes"><strong>Quarter note:</strong> ' + escapeHTML(progress.note) + "</div>"
+            : "") +
+          (streamer.notes
+            ? '<div class="notes"><strong>Creator note:</strong> ' + escapeHTML(streamer.notes) + "</div>"
+            : "") +
+        "</details></article>"
+      );
+    }
+
+    function normalizeStatusChannel(rawChannel) {
+      var channel = rawChannel || {};
+      var login = normalizeLogin(
+        channel.login ||
+        channel.user_login ||
+        channel.channel_login ||
+        channel.channel ||
+        channel.name
+      );
+
+      return {
+        login: login,
+        display_name: channel.display_name || channel.user_name || login,
+        live: Boolean(channel.live || channel.type === "live" || channel.is_live),
+        game_name: channel.game_name || channel.game || channel.category || "",
+        title: channel.title || channel.stream_title || "",
+        viewer_count: Number(channel.viewer_count || channel.viewers || 0) || 0,
+        started_at: channel.started_at || "",
+        game_id: channel.game_id || "",
+        box_art_url: channel.box_art_url || channel.game_box_art_url || "",
+        thumbnail_url: channel.thumbnail_url || ""
+      };
+    }
+
+    function applyStatusPayload(payload) {
+      var rawChannels = Array.isArray(payload.channels)
+        ? payload.channels
+        : (Array.isArray(payload.data) ? payload.data : []);
+
+      rawChannels.forEach(function (rawChannel) {
+        var status = normalizeStatusChannel(rawChannel);
+        if (status.login) statusByLogin.set(status.login, status);
+      });
+
+      lastStatusLoadedAt = payload.cached_at || new Date().toISOString();
+    }
+
+    function applyQuarterStatsPayload(payload) {
+      var stats = Array.isArray(payload.stats)
+        ? payload.stats
+        : (Array.isArray(payload.data) ? payload.data : []);
+
+      stats.forEach(function (item) {
+        var login = normalizeLogin(item.login || item.user_login || item.channel_login || item.name);
+        if (!login) return;
+
+        quarterStatsByLogin.set(login, {
+          login: login,
+          quarter: item.quarter || payload.quarter || getQuarter().apiValue,
+          snapshotCount: Number(item.snapshotCount ?? item.snapshot_count ?? 0),
+          streamCount: Number(item.streamCount ?? item.stream_count ?? 0),
+          liveHours: Number(item.liveHours ?? item.live_hours ?? 0),
+          avgViewers: Number(item.avgViewers ?? item.avg_viewers ?? 0),
+          peakViewers: Number(item.peakViewers ?? item.peak_viewers ?? 0),
+          lastLiveAt: item.lastLiveAt || item.last_live_at || "",
+          topGame: item.topGame || item.top_game || "",
+          topGameSnapshots: Number(item.topGameSnapshots ?? item.top_game_snapshots ?? 0),
+          latestTitle: item.latestTitle || item.latest_title || "",
+          latestGame: item.latestGame || item.latest_game || "",
+          latestViewerCount: Number(item.latestViewerCount ?? item.latest_viewer_count ?? 0),
+          latestCheckedAt: item.latestCheckedAt || item.latest_checked_at || "",
+          latestStartedAt: item.latestStartedAt || item.latest_started_at || "",
+          latestThumbnailUrl: item.latestThumbnailUrl || item.latest_thumbnail_url || ""
+        });
+      });
+
+      lastStatsLoadedAt = payload.cached_at || new Date().toISOString();
+    }
+
+    function applyRecentGamesPayload(payload) {
+      if (payload.channels && typeof payload.channels === "object") {
+        Object.entries(payload.channels).forEach(function (entry) {
+          recentGamesByLogin.set(
+            normalizeLogin(entry[0]),
+            Array.isArray(entry[1]) ? entry[1].slice(0, 4) : []
+          );
+        });
+      }
+
+      if (payload.login && Array.isArray(payload.games)) {
+        recentGamesByLogin.set(normalizeLogin(payload.login), payload.games.slice(0, 4));
+      }
+
+      lastRecentLoadedAt = payload.cached_at || new Date().toISOString();
+    }
+
+    async function fetchJson(url) {
+      var response = await fetch(url, { cache: "no-store", signal: AbortSignal.timeout(15000) });
+      var payload = await response.json();
+
+      if (!response.ok) {
+        throw new Error(payload.details || payload.error || "Request failed: " + response.status);
+      }
+
+      return payload;
+    }
+
+    async function refreshStatuses() {
+      var payload = await fetchJson(STREAM_STATUS_ENDPOINT);
+      applyStatusPayload(payload);
+    }
+
+    async function refreshRecentGames() {
+      try {
+        var allPayload = await fetchJson(RECENT_GAMES_ENDPOINT + "?limit=4");
+        applyRecentGamesPayload(allPayload);
+      } catch (error) {
+        console.warn("All recent-games request failed. Trying individual creators.", error);
+
+        await Promise.allSettled(STREAMERS.map(async function (streamer) {
+          var payload = await fetchJson(
+            RECENT_GAMES_ENDPOINT + "?login=" + encodeURIComponent(streamer.login) + "&limit=4"
+          );
+          applyRecentGamesPayload(payload);
+        }));
+      }
+    }
+
+    async function refreshQuarterStats() {
+      var quarter = getQuarter(), selected = activeQuarterId, request = ++quarterStatsRequest;
+      if (quarter.start > easternDay()) return;
+      var payload = await fetchJson(
+        QUARTER_STATS_ENDPOINT + "?quarter=" + encodeURIComponent(quarter.apiValue || quarter.label)
+      );
+      if (selected === activeQuarterId && request === quarterStatsRequest) applyQuarterStatsPayload(payload);
+    }
+
+    function updateDataNote(state, message) {
+      var dataNote = document.getElementById("dataNote");
+      var statusTime = lastStatusLoadedAt ? formatDateTime(lastStatusLoadedAt) : "not loaded";
+      var recentTime = lastRecentLoadedAt ? formatDateTime(lastRecentLoadedAt) : "not loaded";
+      var statsTime = lastStatsLoadedAt ? formatDateTime(lastStatsLoadedAt) : "not loaded";
+
+      dataNote.innerHTML =
+        "<strong>Live data:</strong> " + escapeHTML(message) +
+        "<br><span>Status: " + escapeHTML(statusTime) +
+        " • Recent games: " + escapeHTML(recentTime) +
+        " • Quarter analytics: " + escapeHTML(statsTime) + "</span>";
+
+      if (state === "error") {
+        dataNote.style.borderColor = "rgba(255,116,116,.45)";
+        dataNote.style.background = "rgba(255,116,116,.08)";
+      } else {
+        dataNote.style.borderColor = "rgba(121,191,255,.30)";
+        dataNote.style.background = "rgba(121,191,255,.08)";
+      }
+    }
+
+    function initializeEmptyMaps() {
+      STREAMERS.forEach(function (streamer) {
+        var login = normalizeLogin(streamer.login);
+
+        if (!statusByLogin.has(login)) {
+          statusByLogin.set(login, {
+            login: login,
+            live: false,
+            display_name: streamer.name,
+            game_name: "",
+            title: "",
+            viewer_count: 0,
+            started_at: "",
+            game_id: "",
+            box_art_url: "",
+            thumbnail_url: ""
+          });
+        }
+
+        if (!quarterStatsByLogin.has(login)) {
+          quarterStatsByLogin.set(login, getQuarterStats(login));
+        }
+      });
+    }
+
+    async function refreshAll() {
+      var button = document.getElementById("refreshButton");
+      button.disabled = true;
+      button.textContent = "Loading";
+      updateDataNote("loading", "Refreshing Twitch status, recent games, and " + getQuarter().label + " analytics...");
+
+      var results = await Promise.allSettled([
+        refreshStatuses(),
+        refreshRecentGames(),
+        refreshQuarterStats(),
+        refreshCommunity()
+      ]);
+
+      var failed = results.filter(function (result) {
+        return result.status === "rejected";
+      });
+
+      if (failed.length) {
+        console.error("Some dashboard data failed to refresh:", failed);
+        updateDataNote("error", "Some live analytics could not load. Manual progress and all roster tools still work.");
+      } else {
+        var liveCount = STREAMERS.filter(function (streamer) {
+          return getStreamerStatus(streamer.login).live;
+        }).length;
+
+        updateDataNote(
+          "success",
+          "Twitch data loaded. " + liveCount + " official FaithForge " +
+          (liveCount === 1 ? "creator is" : "creators are") + " live right now."
+        );
+      }
+
+      button.disabled = false;
+      button.textContent = "Refresh";
+      renderDashboard();
+    }
+
+    function buildSearchText(streamer) {
+      var progress = getProgress(streamer);
+      var content = getContentCompletion(streamer);
+      var status = getStreamerStatus(streamer.login);
+      var stats = getQuarterStats(streamer.login);
+      var games = getRecentGames(streamer.login).map(function (game) {
+        return getGameName(game) + " " + getGameTitle(game);
+      }).join(" ");
+
+      return normalizeSearch([
+        streamer.name,
+        DISCORD_USERS[streamer.login],
+        eventRecord(streamer).note,
+        streamer.handle,
+        streamer.login,
+        streamer.platform,
+        streamer.notes,
+        getQuarter().label,
+        status.live ? "live now online" : "offline",
+        status.game_name,
+        status.title,
+        content.complete ? "content complete requirements complete" : "content needs work in progress",
+        content.percent,
+        progress.longFormDone,
+        progress.shortsDone,
+        stats.streamCount,
+        stats.liveHours,
+        stats.avgViewers,
+        stats.peakViewers,
+        stats.topGame,
+        stats.latestTitle,
+        stats.latestGame,
+        games
+      ].join(" "));
+    }
+
+    function getFilteredStreamers() {
+      var search = normalizeSearch(document.getElementById("searchInput").value);
+      var searchTokens = search ? search.split(/\s+/) : [];
+      var statusFilter = document.getElementById("statusFilter").value;
+      var sortValue = document.getElementById("sortSelect").value;
+
+      var streamers = STREAMERS.filter(function (streamer) {
+        var content = getContentCompletion(streamer);
+        var status = getStreamerStatus(streamer.login);
+        var stats = getQuarterStats(streamer.login);
+        var haystack = buildSearchText(streamer);
+        var matchesSearch = searchTokens.every(function (token) {
+          return haystack.includes(token);
+        });
+
+        if (!matchesSearch) return false;
+        var community = getCommunity(streamer);
+        if (statusFilter === "discordActive") return Boolean(community && community.active_days > 0);
+        if (statusFilter === "discordNone") return Boolean(community && community.active_days === 0);
+        if (statusFilter === "eventsRecorded") return eventRecord(streamer).attended !== null;
+        if (statusFilter === "live") return status.live;
+        if (statusFilter === "contentComplete") return content.complete;
+        if (statusFilter === "contentNeeds") return !content.complete;
+        if (statusFilter === "hasStats") return hasRealStats(stats);
+        if (statusFilter === "noStats") return !hasRealStats(stats);
+        return true;
+      });
+
+      streamers.sort(function (a, b) {
+        var aContent = getContentCompletion(a);
+        var bContent = getContentCompletion(b);
+        var aStatus = getStreamerStatus(a.login);
+        var bStatus = getStreamerStatus(b.login);
+        var aStats = getQuarterStats(a.login);
+        var bStats = getQuarterStats(b.login);
+
+        if (["communityDays", "communityVoice", "communityMessages"].includes(sortValue)) {
+          var ac = getCommunity(a), bc = getCommunity(b);
+          var field = {communityDays: "active_days", communityVoice: "shared_voice_ms", communityMessages: "messages"}[sortValue];
+          return Number(Boolean(bc)) - Number(Boolean(ac)) || (bc ? bc[field] : 0) - (ac ? ac[field] : 0) || a.name.localeCompare(b.name);
+        }
+        if (sortValue === "events") return (eventRecord(b).attended ?? -1) - (eventRecord(a).attended ?? -1) || a.name.localeCompare(b.name);
+        if (sortValue === "live") {
+          return Number(bStatus.live) - Number(aStatus.live) ||
+            Number(bStatus.viewer_count || 0) - Number(aStatus.viewer_count || 0) ||
+            a.name.localeCompare(b.name);
+        }
+
+        if (sortValue === "least") {
+          return aContent.percent - bContent.percent || a.name.localeCompare(b.name);
+        }
+
+        if (sortValue === "most") {
+          return bContent.percent - aContent.percent || a.name.localeCompare(b.name);
+        }
+
+        if (sortValue === "hours") {
+          return Number(bStats.liveHours || 0) - Number(aStats.liveHours || 0) || a.name.localeCompare(b.name);
+        }
+
+        if (sortValue === "streams") {
+          return Number(bStats.streamCount || 0) - Number(aStats.streamCount || 0) || a.name.localeCompare(b.name);
+        }
+
+        if (sortValue === "average") {
+          return Number(bStats.avgViewers || 0) - Number(aStats.avgViewers || 0) || a.name.localeCompare(b.name);
+        }
+
+        if (sortValue === "peak") {
+          return Number(bStats.peakViewers || 0) - Number(aStats.peakViewers || 0) || a.name.localeCompare(b.name);
+        }
+
+        if (sortValue === "lastLive") {
+          return (Date.parse(bStats.lastLiveAt || 0) || 0) - (Date.parse(aStats.lastLiveAt || 0) || 0) ||
+            a.name.localeCompare(b.name);
+        }
+
+        return a.name.localeCompare(b.name);
+      });
+
+      return streamers;
+    }
+
+    function getQuarterTimingText() {
+      var quarter = getQuarter(), today = easternDay();
+      if (today < quarter.start) return "Begins " + calendarLabel(quarter.start) + ".";
+      if (today > quarter.end) return "Ended " + calendarLabel(quarter.end) + ".";
+      var days = Math.round((Date.parse(quarter.end) - Date.parse(today)) / 86400000) + 1;
+      return days + " days remaining • " + STREAMERS.length + " creators • Eastern time";
+    }
+
+    function updateSummary() {
+      var contentComplete = 0;
+      var longFormDone = 0;
+      var shortsDone = 0;
+      var liveNow = 0;
+      var totalStreams = 0;
+      var totalHours = 0;
+      var weightedViewerSum = 0;
+      var viewerWeight = 0;
+      var peakViewer = 0;
+      var peakWho = "Highest live snapshot.";
+
+      STREAMERS.forEach(function (streamer) {
+        var content = getContentCompletion(streamer);
+        var status = getStreamerStatus(streamer.login);
+        var stats = getQuarterStats(streamer.login);
+        var weight = Number(stats.snapshotCount || 0);
+        var peak = Number(stats.peakViewers || 0);
+
+        if (content.complete) contentComplete += 1;
+        longFormDone += content.longDone;
+        shortsDone += content.shortsDone;
+
+        if (status.live) liveNow += 1;
+
+        totalStreams += Number(stats.streamCount || 0);
+        totalHours += Number(stats.liveHours || 0);
+
+        if (weight > 0) {
+          weightedViewerSum += Number(stats.avgViewers || 0) * weight;
+          viewerWeight += weight;
+        }
+
+        if (peak > peakViewer) {
+          peakViewer = peak;
+          peakWho = streamer.name;
+        }
+      });
+
+      var quarter = getQuarter();
+      var teamAverage = viewerWeight ? weightedViewerSum / viewerWeight : 0;
+
+      document.getElementById("summaryQuarter").textContent = quarter.label;
+      document.getElementById("summaryQuarterDetail").textContent = getQuarterTimingText();
+      document.getElementById("summaryLiveNow").textContent = liveNow;
+      document.getElementById("summaryContentComplete").textContent = contentComplete + "/" + STREAMERS.length;
+      document.getElementById("summaryContentDetail").textContent = "Creators who finished all 7 required pieces.";
+      document.getElementById("summaryLongForm").textContent =
+        longFormDone + "/" + (STREAMERS.length * quarter.longFormRequired);
+      document.getElementById("summaryLongFormDetail").textContent = "Quality long-form videos completed.";
+      document.getElementById("summaryShortForm").textContent =
+        shortsDone + "/" + (STREAMERS.length * quarter.shortsRequired);
+      document.getElementById("summaryShortFormDetail").textContent = "Shorts, Reels, and TikToks completed.";
+      document.getElementById("summaryStreams").textContent = formatNumber(totalStreams);
+      document.getElementById("summaryHours").textContent = formatHours(totalHours);
+      document.getElementById("summaryAverage").textContent = formatNumber(teamAverage, 1);
+      document.getElementById("summaryPeak").textContent = formatNumber(peakViewer);
+      document.getElementById("summaryPeakWho").textContent = peakViewer ? peakWho : "Highest live snapshot.";
+    }
+
+    function renderDashboard() {
+      var grid = document.getElementById("dashboardGrid");
+      var streamers = getFilteredStreamers();
+      var searchValue = document.getElementById("searchInput").value.trim();
+      var resultsLine = document.getElementById("resultsLine");
+
+      updateSummary();
+      updateCommunitySummary();
+
+      resultsLine.innerHTML =
+        "Showing <strong>" + streamers.length + "</strong> of <strong>" + STREAMERS.length +
+        "</strong> official creators for <strong>" + escapeHTML(getQuarter().label) + "</strong>" +
+        (searchValue ? ' matching “' + escapeHTML(searchValue) + '”' : "") + ".";
+
+      if (!streamers.length) {
+        grid.innerHTML =
+          '<div class="no-results panel">' +
+            "<strong>No creators match this search and filter.</strong><br>" +
+            "Try clearing the search or choosing All Streamers." +
+          "</div>";
+        return;
+      }
+
+      grid.innerHTML = streamers.map(renderStreamerCard).join("");
+    }
+
+    function populateQuarterSelect() {
+      var select = document.getElementById("quarterSelect");
+      var quarterIds = Object.keys(QUARTERS).sort(function (a, b) {
+        return new Date(QUARTERS[b].start) - new Date(QUARTERS[a].start);
+      });
+
+      select.innerHTML = quarterIds.map(function (quarterId) {
+        return '<option value="' + escapeHTML(quarterId) + '">' +
+          escapeHTML(QUARTERS[quarterId].label) +
+          (quarterId === currentCalendarQuarter ? " • Current" : QUARTERS[quarterId].start > easternDay() ? " • Upcoming" : "") +
+          "</option>";
+      }).join("");
+
+      select.value = activeQuarterId;
+    }
+
+    async function changeQuarter() {
+      activeQuarterId = document.getElementById("quarterSelect").value;
+      var selected = activeQuarterId;
+      quarterStatsByLogin.clear(); ++quarterStatsRequest;
+      lastStatsLoadedAt = null;
+      communityReport = null; communityByUser.clear(); ++communityRequest;
+      if (communityController) communityController.abort();
+      communityState = communityKey ? "loading" : "locked";
+      initializeEmptyMaps(); renderDashboard();
+      updateDataNote("loading", "Loading " + getQuarter().label + " Twitch analytics...");
+      var results = await Promise.allSettled([refreshQuarterStats(), refreshCommunity()]);
+      if (selected !== activeQuarterId) return;
+      if (results[0].status === "rejected") updateDataNote("error", getQuarter().label + " Twitch analytics could not load. Manual progress remains available.");
+      else updateDataNote("success", getQuarter().label + " selected. Live Twitch status and recent games remain current.");
+      renderDashboard();
+    }
+
+    function checkQuarterRollover() {
+      var next = ensureCalendarQuarters();
+      if (next === currentCalendarQuarter) return;
+      var followingCurrent = activeQuarterId === currentCalendarQuarter;
+      currentCalendarQuarter = next;
+      if (followingCurrent) activeQuarterId = next;
+      populateQuarterSelect();
+      if (followingCurrent) changeQuarter();
+    }
+
+    document.getElementById("communityAccessForm").addEventListener("submit", async function (event) {
+      event.preventDefault();
+      var input = document.getElementById("communityKey");
+      if (input.value.trim().length < 32) {
+        document.getElementById("communityDataNote").textContent = "Enter the complete creator viewing code supplied by the site owner.";
+        return;
+      }
+      communityKey = input.value.trim(); input.value = "";
+      await refreshCommunity();
+    });
+    document.getElementById("communityLock").addEventListener("click", clearCommunity);
+    document.getElementById("communityExport").addEventListener("click", exportCommunityCSV);
+    window.addEventListener("pagehide", clearCommunity);
+    document.addEventListener("visibilitychange", function () {
+      if (!document.hidden) { checkQuarterRollover(); refreshCommunity(); }
+    });
+
+    document.getElementById("searchInput").addEventListener("input", renderDashboard);
+    document.getElementById("statusFilter").addEventListener("change", renderDashboard);
+    document.getElementById("sortSelect").addEventListener("change", renderDashboard);
+    document.getElementById("quarterSelect").addEventListener("change", changeQuarter);
+    document.getElementById("refreshButton").addEventListener("click", refreshAll);
+
+    document.getElementById("clearSearch").addEventListener("click", function () {
+      var searchInput = document.getElementById("searchInput");
+      searchInput.value = "";
+      searchInput.focus();
+      renderDashboard();
+    });
+
+    document.addEventListener("keydown", function (event) {
+      var searchInput = document.getElementById("searchInput");
+
+      if (event.key === "/" && !/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement?.tagName || "") && !document.activeElement?.isContentEditable) {
+        event.preventDefault();
+        searchInput.focus();
+      }
+
+      if (event.key === "Escape" && document.activeElement === searchInput) {
+        searchInput.value = "";
+        renderDashboard();
+      }
+    });
+
+    populateQuarterSelect();
+    initializeEmptyMaps();
+    renderDashboard();
+    refreshAll();
+
+    setInterval(checkQuarterRollover, 60000);
+
+    setInterval(async function () {
+      if (document.hidden) return;
+      try {
+        await refreshStatuses();
+        renderDashboard();
+      } catch (error) {
+        console.warn("Live status refresh failed.", error);
+      }
+    }, 90000);
+
+    setInterval(async function () {
+      if (document.hidden) return;
+      await Promise.allSettled([
+        refreshRecentGames(),
+        refreshQuarterStats(),
+        refreshCommunity()
+      ]);
+      renderDashboard();
+    }, 300000);
+
+})();
+</script>
+
+  <script src="https://faithforgegaming.com/embers.js"></script>
+</body>
+</html>

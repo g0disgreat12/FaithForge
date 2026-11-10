@@ -25,7 +25,8 @@ const STREAM_STATUS_ENDPOINT = 'https://faithforge-raidtrain-api.faithforgegamin
           { label: 'Kick', url: 'https://kick.com/faithforgegaming/about' },
           { label: 'Facebook', url: 'https://www.facebook.com/profile.php?id=100070219355952' },
           { label: 'Instagram', url: 'https://www.instagram.com/faithforgegaming' },
-          { label: 'Spotify', url: 'https://open.spotify.com/show/033UeDLy6gsvn61Q0KrgXJ?si=LMZjsYerTOed3RTE5KskPQ&nd=1&dlsi=b7bcd52d0c0f4549' }          
+          { label: 'Spotify', url: 'https://open.spotify.com/show/033UeDLy6gsvn61Q0KrgXJ?si=LMZjsYerTOed3RTE5KskPQ&nd=1&dlsi=b7bcd52d0c0f4549' }
+          { label: 'Razo', url: 'https://razo.tv/u/faithforgegaming' }
         ]
       },
       {

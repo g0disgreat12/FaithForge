@@ -99,6 +99,22 @@ const STREAM_STATUS_ENDPOINT = 'https://faithforge-raidtrain-api.faithforgegamin
           { label: 'YouTube', url: 'https://www.youtube.com/@romans1014xp' },
         ]
       },
+      {
+        login: 'forgedbygrace7',
+        name: 'ForgedByGrace7',
+        subtitle: 'Marine vet. Recovering addict. Redeemed by Jesus',
+        image: '/forgedbygrace7/forgedbygrace7.webp',
+        page: '/forgedbygrace7/',
+        twitch: 'https://www.twitch.tv/forgedbygrace7',
+        fallbackGame: 'Music/Variety Gaming',
+        fallbackTitle: 'Non-toxic, encouraging gaming and community',
+        links: [
+          { label: 'YouTube', url: 'https://www.youtube.com/@ForgedByGrace7' },
+          { label: 'Kick', url: 'https://kick.com/forgedbygrace7' },
+          { label: 'ForgeBibleBot', url: 'https://forgebiblebot.com' },
+          { label: 'Forge Discord', url: 'https://discord.gg/hGTFUN39W9' }
+        ]
+      },
     {
         login: 'warrior_of_light777',
         name: 'warrior_of_light777',

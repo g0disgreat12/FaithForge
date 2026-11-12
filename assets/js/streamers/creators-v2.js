@@ -111,7 +111,7 @@ const STREAM_STATUS_ENDPOINT = 'https://faithforge-raidtrain-api.faithforgegamin
         links: [
           { label: 'YouTube', url: 'https://www.youtube.com/@ForgedByGrace7' },
           { label: 'Kick', url: 'https://kick.com/forgedbygrace7' },
-          { label: 'ForgeBibleBot', url: 'https://forgebiblebot.com' },
+          { label: 'ForgeBibleBot', url: 'https://forgebiblebot.com/' },
           { label: 'Forge Discord', url: 'https://discord.gg/hGTFUN39W9' }
         ]
       },

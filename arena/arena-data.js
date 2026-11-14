@@ -115,7 +115,7 @@ window.FFG_ARENA = {
       "website": "",
       "discord": "",
       "stream": "",
-      "page": "communities/respawn-church/"
+      "page": ""
     },
   ],
     {
@@ -126,7 +126,7 @@ window.FFG_ARENA = {
       "website": "",
       "discord": "https://discord.gg/99BT9tk7EM",
       "stream": "",
-      "page": "communities/respawn-church/"
+      "page": ""
     },
   ],
 
@@ -199,17 +199,13 @@ window.FFG_ARENA = {
   upcoming: [
     {
       "id": "2026-11-21-victory-through-christ",
-      "date": "2026-11-21",
+      "title": "FaithForge vs. VTC",
       "gameId": "fortnite",
       "communityId": "victory-through-christ",
+      "startsAt": "2026-11-21T19:30:00-05:00",
       "format": "Custom Games Tournament",
-      "scoreType": "games",
-      "scoreDirection": "higher",
-      "ffgScore": 0,
-      "opponentScore": 0,
-      "tiedGames": 0,
-      "description": "Six games. Two FFG captains. FaithForge Gaming will face VTC- Victory Through Christ, in a Fortnite Custom Games tournament on November 21, 2026. Each FaithForge captain will lead a team through three games, and FFG hopes to finish well.",
-      "vodUrl": "",
-      "image": "https://faithforgegaming.com/arena/logos/vtc.webp",
+      "description": "Six games. Two FFG captains. FaithForge Gaming will face VTC- Victory Through Christ in a Fortnite Custom Games tournament on November 21, 2026. Each FaithForge captain will lead a team through three games, and FFG hopes to finish well.",
+      "eventUrl": ""
+    },
   ],
 };

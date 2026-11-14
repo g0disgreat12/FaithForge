@@ -117,7 +117,6 @@ window.FFG_ARENA = {
       "stream": "",
       "page": ""
     },
-  ],
     {
       "id": "victory-through-christ",
       "name": "VTC- Victory Through Christ",

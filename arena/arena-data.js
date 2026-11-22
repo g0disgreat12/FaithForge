@@ -120,7 +120,7 @@ window.FFG_ARENA = {
     {
       "id": "victory-through-christ",
       "name": "VTC- Victory Through Christ",
-      "description": "Our opponent in the November 21, 2026 Fortnite Custom Games tournament. Two FaithForge teams competed, with FFG finishing ?–?.",
+      "description": "Our opponent in the November 21, 2026 Fortnite Custom Games tournament. Two FaithForge teams competed, with VTC winning 5–4.",
       "logo": "https://faithforgegaming.com/arena/logos/vtc.webp",
       "website": "",
       "discord": "https://discord.gg/99BT9tk7EM",
@@ -134,14 +134,14 @@ window.FFG_ARENA = {
     {
       "id": "mcrevolation",
       "name": "𝕸𝖈𝕽𝖊𝖛𝖔𝖑𝖆𝖙𝖎𝖔𝖓",
-      "description": "FaithForge captain at the October 3, 2026 Fortnite tournament.",
+      "description": "FaithForge captain at the October 3 and November 21, 2026 Fortnite Custom Games tournaments.",
       "link": "",
       "page": "captains/mcrevolation/"
     },
     {
       "id": "doctorjsways",
       "name": "DoctorJSWAYS",
-      "description": "FaithForge captain at the October 3, 2026 Fortnite tournament.",
+      "description": "FaithForge captain at the October 3 and November 21, 2026 Fortnite Custom Games tournaments.",
       "link": "",
       "page": "captains/doctorjsways/"
     },
@@ -156,6 +156,36 @@ window.FFG_ARENA = {
 
   // COMPLETED MATCHES — newest can be added first; results calculate automatically
   matches: [
+    {
+      "id": "2026-11-21-victory-through-christ",
+      "date": "2026-11-21",
+      "gameId": "fortnite",
+      "communityId": "victory-through-christ",
+      "format": "Custom Games Tournament",
+      "scoreType": "games",
+      "scoreDirection": "higher",
+      "ffgScore": 4,
+      "opponentScore": 5,
+      "tiedGames": 0,
+      "description": "Nine games. Two FFG captains. FaithForge Gaming faced VTC — Victory Through Christ in a Fortnite Custom Games tournament on November 21, 2026. VTC won 5–4. FaithForge captain McRevolation finished with 3 wins and 2 losses, while captain DoctorJSWAYS finished with 1 win and 3 losses.",
+      "vodUrl": "",
+      "image": "https://faithforgegaming.com/arena/logos/vtc.webp",
+      "captainResults": [
+        {
+          "captainId": "mcrevolation",
+          "wins": 3,
+          "losses": 2,
+          "ties": 0
+        },
+        {
+          "captainId": "doctorjsways",
+          "wins": 1,
+          "losses": 3,
+          "ties": 0
+        }
+      ],
+      "page": ""
+    },
     {
       "id": "2026-10-03-respawn-church",
       "date": "2026-10-03",
@@ -195,16 +225,5 @@ window.FFG_ARENA = {
   ],
 
   // UPCOMING CHALLENGES — leave empty until a date is agreed
-  upcoming: [
-    {
-      "id": "2026-11-21-victory-through-christ",
-      "title": "FaithForge vs. VTC",
-      "gameId": "fortnite",
-      "communityId": "victory-through-christ",
-      "startsAt": "2026-11-21T19:30:00-05:00",
-      "format": "Custom Games Tournament",
-      "description": "Six games. Two FFG captains. FaithForge Gaming will face VTC- Victory Through Christ in a Fortnite Custom Games tournament on November 21, 2026. Each FaithForge captain will lead a team through three games, and FFG hopes to finish well.",
-      "eventUrl": ""
-    },
-  ],
+  upcoming: [],
 };

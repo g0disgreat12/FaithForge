@@ -168,7 +168,7 @@ window.FFG_ARENA = {
       "opponentScore": 5,
       "tiedGames": 0,
       "description": "Nine games. Two FFG captains. FaithForge Gaming faced VTC — Victory Through Christ in a Fortnite Custom Games tournament on November 21, 2026. VTC won 5–4. FaithForge captain McRevolation finished with 3 wins and 2 losses, while captain DoctorJSWAYS finished with 1 win and 3 losses.",
-      "vodUrl": "",
+      "vodUrl": "https://www.youtube.com/live/hKKA9MnaVVA?si=ab49TnZJFuHHiQxs",
       "image": "https://faithforgegaming.com/arena/logos/vtc.webp",
       "captainResults": [
         {

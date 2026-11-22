@@ -9,7 +9,7 @@
 
   <url>
     <loc>https://faithforgegaming.com/raidtrain/</loc>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
 
   <url>
@@ -34,12 +34,12 @@
 
   <url>
     <loc>https://faithforgegaming.com/Aboutus/</loc>
-    <priority>0.5</priority>
+    <priority>0.4</priority>
   </url>
 
   <url>
     <loc>https://faithforgegaming.com/Staff/</loc>
-    <priority>0.7</priority>
+    <priority>0.4</priority>
   </url>
 
   <url>
@@ -54,42 +54,47 @@
 
   <url>
     <loc>https://faithforgegaming.com/Games/</loc>
-    <priority>0.4</priority>
+    <priority>0.3</priority>
   </url>
 
   <url>
     <loc>https://faithforgegaming.com/faithforgegaming/</loc>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://faithforgegaming.com/DoctorJSWAYS/</loc>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://faithforgegaming.com/warrior_of_light777/</loc>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://faithforgegaming.com/romans1014xp/</loc>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://faithforgegaming.com/NinjaSauceX/</loc>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://faithforgegaming.com/forgedbygrace7/</loc>
+    <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://faithforgegaming.com/Seawolf_30/</loc>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://faithforgegaming.com/mooncalfmage/</loc>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
   </url>
 
   <url>
@@ -99,7 +104,7 @@
 
   <url>
     <loc>https://faithforgegaming.com/Streamer-Shops/</loc>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
   </url>
 
   <!-- FaithForge Arena — all current pages -->
@@ -111,32 +116,32 @@
 
   <url>
     <loc>https://faithforgegaming.com/arena/record/</loc>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://faithforgegaming.com/arena/games/</loc>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://faithforgegaming.com/arena/communities/</loc>
-    <priority>0.7</priority>
+    <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://faithforgegaming.com/arena/captains/</loc>
-    <priority>0.6</priority>
+    <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://faithforgegaming.com/arena/matches/</loc>
-    <priority>0.7</priority>
+    <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://faithforgegaming.com/arena/challenges/</loc>
-    <priority>0.7</priority>
+    <priority>0.5</priority>
   </url>
 
   <url>
@@ -151,26 +156,31 @@
 
   <url>
     <loc>https://faithforgegaming.com/arena/games/fortnite/</loc>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://faithforgegaming.com/arena/games/minecraft/</loc>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://faithforgegaming.com/arena/games/ark-asa/</loc>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://faithforgegaming.com/arena/games/call-of-duty/</loc>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://faithforgegaming.com/arena/communities/respawn-church/</loc>
+    <loc>https://faithforgegaming.com/arena/communities/?id=respawn-church</loc>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://faithforgegaming.com/arena/communities/?id=victory-through-christ</loc>
     <priority>0.6</priority>
   </url>
 
@@ -189,11 +199,12 @@
     <priority>0.6</priority>
   </url>
 
-  <url>
-    <loc>https://faithforgegaming.com/arena/matches/2026-10-03-respawn-church/</loc>
-    <priority>0.6</priority>
-  </url>
 
   <!-- Add future Arena detail URLs here when you want them listed in this sitemap. -->
 
+  <url>
+    <loc>https://faithforgegaming.com/creator-partnership/</loc>
+    <priority>0.8</priority>
+  </url>
+  
 </urlset>

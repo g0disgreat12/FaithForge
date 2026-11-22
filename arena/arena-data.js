@@ -35,7 +35,7 @@ window.FFG_ARENA = {
       "priority": 1,
       "label": "Our main event",
       "status": "open",
-      "description": "Our primary game for community competition. Bring your teams and help us shape the next friendly challenge.",
+      "description": "Our primary game for community competition. Mainly (Zero Build). Bring your teams and help us shape the next friendly challenge.",
       "formats": [
         "Custom Games Tournament",
         "Team vs Team",

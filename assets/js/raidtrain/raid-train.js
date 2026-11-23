@@ -84,7 +84,7 @@ const raidSchedule = [
     start: "2027-01-30T18:00:00-05:00",
     end: "2027-01-30T19:00:00-05:00",
     login: "seawolf_30",
-    display: "Seawolf_30",
+    display: "seawolf_30",
     details: "TBD",
     openSlot: false
   },

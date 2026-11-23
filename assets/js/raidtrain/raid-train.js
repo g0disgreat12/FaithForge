@@ -65,10 +65,10 @@ const raidSchedule = [
     time: "4:00 PM",
     start: "2027-01-30T16:00:00-05:00",
     end: "2027-01-30T17:00:00-05:00",
-    login: "TBD",
-    display: "TBD",
+    login: "forgedbygrace7",
+    display: "ForgedByGrace7",
     details: "TBD",
-    openSlot: true
+    openSlot: false
   },
   {
     time: "5:00 PM",

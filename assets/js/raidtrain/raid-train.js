@@ -31,7 +31,7 @@ const raidSchedule = [
     end: "2027-01-30T13:00:00-05:00",
     login: "TBD",
     display: "TBD",
-    details: "IRL",
+    details: "TBD",
     openSlot: true
   },
    {

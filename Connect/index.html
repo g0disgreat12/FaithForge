@@ -7,18 +7,10 @@
 <meta name="description" content="Connect with FaithForge Gaming: join the community, find our social channels, and get in touch.">
 <title>Connect | FaithForge Gaming</title>
 <link rel="icon" href="/Anvil.webp">
-<link rel="stylesheet" href="/main.css">
+<link rel="stylesheet" href="/main.css?v=connect-2">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="topbar">
-<a class="brand" href="https://faithforgegaming.com/"><img src="/Anvil.webp" alt=""><span>FAITHFORGE GAMING</span></a>
-<img class="header-emblem" src="/Anvil.webp" alt="">
-<nav class="desktop-nav" aria-label="Main navigation">
-<a href="/Aboutus/">About Us</a><a href="/Doctrine/">Our Faith</a><a href="/Streamers/">Creator Team</a><a href="/raidtrain/">Raid Train</a><a href="https://shop.faithforgegaming.com/">Merch Store</a><a href="/Servers/">Servers</a><a href="/arena/">Arena</a><a href="/Devotions/">Devotions</a><a href="/Prayers/">Prayers</a><a href="/Events/">Events</a><a class="nav-join" href="https://discord.gg/bAQrudk5a9">Join Discord</a>
-</nav>
-<details class="mobile-menu"><summary aria-label="Open navigation menu">☰</summary><nav aria-label="Mobile navigation"><a href="/">Home</a><a href="/Aboutus/">About Us</a><a href="/Doctrine/">Our Faith</a><a href="/Streamers/">Creator Team</a><a href="/raidtrain/">Raid Train</a><a href="https://shop.faithforgegaming.com/">Merch Store</a><a href="/Servers/">Servers</a><a href="/arena/">Arena</a><a href="/Devotions/">Devotions</a><a href="/Prayers/">Prayers</a><a href="/Events/">Events</a><a href="/Contact/">Contact</a><a href="https://discord.gg/bAQrudk5a9">Join Discord</a></nav></details>
-</header>
 <main id="main">
 <article class="profile">
 <div class="cover">
@@ -27,7 +19,6 @@
 <strong>IRON SHARPENS IRON.</strong>
 <small>PROVERBS 27:17</small>
 </div>
-<div class="cover-mark" aria-hidden="true">✦</div>
 </div>
 <div class="intro">
 <div class="avatar">
@@ -306,5 +297,22 @@
 <span>Faith · Fellowship · Gaming</span>
 <a href="https://faithforgegaming.com/">faithforgegaming.com</a>
 </footer>
+<dialog class="save-contact-prompt" aria-labelledby="save-contact-title" aria-describedby="save-contact-description">
+  <div class="save-contact-icon" aria-hidden="true"><img src="/Anvil.webp" alt="" width="66" height="66"></div>
+  <p class="save-contact-eyebrow">FAITH · FELLOWSHIP · GAMING</p>
+  <h2 id="save-contact-title">Stay connected</h2>
+  <p id="save-contact-description">Save FaithForge Gaming to your contacts so our links are always close by.</p>
+  <a class="save-contact-confirm" href="/Connect/FaithForge-Gaming.vcf" download>Save contact</a>
+  <button class="save-contact-dismiss" type="button" autofocus>Maybe later</button>
+</dialog>
+<script>
+(function () {
+  const prompt = document.querySelector('.save-contact-prompt');
+  if (!prompt || !window.matchMedia('(max-width: 767px)').matches || typeof prompt.showModal !== 'function') return;
+  prompt.querySelector('.save-contact-dismiss').addEventListener('click', function () { prompt.close(); });
+  prompt.querySelector('.save-contact-confirm').addEventListener('click', function () { prompt.close(); });
+  prompt.showModal();
+})();
+</script>
 </body>
 </html>

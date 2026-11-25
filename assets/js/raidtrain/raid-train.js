@@ -77,7 +77,7 @@ const raidSchedule = [
     login: "imwatchingyouppl",
     display: "ImWatchingYouPpl",
     details: "TBD",
-    openSlot: true
+    openSlot: false
   },
   {
     time: "6:00 PM",
@@ -95,7 +95,7 @@ const raidSchedule = [
     login: "romans1014xp",
     display: "Romans1014XP",
     details: "TBD",
-    openSlot: true
+    openSlot: false
   },
   {
     time: "8:00 PM",

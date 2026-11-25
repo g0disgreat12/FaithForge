@@ -74,8 +74,8 @@ const raidSchedule = [
     time: "5:00 PM",
     start: "2027-01-30T17:00:00-05:00",
     end: "2027-01-30T18:00:00-05:00",
-    login: "TBD",
-    display: "TBD",
+    login: "imwatchingyouppl",
+    display: "ImWatchingYouPpl",
     details: "TBD",
     openSlot: true
   },
@@ -92,8 +92,8 @@ const raidSchedule = [
     time: "7:00 PM",
     start: "2027-01-30T19:00:00-05:00",
     end: "2027-01-30T20:00:00-05:00",
-    login: "TBD",
-    display: "TBD",
+    login: "romans1014xp",
+    display: "Romans1014XP",
     details: "TBD",
     openSlot: true
   },

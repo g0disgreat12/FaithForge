@@ -11872,3 +11872,17 @@ html:where(.ffg-servers) {
   :where(.ffg-connect) .cover { background-position: center; }
   :where(.ffg-connect) .link-icon img { width: 25px; height: 25px; }
 }
+
+/* Connect page: black cover and mobile contact prompt. */
+:where(.ffg-connect) .cover { background: #000; }
+:where(.ffg-connect) .save-contact-prompt { width: min(420px, calc(100% - 32px)); max-height: calc(100dvh - 32px); overflow-y: auto; margin: auto; padding: 30px 24px 22px; border: 1px solid rgba(245,197,24,.55); border-radius: 16px; background: #111; color: #f8f5e9; text-align: center; box-shadow: 0 20px 70px #000, 0 0 26px rgba(245,197,24,.18); }
+:where(.ffg-connect) .save-contact-prompt::backdrop { background: rgba(0,0,0,.78); }
+:where(.ffg-connect) .save-contact-icon { display: grid; place-items: center; width: 82px; height: 82px; margin: 0 auto 18px; border: 2px solid #f5c518; border-radius: 50%; background: #050505; }
+:where(.ffg-connect) .save-contact-icon img { width: 66px; height: 66px; object-fit: contain; }
+:where(.ffg-connect) .save-contact-eyebrow { margin: 0 0 10px; color: #f5c518; font-size: 11px; font-weight: 800; letter-spacing: .14em; }
+:where(.ffg-connect) .save-contact-prompt h2 { margin: 0; font-size: 30px; color: #fff; }
+:where(.ffg-connect) #save-contact-description { margin: 12px auto 22px; color: #ddd7c7; font-size: 16px; line-height: 1.5; }
+:where(.ffg-connect) .save-contact-confirm, :where(.ffg-connect) .save-contact-dismiss { display: flex; align-items: center; justify-content: center; width: 100%; min-height: 50px; border-radius: 9px; font: inherit; font-weight: 750; cursor: pointer; }
+:where(.ffg-connect) .save-contact-confirm { background: linear-gradient(45deg,#f5c518,#cfa214); color: #000; }
+:where(.ffg-connect) .save-contact-dismiss { margin-top: 10px; border: 1px solid rgba(245,197,24,.35); background: transparent; color: #f5c518; }
+:where(.ffg-connect) .save-contact-dismiss:focus-visible, :where(.ffg-connect) .save-contact-confirm:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }

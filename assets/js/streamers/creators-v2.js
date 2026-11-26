@@ -385,6 +385,7 @@ const STREAM_STATUS_ENDPOINT = 'https://faithforge-raidtrain-api.faithforgegamin
         button.type = 'button';
         button.className = `streamer-button ${streamer.login === selectedLogin ? 'active' : ''}`;
         button.setAttribute('aria-label', `Watch ${streamer.name}`);
+        if (/^[a-z0-9_]{1,25}$/i.test(streamer.login)) button.setAttribute('data-pulse-event', `Creator selected: ${streamer.login}`);
 
         button.addEventListener('click', () => {
           userPickedStreamer = true;

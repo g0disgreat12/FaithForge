@@ -384,12 +384,16 @@ function setFeaturedLive(featured) {
 
   player.innerHTML = '<div id="featuredTwitchPlayer" style="width:100%;"></div>';
 
-  new Twitch.Embed("featuredTwitchPlayer", {
+  const embed = new Twitch.Embed("featuredTwitchPlayer", {
     width: "100%",
     height: 380,
     channel: login,
     parent: ["faithforgegaming.com", "www.faithforgegaming.com"],
     layout: "video"
+  });
+  // This is a player playback event, including autoplay; it is not proof of attention.
+  embed.addEventListener(Twitch.Embed.VIDEO_PLAY, () => {
+    if (/^[a-z0-9_]{1,25}$/.test(login)) window.sitePulse?.track(`Twitch playing: ${login}`);
   });
 }
 

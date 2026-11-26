@@ -138,7 +138,7 @@
 
 <body>
 
-<a class="events-skip-link" href="#eventsMain">
+<a class="events-skip-link" href="#eventsMain" data-pulse-event="Link: Skip to events">
   Skip to events
 </a>
 
@@ -159,7 +159,7 @@
       aria-label="Open menu"
       aria-expanded="false"
       aria-controls="eventsNavigation"
-    >
+     data-pulse-event="Button: Open menu">
       ☰
     </button>
 
@@ -174,21 +174,21 @@
     aria-label="Main navigation"
   >
     <div class="menu-links">
-      <a href="/">Home</a>
-      <a href="/Aboutus/">About Us</a>
-      <a href="/Staff/">Our Team</a>
-      <a href="/Streamers/">Streamers</a>
-      <a href="/raidtrain/">Raid Train</a>
+      <a href="/" data-pulse-event="Link: Home">Home</a>
+      <a href="/Aboutus/" data-pulse-event="Link: About Us">About Us</a>
+      <a href="/Staff/" data-pulse-event="Link: Our Team">Our Team</a>
+      <a href="/Streamers/" data-pulse-event="Link: Streamers">Streamers</a>
+      <a href="/raidtrain/" data-pulse-event="Link: Raid Train">Raid Train</a>
 
-      <a href="https://shop.faithforgegaming.com/">
+      <a href="https://shop.faithforgegaming.com/" data-pulse-event="Link: Merch Store">
         Merch Store
       </a>
 
-      <a href="/Devotions/">Devotions</a>
-      <a href="/Prayers/">Prayers</a>
-      <a href="/Servers/">Servers</a>
-      <a href="/Events/">Events</a>
-      <a href="/Contact/">Contact Us</a>
+      <a href="/Devotions/" data-pulse-event="Link: Devotions">Devotions</a>
+      <a href="/Prayers/" data-pulse-event="Link: Prayers">Prayers</a>
+      <a href="/Servers/" data-pulse-event="Link: Servers">Servers</a>
+      <a href="/Events/" data-pulse-event="Link: Events">Events</a>
+      <a href="/Contact/" data-pulse-event="Link: Contact Us">Contact Us</a>
     </div>
   </nav>
 </header>
@@ -218,7 +218,7 @@
         href="https://discord.gg/bAQrudk5a9"
         target="_blank"
         rel="noopener noreferrer"
-      >
+       data-pulse-event="Link: Join Our Discord">
         Join Our Discord
       </a>
 
@@ -228,7 +228,7 @@
         href="https://calendar.google.com/calendar/embed?src=3ca24c7d932a2bdb0aa72b09710f915c6e3ca12bd13d30235b35f41ded97c522%40group.calendar.google.com&ctz=America%2FNew_York"
         target="_blank"
         rel="noopener noreferrer"
-      >
+       data-pulse-event="Link: Open Full Calendar">
         Open Full Calendar
       </a>
     </div>
@@ -317,7 +317,7 @@
         class="events-clear-button"
         id="eventsClearButton"
         type="button"
-      >
+       data-pulse-event="Button: Clear">
         Clear
       </button>
     </div>
@@ -330,7 +330,7 @@
         class="events-filter-button active"
         type="button"
         data-filter="all"
-      >
+       data-pulse-event="Button: All Events">
         All Events
       </button>
 
@@ -338,7 +338,7 @@
         class="events-filter-button"
         type="button"
         data-filter="faith"
-      >
+       data-pulse-event="Button: Bible &amp; Faith">
         Bible &amp; Faith
       </button>
 
@@ -346,7 +346,7 @@
         class="events-filter-button"
         type="button"
         data-filter="raid-train"
-      >
+       data-pulse-event="Button: Raid Train">
         Raid Train
       </button>
 
@@ -354,7 +354,7 @@
         class="events-filter-button"
         type="button"
         data-filter="podcast"
-      >
+       data-pulse-event="Button: Podcast">
         Podcast
       </button>
 
@@ -362,7 +362,7 @@
         class="events-filter-button"
         type="button"
         data-filter="gaming"
-      >
+       data-pulse-event="Button: Gaming">
         Gaming
       </button>
 
@@ -370,7 +370,7 @@
         class="events-filter-button"
         type="button"
         data-filter="tournament"
-      >
+       data-pulse-event="Button: Tournament">
         Tournament
       </button>
 
@@ -378,7 +378,7 @@
         class="events-filter-button"
         type="button"
         data-filter="dnd"
-      >
+       data-pulse-event="Button: D&amp;D">
         D&amp;D
       </button>
 
@@ -386,7 +386,7 @@
         class="events-filter-button"
         type="button"
         data-filter="partnership"
-      >
+       data-pulse-event="Button: Partnership">
         Partnership
       </button>
 
@@ -394,7 +394,7 @@
         class="events-filter-button"
         type="button"
         data-filter="live"
-      >
+       data-pulse-event="Button: Live">
         Live
       </button>
 
@@ -402,7 +402,7 @@
         class="events-filter-button"
         type="button"
         data-filter="men-women"
-      >
+       data-pulse-event="Button: Men&#x27;s/Women&#x27;s">
         Men's/Women's
       </button>
 
@@ -410,7 +410,7 @@
         class="events-filter-button"
         type="button"
         data-filter="community"
-      >
+       data-pulse-event="Button: Community">
         Community
       </button>
     </div>
@@ -445,7 +445,7 @@
       <p>
         <a
           href="https://faithforge-community-api.faithforgegaming.workers.dev/events-html"
-        >
+         data-pulse-event="Link: View the server-rendered upcoming event list">
           View the server-rendered upcoming event list
         </a>
         or use the Open Full Calendar button above.
@@ -501,7 +501,7 @@
     <p class="events-search-source">
       <a
         href="https://faithforge-community-api.faithforgegaming.workers.dev/events-html"
-      >
+       data-pulse-event="Link: Open the server-rendered searchable event list">
         Open the server-rendered searchable event list
       </a>
     </p>
@@ -517,27 +517,27 @@
       href="https://discord.gg/bAQrudk5a9"
       target="_blank"
       rel="noopener noreferrer"
-    >
+     data-pulse-event="Link: Join Our Discord">
       Join Our Discord
     </a>
   </div>
 
   <div class="footer-links">
-    <a href="/">Home</a>
-    <a href="/Aboutus/">About Us</a>
-    <a href="/Staff/">Our Team</a>
-    <a href="/Streamers/">Streamers</a>
-    <a href="/raidtrain/">Raid Train</a>
+    <a href="/" data-pulse-event="Link: Home">Home</a>
+    <a href="/Aboutus/" data-pulse-event="Link: About Us">About Us</a>
+    <a href="/Staff/" data-pulse-event="Link: Our Team">Our Team</a>
+    <a href="/Streamers/" data-pulse-event="Link: Streamers">Streamers</a>
+    <a href="/raidtrain/" data-pulse-event="Link: Raid Train">Raid Train</a>
 
-    <a href="https://shop.faithforgegaming.com/">
+    <a href="https://shop.faithforgegaming.com/" data-pulse-event="Link: Merch Store">
       Merch Store
     </a>
 
-    <a href="/Devotions/">Devotions</a>
-    <a href="/Prayers/">Prayers</a>
-    <a href="/Servers/">Servers</a>
-    <a href="/Events/">Events</a>
-    <a href="/Contact/">Contact Us</a>
+    <a href="/Devotions/" data-pulse-event="Link: Devotions">Devotions</a>
+    <a href="/Prayers/" data-pulse-event="Link: Prayers">Prayers</a>
+    <a href="/Servers/" data-pulse-event="Link: Servers">Servers</a>
+    <a href="/Events/" data-pulse-event="Link: Events">Events</a>
+    <a href="/Contact/" data-pulse-event="Link: Contact Us">Contact Us</a>
   </div>
 
   <div class="footer-copy">
@@ -553,5 +553,8 @@
 
 <script src="https://faithforgegaming.com/embers.js"></script>
 
+<!-- Site Pulse: page views and interactions -->
+<script defer src="https://site-pulse.faithforgegaming.workers.dev/tracker.js" data-site="9be7df4f-9415-4205-a487-71364bdda776"></script>
+<script defer src="/assets/js/shared/site-pulse-youtube.js"></script>
 </body>
 </html>

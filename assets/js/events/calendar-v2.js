@@ -712,6 +712,7 @@ const COMMUNITY_API =
           <div class="next-event-actions">
             <a
               class="event-action-button"
+              data-pulse-event="Events: View next event"
               href="${escapeHtml(eventUrl)}"
               target="_blank"
               rel="noopener noreferrer"
@@ -721,6 +722,7 @@ const COMMUNITY_API =
 
             <a
               class="event-action-button secondary"
+              data-pulse-event="Events: Join Discord from next event"
               href="${escapeHtml(DISCORD_URL)}"
               target="_blank"
               rel="noopener noreferrer"
@@ -1022,6 +1024,7 @@ const COMMUNITY_API =
               <div class="event-card-actions">
                 <a
                   class="event-action-button"
+                  data-pulse-event="Events: View event details"
                   href="${escapeHtml(eventUrl)}"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -1031,6 +1034,7 @@ const COMMUNITY_API =
 
                 <a
                   class="event-action-button secondary"
+                  data-pulse-event="Events: Join Discord from event"
                   href="${escapeHtml(DISCORD_URL)}"
                   target="_blank"
                   rel="noopener noreferrer"

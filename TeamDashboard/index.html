@@ -13,7 +13,7 @@
   <script type="module" src="./dashboard.js"></script>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to reports</a>
+  <a class="skip-link" href="#main" data-pulse-event="Link: Skip to reports">Skip to reports</a>
   <div class="layout">
     <aside class="sidebar" aria-label="Team dashboard navigation">
       <div class="brand">
@@ -26,7 +26,7 @@
       </nav>
       <div class="sidebar-end">
         <span class="sidebar-label">FaithForge Gaming</span>
-        <a href="/CreatorDashboard/">Creator dashboard</a>
+        <a href="/CreatorDashboard/" data-pulse-event="Link: Creator dashboard">Creator dashboard</a>
       </div>
     </aside>
 
@@ -38,9 +38,9 @@
           <p class="intro">Quarterly Discord participation across the team.</p>
         </div>
         <div class="header-actions">
-          <button id="refresh" type="button" disabled>Refresh</button>
-          <button id="export" type="button" disabled>Export CSV</button>
-          <button id="lock" type="button" hidden>Lock</button>
+          <button id="refresh" type="button" disabled data-pulse-event="Button: Refresh">Refresh</button>
+          <button id="export" type="button" disabled data-pulse-event="Button: Export CSV">Export CSV</button>
+          <button id="lock" type="button" hidden data-pulse-event="Button: Lock">Lock</button>
         </div>
       </header>
 
@@ -52,7 +52,7 @@
         <form id="unlockForm">
           <label class="sr-only" for="viewingCode">Viewing code</label>
           <input id="viewingCode" type="password" placeholder="Viewing code" minlength="32" autocomplete="off" spellcheck="false" required>
-          <button class="primary" type="submit">Unlock reports</button>
+          <button class="primary" type="submit" data-pulse-event="Button: Unlock reports">Unlock reports</button>
         </form>
       </section>
 
@@ -137,9 +137,12 @@
   <dialog id="personDetail" aria-labelledby="detailName">
     <div class="dialog-heading">
       <div><p id="detailQuarter" class="kicker"></p><h2 id="detailName"></h2></div>
-      <form method="dialog"><button type="submit">Close</button></form>
+      <form method="dialog"><button type="submit" data-pulse-event="Button: Close">Close</button></form>
     </div>
     <div id="detailBody"></div>
   </dialog>
+<!-- Site Pulse: page views and interactions -->
+<script defer src="https://site-pulse.faithforgegaming.workers.dev/tracker.js" data-site="9be7df4f-9415-4205-a487-71364bdda776"></script>
+<script defer src="/assets/js/shared/site-pulse-youtube.js"></script>
 </body>
 </html>

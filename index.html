@@ -116,12 +116,12 @@
 
 <body>
 
-<a class="skip-link" href="#mainContent">Skip to main content</a>
+<a class="skip-link" href="#mainContent" data-pulse-event="Link: Skip to main content">Skip to main content</a>
 
 <canvas id="particles"></canvas>
 
 <header class="site-header">
-  <a class="logo-wrap" href="/" aria-label="FaithForge Gaming home">
+  <a class="logo-wrap" href="/" aria-label="FaithForge Gaming home" data-pulse-event="Link: FaithForge Gaming home">
     <img src="watermarklogo.webp" alt="FaithForge Gaming Logo">
     <span class="logo-text">FAITHFORGE GAMING</span>
   </a>
@@ -137,22 +137,22 @@
     aria-label="Open navigation"
     aria-controls="siteNav"
     aria-expanded="false"
-  >
+   data-pulse-event="Button: Open navigation">
     ☰
   </button>
 
   <nav class="site-nav" id="siteNav">
-    <a href="/Aboutus/">About Us</a>
-    <a href="/Doctrine/">Our Faith</a>
-    <a href="/Streamers/">Creator Team</a>
-    <a href="/raidtrain/">Raid Train</a>
-    <a href="https://shop.faithforgegaming.com/">Merch Store</a>
-    <a href="/Servers/">Servers</a>
-    <a href="/arena/">Arena</a>
-    <a href="/Devotions/">Devotions</a>
-    <a href="/Prayers/">Prayers</a>
-    <a href="/Events/">Events</a>
-    <a class="join-button" href="https://discord.gg/bAQrudk5a9">Join Discord</a>
+    <a href="/Aboutus/" data-pulse-event="Link: About Us">About Us</a>
+    <a href="/Doctrine/" data-pulse-event="Link: Our Faith">Our Faith</a>
+    <a href="/Streamers/" data-pulse-event="Link: Creator Team">Creator Team</a>
+    <a href="/raidtrain/" data-pulse-event="Link: Raid Train">Raid Train</a>
+    <a href="https://shop.faithforgegaming.com/" data-pulse-event="Link: Merch Store">Merch Store</a>
+    <a href="/Servers/" data-pulse-event="Link: Servers">Servers</a>
+    <a href="/arena/" data-pulse-event="Link: Arena">Arena</a>
+    <a href="/Devotions/" data-pulse-event="Link: Devotions">Devotions</a>
+    <a href="/Prayers/" data-pulse-event="Link: Prayers">Prayers</a>
+    <a href="/Events/" data-pulse-event="Link: Events">Events</a>
+    <a class="join-button" href="https://discord.gg/bAQrudk5a9" data-pulse-event="Link: Join Discord">Join Discord</a>
   </nav>
 </header>
 
@@ -182,7 +182,7 @@
       </div>
 
       <div class="hero-actions">
-        <a class="primary-button" href="https://discord.gg/bAQrudk5a9">
+        <a class="primary-button" href="https://discord.gg/bAQrudk5a9" data-pulse-event="Link: Join the Community">
           Join the Community
         </a>
 
@@ -191,11 +191,11 @@
           href="https://www.twitch.tv/faithforgegaming"
           target="_blank"
           rel="noopener noreferrer"
-        >
+         data-pulse-event="Link: Watch Live">
           Watch Live
         </a>
 
-        <a class="secondary-button" href="/Events/">
+        <a class="secondary-button" href="/Events/" data-pulse-event="Link: Upcoming Events">
           Upcoming Events
         </a>
       </div>
@@ -216,12 +216,12 @@
         class="stats-grid"
         data-faithforge-server-stats
       >
-        <a class="stat-card" href="https://discord.gg/bAQrudk5a9">
+        <a class="stat-card" href="https://discord.gg/bAQrudk5a9" data-pulse-event="Link: 1000+ Discord Members">
           <span class="stat-value" id="statDiscordMembers" data-faithforge-value="discord.members">1000+</span>
           <span class="stat-name">Discord Members</span>
         </a>
 
-        <a class="stat-card" href="https://discord.gg/bAQrudk5a9">
+        <a class="stat-card" href="https://discord.gg/bAQrudk5a9" data-pulse-event="Link: — Members Online">
           <span class="stat-value" id="statDiscordOnline" data-faithforge-value="discord.online">—</span>
           <span class="stat-name">Members Online</span>
         </a>
@@ -229,22 +229,22 @@
         <a
           class="stat-card"
           href="https://www.facebook.com/profile.php?id=100070219355952"
-        >
+         data-pulse-event="Link: — Facebook Followers">
           <span class="stat-value" id="statFacebookFollowers" data-faithforge-value="facebook.followers">—</span>
           <span class="stat-name">Facebook Followers</span>
         </a>
 
-        <a class="stat-card" href="https://www.tiktok.com/@faithforge.gaming">
+        <a class="stat-card" href="https://www.tiktok.com/@faithforge.gaming" data-pulse-event="Link: — TikTok Followers">
           <span class="stat-value" id="statTikTokFollowers" data-faithforge-value="tiktok.followers">—</span>
           <span class="stat-name">TikTok Followers</span>
         </a>
 
-        <a class="stat-card" href="https://www.youtube.com/@FaithForgeGaming">
+        <a class="stat-card" href="https://www.youtube.com/@FaithForgeGaming" data-pulse-event="Link: — YouTube Subscribers">
           <span class="stat-value" id="statYouTubeSubscribers" data-faithforge-value="youtube.subscribers">—</span>
           <span class="stat-name">YouTube Subscribers</span>
         </a>
 
-        <a class="stat-card" href="https://www.twitch.tv/faithforgegaming">
+        <a class="stat-card" href="https://www.twitch.tv/faithforgegaming" data-pulse-event="Link: — Twitch Followers">
           <span class="stat-value" id="statTwitchFollowers" data-faithforge-value="twitch.followers">—</span>
           <span class="stat-name">Twitch Followers</span>
         </a>
@@ -272,7 +272,7 @@
           The interactive features require JavaScript. Current FaithForge Gaming
           community statistics, social-platform information, latest content, and
           upcoming events remain available in the
-          <a href="https://faithforge-community-api.faithforgegaming.workers.dev/website-html">
+          <a href="https://faithforge-community-api.faithforgegaming.workers.dev/website-html" data-pulse-event="Link: server-rendered community snapshot">
             server-rendered community snapshot
           </a>.
         </p>
@@ -281,17 +281,17 @@
   </section>
 
   <div class="social-bar">
-    <a href="https://discord.gg/bAQrudk5a9">Discord</a>
-    <a href="https://open.spotify.com/show/033UeDLy6gsvn61Q0KrgXJ?si=LMZjsYerTOed3RTE5KskPQ&nd=1&dlsi=b7bcd52d0c0f4549">Spotify</a>
-    <a href="https://www.facebook.com/profile.php?id=100070219355952">Facebook</a>
-    <a href="https://www.instagram.com/faithforgegaming">Instagram</a>
-    <a href="https://www.reddit.com/r/FaithForgeGaming/">Reddit</a>
-    <a href="https://www.youtube.com/@FaithForgeGaming">YouTube</a>
-    <a href="https://www.twitch.tv/faithforgegaming">Twitch</a>
-    <a href="https://www.tiktok.com/@faithforge.gaming">TikTok</a>
-    <a href="https://rumble.com/user/FaithForgeGaming">Rumble</a>
-    <a href="https://razo.tv/u/faithforgegaming">Razo</a>
-    <a href="https://kick.com/faithforgegaming/about">Kick</a>
+    <a href="https://discord.gg/bAQrudk5a9" data-pulse-event="Link: Discord">Discord</a>
+    <a href="https://open.spotify.com/show/033UeDLy6gsvn61Q0KrgXJ?si=LMZjsYerTOed3RTE5KskPQ&nd=1&dlsi=b7bcd52d0c0f4549" data-pulse-event="Link: Spotify">Spotify</a>
+    <a href="https://www.facebook.com/profile.php?id=100070219355952" data-pulse-event="Link: Facebook">Facebook</a>
+    <a href="https://www.instagram.com/faithforgegaming" data-pulse-event="Link: Instagram">Instagram</a>
+    <a href="https://www.reddit.com/r/FaithForgeGaming/" data-pulse-event="Link: Reddit">Reddit</a>
+    <a href="https://www.youtube.com/@FaithForgeGaming" data-pulse-event="Link: YouTube">YouTube</a>
+    <a href="https://www.twitch.tv/faithforgegaming" data-pulse-event="Link: Twitch">Twitch</a>
+    <a href="https://www.tiktok.com/@faithforge.gaming" data-pulse-event="Link: TikTok">TikTok</a>
+    <a href="https://rumble.com/user/FaithForgeGaming" data-pulse-event="Link: Rumble">Rumble</a>
+    <a href="https://razo.tv/u/faithforgegaming" data-pulse-event="Link: Razo">Razo</a>
+    <a href="https://kick.com/faithforgegaming/about" data-pulse-event="Link: Kick">Kick</a>
   </div>
 
   <section class="live-events-section">
@@ -314,9 +314,9 @@
           </div>
 
           <div class="panel-actions">
-            <a class="gold-button" href="/Events/">View All Events</a>
+            <a class="gold-button" href="/Events/" data-pulse-event="Link: View All Events">View All Events</a>
 
-            <a class="secondary-button" href="https://discord.gg/bAQrudk5a9">
+            <a class="secondary-button" href="https://discord.gg/bAQrudk5a9" data-pulse-event="Link: Join the Discord">
               Join the Discord
             </a>
           </div>
@@ -355,11 +355,11 @@
               href="https://www.twitch.tv/faithforgegaming"
               target="_blank"
               rel="noopener noreferrer"
-            >
+             data-pulse-event="Link: Watch on Twitch">
               Watch on Twitch
             </a>
 
-            <a class="secondary-button" href="/Streamers/">
+            <a class="secondary-button" href="/Streamers/" data-pulse-event="Link: Meet Our Creators">
               Meet Our Creators
             </a>
           </div>
@@ -416,32 +416,32 @@
 
       <div class="games-grid">
 
-        <a class="game-card" href="/Games/">
+        <a class="game-card" href="/Games/" data-pulse-event="Link: Minecraft">
           <img src="/Gameswebp/MINECRAFT.webp" alt="Minecraft" loading="lazy">
           <span>Minecraft</span>
         </a>
 
-        <a class="game-card" href="/Games/">
+        <a class="game-card" href="/Games/" data-pulse-event="Link: Valheim">
           <img src="/Gameswebp/Valheimgame.webp" alt="Valheim" loading="lazy">
           <span>Valheim</span>
         </a>
 
-        <a class="game-card" href="/Games/">
+        <a class="game-card" href="/Games/" data-pulse-event="Link: ARK: Survival Ascended">
           <img src="/Gameswebp/ARK.webp" alt="ARK Survival Ascended" loading="lazy">
           <span>ARK: Survival Ascended</span>
         </a>
 
-        <a class="game-card" href="/Games/">
+        <a class="game-card" href="/Games/" data-pulse-event="Link: Fortnite">
           <img src="/Gameswebp/FORTNITE.webp" alt="Fortnite" loading="lazy">
           <span>Fortnite</span>
         </a>
 
-        <a class="game-card" href="/Games/">
+        <a class="game-card" href="/Games/" data-pulse-event="Link: Among Us">
           <img src="/Gameswebp/AmongUS.webp" alt="Among Us" loading="lazy">
           <span>Among Us</span>
         </a>
 
-        <a class="game-card" href="/Games/">
+        <a class="game-card" href="/Games/" data-pulse-event="Link: Call of Duty">
           <img src="/Gameswebp/CALLOFDUTY.webp" alt="Call of Duty" loading="lazy">
           <span>Call of Duty</span>
         </a>
@@ -449,7 +449,7 @@
       </div>
 
       <div class="center-actions">
-        <a class="gold-button" href="/Games/">Explore All Community Games</a>
+        <a class="gold-button" href="/Games/" data-pulse-event="Link: Explore All Community Games">Explore All Community Games</a>
       </div>
     </div>
   </section>
@@ -587,7 +587,7 @@
       </div>
 
       <div class="center-actions">
-        <a class="gold-button" href="/Servers/">View Server Information</a>
+        <a class="gold-button" href="/Servers/" data-pulse-event="Link: View Server Information">View Server Information</a>
       </div>
     </div>
   </section>
@@ -651,7 +651,7 @@
               href="https://www.youtube.com/@FaithForgeGaming/shorts"
               target="_blank"
               rel="noopener noreferrer"
-            >
+             data-pulse-event="Link: Watch on YouTube">
               Watch on YouTube
             </a>
 
@@ -660,7 +660,7 @@
               href="https://www.youtube.com/@FaithForgeGaming?sub_confirmation=1"
               target="_blank"
               rel="noopener noreferrer"
-            >
+             data-pulse-event="Link: Subscribe">
               Subscribe
             </a>
           </div>
@@ -695,7 +695,7 @@
             Proverbs 27:17
           </div>
 
-          <a href="/Devotions/" class="devotion-button">
+          <a href="/Devotions/" class="devotion-button" data-pulse-event="Link: Read Our Devotions">
             Read Our Devotions
           </a>
         </div>
@@ -741,25 +741,25 @@
             placeholder="Example: Romans 10:9-10"
           >
 
-          <button id="homeLookupBtn" type="button">
+          <button id="homeLookupBtn" type="button" data-pulse-event="Button: Look Up">
             Look Up
           </button>
         </div>
 
         <div class="bible-samples" aria-label="Popular Bible passages">
-          <button class="sample-verse" type="button" data-ref="Proverbs 27:17">
+          <button class="sample-verse" type="button" data-ref="Proverbs 27:17" data-pulse-event="Button: Proverbs 27:17">
             Proverbs 27:17
           </button>
 
-          <button class="sample-verse" type="button" data-ref="Romans 10:9-10">
+          <button class="sample-verse" type="button" data-ref="Romans 10:9-10" data-pulse-event="Button: Romans 10:9–10">
             Romans 10:9–10
           </button>
 
-          <button class="sample-verse" type="button" data-ref="John 3:16">
+          <button class="sample-verse" type="button" data-ref="John 3:16" data-pulse-event="Button: John 3:16">
             John 3:16
           </button>
 
-          <button class="sample-verse" type="button" data-ref="Ephesians 2:8-9">
+          <button class="sample-verse" type="button" data-ref="Ephesians 2:8-9" data-pulse-event="Button: Ephesians 2:8–9">
             Ephesians 2:8–9
           </button>
         </div>
@@ -782,8 +782,8 @@
           </p>
 
           <div class="panel-actions">
-            <a class="gold-button" href="/Streamers/">Meet Our Creators</a>
-            <a class="gold-button" href="/creator-partnership/">Partnership Program Info</a>
+            <a class="gold-button" href="/Streamers/" data-pulse-event="Link: Meet Our Creators">Meet Our Creators</a>
+            <a class="gold-button" href="/creator-partnership/" data-pulse-event="Link: Partnership Program Info">Partnership Program Info</a>
           </div>
         </article>
 
@@ -797,7 +797,7 @@
           </p>
 
           <div class="panel-actions">
-            <a class="gold-button" href="/raidtrain/">Explore the Raid Train</a>
+            <a class="gold-button" href="/raidtrain/" data-pulse-event="Link: Explore the Raid Train">Explore the Raid Train</a>
           </div>
         </article>
 
@@ -826,7 +826,7 @@
         id="bibleCloseBtn"
         type="button"
         aria-label="Close passage"
-      >
+       data-pulse-event="Button: Close passage">
         &times;
       </button>
     </div>
@@ -834,15 +834,15 @@
     <div class="bible-body" id="bibleBody"></div>
 
     <div class="bible-actions">
-      <button class="bible-action-button" id="viewChapterBtn" type="button">
+      <button class="bible-action-button" id="viewChapterBtn" type="button" data-pulse-event="Button: View Whole Chapter">
         View Whole Chapter
       </button>
 
-      <button class="bible-action-button" id="copyRefBtn" type="button">
+      <button class="bible-action-button" id="copyRefBtn" type="button" data-pulse-event="Button: Copy Reference">
         Copy Reference
       </button>
 
-      <button class="bible-action-button" id="copyPassageBtn" type="button">
+      <button class="bible-action-button" id="copyPassageBtn" type="button" data-pulse-event="Button: Copy Verse + Reference">
         Copy Verse + Reference
       </button>
     </div>
@@ -851,19 +851,19 @@
 
 <footer>
   <div class="footer-links">
-    <a href="/">Home</a>
-    <a href="/Aboutus/">About Us</a>
-    <a href="/Doctrine/">Faith Statement</a>
-    <a href="/Staff/">Our Team</a>
-    <a href="/Streamers/">Streamers</a>
-    <a href="/raidtrain/">Raid Train</a>
-    <a href="https://shop.faithforgegaming.com/">Merch Store</a>
-    <a href="/arena/">Arena</a>
-    <a href="/Devotions/">Devotions</a>
-    <a href="/Prayers/">Prayers</a>
-    <a href="/Servers/">Servers</a>
-    <a href="/Events/">Events</a>
-    <a href="/Contact/">Contact</a>
+    <a href="/" data-pulse-event="Link: Home">Home</a>
+    <a href="/Aboutus/" data-pulse-event="Link: About Us">About Us</a>
+    <a href="/Doctrine/" data-pulse-event="Link: Faith Statement">Faith Statement</a>
+    <a href="/Staff/" data-pulse-event="Link: Our Team">Our Team</a>
+    <a href="/Streamers/" data-pulse-event="Link: Streamers">Streamers</a>
+    <a href="/raidtrain/" data-pulse-event="Link: Raid Train">Raid Train</a>
+    <a href="https://shop.faithforgegaming.com/" data-pulse-event="Link: Merch Store">Merch Store</a>
+    <a href="/arena/" data-pulse-event="Link: Arena">Arena</a>
+    <a href="/Devotions/" data-pulse-event="Link: Devotions">Devotions</a>
+    <a href="/Prayers/" data-pulse-event="Link: Prayers">Prayers</a>
+    <a href="/Servers/" data-pulse-event="Link: Servers">Servers</a>
+    <a href="/Events/" data-pulse-event="Link: Events">Events</a>
+    <a href="/Contact/" data-pulse-event="Link: Contact">Contact</a>
   </div>
 
   <div class="footer-copy">
@@ -882,5 +882,8 @@
 
 <script src="/assets/js/home/bible-reader.js"></script>
 
+<!-- Site Pulse: page views and interactions -->
+<script defer src="https://site-pulse.faithforgegaming.workers.dev/tracker.js" data-site="9be7df4f-9415-4205-a487-71364bdda776"></script>
+<script defer src="/assets/js/shared/site-pulse-youtube.js"></script>
 </body>
 </html>

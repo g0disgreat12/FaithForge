@@ -187,6 +187,7 @@ const COMMUNITY_API =
       return `
         <a
           class="event-card"
+          data-pulse-event="Homepage: Event card"
           href="${escapeHtml(eventUrl)}"
           target="_blank"
           rel="noopener noreferrer"
@@ -267,6 +268,7 @@ const COMMUNITY_API =
   }
 
   function playLatestYouTubeVideo() {
+    window.sitePulse?.track("Homepage: Latest video opened");
     if (!latestYouTubeVideo?.videoId) {
       window.open(
         "https://www.youtube.com/@FaithForgeGaming",
@@ -294,7 +296,7 @@ const COMMUNITY_API =
         )}"
         src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(
           latestYouTubeVideo.videoId
-        )}?autoplay=1"
+        )}?autoplay=1&enablejsapi=1"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen
       ></iframe>
